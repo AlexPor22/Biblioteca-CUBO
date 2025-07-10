@@ -3,6 +3,12 @@
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
+//RUTA INICIO 
+Route::get('/', function () {
+    return view('inicio');
+})->name('inicio');
+
+
 // Rutas del Panel de Administración (sin autenticación)
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
 Route::get('/admin/usuarios', [AdminController::class, 'usuarios'])->name('admin.usuarios');
