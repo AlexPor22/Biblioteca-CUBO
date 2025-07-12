@@ -1,205 +1,287 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel de Administración</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-    <style>
-        /* Fondo */
-        body {
-            background-color: #ecf0f1;
-            font-family: 'Roboto', sans-serif;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel CUBO</title>
 
-        /* Sidebar */
-        .sidebar {
-            width: 250px;
-            height: 100vh;
-            background-color: #2c3e50;
-            position: fixed;
-            padding-top: 30px;
-            transition: transform 0.3s ease;
-            box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
-        }
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
-        .sidebar h4 {
-            color: #ecf0f1;
-            text-align: center;
-            margin-bottom: 40px;
-            font-size: 1.5rem;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f6f9;
+    }
 
-        .sidebar img.logo {
-            width: 60%;
-            margin-bottom: 30px;
-            display: block;
-            margin: 0 auto;
-        }
+    .sidebar {
+      width: 250px;
+      height: 100vh;
+      background-color: #1d2635;
+      color: #fff;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding-top: 1rem;
+      overflow: hidden;
+    }
 
-        .sidebar a {
-            color: #ecf0f1;
-            text-decoration: none;
-            padding: 15px;
-            display: block;
-            border-radius: 5px;
-            margin-bottom: 10px;
-            font-size: 1.1rem;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        }
+    .sidebar h4 {
+      text-align: center;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
 
-        .sidebar a:hover {
-            background-color: #16a085;
-            transform: translateX(10px);
-        }
+    .sidebar a,
+    .sidebar button {
+      color: #fff;
+      display: flex;
+      align-items: center;
+      padding: 12px 20px;
+      text-decoration: none;
+      background: none;
+      border: none;
+      width: 100%;
+      text-align: left;
+      transition: all 0.3s ease;
+    }
 
-        /* Submenús */
-        .submenu {
-            display: none;
-            margin-left: 20px;
-        }
-        .has-submenu.active .submenu {
-            display: block;
-            animation: slideIn 0.3s ease-in-out;
-        }
+    .sidebar a:hover,
+    .sidebar button:hover {
+      background-color: #2d3b4f;
+      transform: scale(1.02);
+    }
 
-        @keyframes slideIn {
-            0% {
-                opacity: 0;
-                transform: translateX(-20px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
+    .sidebar a i,
+    .sidebar button i {
+      margin-right: 12px;
+      font-size: 1.2rem;
+      transition: transform 0.3s;
+    }
 
-        /* Contenido Principal */
-        .content {
-            margin-left: 250px;
-            padding: 30px;
-            background-color: #f4f6f9;
-            min-height: 100vh;
-        }
+    .sidebar a:hover i,
+    .sidebar button:hover i {
+      transform: rotate(8deg);
+    }
 
-        .content h1 {
-            font-size: 2rem;
-            color: #2c3e50;
-            margin-bottom: 30px;
-        }
+    .sidebar a.active {
+      background-color: #0d6efd;
+      font-weight: bold;
+    }
 
-        /* Modal */
-        .modal-content {
-            border-radius: 10px;
-        }
+    .submenu {
+      background-color: #283142;
+      display: none;
+      flex-direction: column;
+    }
 
-        /* Footer en el sidebar */
-        .sidebar-footer {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            padding: 10px 15px;
-            background-color: #2c3e50;
-            text-align: center;
-        }
+    .submenu a {
+      padding-left: 40px;
+      font-size: 0.9rem;
+    }
 
-        /* Estilo para el enlace activo */
-        .sidebar a.active {
-            background-color: #16a085;
-            font-weight: bold;
-        }
+    .sidebar .search-box {
+      padding: 0 20px;
+    }
 
-        /* Tooltip */
-        .sidebar a[data-bs-toggle="tooltip"] {
-            position: relative;
-        }
+    .sidebar .form-control {
+      font-size: 0.9rem;
+    }
 
-    </style>
+    .sidebar-footer a {
+      display: flex;
+      align-items: center;
+      padding: 12px 20px;
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .sidebar-footer a:hover {
+      background-color: #2d3b4f;
+      transform: scale(1.02);
+    }
+
+    .sidebar-footer a i {
+      margin-right: 10px;
+    }
+
+    .content {
+      margin-left: 250px;
+      padding: 2rem;
+      transition: margin-left 0.3s;
+    }
+
+    .content.collapsed {
+      margin-left: 0;
+    }
+
+    .toggle-btn {
+      position: fixed;
+      top: 15px;
+      left: 15px;
+      background-color: #0d6efd;
+      color: #fff;
+      border: none;
+      font-size: 1.2rem;
+      padding: 8px 12px;
+      border-radius: 5px;
+      z-index: 1100;
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .toggle-btn {
+        display: block;
+      }
+
+      .sidebar .form-control {
+        margin-top: 30px;
+    }
+
+
+      .sidebar {
+        transform: translateX(-100%);
+      }
+
+      .sidebar.show {
+        transform: translateX(0);
+      }
+
+      .content {
+        margin-left: 0;
+      }
+    }
+  </style>
 </head>
 <body>
 
-    <!-- Sidebar -->
-    <div class="sidebar">
-        <!-- Logo -->
-        <img src="https://cubo.gob.sv/wp-content/uploads/2022/12/CUBOLogoGray.png" alt="Logo CUBO" class="logo">
+<!-- Botón hamburguesa -->
+<button class="toggle-btn" onclick="toggleSidebar()">
+  <i class="fas fa-bars"></i>
+</button>
 
-        <!-- Título del Panel -->
-        <h4></h4>
+<!-- Sidebar -->
+<div class="sidebar" id="sidebar">
+  <div>
+    <h4>CUBO</h4>
 
-        <a href="{{ route('admin.index') }}" class="menu-link" id="inicio" data-bs-toggle="tooltip" title="Ir al Inicio">
-            <i class="fas fa-tachometer-alt"></i> Inicio
-        </a>
-
-        <!-- Opción con submenú -->
-        <div class="has-submenu" id="librosMenuContainer">
-            <a href="javascript:void(0)" id="librosMenu" class="menu-link" data-bs-toggle="tooltip" title="Gestionar Libros">
-                <i class="fas fa-book"></i> Libros
-            </a>
-            <div class="submenu">
-                <a href="{{ route('admin.categoriasLibros') }}" class="menu-link" id="categoriasLibros" data-bs-toggle="tooltip" title="Gestionar Categorías"><i class="fas fa-list"></i> Categorías</a>
-                <a href="{{ route('admin.publicar') }}" class="menu-link" id="publicarLibros" data-bs-toggle="tooltip" title="Publicar Nuevos Libros"><i class="fas fa-upload"></i> Publicar Libros</a>
-            </div>
-        </div>
-
-        <a href="{{ route('admin.usuarios') }}" class="menu-link" id="usuarios" data-bs-toggle="tooltip" title="Gestionar Usuarios">
-            <i class="fas fa-users"></i> Usuarios
-        </a>
-        <a href="{{ route('admin.prestamos') }}" class="menu-link" id="prestamos" data-bs-toggle="tooltip" title="Gestionar Préstamos">
-            <i class="fas fa-hand-holding"></i> Préstamos
-        </a>
-
-        <!-- Footer con Cerrar Sesión -->
-        <div class="sidebar-footer">
-            <a href="{{ route('admin.cerrarSesion') }}" class="btn btn-danger btn-sm">
-                <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
-            </a>
-        </div>
+    <!-- Buscador -->
+    <div class="search-box mb-3">
+      <input type="text" class="form-control" placeholder="Buscar..." id="sidebarSearch">
     </div>
 
-    <!-- Contenido Principal -->
-    <div class="content">
-        @yield('content')
+    <div class="menu-section" id="menuItems">
+      <a href="{{ route('admin.index') }}" class="{{ request()->routeIs('admin.index') ? 'active' : '' }}">
+        <i class="fas fa-home"></i>Inicio
+      </a>
+
+      <!-- Usuarios submenu -->
+      <div class="menu-group">
+        <button onclick="toggleSubmenu('usuariosSub')">
+          <i class="fas fa-users"></i>Usuarios <i class="fas fa-caret-down ms-auto"></i>
+        </button>
+        <div class="submenu" id="usuariosSub">
+          <a href="{{ route('admin.usuarios') }}">Gestión de Usuarios</a>
+          <a href="#">Roles y Permisos</a>
+        </div>
+      </div>
+
+      <!-- Libros submenu -->
+      <div class="menu-group">
+        <button onclick="toggleSubmenu('librosSub')">
+          <i class="fas fa-book"></i>Libros <i class="fas fa-caret-down ms-auto"></i>
+        </button>
+        <div class="submenu" id="librosSub">
+          <a href="{{ route('admin.categoriasLibros') }}">Categorías</a>
+          <a href="{{ route('admin.publicar') }}">Publicar Libros</a>
+          <a href="{{ route('admin.prestamos') }}">Préstamos</a>
+        </div>
+      </div>
+
+      <!-- Sistema submenu -->
+      <div class="menu-group">
+        <button onclick="toggleSubmenu('sistemaSub')">
+          <i class="fas fa-cogs"></i>Sistema <i class="fas fa-caret-down ms-auto"></i>
+        </button>
+        <div class="submenu" id="sistemaSub">
+          <a href="#">Configuración</a>
+          <a href="#">Mantenimiento</a>
+        </div>
+      </div>
     </div>
+  </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // Función para alternar el menú de libros
-        document.getElementById('librosMenu').addEventListener('click', function() {
-            var submenu = this.nextElementSibling;
-            var parentDiv = this.parentElement;
-            // Alterna la clase 'active' para mostrar/ocultar el submenú
-            parentDiv.classList.toggle('active');
-        });
+  <!-- Footer -->
+  <div class="sidebar-footer">
+    <a href="{{ route('admin.cerrarSesion') }}">
+      <i class="fas fa-sign-out-alt"></i>Cerrar Sesión
+    </a>
+  </div>
+</div>
 
-        // Guardar el estado activo en localStorage
-        document.querySelectorAll('.menu-link').forEach(link => {
-            link.addEventListener('click', function() {
-                // Eliminar 'active' de todos los enlaces
-                document.querySelectorAll('.menu-link').forEach(item => item.classList.remove('active'));
-                // Añadir 'active' al enlace clickeado
-                this.classList.add('active');
-                // Guardar la sección activa en localStorage
-                localStorage.setItem('activeMenu', this.id);
-            });
-        });
+<!-- Contenido -->
+<div class="content" id="content">
+  @yield('content')
+</div>
 
-        // Recuperar y aplicar el estado activo desde localStorage al cargar la página
-        window.addEventListener('load', function() {
-            const activeMenu = localStorage.getItem('activeMenu');
-            if (activeMenu) {
-                document.getElementById(activeMenu)?.classList.add('active');
-            }
-        });
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  function toggleSidebar() {
+    document.getElementById('sidebar').classList.toggle('show');
+    document.getElementById('content').classList.toggle('collapsed');
+  }
 
-        // Habilitar Tooltips
-        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-        var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
-            return new bootstrap.Tooltip(tooltipTriggerEl);
-        });
-    </script>
+  function toggleSubmenu(id) {
+    const submenu = document.getElementById(id);
+    submenu.style.display = submenu.style.display === 'flex' ? 'none' : 'flex';
+  }
+
+  // Buscador en tiempo real con ocultación de grupos
+  document.getElementById('sidebarSearch').addEventListener('input', function () {
+    const filter = this.value.toLowerCase();
+    const allGroups = document.querySelectorAll('.menu-group');
+
+    allGroups.forEach(group => {
+      const submenu = group.querySelector('.submenu');
+      const links = submenu.querySelectorAll('a');
+      let hasMatch = false;
+
+      links.forEach(link => {
+        const text = link.textContent.toLowerCase();
+        if (text.includes(filter)) {
+          link.style.display = 'flex';
+          hasMatch = true;
+        } else {
+          link.style.display = 'none';
+        }
+      });
+
+      if (hasMatch) {
+        group.style.display = 'block';
+        submenu.style.display = 'flex';
+      } else {
+        group.style.display = 'none';
+      }
+    });
+
+    // Filtra también los enlaces fuera de menú agrupado
+    const staticLinks = document.querySelectorAll('#menuItems > a');
+    staticLinks.forEach(link => {
+      const text = link.textContent.toLowerCase();
+      link.style.display = text.includes(filter) ? 'flex' : 'none';
+    });
+  });
+</script>
+
+
 </body>
 </html>
