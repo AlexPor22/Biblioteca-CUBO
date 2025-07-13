@@ -211,6 +211,8 @@
         overflow: hidden;
         box-shadow: 0 5px 20px rgba(13, 13, 13, 0.3);
         cursor: pointer;
+        margin-left: auto;
+        margin-right: auto;
     }
     
     .card-button::before {
