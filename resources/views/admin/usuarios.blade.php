@@ -522,6 +522,7 @@
         </div>
     </div>
 </div>
+
 <!-- Modal para agregar usuario con estilo -->
 <div class="modal fade" id="modalAgregarUsuario" tabindex="-1" aria-labelledby="modalAgregarUsuarioLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg">

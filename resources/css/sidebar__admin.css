@@ -4,6 +4,40 @@ body {
     background: #f4f6f9;
 }
 
+.modal-dialog {
+  max-width: 500px;
+  padding: 0 1rem; /* Espacio horizontal seguro */
+}
+
+.modal-content {
+  border-radius: 16px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  animation: fadeInDown 0.4s;
+}
+
+/* Encabezado estilizado uniforme */
+.modal-header {
+  background: linear-gradient(135deg, #343a40, #212529);
+  color: white;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  padding: 1rem 1.5rem;
+}
+
+/* Botón de cierre visible y separado */
+.modal-header .btn-close {
+  background-color: #dc3545;
+}
+
+/* Responsivo en móviles */
+@media (max-width: 576px) {
+  .modal-dialog {
+    margin: 1rem auto !important;
+    max-width: 95%;
+  }
+}
+
+
 .sidebar {
     width: 250px;
     height: 100vh;
