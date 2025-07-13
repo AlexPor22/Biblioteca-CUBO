@@ -379,6 +379,13 @@
         gap: 2rem;
         margin-bottom: 3rem;
     }
+
+    .modal-header .btn-close {
+        background-color: red !important;
+        border-radius: 50%;
+        opacity: 1;
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+    }
     
     .stat-card {
         background: white;
@@ -480,7 +487,7 @@
                 </div>
                 <h5 class="card-title">Publicar Libro Digital</h5>
                 <p class="card-description">Sube libros en formato PDF, EPUB o MOBI. Configura metadatos, categorías y permisos de acceso para tu contenido.</p>
-                <button class="card-button" onclick="window.location.href='#'">
+                <button class="card-button" data-bs-toggle="modal" data-bs-target="#modalPublicarLibro">
                     <span>Subir Libro</span>
                 </button>
             </div>
@@ -494,53 +501,56 @@
                 </div>
                 <h5 class="card-title">Publicar Audiolibro</h5>
                 <p class="card-description">Sube audiolibros en formato MP3, M4A o WAV. Gestiona capítulos, duración y información del narrador.</p>
-                <button class="card-button" onclick="window.location.href='#'">
+                <button class="card-button" data-bs-toggle="modal" data-bs-target="#modalPublicarAudio">
                     <span>Subir Audiolibro</span>
                 </button>
+
+
             </div>
         </div>
 
         <!-- Contenido Reciente -->
         <div class="recent-uploads">
             <h3>Contenido Reciente</h3>
-            
-            <div class="upload-item">
-                <div class="upload-icon book-icon">
-                    <svg fill="currentColor" viewBox="0 0 20 20" style="width: 20px; height: 20px;">
-                        <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z"></path>
-                    </svg>
+            <div id="lista-contenido">
+                <div class="upload-item">
+                    <div class="upload-icon book-icon">
+                        <svg fill="currentColor" viewBox="0 0 20 20" style="width: 20px; height: 20px;">
+                            <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z"></path>
+                        </svg>
+                    </div>
+                    <div class="upload-details">
+                        <div class="upload-title">Cien Años de Soledad</div>
+                        <div class="upload-meta">Subido hace 2 días • Gabriel García Márquez</div>
+                    </div>
+                    <div class="upload-status status-published">Publicado</div>
                 </div>
-                <div class="upload-details">
-                    <div class="upload-title">Cien Años de Soledad</div>
-                    <div class="upload-meta">Subido hace 2 días • Gabriel García Márquez</div>
-                </div>
-                <div class="upload-status status-published">Publicado</div>
-            </div>
 
-            <div class="upload-item">
-                <div class="upload-icon audio-icon">
-                    <svg fill="currentColor" viewBox="0 0 20 20" style="width: 20px; height: 20px;">
-                        <path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217z" clip-rule="evenodd"></path>
-                    </svg>
+                <div class="upload-item">
+                    <div class="upload-icon audio-icon">
+                        <svg fill="currentColor" viewBox="0 0 20 20" style="width: 20px; height: 20px;">
+                            <path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <div class="upload-details">
+                        <div class="upload-title">El Principito (Audiolibro)</div>
+                        <div class="upload-meta">Subido hace 1 semana • Antoine de Saint-Exupéry</div>
+                    </div>
+                    <div class="upload-status status-published">Publicado</div>
                 </div>
-                <div class="upload-details">
-                    <div class="upload-title">El Principito (Audiolibro)</div>
-                    <div class="upload-meta">Subido hace 1 semana • Antoine de Saint-Exupéry</div>
-                </div>
-                <div class="upload-status status-published">Publicado</div>
-            </div>
 
-            <div class="upload-item">
-                <div class="upload-icon book-icon">
-                    <svg fill="currentColor" viewBox="0 0 20 20" style="width: 20px; height: 20px;">
-                        <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z"></path>
-                    </svg>
+                <div class="upload-item">
+                    <div class="upload-icon book-icon">
+                        <svg fill="currentColor" viewBox="0 0 20 20" style="width: 20px; height: 20px;">
+                            <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z"></path>
+                        </svg>
+                    </div>
+                    <div class="upload-details">
+                        <div class="upload-title">Rayuela - Julio Cortázar</div>
+                        <div class="upload-meta">Subido hace 3 días • En proceso de revisión</div>
+                    </div>
+                    <div class="upload-status status-draft">Borrador</div>
                 </div>
-                <div class="upload-details">
-                    <div class="upload-title">Rayuela - Julio Cortázar</div>
-                    <div class="upload-meta">Subido hace 3 días • En proceso de revisión</div>
-                </div>
-                <div class="upload-status status-draft">Borrador</div>
             </div>
         </div>
 
@@ -561,4 +571,178 @@
         </div>
     </div>
 </div>
+
+<!-- Modal: Publicar Libro Digital -->
+<div class="modal fade" id="modalPublicarLibro" tabindex="-1" aria-labelledby="modalPublicarLibroLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content shadow-lg border-0" style="border-radius: 16px; animation: zoomIn 0.5s;">
+    <div class="modal-header" style="background: linear-gradient(135deg, #0D0D0D, #2c2c2c); color: white; border-top-left-radius: 16px; border-top-right-radius: 16px;">
+        <h5 class="modal-title" id="modalPublicarLibroLabel">
+          <i class="fas fa-book me-2"></i>Publicar Libro Digital
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar" style="background-color: #dc3545;"></button>
+    </div>
+    
+    <form id="formLibro">
+        <div class="modal-body px-4 py-3">
+          <div class="mb-3">
+            <label for="titulo_libro" class="form-label">Título del Libro</label>
+            <input type="text" class="form-control" id="titulo_libro" placeholder="Ej. El nombre del viento" required>
+          </div>
+          <div class="mb-3">
+            <label for="archivo_libro" class="form-label">Archivo PDF/EPUB</label>
+            <input type="file" class="form-control" id="archivo_libro" accept=".pdf,.epub,.mobi" required>
+          </div>
+          <div class="mb-3">
+            <label for="autor_libro" class="form-label">Autor</label>
+            <input type="text" class="form-control" id="autor_libro" required>
+          </div>
+          <div class="mb-3">
+            <label for="categoria_libro" class="form-label">Categoría</label>
+            <select id="categoria_libro" class="form-select" required>
+              <option value="">Seleccione una categoría</option>
+              <option value="ficcion">Ficción</option>
+              <option value="educativo">Educativo</option>
+              <option value="biografia">Biografía</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer px-4 py-3" style="justify-content: space-between;">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+            <i class="fas fa-times"></i> Cancelar
+          </button>
+          <button type="submit" class="btn btn-success">
+            <i class="fas fa-check"></i> Guardar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Publicar Audiolibro -->
+<div class="modal fade" id="modalPublicarAudio" tabindex="-1" aria-labelledby="modalPublicarAudioLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content shadow-lg border-0" style="border-radius: 16px; animation: zoomIn 0.5s;">
+      <div class="modal-header" style="background: linear-gradient(135deg, #0D0D0D, #2c2c2c); color: white; border-top-left-radius: 16px; border-top-right-radius: 16px;">
+        <h5 class="modal-title" id="modalPublicarAudioLabel">
+          <i class="fas fa-headphones me-2"></i>Publicar Audiolibro
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar" style="background-color: #dc3545;"></button>
+      </div>
+
+      <form id="formAudio">
+        <div class="modal-body px-4 py-3">
+          <div class="mb-3">
+            <label for="titulo_audio" class="form-label">Título del Audiolibro</label>
+            <input type="text" class="form-control" id="titulo_audio" placeholder="Ej. El alquimista" required>
+          </div>
+          <div class="mb-3">
+            <label for="archivo_audio" class="form-label">Archivo MP3/M4A/WAV</label>
+            <input type="file" class="form-control" id="archivo_audio" accept="audio/*" required>
+          </div>
+          <div class="mb-3">
+            <label for="narrador_audio" class="form-label">Narrador</label>
+            <input type="text" class="form-control" id="narrador_audio" required>
+          </div>
+          <div class="mb-3">
+            <label for="duracion_audio" class="form-label">Duración (minutos)</label>
+            <input type="number" class="form-control" id="duracion_audio" required>
+          </div>
+        </div>
+        <div class="modal-footer px-4 py-3" style="justify-content: space-between;">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+            <i class="fas fa-times"></i> Cancelar
+          </button>
+          <button type="submit" class="btn btn-success">
+            <i class="fas fa-check"></i> Guardar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const formLibro = document.getElementById('formLibro');
+  const formAudio = document.getElementById('formAudio');
+  const listaContenido = document.getElementById('lista-contenido');
+
+  formLibro.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const titulo = document.getElementById('titulo_libro').value.trim();
+    const autor = document.getElementById('autor_libro').value.trim();
+    const categoria = document.getElementById('categoria_libro').value.trim();
+
+    if (!titulo || !autor || !categoria) return;
+
+    const nuevoLibro = document.createElement('div');
+    nuevoLibro.classList.add('upload-item');
+    nuevoLibro.innerHTML = `
+      <div class="upload-icon book-icon">
+        <svg fill="currentColor" viewBox="0 0 20 20" style="width: 20px; height: 20px;">
+          <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z"></path>
+        </svg>
+      </div>
+      <div class="upload-details">
+        <div class="upload-title">${titulo}</div>
+        <div class="upload-meta">Publicado ahora • ${autor}</div>
+      </div>
+      <div class="upload-status status-published">Publicado</div>
+    `;
+    listaContenido.prepend(nuevoLibro);
+
+    bootstrap.Modal.getOrCreateInstance(document.getElementById('modalPublicarLibro')).hide();
+    formLibro.reset();
+
+    Swal.fire({
+      icon: 'success',
+      title: '¡Libro publicado!',
+      text: `El libro "${titulo}" se agregó correctamente.`,
+      timer: 2000,
+      showConfirmButton: false
+    });
+  });
+
+  formAudio.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const titulo = document.getElementById('titulo_audio').value.trim();
+    const narrador = document.getElementById('narrador_audio').value.trim();
+    const duracion = document.getElementById('duracion_audio').value.trim();
+
+    if (!titulo || !narrador || !duracion) return;
+
+    const nuevoAudio = document.createElement('div');
+    nuevoAudio.classList.add('upload-item');
+    nuevoAudio.innerHTML = `
+      <div class="upload-icon audio-icon">
+        <svg fill="currentColor" viewBox="0 0 20 20" style="width: 20px; height: 20px;">
+          <path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217z" clip-rule="evenodd"></path>
+        </svg>
+      </div>
+      <div class="upload-details">
+        <div class="upload-title">${titulo}</div>
+        <div class="upload-meta">Publicado ahora • ${narrador}</div>
+      </div>
+      <div class="upload-status status-published">Publicado</div>
+    `;
+    listaContenido.prepend(nuevoAudio);
+
+    bootstrap.Modal.getOrCreateInstance(document.getElementById('modalPublicarAudio')).hide();
+    formAudio.reset();
+
+    Swal.fire({
+      icon: 'success',
+      title: '¡Audiolibro publicado!',
+      text: `El audiolibro "${titulo}" se agregó correctamente.`,
+      timer: 2000,
+      showConfirmButton: false
+    });
+  });
+});
+</script>
+
 @endsection

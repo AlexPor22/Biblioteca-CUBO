@@ -351,7 +351,14 @@
         width: 20px;
         height: 20px;
     }
-    
+
+    .modal-header .btn-close {
+        background-color: red !important;
+        border-radius: 50%;
+        opacity: 1;
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+    }
+
     @media (max-width: 768px) {
         .page-title {
             font-size: 2rem;
@@ -399,7 +406,7 @@
 
         <!-- Botón para añadir nuevo usuario -->
         <div class="mb-4">
-            <a href="#" class="btn-nuevo">
+            <a href="#" class="btn-nuevo" data-bs-toggle="modal" data-bs-target="#modalAgregarUsuario">
                 <svg class="icon" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path>
                 </svg>
@@ -515,4 +522,187 @@
         </div>
     </div>
 </div>
+<!-- Modal para agregar usuario con estilo -->
+<div class="modal fade" id="modalAgregarUsuario" tabindex="-1" aria-labelledby="modalAgregarUsuarioLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content shadow-lg" style="border-radius: 16px; animation: bounceIn 0.5s;">
+      <div class="modal-header" style="background: linear-gradient(135deg, #0D0D0D, #2c2c2c); color: white; border-top-left-radius: 16px; border-top-right-radius: 16px;">
+        <h5 class="modal-title" id="modalAgregarUsuarioLabel">
+          <i class="fas fa-user-plus me-2"></i><span id="tituloModal">Agregar Nuevo Usuario</span>
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar" style="background-color: #dc3545;"></button>
+      </div>
+
+      <form id="formUsuario" onsubmit="guardarUsuario(event)">
+        <div class="modal-body p-4">
+          <input type="hidden" id="usuarioIndex">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label for="nombre" class="form-label">Nombre Completo</label>
+              <input type="text" class="form-control" id="nombre" required>
+            </div>
+
+            <div class="col-md-6">
+              <label for="usuario" class="form-label">Usuario</label>
+              <input type="text" class="form-control" id="usuario" required>
+            </div>
+
+            <div class="col-md-6">
+              <label for="telefono" class="form-label">Teléfono</label>
+              <input type="tel" class="form-control" id="telefono">
+            </div>
+
+            <div class="col-md-6">
+              <label for="edad" class="form-label">Edad</label>
+              <input type="number" class="form-control" id="edad" min="0">
+            </div>
+
+            <div class="col-md-6">
+              <label for="sexo" class="form-label">Sexo</label>
+              <select class="form-select" id="sexo">
+                <option value="">Seleccione...</option>
+                <option value="Masculino">Masculino</option>
+                <option value="Femenino">Femenino</option>
+                <option value="Otro">Otro</option>
+              </select>
+            </div>
+
+            <div class="col-md-6">
+              <label for="direccion" class="form-label">Dirección</label>
+              <textarea class="form-control" id="direccion" rows="2"></textarea>
+            </div>
+
+            <div class="col-md-6">
+              <label for="correo" class="form-label">Correo Electrónico</label>
+              <input type="email" class="form-control" id="correo" required>
+            </div>
+
+            <div class="col-md-6">
+              <label for="rol" class="form-label">Tipo de Usuario</label>
+              <select class="form-select" id="rol" required>
+                <option value="">Seleccione...</option>
+                <option value="admin">Administrador</option>
+                <option value="empleado">Empleado</option>
+                <option value="cliente">Cliente</option>
+              </select>
+            </div>
+
+            <div class="col-md-6">
+              <label for="password" class="form-label">Contraseña</label>
+              <input type="password" class="form-control" id="password" required>
+            </div>
+
+            <div class="col-md-6">
+              <label for="password_confirmation" class="form-label">Confirmar Contraseña</label>
+              <input type="password" class="form-control" id="password_confirmation" required>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer px-4 py-3" style="justify-content: space-between;">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+            <i class="fas fa-times"></i> Cancelar
+          </button>
+          <button type="submit" class="btn btn-success">
+            <i class="fas fa-check"></i> Guardar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+function actualizarEstadisticas() {
+  const filas = document.querySelectorAll('.users-table tbody tr');
+  const total = filas.length;
+  let admin = 0, empleado = 0, cliente = 0;
+
+  filas.forEach(fila => {
+    const tipo = fila.querySelector('.user-type').innerText.toLowerCase();
+    if (tipo.includes('admin')) admin++;
+    else if (tipo.includes('empleado')) empleado++;
+    else if (tipo.includes('cliente')) cliente++;
+  });
+
+  document.querySelector('.stats-bar .stat-item:nth-child(1) .stat-number').innerText = total;
+  document.querySelector('.stats-bar .stat-item:nth-child(2) .stat-number').innerText = admin;
+  document.querySelector('.stats-bar .stat-item:nth-child(3) .stat-number').innerText = empleado;
+  document.querySelector('.stats-bar .stat-item:nth-child(4) .stat-number').innerText = cliente;
+}
+
+function guardarUsuario(e) {
+  e.preventDefault();
+  const nombre = document.getElementById('nombre').value.trim();
+  const usuario = document.getElementById('usuario').value.trim();
+  const correo = document.getElementById('correo').value.trim();
+  const rol = document.getElementById('rol').value;
+  const pass = document.getElementById('password').value;
+  const confirm = document.getElementById('password_confirmation').value;
+  const index = document.getElementById('usuarioIndex').value;
+
+  if (!nombre || !usuario || !correo || !pass || !confirm || !rol) {
+    Swal.fire({ icon: 'error', title: 'Campos requeridos', text: 'Completa todos los campos obligatorios.' });
+    return;
+  }
+  if (pass !== confirm) {
+    Swal.fire({ icon: 'error', title: 'Contraseñas no coinciden' });
+    return;
+  }
+
+  const tabla = document.querySelector(".users-table tbody");
+
+  if (index !== '') {
+    const fila = tabla.rows[index];
+    fila.querySelector('.user-name').innerText = nombre;
+    const tipo = rol.charAt(0).toUpperCase() + rol.slice(1);
+    const spanTipo = fila.querySelector('.user-type');
+    spanTipo.innerText = tipo;
+    spanTipo.className = `user-type type-${rol}`;
+    Swal.fire({ icon: 'success', title: 'Usuario actualizado', showConfirmButton: false, timer: 1500 });
+  } else {
+    const id = String(tabla.rows.length + 1).padStart(2, '0');
+    const tipo = rol.charAt(0).toUpperCase() + rol.slice(1);
+    const nuevaFila = document.createElement('tr');
+    nuevaFila.innerHTML = `
+      <td><span class="user-id">${id}</span></td>
+      <td><span class="user-name">${nombre}</span></td>
+      <td><span class="user-type type-${rol}">${tipo}</span></td>
+      <td>
+        <div class="action-buttons">
+            <a href="#" class="btn-edit">
+                <svg class="icon" fill="currentColor" viewBox="0 0 20 20" style="width: 14px; height: 14px; margin-right: 4px;">
+                    <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.83-2.828z"></path>
+                </svg>
+                Editar
+            </a>
+            <a href="#" class="btn-delete">
+                <svg class="icon" fill="currentColor" viewBox="0 0 20 20" style="width: 14px; height: 14px; margin-right: 4px;">
+                    <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-clip-rule="evenodd"></path>
+                </svg>
+                Eliminar
+            </a>
+        </div>
+      </td>`;
+    tabla.appendChild(nuevaFila);
+    Swal.fire({ icon: 'success', title: 'Usuario agregado correctamente', showConfirmButton: false, timer: 1500 });
+  }
+
+  actualizarEstadisticas();
+  bootstrap.Modal.getOrCreateInstance(document.getElementById('modalAgregarUsuario')).hide();
+  document.getElementById('formUsuario').reset();
+  document.getElementById('usuarioIndex').value = '';
+  document.getElementById('tituloModal').innerText = 'Agregar Nuevo Usuario';
+}
+
+function editarUsuario(btn) {
+  const fila = btn.closest('tr');
+  const index = [...fila.parentNode.children].indexOf(fila);
+  document.getElementById('nombre').value = fila.querySelector('.user-name').innerText;
+  document.getElementById('rol').value = fila.querySelector('.user-type').innerText.toLowerCase();
+  document.getElementById('usuarioIndex').value = index;
+  document.getElementById('tituloModal').innerText = 'Editar Usuario';
+  bootstrap.Modal.getOrCreateInstance(document.getElementById('modalAgregarUsuario')).show();
+}
+</script>
+
 @endsection
