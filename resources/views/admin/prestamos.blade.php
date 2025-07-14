@@ -640,9 +640,9 @@
                 </div>
                 <h5 class="card-title">Historial</h5>
                 <p class="card-description">Consulta el historial completo de préstamos. Genera reportes y estadísticas detalladas por período.</p>
-                <button class="card-button" onclick="window.location.href='#'">
+                <a href="{{ route('admin.prestamos.historial') }}" class="card-button">
                     <span>Ver Historial</span>
-                </button>
+                </a>
             </div>
         </div>
 

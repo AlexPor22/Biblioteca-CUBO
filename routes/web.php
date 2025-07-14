@@ -23,4 +23,4 @@ Route::get('/admin/verlibros', [AdminController::class, 'verLibros'])->name('adm
 Route::post('/admin/cerrar-sesion', [AdminController::class, 'cerrarSesion'])->name('admin.cerrarSesion');
 
 
-
+Route::get('/admin/prestamos/historial', [AdminController::class, 'historialPrestamo'])->name('admin.prestamos.historial');
