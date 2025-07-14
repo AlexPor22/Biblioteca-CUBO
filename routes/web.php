@@ -19,6 +19,7 @@ Route::get('/admin/empleados', [AdminController::class, 'empleados'])->name('adm
 Route::get('/admin/clientes', [AdminController::class, 'clientes'])->name('admin.clientes');
 Route::get('/admin/publicar', [AdminController::class, 'publicar'])->name('admin.publicar');
 Route::get('/admin/prestamos', [AdminController::class, 'prestamos'])->name('admin.prestamos');
+Route::get('/admin/verlibros', [AdminController::class, 'verLibros'])->name('admin.verlibros');
 Route::post('/admin/cerrar-sesion', [AdminController::class, 'cerrarSesion'])->name('admin.cerrarSesion');
 
 

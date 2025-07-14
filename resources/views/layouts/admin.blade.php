@@ -54,6 +54,7 @@
           <a href="{{ route('admin.categoriasLibros') }}">Categorías</a>
           <a href="{{ route('admin.publicar') }}">Publicar Libros</a>
           <a href="{{ route('admin.prestamos') }}">Préstamos</a>
+          <a href="{{ route('admin.verlibros') }}">Ver Libros</a>
         </div>
       </div>
 
