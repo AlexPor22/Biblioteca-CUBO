@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 //RUTA INICIO 
@@ -21,5 +22,7 @@ Route::get('/admin/publicar', [AdminController::class, 'publicar'])->name('admin
 Route::get('/admin/prestamos', [AdminController::class, 'prestamos'])->name('admin.prestamos');
 Route::post('/admin/cerrar-sesion', [AdminController::class, 'cerrarSesion'])->name('admin.cerrarSesion');
 
+Route::get('/user/loginUser', [UserController::class, 'Login'])->name('user.loginUser');
+Route::get('/user/registerUser', [UserController::class, 'Registro'])->name('user.registerUser');
 
 
