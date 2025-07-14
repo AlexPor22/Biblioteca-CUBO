@@ -612,7 +612,7 @@
                 </div>
                 <h5 class="card-title">Nuevo Préstamo</h5>
                 <p class="card-description">Registra un nuevo préstamo de libro digital o audiolibro. Asigna usuario, duración y configura notificaciones.</p>
-                <button class="card-button" onclick="window.location.href='#'">
+                <button class="card-button" data-bs-toggle="modal" data-bs-target="#modalNuevoPrestamo">
                     <span>Crear Préstamo</span>
                 </button>
             </div>
@@ -824,36 +824,94 @@
     </div>
 </div>
 
+<!-- Modal: Nuevo Préstamo -->
+<div class="modal fade" id="modalNuevoPrestamo" tabindex="-1" aria-labelledby="modalNuevoPrestamoLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content shadow-lg border-0" style="border-radius: 16px; animation: fadeInDown 0.4s;">
+      
+      <div class="modal-header text-white" style="background: linear-gradient(135deg, #198754, #157347); border-top-left-radius: 16px; border-top-right-radius: 16px;">
+        <h5 class="modal-title" id="modalNuevoPrestamoLabel">
+          <i class="fas fa-book-reader me-2"></i>Nuevo Préstamo
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar" style="background-color: #dc3545;"></button>
+      </div>
+
+      <form id="formNuevoPrestamo">
+        <div class="modal-body px-4 py-3">
+
+          <div class="mb-3">
+            <label for="nombre_usuario" class="form-label">Nombre del Usuario</label>
+            <div class="input-group">
+              <input type="text" class="form-control" id="nombre_usuario" placeholder="Ej. Juan Pérez" required>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="titulo_libro" class="form-label">Título del Libro o Audiolibro</label>
+            <div class="input-group">
+              <input type="text" class="form-control" id="titulo_libro" placeholder="Ej. El Alquimista" required>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="autor_libro" class="form-label">Autor del Libro</label>
+            <div class="input-group">
+              <input type="text" class="form-control" id="autor_libro" placeholder="Ej. Paulo Coelho" required>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="fecha_inicio" class="form-label">Fecha de Inicio</label>
+            <input type="date" class="form-control" id="fecha_inicio" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="fecha_fin" class="form-label">Fecha de Entrega</label>
+            <input type="date" class="form-control" id="fecha_fin" required>
+          </div>
+
+        </div>
+
+        <div class="modal-footer px-4 py-3" style="justify-content: space-between;">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+            <i class="fas fa-times"></i> Cancelar
+          </button>
+          <button type="submit" class="btn btn-success">
+            <i class="fas fa-check"></i> Guardar Préstamo
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
 <script>
-// Agregar funcionalidad de búsqueda
-document.addEventListener('DOMContentLoaded', function() {
-    const searchInput = document.querySelector('.search-input');
-    const searchBtn = document.querySelector('.search-btn');
-    
-    searchBtn.addEventListener('click', function() {
-        const searchTerm = searchInput.value.trim();
-        if (searchTerm) {
-            // Aquí iría la lógica de búsqueda
-            console.log('Buscando:', searchTerm);
-            // Ejemplo: window.location.href = '/prestamos/buscar?q=' + encodeURIComponent(searchTerm);
-        }
+document.getElementById('formNuevoPrestamo').addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  const usuario = document.getElementById('nombre_usuario').value.trim();
+  const libro = document.getElementById('titulo_libro').value.trim();
+  const autor = document.getElementById('autor_libro').value.trim();
+
+  if (!usuario || !libro || !autor) {
+    Swal.fire({
+      icon: 'warning',
+      title: 'Campos incompletos',
+      text: 'Por favor completa todos los campos.'
     });
-    
-    searchInput.addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
-            searchBtn.click();
-        }
-    });
-    
-    // Funcionalidad para filtros rápidos
-    const filterItems = document.querySelectorAll('.prestamo-item[style*="cursor: pointer"]');
-    filterItems.forEach(item => {
-        item.addEventListener('click', function() {
-            const title = this.querySelector('.prestamo-title').textContent;
-            console.log('Filtro seleccionado:', title);
-            // Aquí iría la lógica de filtrado
-        });
-    });
+    return;
+  }
+
+  Swal.fire({
+    icon: 'success',
+    title: '¡Préstamo registrado!',
+    html: `<b>${libro}</b> de <i>${autor}</i> ha sido asignado a <b>${usuario}</b>.`
+  });
+
+  bootstrap.Modal.getInstance(document.getElementById('modalNuevoPrestamo')).hide();
+  this.reset();
 });
 </script>
+
+
 @endsection

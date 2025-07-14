@@ -568,7 +568,10 @@
     <div class="modal-content shadow-lg border-0" style="border-radius: 16px; animation: fadeInDown 0.4s;">
       <div class="modal-header text-white" style="background: linear-gradient(135deg, #343a40, #212529); border-top-left-radius: 16px; border-top-right-radius: 16px;">
         <h5 class="modal-title" id="modalAgregarCategoriaLabel">
-          <i class="fas fa-tags me-2"></i>Agregar Nueva Categoría
+          <i class="fas fa-tags me-2"></i>
+          <span id="tituloModal">
+              Agregar Nueva Categoría
+          </span>
         </h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar" style="background-color: #dc3545;"></button>
       </div>
@@ -607,6 +610,58 @@
     </div>
   </div>
 </div>
+
+<!-- Modal: Editar Categoría -->
+<div class="modal fade" id="modalEditarCategoria" tabindex="-1" aria-labelledby="modalEditarCategoriaLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content shadow-lg border-0" style="border-radius: 16px; animation: fadeInDown 0.4s;">
+      <div class="modal-header text-white" style="background: linear-gradient(135deg, #343a40, #212529); border-top-left-radius: 16px; border-top-right-radius: 16px;">
+        <h5 class="modal-title" id="modalEditarCategoriaLabel">
+          <i class="fas fa-edit me-2"></i>
+            <span id="tituloModalEditar">
+                Editar Categoría
+            </span> 
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar" style="background-color: #dc3545;"></button>
+      </div>
+
+      <form id="formEditarCategoria" onsubmit="actualizarCategoria(event)">
+        <div class="modal-body px-4 py-3">
+          <input type="hidden" id="categoria_id">
+          
+          <div class="mb-3">
+            <label for="editar_nombre_categoria" class="form-label">Nombre de la Categoría</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="fas fa-bookmark"></i></span>
+              <input type="text" class="form-control" id="editar_nombre_categoria" required>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="editar_estado_categoria" class="form-label">Estado</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="fas fa-toggle-on"></i></span>
+              <select class="form-select" id="editar_estado_categoria" required>
+                <option value="activa">Activa</option>
+                <option value="pendiente">Pendiente</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer px-4 py-3" style="justify-content: space-between;">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+            <i class="fas fa-times"></i> Cancelar
+          </button>
+          <button type="submit" class="btn btn-primary">
+            <i class="fas fa-save"></i> Actualizar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
 
 <!-- Script para insertar categoría dinámicamente -->
 <script>
@@ -674,6 +729,54 @@ function agregarCategoria(e) {
   bootstrap.Modal.getOrCreateInstance(document.getElementById('modalAgregarCategoria')).hide();
   document.getElementById('formCategoria').reset();
 }
+
+document.querySelectorAll('.btn-edit').forEach(btn => {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      
+      // Cambiar el título del modal
+      document.getElementById('tituloModalEditar').textContent = 'Editar Categoría';
+
+      // Mostrar el modal
+      const modal = new bootstrap.Modal(document.getElementById('modalEditarCategoria'));
+      modal.show();
+
+      // Aquí podrías precargar datos si trabajas con una tabla real
+      // Por ejemplo: cargarUsuario(id)
+    });
+  });
+
+document.querySelectorAll('.btn-delete').forEach(btn => {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+
+      Swal.fire({
+        title: '¿Estás seguro?',
+        text: "Esta acción no se puede deshacer.",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#dc3545',
+        cancelButtonColor: '#6c757d',
+        confirmButtonText: 'Sí, eliminar',
+        cancelButtonText: 'Cancelar'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // Acción real aquí. Por ejemplo:
+          // eliminarUsuario(id);
+          Swal.fire({
+            icon: 'success',
+            title: 'Eliminado',
+            text: 'El registro ha sido eliminado exitosamente.',
+            confirmButtonColor: '#28a745'
+          });
+
+          // También puedes eliminar dinámicamente la fila:
+          // btn.closest('tr').remove();
+        }
+      });
+    });
+});
+
 </script>
 
 @endsection

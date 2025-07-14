@@ -705,8 +705,6 @@
                                     </div>
                                 </td>
                             </tr>
-                           
-                           
                         </tbody>
                     </table>
                 </div>
@@ -716,6 +714,40 @@
 
     <!-- Bootstrap JS (opcional si usas modales o componentes interactivos) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    document.querySelectorAll('.btn-delete').forEach(btn => {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+
+      Swal.fire({
+        title: '¿Estás seguro?',
+        text: "Esta acción no se puede deshacer.",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#dc3545',
+        cancelButtonColor: '#6c757d',
+        confirmButtonText: 'Sí, eliminar',
+        cancelButtonText: 'Cancelar'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // Acción real aquí. Por ejemplo:
+          // eliminarUsuario(id);
+          Swal.fire({
+            icon: 'success',
+            title: 'Eliminado',
+            text: 'El registro ha sido eliminado exitosamente.',
+            confirmButtonColor: '#28a745'
+          });
+
+          // También puedes eliminar dinámicamente la fila:
+          // btn.closest('tr').remove();
+        }
+      });
+    });
+});
+</script>
+    
 </body>
 </html>
 @endsection

@@ -5,7 +5,7 @@
     .admin-dashboard {
         background: linear-gradient(135deg, #f8f9fa 0%, #F2F2F2 100%);
         min-height: 100vh;
-        padding: 2rem 0;
+        padding: 1rem 0;
         opacity: 0;
         animation: fadeInUp 0.8s ease-out forwards;
     }
@@ -55,25 +55,14 @@
     .welcome-header {
         background: linear-gradient(135deg, #0D0D0D 0%, #2c2c2c 100%);
         color: white;
-        padding: 3rem 2rem;
+        padding: 2rem;
         border-radius: 20px;
-        margin-bottom: 3rem;
+        margin-bottom: 1.5rem;
         box-shadow: 0 15px 35px rgba(13, 13, 13, 0.2);
         position: relative;
         overflow: hidden;
         opacity: 0;
         animation: slideInLeft 0.8s ease-out 0.2s forwards;
-    }
-    
-    .welcome-header::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
-        animation: shimmer 3s infinite;
     }
     
     @keyframes shimmer {
@@ -86,7 +75,7 @@
     }
     
     .welcome-title {
-        font-size: 3rem;
+        font-size: 2.2rem;
         font-weight: 800;
         margin: 0;
         text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
@@ -97,7 +86,7 @@
     }
     
     .welcome-subtitle {
-        font-size: 1.3rem;
+        font-size: 1rem;
         color: #b0b0b0;
         margin-top: 1rem;
         font-weight: 300;
@@ -107,8 +96,8 @@
     .dashboard-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        gap: 2rem;
-        margin-top: 2rem;
+        gap: 1rem;
+        margin-top: 1rem;
     }
     
     .dashboard-card {
@@ -255,8 +244,7 @@
     .stats-section {
         background: white;
         border-radius: 20px;
-        padding: 2rem;
-        margin-bottom: 3rem;
+        padding: 1rem;
         box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
         opacity: 0;
         animation: fadeInUp 0.8s ease-out 1s forwards;
@@ -265,13 +253,12 @@
     .stats-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 2rem;
-        margin-top: 1rem;
+        gap: 1rem;
     }
     
     .stat-item {
         text-align: center;
-        padding: 1.5rem;
+        padding: 1rem;
         background: linear-gradient(135deg, #F2F2F2 0%, #e9ecef 100%);
         border-radius: 12px;
         transition: all 0.3s ease;
@@ -283,15 +270,14 @@
     }
     
     .stat-number {
-        font-size: 2.5rem;
+        font-size: 2rem;
         font-weight: 800;
         color: #0D0D0D;
-        margin-bottom: 0.5rem;
     }
     
     .stat-label {
         color: #6c757d;
-        font-size: 0.9rem;
+        font-size: 0.8rem;
         font-weight: 500;
         text-transform: uppercase;
         letter-spacing: 0.5px;

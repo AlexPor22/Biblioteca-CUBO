@@ -100,7 +100,7 @@
         right: 0;
         bottom: 0;
         background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
-        animation: shimmer 3s infinite;
+        /*animation: shimmer 3s infinite;*/
     }
     
     .page-title {
@@ -632,6 +632,88 @@
   </div>
 </div>
 
+<!-- Modal: Editar Usuario -->
+<div class="modal fade" id="modalEditarUsuario" tabindex="-1" aria-labelledby="modalEditarUsuarioLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content shadow-lg" style="border-radius: 16px; animation: bounceIn 0.5s;">
+      <div class="modal-header" style="background: linear-gradient(135deg, #0D0D0D, #2c2c2c); color: white; border-top-left-radius: 16px; border-top-right-radius: 16px;">
+        <h5 class="modal-title" id="modalAgregarUsuarioLabel">
+          <i class="fas fa-user-edit me-2"></i><span id="tituloModal">Editar Usuario</span>
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar" style="background-color: #dc3545;"></button>
+      </div>
+
+      <form id="formUsuario" onsubmit="guardarUsuario(event)">
+        <div class="modal-body p-4">
+          <input type="hidden" id="usuarioIndex">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label for="nombre" class="form-label">Nombre Completo</label>
+              <input type="text" class="form-control" id="nombre" required>
+            </div>
+
+            <div class="col-md-6">
+              <label for="usuario" class="form-label">Usuario</label>
+              <input type="text" class="form-control" id="usuario" required>
+            </div>
+
+            <div class="col-md-6">
+              <label for="telefono" class="form-label">Teléfono</label>
+              <input type="tel" class="form-control" id="telefono">
+            </div>
+
+            <div class="col-md-6">
+              <label for="edad" class="form-label">Edad</label>
+              <input type="number" class="form-control" id="edad" min="0">
+            </div>
+
+            <div class="col-md-6">
+              <label for="sexo" class="form-label">Sexo</label>
+              <select class="form-select" id="sexo">
+                <option value="">Seleccione...</option>
+                <option value="Masculino">Masculino</option>
+                <option value="Femenino">Femenino</option>
+                <option value="Otro">Otro</option>
+              </select>
+            </div>
+
+            <div class="col-md-6">
+              <label for="direccion" class="form-label">Dirección</label>
+              <textarea class="form-control" id="direccion" rows="2"></textarea>
+            </div>
+
+            <div class="col-md-6">
+              <label for="correo" class="form-label">Correo Electrónico</label>
+              <input type="email" class="form-control" id="correo" required>
+            </div>
+
+            <div class="col-md-6">
+              <label for="rol" class="form-label">Tipo de Usuario</label>
+              <select class="form-select" id="rol" required>
+                <option value="">Seleccione...</option>
+                <option value="admin">Administrador</option>
+                <option value="empleado">Empleado</option>
+                <option value="cliente">Cliente</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer px-4 py-3" style="justify-content: space-between;">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+            <i class="fas fa-times"></i> Cancelar
+          </button>
+          <button type="submit" class="btn btn-success">
+            <i class="fas fa-check"></i> Guardar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
 <script>
 function actualizarEstadisticas() {
   const filas = document.querySelectorAll('.users-table tbody tr');
@@ -724,6 +806,54 @@ function editarUsuario(btn) {
   document.getElementById('tituloModal').innerText = 'Editar Usuario';
   bootstrap.Modal.getOrCreateInstance(document.getElementById('modalAgregarUsuario')).show();
 }
+
+document.querySelectorAll('.btn-edit').forEach(btn => {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      
+      // Cambiar el título del modal
+      document.getElementById('tituloModal').textContent = 'Editar Usuario';
+
+      // Mostrar el modal
+      const modal = new bootstrap.Modal(document.getElementById('modalEditarUsuario'));
+      modal.show();
+
+      // Aquí podrías precargar datos si trabajas con una tabla real
+      // Por ejemplo: cargarUsuario(id)
+    });
+  });
+
+document.querySelectorAll('.btn-delete').forEach(btn => {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+
+      Swal.fire({
+        title: '¿Estás seguro?',
+        text: "Esta acción no se puede deshacer.",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#dc3545',
+        cancelButtonColor: '#6c757d',
+        confirmButtonText: 'Sí, eliminar',
+        cancelButtonText: 'Cancelar'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // Acción real aquí. Por ejemplo:
+          // eliminarUsuario(id);
+          Swal.fire({
+            icon: 'success',
+            title: 'Eliminado',
+            text: 'El registro ha sido eliminado exitosamente.',
+            confirmButtonColor: '#28a745'
+          });
+
+          // También puedes eliminar dinámicamente la fila:
+          // btn.closest('tr').remove();
+        }
+      });
+    });
+});
+
 </script>
 
 @endsection
