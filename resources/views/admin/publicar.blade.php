@@ -5,7 +5,6 @@
     .publish-dashboard {
         background: linear-gradient(135deg, #f8f9fa 0%, #F2F2F2 100%);
         min-height: 100vh;
-        padding: 2rem 0;
         opacity: 0;
         animation: fadeInUp 0.8s ease-out forwards;
     }
@@ -52,30 +51,6 @@
         }
     }
     
-    .publish-header {
-        background: linear-gradient(135deg, #0D0D0D 0%, #2c2c2c 100%);
-        color: white;
-        padding: 3rem 2rem;
-        border-radius: 20px;
-        margin-bottom: 3rem;
-        box-shadow: 0 15px 35px rgba(13, 13, 13, 0.2);
-        position: relative;
-        overflow: hidden;
-        opacity: 0;
-        animation: slideInLeft 0.8s ease-out 0.2s forwards;
-    }
-    
-    .publish-header::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
-        animation: shimmer 3s infinite;
-    }
-    
     @keyframes shimmer {
         0% {
             transform: translateX(-100%);
@@ -83,25 +58,6 @@
         100% {
             transform: translateX(100%);
         }
-    }
-    
-    .publish-title {
-        font-size: 3rem;
-        font-weight: 800;
-        margin: 0;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
-    
-    .publish-subtitle {
-        font-size: 1.3rem;
-        color: #b0b0b0;
-        margin-top: 1rem;
-        font-weight: 300;
-        line-height: 1.6;
     }
     
     .publish-grid {
@@ -373,13 +329,6 @@
         }
     }
     
-    .stats-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 2rem;
-        margin-bottom: 3rem;
-    }
-
     .modal-header .btn-close {
         background-color: red !important;
         border-radius: 50%;
@@ -408,34 +357,12 @@
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
     }
     
-    .stat-number {
-        font-size: 2.5rem;
-        font-weight: 800;
-        color: #0D0D0D;
-        margin-bottom: 0.5rem;
-    }
-    
-    .stat-label {
-        color: #6c757d;
-        font-size: 0.9rem;
-        font-weight: 500;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-    }
-    
     @media (max-width: 768px) {
-        .publish-title {
-            font-size: 2.5rem;
-        }
-        
         .publish-grid {
             grid-template-columns: 1fr;
             gap: 1.5rem;
         }
-        
-        .stats-grid {
-            grid-template-columns: repeat(2, 1fr);
-        }
+    
         
         .publish-card {
             padding: 2rem;
@@ -450,29 +377,32 @@
 
 <div class="publish-dashboard">
     <div class="container">
-        <!-- Header de Publicación -->
-        <div class="publish-header">
-            <h1 class="publish-title">Publicar Contenido</h1>
-            <p class="publish-subtitle">Sube y gestiona libros digitales y audiolibros. Comparte conocimiento y enriquece la biblioteca digital con contenido de calidad.</p>
+        <!-- Header panel -->
+        <div class="header">
+            <h1 class="header-title">Publicar Contenido</h1>
+            <p class="header-subtitle">Sube y gestiona libros digitales y audiolibros. Comparte conocimiento y enriquece la biblioteca digital con contenido de calidad.</p>
         </div>
 
-        <!-- Estadísticas Rápidas -->
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-number">12</div>
-                <div class="stat-label">Libros Publicados</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">8</div>
-                <div class="stat-label">Audiolibros</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">5</div>
-                <div class="stat-label">Borradores</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">156</div>
-                <div class="stat-label">Descargas Total</div>
+        <!-- Sección de Estadísticas -->
+        <div class="stats-section">
+            <h3 style="color: #0D0D0D; font-weight: 700; margin-bottom: 1rem;">Estadísticas del Sistema</h3>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">12</div>
+                    <div class="stat-label">Libros Publicados</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">8</div>
+                    <div class="stat-label">Audiolibros</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">5</div>
+                    <div class="stat-label">Borradores</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">156</div>
+                    <div class="stat-label">Descargas Total</div>
+                </div>
             </div>
         </div>
 

@@ -5,7 +5,6 @@
     .categories-page {
         background: linear-gradient(135deg, #f8f9fa 0%, #F2F2F2 100%);
         min-height: 100vh;
-        padding: 2rem 0;
         opacity: 0;
         animation: fadeInUp 0.8s ease-out forwards;
     }
@@ -42,83 +41,7 @@
             transform: scale(1);
         }
     }
-    
-    .page-header {
-        background: linear-gradient(135deg, #0D0D0D 0%, #2c2c2c 100%);
-        color: white;
-        padding: 2.5rem 2rem;
-        border-radius: 20px;
-        margin-bottom: 2rem;
-        box-shadow: 0 15px 35px rgba(13, 13, 13, 0.2);
-        position: relative;
-        overflow: hidden;
-        opacity: 0;
-        animation: slideInLeft 0.8s ease-out 0.2s forwards;
-    }
-    
-    .page-header::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
-        animation: shimmer 3s infinite;
-    }
-    
-    @keyframes shimmer {
-        0% {
-            transform: translateX(-100%);
-        }
-        100% {
-            transform: translateX(100%);
-        }
-    }
-    
-    .page-title {
-        font-size: 2.5rem;
-        font-weight: 800;
-        margin: 0;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        position: relative;
-        z-index: 1;
-    }
-    
-    .page-subtitle {
-        font-size: 1.1rem;
-        color: #b0b0b0;
-        margin-top: 0.5rem;
-        font-weight: 300;
-        line-height: 1.6;
-        position: relative;
-        z-index: 1;
-    }
-    
-    .content-section {
-        background: white;
-        border-radius: 20px;
-        padding: 2rem;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-        opacity: 0;
-        animation: scaleIn 0.8s ease-out 0.4s forwards;
-        position: relative;
-        overflow: hidden;
-    }
-    
-    .section-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 2rem;
-        padding-bottom: 1rem;
-        border-bottom: 2px solid #F2F2F2;
-    }
-    
+      
     .section-title {
         font-size: 1.5rem;
         font-weight: 700;
@@ -166,65 +89,6 @@
         text-decoration: none;
     }
     
-    .modern-table {
-        width: 100%;
-        border-collapse: separate;
-        border-spacing: 0;
-        background: white;
-        border-radius: 15px;
-        overflow: hidden;
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-    }
-    
-    .modern-table thead {
-        background: linear-gradient(135deg, #F2F2F2 0%, #e9ecef 100%);
-    }
-    
-    .modern-table th {
-        padding: 1.25rem 1.5rem;
-        font-weight: 700;
-        color: #0D0D0D;
-        text-align: left;
-        font-size: 0.9rem;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        border: none;
-        position: relative;
-    }
-    
-    .modern-table th:after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 2px;
-        background: linear-gradient(90deg, #28a745, #20c997);
-    }
-    
-    .modern-table td {
-        padding: 1.25rem 1.5rem;
-        border: none;
-        color: #495057;
-        font-size: 0.95rem;
-        border-bottom: 1px solid #f8f9fa;
-        transition: all 0.3s ease;
-    }
-    
-    .modern-table tbody tr {
-        transition: all 0.3s ease;
-    }
-    
-    .modern-table tbody tr:hover {
-        background: linear-gradient(135deg, #f8f9fa 0%, #F2F2F2 100%);
-        transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    }
-    
-    .modern-table tbody tr:last-child td {
-        border-bottom: none;
-    }
-    
     .id-badge {
         background: linear-gradient(135deg, #0D0D0D 0%, #2c2c2c 100%);
         color: white;
@@ -249,101 +113,8 @@
         align-items: center;
     }
     
-    .btn-edit {
-        background: linear-gradient(135deg, #ffc107 0%, #fd7e14 100%);
-        color: white;
-        border: none;
-        padding: 0.5rem 1rem;
-        border-radius: 8px;
-        font-weight: 600;
-        font-size: 0.8rem;
-        text-decoration: none;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.3rem;
-        transition: all 0.3s ease;
-        box-shadow: 0 3px 10px rgba(255, 193, 7, 0.3);
-    }
     
-    .btn-edit:hover {
-        transform: translateY(-1px);
-        box-shadow: 0 5px 15px rgba(255, 193, 7, 0.4);
-        color: white;
-        text-decoration: none;
-    }
-    
-    .btn-delete {
-        background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
-        color: white;
-        border: none;
-        padding: 0.5rem 1rem;
-        border-radius: 8px;
-        font-weight: 600;
-        font-size: 0.8rem;
-        text-decoration: none;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.3rem;
-        transition: all 0.3s ease;
-        box-shadow: 0 3px 10px rgba(220, 53, 69, 0.3);
-    }
-    
-    .btn-delete:hover {
-        transform: translateY(-1px);
-        box-shadow: 0 5px 15px rgba(220, 53, 69, 0.4);
-        color: white;
-        text-decoration: none;
-    }
-    
-    .stats-cards {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 1.5rem;
-        margin-bottom: 2rem;
-    }
-    
-    .stat-card {
-        background: white;
-        padding: 1.5rem;
-        border-radius: 15px;
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-        transition: all 0.3s ease;
-        border-left: 4px solid #28a745;
-        opacity: 0;
-        animation: slideInLeft 0.8s ease-out forwards;
-    }
-    
-    .stat-card:nth-child(1) {
-        animation-delay: 0.6s;
-    }
-    
-    .stat-card:nth-child(2) {
-        animation-delay: 0.8s;
-    }
-    
-    .stat-card:nth-child(3) {
-        animation-delay: 1.0s;
-    }
-    
-    .stat-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    }
-    
-    .stat-number {
-        font-size: 2rem;
-        font-weight: 800;
-        color: #28a745;
-        margin: 0;
-    }
-    
-    .stat-label {
-        color: #6c757d;
-        font-size: 0.9rem;
-        font-weight: 500;
-        margin-top: 0.5rem;
-    }
-    
+
     .empty-state {
         text-align: center;
         padding: 3rem 2rem;
@@ -377,9 +148,6 @@
     }
     
     @media (max-width: 768px) {
-        .page-title {
-            font-size: 2rem;
-        }
         
         .section-header {
             flex-direction: column;
@@ -417,25 +185,29 @@
 
 <div class="categories-page">
     <div class="container">
-        <!-- Header de la página -->
-        <div class="page-header">
-            <h1 class="page-title">Categorías de Libros</h1>
-            <p class="page-subtitle">Organiza y administra las categorías de tu biblioteca digital</p>
+        
+        <!-- Header panel -->
+        <div class="header">
+            <h1 class="header-title">Categorías de Libros</h1>
+            <p class="header-subtitle">Organiza y administra las categorías de tu biblioteca digital.</p>
         </div>
 
-        <!-- Tarjetas de estadísticas -->
-        <div class="stats-cards">
-            <div class="stat-card">
-                <div class="stat-number">5</div>
-                <div class="stat-label">Total Categorías</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">3</div>
-                <div class="stat-label">Categorías Activas</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">24</div>
-                <div class="stat-label">Libros Categorizados</div>
+        <!-- Sección de Estadísticas -->
+        <div class="stats-section">
+            <h3 style="color: #0D0D0D; font-weight: 700; margin-bottom: 1rem;">Estadísticas del Sistema</h3>
+            <div class="stats-grid">
+                <div class="stat-item">
+                   <div class="stat-number">5</div>
+                   <div class="stat-label">Total Categorías</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Categorías Activas</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">24</div>
+                    <div class="stat-label">Libros Categorizados</div>
+                </div>
             </div>
         </div>
 
@@ -464,7 +236,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td><span class="id-badge">1</span></td>
+                        <td><span class="id-badg">1</span></td>
                         <td><span class="category-name">Ficción</span></td>
                         <td>12 libros</td>
                         <td>
@@ -494,8 +266,9 @@
                             </div>
                         </td>
                     </tr>
+
                     <tr>
-                        <td><span class="id-badge">2</span></td>
+                        <td><span class="id-badg">2</span></td>
                         <td><span class="category-name">Ciencia Ficción</span></td>
                         <td>8 libros</td>
                         <td>
@@ -525,8 +298,9 @@
                             </div>
                         </td>
                     </tr>
+
                     <tr>
-                        <td><span class="id-badge">3</span></td>
+                        <td><span class="id-badg">3</span></td>
                         <td><span class="category-name">Romance</span></td>
                         <td>4 libros</td>
                         <td>

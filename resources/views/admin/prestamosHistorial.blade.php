@@ -61,34 +61,9 @@
     }
 
     .container {
-        max-width: 1400px;
+        max-width: 1320px;
         margin: 0 auto;
     }
-
-    .header {
-        background: linear-gradient(135deg, #0D0D0D 0%, #2c2c2c 100%);
-        backdrop-filter: blur(20px);
-        padding: 3rem 2rem;
-        border-radius: 20px;
-        margin-bottom: 3rem;
-        box-shadow: 0 15px 35px rgba(13, 13, 13, 0.2);
-        position: relative;
-        overflow: hidden;
-        opacity: 0;
-        animation: slideInLeft 0.8s ease-out 0.2s forwards;
-    }
-
-    .header::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
-        animation: shimmer 3s infinite;
-    }
-
      @keyframes shimmer {
         0% {
             transform: translateX(-100%);
@@ -97,91 +72,6 @@
             transform: translateX(100%);
         }
     }
-
-    .header h1 {
-        font-size: 3rem;
-        font-weight: 800;
-        margin: 0;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        margin-bottom: 10px;
-    }
-
-    .header p {
-        font-size: 1.3rem;
-        color: #b0b0b0;
-        margin-top: 1rem;
-        font-weight: 300;
-        line-height: 1.6;
-    }
-
-    .stats-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 25px;
-        margin-bottom: 30px;
-        opacity: 0;
-        animation: fadeInUp 0.8s ease-out 0.5s forwards;
-    }
-
-    .stat-card {
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(20px);
-        padding: 30px;
-        border-radius: 20px;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        transition: all 0.4s ease;
-        position: relative;
-        overflow: hidden;
-        --accent-color: #22C55E;
-        border: 2px solid transparent;
-        opacity: 0;
-        animation: scaleIn 0.8s ease-out forwards;
-        animation-delay: 0.8s;
-        --accent-color: #28a745;
-    }
-
-    .stat-card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 5px;
-        background: var(--accent-color);
-        transform: scaleX(0);
-        transition: transform 0.3s ease;
-    }
-
-    .stat-card:hover::before {
-        transform: scaleX(1);
-    }
-
-    .stat-card:hover {
-        transform: translateY(-10px) scale(1.02);
-        box-shadow: 0 25px 60px rgba(0,0,0,0.15);
-        border-color: rgba(var(--accent-color), 0.3);
-    }
-
-    .stat-number {
-        font-size: 48px;
-        font-weight: 900;
-        color: var(--accent-color);
-        margin-bottom: 10px;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-        animation: float 3s ease-in-out infinite;
-    }
-
-    .stat-label {
-        color: #6B7280;
-        font-size: 16px;
-        font-weight: 600;
-    }
-
     .btn {
         padding: 12px 24px;
         border: none;
@@ -242,7 +132,7 @@
         backdrop-filter: blur(20px);
         padding: 25px;
         border-radius: 20px;
-        margin-bottom: 20px;
+        margin: 1rem 0;
         border: 1px solid rgba(255, 255, 255, 0.2);
         box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         display: flex;
@@ -513,20 +403,29 @@
         box-shadow: 0 8px 25px rgba(34, 197, 94, 0.3);
     }
 
+    .historial-page {
+        background: linear-gradient(135deg, #f8f9fa 0%, #F2F2F2 100%);
+        min-height: 100vh;
+        opacity: 0;
+        animation: fadeInUp 0.8s ease-out forwards;
+    }
+
+    @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
 
     @media (max-width: 768px) {
         body {
             padding: 10px;
         }
-
-        .header h1 {
-            font-size: 2.5rem;
-        }
-
-        .stats-grid {
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-        }
-
         .filters {
             flex-direction: column;
         }
@@ -545,29 +444,34 @@
 
     }
     </style>
-
+<div class="historial-page">
     <div class="container">
+        <!-- Header panel -->
         <div class="header">
-            <h1>Historial de Préstamos</h1>
-            <p>Administra y supervisa todos los préstamos de tu biblioteca digital</p>
+            <h1 class="header-title">Historial de Préstamos</h1>
+            <p class="header-subtitle">Administra y supervisa todos los préstamos de tu biblioteca digital.</p>
         </div>
 
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-number">156</div>
-                <div class="stat-label">Total Préstamos</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">23</div>
-                <div class="stat-label">Préstamos Activos</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">8</div>
-                <div class="stat-label">Préstamos Vencidos</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">125</div>
-                <div class="stat-label">Préstamos Devueltos</div>
+        <!-- Sección de Estadísticas -->
+        <div class="stats-section">
+            <h3 style="color: #0D0D0D; font-weight: 700; margin-bottom: 1rem;">Estadísticas del Sistema</h3>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">156</div>
+                    <div class="stat-label">Total Préstamos</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">23</div>
+                    <div class="stat-label">Préstamos Activos</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">8</div>
+                    <div class="stat-label">Préstamos Vencidos</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">125</div>
+                    <div class="stat-label">Préstamos Devueltos</div>
+                </div>
             </div>
         </div>
 
@@ -655,4 +559,5 @@
             <a href="#">Siguiente »</a>
         </div>
     </div>
+</div>
 @endsection

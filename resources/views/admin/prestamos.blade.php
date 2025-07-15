@@ -6,7 +6,6 @@
     .prestamo-dashboard {
         background: linear-gradient(135deg, #f8f9fa 0%, #F2F2F2 100%);
         min-height: 100vh;
-        padding: 2rem 0;
         opacity: 0;
         animation: fadeInUp 0.8s ease-out forwards;
     }
@@ -31,50 +30,12 @@
         50% { transform: translateY(-10px); }
     }
     
-    .prestamo-header {
-        background: linear-gradient(135deg, #0D0D0D 0%, #2c2c2c 100%);
-        color: white;
-        padding: 3rem 2rem;
-        border-radius: 20px;
-        margin-bottom: 3rem;
-        box-shadow: 0 15px 35px rgba(13, 13, 13, 0.2);
-        position: relative;
-        overflow: hidden;
-        opacity: 0;
-        animation: slideInLeft 0.8s ease-out 0.2s forwards;
-    }
-    
-    .prestamo-header::before {
-        content: '';
-        position: absolute;
-        top: 0; left: 0; right: 0; bottom: 0;
-        background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
-        animation: shimmer 3s infinite;
-    }
     
     @keyframes shimmer {
         0% { transform: translateX(-100%); }
         100% { transform: translateX(100%); }
     }
-    
-    .prestamo-header .prestamo-title {
-        font-size: 3rem;
-        font-weight: 800;
-        margin: 0;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
-    
-    .prestamo-subtitle {
-        font-size: 1.3rem;
-        color: #b0b0b0;
-        margin-top: 1rem;
-        font-weight: 300;
-        line-height: 1.6;
-    }
+
     
     .prestamo-grid {
         display: grid;
@@ -217,13 +178,6 @@
         color: white;
     }
     
-    .stats-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 2rem;
-        margin-bottom: 3rem;
-    }
-    
     .stat-card {
         background: white;
         border-radius: 15px;
@@ -236,49 +190,6 @@
         position: relative;
         overflow: hidden;
     }
-    
-    .stat-card:nth-child(1) { animation-delay: 0.2s; }
-    .stat-card:nth-child(2) { animation-delay: 0.4s; }
-    .stat-card:nth-child(3) { animation-delay: 0.6s; }
-    .stat-card:nth-child(4) { animation-delay: 0.8s; }
-    .stat-card:nth-child(5) { animation-delay: 1s; }
-    
-    .stat-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    }
-    
-    .stat-card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 4px;
-        background: linear-gradient(90deg, #28a745, #20c997);
-        transform: scaleX(0);
-        transition: transform 0.3s ease;
-    }
-    
-    .stat-card:hover::before {
-        transform: scaleX(1);
-    }
-    
-    .stat-number {
-        font-size: 2.5rem;
-        font-weight: 800;
-        color: #0D0D0D;
-        margin-bottom: 0.5rem;
-    }
-    
-    .stat-label {
-        color: #6c757d;
-        font-size: 0.9rem;
-        font-weight: 500;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-    }
-    
     .prestamos-activos {
         background: white;
         border-radius: 20px;
@@ -363,14 +274,6 @@
     .prestamo-details {
         flex: 1;
     }
-    
-    .prestamo-title {
-        font-weight: 800;
-        color: #0D0D0D;
-        margin-bottom: 0.5rem;
-        font-size: 3rem;
-    }
-    
     .prestamo-meta {
         font-size: 0.85rem;
         color: #6c757d;
@@ -482,7 +385,7 @@
         padding: 1.5rem;
         border-radius: 15px;
         box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-        margin-bottom: 2rem;
+        margin: 1rem 0;
         display: flex;
         gap: 1rem;
         align-items: center;
@@ -520,17 +423,9 @@
     }
     
     @media (max-width: 768px) {
-        .prestamo-title {
-            font-size: 2.5rem;
-        }
-        
         .prestamo-grid {
             grid-template-columns: 1fr;
             gap: 1.5rem;
-        }
-        
-        .stats-grid {
-            grid-template-columns: repeat(2, 1fr);
         }
         
         .prestamo-card {
@@ -561,33 +456,36 @@
 
 <div class="prestamo-dashboard">
     <div class="container">
-        <!-- Header de Préstamos -->
-        <div class="prestamo-header">
-            <h1 class="prestamo-title">Gestión de Préstamos</h1>
-            <p class="prestamo-subtitle">Administra préstamos de libros digitales y audiolibros. Controla fechas de vencimiento, renovaciones y historial de préstamos.</p>
+        <!-- Header panel -->
+        <div class="header">
+            <h1 class="header-title">Gestión de Préstamos</h1>
+            <p class="header-subtitle">Administra préstamos de libros digitales y audiolibros. Controla fechas de vencimiento, renovaciones y historial de préstamos.</p>
         </div>
 
-        <!-- Estadísticas de Préstamos -->
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-number">24</div>
-                <div class="stat-label">Préstamos Activos</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">7</div>
-                <div class="stat-label">Por Vencer</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">3</div>
-                <div class="stat-label">Vencidos</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">186</div>
-                <div class="stat-label">Total Este Mes</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">92%</div>
+        <!-- Sección de Estadísticas -->
+        <div class="stats-section">
+            <h3 style="color: #0D0D0D; font-weight: 700; margin-bottom: 1rem;">Estadísticas del Sistema</h3>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">24</div>
+                    <div class="stat-label">Préstamos Activos</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">7</div>
+                    <div class="stat-label">Por Vencer</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Vencidos</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">186</div>
+                    <div class="stat-label">Total Este Mes</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">92%</div>
                 <div class="stat-label">Tasa Devolución</div>
+                </div>
             </div>
         </div>
 

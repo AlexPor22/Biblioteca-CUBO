@@ -1,19 +1,10 @@
 @extends('layouts.admin')
 
 @section('content')
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ver Libros - Biblioteca Digital</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         .libros-page {
             background: linear-gradient(135deg, #f8f9fa 0%, #F2F2F2 100%);
             min-height: 100vh;
-            padding: 2rem 0;
             opacity: 0;
             animation: fadeInUp 0.8s ease-out forwards;
         }
@@ -50,31 +41,6 @@
                 transform: scale(1);
             }
         }
-        
-        .page-header {
-            background: linear-gradient(135deg, #0D0D0D 0%, #2c2c2c 100%);
-            color: white;
-            padding: 2.5rem 2rem;
-            border-radius: 20px;
-            margin-bottom: 2rem;
-            box-shadow: 0 15px 35px rgba(13, 13, 13, 0.2);
-            position: relative;
-            overflow: hidden;
-            opacity: 0;
-            animation: slideInLeft 0.8s ease-out 0.2s forwards;
-        }
-        
-        .page-header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
-            animation: shimmer 3s infinite;
-        }
-        
         @keyframes shimmer {
             0% {
                 transform: translateX(-100%);
@@ -82,90 +48,13 @@
             100% {
                 transform: translateX(100%);
             }
-        }
-        
-        .page-title {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin: 0;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .page-subtitle {
-            font-size: 1.1rem;
-            color: #b0b0b0;
-            margin-top: 0.5rem;
-            font-weight: 300;
-            line-height: 1.6;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .stats-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-        
-        .stat-card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-            border-left: 4px solid #28a745;
-            opacity: 0;
-            animation: slideInLeft 0.8s ease-out forwards;
-        }
-        
-        .stat-card:nth-child(1) {
-            animation-delay: 0.6s;
-        }
-        
-        .stat-card:nth-child(2) {
-            animation-delay: 0.8s;
-        }
-        
-        .stat-card:nth-child(3) {
-            animation-delay: 1.0s;
-        }
-        
-        .stat-card:nth-child(4) {
-            animation-delay: 1.2s;
-        }
-        
-        .stat-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .stat-number {
-            font-size: 2rem;
-            font-weight: 800;
-            color: #28a745;
-            margin: 0;
-        }
-        
-        .stat-label {
-            color: #6c757d;
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin-top: 0.5rem;
-        }
-        
+        } 
         .search-section {
             background: white;
             border-radius: 20px;
             padding: 2rem;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-            margin-bottom: 2rem;
+            margin: 1rem 0;
             opacity: 0;
             animation: scaleIn 0.8s ease-out 0.4s forwards;
         }
@@ -490,10 +379,6 @@
         }
         
         @media (max-width: 768px) {
-            .page-title {
-                font-size: 2rem;
-            }
-            
             .search-container {
                 max-width: 100%;
             }
@@ -534,31 +419,32 @@
 <body>
     <div class="libros-page">
         <div class="container">
-            <!-- Header de la página -->
-            <div class="page-header">
-                <h1 class="page-title">
-                    Biblioteca de Libros
-                </h1>
-                <p class="page-subtitle">Explora, busca y gestiona toda tu colección de libros digitales</p>
+            <!-- Header panel -->
+            <div class="header">
+                <h1 class="header-title">Biblioteca de Libros</h1>
+                <p class="header-subtitle">Explora, busca y gestiona toda tu colección de libros digitales.</p>
             </div>
 
-            <!-- Tarjetas de estadísticas -->
-            <div class="stats-cards">
-                <div class="stat-card">
-                    <div class="stat-number">1,247</div>
-                    <div class="stat-label">Total de Libros</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">1,089</div>
-                    <div class="stat-label">Disponibles</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">158</div>
-                    <div class="stat-label">Prestados</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">342</div>
-                    <div class="stat-label">Reservados</div>
+            <!-- Sección de Estadísticas -->
+            <div class="stats-section">
+                <h3 style="color: #0D0D0D; font-weight: 700; margin-bottom: 1rem;">Estadísticas del Sistema</h3>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">1,247</div>
+                        <div class="stat-label">Total de Libros</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">1,089</div>
+                        <div class="stat-label">Disponibles</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">158</div>
+                        <div class="stat-label">Prestados</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">342</div>
+                        <div class="stat-label">Reservados</div>
+                    </div>
                 </div>
             </div>
 
@@ -712,9 +598,6 @@
         </div> <!-- .container -->
     </div> <!-- .libros-page -->
 
-    <!-- Bootstrap JS (opcional si usas modales o componentes interactivos) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
 <script>
     document.querySelectorAll('.btn-delete').forEach(btn => {
     btn.addEventListener('click', function (e) {
@@ -747,7 +630,4 @@
     });
 });
 </script>
-    
-</body>
-</html>
 @endsection
