@@ -47,9 +47,22 @@ class AdminController extends Controller
         return view('admin.prestamos');
     }
 
+    // Ver libros
+    public function verLibros()
+    {
+        return view('admin.verLibros');
+    }
+
     // Cerrar sesión (solo redirige por ahora)
     public function cerrarSesion()
     {
         return redirect('/login');  // Solo redirige al login
     }
+
+    // Historial de préstamos
+    public function historialPrestamo()
+    {
+        return view('admin.prestamosHistorial');
+    }
+
 }
