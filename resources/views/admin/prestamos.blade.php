@@ -6,6 +6,7 @@
     .prestamo-dashboard {
         background: linear-gradient(135deg, #f8f9fa 0%, #F2F2F2 100%);
         min-height: 100vh;
+        padding: 2rem 0;
         opacity: 0;
         animation: fadeInUp 0.8s ease-out forwards;
     }
