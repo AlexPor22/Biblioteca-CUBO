@@ -1,19 +1,26 @@
 @extends('layouts.app')
 
 @section('content')
-   
 
+<div class="hero-section">
+    <div class="hero-content">
+        
+        <!-- TEXTO CON BOTÓN -->
+        <div class="hero-text animar-entrada">
+            <h1 class="titulo">Biblioteca Virtual CUBO</h1>
+            <p class="descripcion">
+                Bienvenidos a la Biblioteca Virtual CUBO. Aquí podrás encontrar una gran variedad de libros y recursos digitales para tu aprendizaje. ¡Explora y disfruta de nuestro catálogo!
+            </p>
+            <a href="#registro" class="btn-iniciar">INICIAR GRATIS</a>
+        </div>
 
-<div class="content-container">
-    <div class="text-container">
-        <h1 class="titulo">Biblioteca Virtual CUBO</h1>
-        <p class="descripcion">Bienvenidos a la Biblioteca Virtual CUBO. Aquí podrás encontrar una gran variedad de libros y recursos digitales para tu aprendizaje. ¡Explora y disfruta de nuestro catálogo!</p>
-    </div>
-    <div class="image-container">
-        <img src="{{ asset('img/PORTADA.png') }}" alt="Imagen Flotante" class="floating-image">
+        <!-- IMAGEN -->
+        <div class="hero-image-wrapper animar-entrada">
+            <img src="{{ asset('img/PORTADA1.png') }}" alt="Imagen Biblioteca" class="hero-image">
+        </div>
+
     </div>
 </div>
-
 
 <!-- Sección de Nuestros Servicios -->
 <div class="services-section">
@@ -56,9 +63,7 @@
                     Realiza préstamos de libros físicos para leerlos en casa, de manera cómoda y sencilla.
                 </p>
             </div>
-
         </div>
-
         <div class="button-container">
             <a href="#c" class="btn-descubre">Descúbrelo ahora</a>
         </div>
@@ -66,39 +71,177 @@
     </div>
 </div>
 
+<!-- Sección de LINEA DECORATIVA DE CATALAGO -->
+<div class="linea-decorativa-css">
+<span class="icono-central">&#x269C;</span>
+</div>
+<!-- Título antes de las categorías -->
+<h2 class="text-center my-4 titulo-catalogo">Explora Nuestro Amplio Catálogo</h2>
 
+<!-- Sección de Categorías -->
+<div class="swiper-container categorias-swiper carrusel-espaciado">
+<div class="swiper-wrapper">
+    @php
+    $categorias = [
+        ['titulo' => 'Novelas', 'descripcion' => 'Sumérgete en historias emocionantes y mundos ficticios.', 'imagen' => 'https://www.elindependiente.com/wp-content/uploads/2023/07/libros-2023-lunes10j.jpg'],
+        ['titulo' => 'Ciencia', 'descripcion' => 'Explora el mundo de la ciencia en cada página.', 'imagen' => 'https://www.muyinteresante.com/wp-content/uploads/sites/5/2024/06/23/6677ce2d06420.jpeg'],
+        ['titulo' => 'Historia', 'descripcion' => 'Conoce el pasado a través de grandes obras.', 'imagen' => 'https://s1.elespanol.com/2021/04/22/cultura/historia/575704626_178952264_1706x960.jpg'],
+        ['titulo' => 'Infantil', 'descripcion' => 'Libros divertidos para los más pequeños.', 'imagen' => 'https://www.elindependiente.com/wp-content/uploads/2023/07/libros-infantiles.jpg'],
+        ['titulo' => 'Autoayuda', 'descripcion' => 'Desarrollo personal y bienestar emocional.', 'imagen' => 'https://universoabierto.org/wp-content/uploads/2020/01/padre-rico-padre-pobre-400-libros-de-finanzas-y-autoayuda-d_nq_np_764254-mla29429659184_022019-f.jpg'],
+        ['titulo' => 'Educativo', 'descripcion' => 'Refuerza tu conocimiento con estos libros.', 'imagen' => 'https://www.educaciontrespuntocero.com/wp-content/uploads/2023/12/libros-educativos-favoritos-del-2023.png'],
+    ];
+      $duplicado = array_merge($categorias, $categorias); // duplicamos para que el loop funcione
+    @endphp
+
+    @foreach($duplicado as $categoria)
+    <div class="swiper-slide fade-right">
+    <div class="card-3d small-card" data-image="{{ $categoria['imagen'] }}">
+        <div class="card-inner">
+            <div class="card-bg"></div>
+            <div class="card-info">
+                <h3>{{ $categoria['titulo'] }}</h3>
+                <p>{{ $categoria['descripcion'] }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+    @endforeach
+</div>
+</div>
+
+<!-- Sección de COMUNIDAD -->
+<section class="comunidad-section text-white">
+<div class="container-comunidad">
+    <h2 class="comunidad-title">Conectando a la Comunidad con el Conocimiento</h2>
+    <div class="comunidad-cards">
+    <div class="comunidad-card">
+        <div class="comunidad-icon"><i class="fas fa-check-circle"></i></div>
+        <h4>Acceso Gratuito</h4>
+    </div>
+    <div class="comunidad-card">
+        <div class="comunidad-icon"><i class="fas fa-check-circle"></i></div>
+        <h4>Variedad de Recursos</h4>
+    </div>
+    <div class="comunidad-card">
+        <div class="comunidad-icon"><i class="fas fa-check-circle"></i></div>
+        <h4>Seguridad y Privacidad</h4>
+    </div>
+    </div>
+    <p class="comunidad-final">
+    Te invitamos a explorar la <strong>Biblioteca Virtual CUBO San Miguel</strong> y a descubrir todo lo que tenemos para ofrecerte.<br />
+    <em>¡Sumérgete en un mundo de conocimiento y aventura!</em>
+    </p>
+    
+</div>
+</section>
+
+<!-- Sección de VISITANOS -->
+<section style="background-color:rgb(206, 206, 206); padding: 50px 20px;">
+<div class="container">
+    <h2 class="text-center mb-5" style="font-weight: bold; font-family: 'Poppins', sans-serif;">Visítanos en nuestras instalaciones</h2>
+    <div class="row justify-content-center align-items-center">
+    <!-- Imagen grande -->
+    <div class="col-lg-6 col-md-12 mb-4 mb-lg-0 text-center">
+        <img src="https://cubo.gob.sv/wp-content/uploads/2023/01/CUBO-Milagro03.jpg" alt="Imagen grande" class="img-fluid imagen-efecto img-grande">
+        </a>
+    </div>
+    <!-- Dos imágenes verticales pequeñas -->
+    <div class="col-lg-4 col-md-12 d-flex flex-column justify-content-between gap-4">
+        <img src="https://cubo.gob.sv/wp-content/uploads/2022/12/Zacamil.jpg" alt="Imagen 1" class="img-fluid imagen-efecto img-pequena">
+        </a>
+        <img src="https://cubo.gob.sv/wp-content/uploads/2022/12/CUBO-Image01-999x1024.jpg" alt="Imagen 2" class="img-fluid imagen-efecto img-pequena">
+        </a>
+    </div>
+    </div>
+
+    <!-- Ubicación -->
+    <div class="text-center mt-5">
+    <h3 style="font-weight: bold; font-family: 'Poppins', sans-serif;">Nuestra Ubicación</h3>
+    <div class="mt-3" style="width: 100%; max-width: 800px; margin: 0 auto;">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3814.4607890159455!2d-88.19408550000001!3d13.4654441!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f7b2bb7208b5bd5%3A0xd3e595f11181c3bd!2sCentro%20Urbano%20de%20Bienestar%20y%20Oportunidades%20(CUBO)%20Milagro%20de%20La%20Paz!5e1!3m2!1ses-419!2ssv!4v1752523028409!5m2!1ses-419!2ssv" 
+        width="100%" height="350" style="border:0; border-radius: 12px;" allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    </div>
+    </div>
+</div>
+</section>
 
 <style>
-   body {
+
+body {
     font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* DESCRIPCION DE LA WEB Y ANIMACION DE IMAGEN FLOTANTE */
+/* Contenido debajo del header */
+.hero-section {
+    position: relative;
+    background-color: rgb(72, 72, 72);
+    padding-top: 170px;
+    padding-bottom: 0;
+    overflow: visible;
+    
+}
+
+.hero-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
     margin: 0;
     padding: 0;
 }
 
-.header {
-    width: 100%;
-    background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    position: relative;
-    z-index: 10;
-    height: 150px;
-}
-
-/* Contenido debajo del header */
-.content-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 50px 5%;
-    background-color:rgb(72, 72, 72);
+.hero-text {
+    width: 55%;
+    padding-left: 5%;  /* espacio entre borde izquierdo y texto */
     color: #fff;
-    min-height: 400px; /* Aumenta esto si necesitas más espacio vertical */
-    position: relative;
-    overflow: visible; /* Asegura que la imagen no se recorte */
+    z-index: 2;
+    margin-top: -300px;
 }
 
-.text-container {
-    max-width: 60%;
+.hero-image-wrapper {
+    width: 45%;
+    margin-top: -80px;      /* hace que sobresalga arriba */
+   
+    margin-left: -90px
+    margin-bottom: -1px;    /* quita el espacio blanco de abajo */
+    position: relative;
+    z-index: 5;
+}
+
+.hero-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    position: relative;
+    z-index: 1000; /* MÁS ALTO que el header */
+    margin-top: -60px; /* o el valor que necesites para que sobresalga */
+    
+}
+
+.btn-iniciar {
+    display: inline-block;
+    margin-top: 20px;
+    background-color:rgb(82, 167, 40);
+    color: white;
+    padding: 12px 25px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(42, 201, 6, 0.4);
+}
+
+.btn-iniciar:hover {
+    background-color: #218838;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(40, 167, 69, 0.5);
 }
 
 .titulo {
@@ -119,34 +262,76 @@
     width: 35%;
 }
 
-.floating-image {
-    position: absolute;
-    top: 50%;
-    right: 0;
-    transform: translateY(-50%);
-    animation: float 4s ease-in-out infinite alternate;
-    width: 100%;
-    height: 300px;
-    object-fit: contain;
-    will-change: transform;
+.animar-entrada {
+    opacity: 0;
+    transform: translateX(-50px);
+    animation: entrada-suave 1s ease-out forwards;
 }
 
-@keyframes float {
-    0% {
-        transform: translateY(-50%) translateX(10px);
-    }
-    100% {
-        transform: translateY(-50%) translateX(-10px);
+.hero-image-wrapper.animar-entrada {
+    animation-delay: 0.3s; /* La imagen entra después del texto */
+}
+
+@keyframes entrada-suave {
+    to {
+        opacity: 1;
+        transform: translateX(0);
     }
 }
 
+@media (max-width: 768px) {
+    .hero-content {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
 
+    .hero-text {
+        width: 100%;
+        padding-left: 0;
+        margin-top: 0;
+        text-align: center;
+    }
+
+    .titulo {
+        font-size: 28px;
+        text-align: center;
+    }
+
+    .descripcion {
+        font-size: 16px;
+        margin-top: 10px;
+    }
+
+    .btn-iniciar {
+        margin-top: 20px;
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+
+    .hero-image-wrapper {
+        width: 100%;
+        margin-top: 90px;
+        margin-right: 0;
+        margin-bottom: 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    .hero-image {
+        width: 90%;
+        max-width: 400px;
+        height: auto;
+    }
+}
+
+
+/* SECCION DE SERVICIOS QUE SE OFRECEN DONDE ESTAN LAS 3 CARSD */
 
 .services-section {
     padding: 80px;
-    background-color: #f4f4f4;
+    
 }
-
 .services-container {
     background-color:rgb(203, 203, 203); /* Fondo gris */
     max-width: 1000px; /* Ajusta el ancho para que no cubra todo el espacio */
@@ -221,7 +406,7 @@
 }
 
 .services-section {
-     font-family: 'Bebas Neue', sans-serif;
+    font-family: 'Bebas Neue', sans-serif;
     letter-spacing: 1px;
 }
 
@@ -249,10 +434,6 @@
     }
 }
 
-
-
-
-
 .button-container {
     margin-top: 40px;
     text-align: center;
@@ -277,8 +458,301 @@
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
+/* LINEA DECORATIVA DE SEPARACION*/
+.linea-decorativa-css {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px auto;
+    position: relative;
+    width: 700px;      /*  ancho total de la línea decorativa */
+    max-width: 80%;    /* opcional: responsivo */
+}
+
+.linea-decorativa-css::before,
+.linea-decorativa-css::after {
+    content: "";
+    flex: 1;
+    height: 2px;
+    background: #000;
+    margin: 0 15px;
+}
+
+.icono-central {
+    font-size: 24px;
+    color: #daa520; 
+    font-family: 'Georgia', serif;
+}
 
 
+/* SECCION DE CARDS DE CATEGORIA O CATALOGO*/
+
+.categorias-section {
+    padding: 60px 20px;
+    text-align: center;
+
+}
+
+.swiper-container {
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Tamaño reducido */
+.card-3d.small-card {
+    width: 200px;
+    height: 280px;
+}
+
+.card-3d {
+    width: 280px;
+    height: 360px;
+    perspective: 1000px;
+}
+
+.card-inner {
+    width: 100%;
+    height: 100%;
+    background-color: #333;
+    border-radius: 12px;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    transition: transform 0.3s ease;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.card-3d:hover .card-inner {
+    transition: transform 0.1s ease;
+}
+
+.card-bg {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.9;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.card-info {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    padding: 20px;
+    z-index: 2;
+}
+
+.card-info h3 {
+    margin: 0 0 10px;
+    font-size: 20px;
+}
+
+.card-info p {
+    margin: 0;
+    font-size: 14px;
+}
+
+@media (max-width: 900px) {
+    .categorias-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas en tablets */
+    }
+}
+
+@media (max-width: 600px) {
+    .categorias-grid {
+    grid-template-columns: 1fr; /* 1 columna en celulares */
+    }
+}
+
+/* Animación al hacer scroll desde la derecha */
+.fade-right {
+    opacity: 0;
+    transform: translateX(100px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-right.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.titulo-catalogo {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 1.5rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.categorias-subtitulo {
+    text-align: center;
+    margin-top: 40px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.categorias-subtitulo h3 {
+    font-size: 24px;
+    color: #333;
+    font-weight: 600;
+}
+
+/*SECCION DE Conectando a la Comunidad con el Conocimiento*/
+.comunidad-section {
+  background-color: #222; /* gris oscuro */
+    padding: 60px 20px;
+    text-align: center;
+    margin-top: 80px;
+}
+.container-comunidad {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+.comunidad-title {
+    font-size: 28px;
+    margin-bottom: 40px;
+    color: #ffffff;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+}
+
+.comunidad-cards {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+.comunidad-card {
+    background-color: #2f2f2f;
+    border-radius: 12px;
+    padding: 20px 30px;
+    text-align: center;
+    width: 250px;
+    transition: box-shadow 0.3s, transform 0.3s;
+    cursor: pointer;
+}
+
+.comunidad-card:hover {
+   box-shadow: 0 0 20px #00ff88aa; /* VERDE brillante */
+    transform: translateY(-5px);
+}
+
+.comunidad-icon {
+    font-size: 30px;
+    color: rgb(1, 132, 6);/
+    margin-bottom: 10px;
+}
+
+.comunidad-card h4 {
+    font-size: 18px;
+    color: #fff;
+}
+
+.comunidad-final {
+    font-size: 16px;
+    color: #ddd;
+    max-width: 800px;
+    margin: 0 auto;
+    l ine-height: 1.8;
+}
+
+/*SECCION DE VISITA NUESTRAS INSTALACIONES*/
+
+.imagen-efecto {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 12px;
+}
+.imagen-efecto:hover {
+    transform: scale(1.03);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+}
+
+/* Tamaños para que se alineen visualmente */
+.img-grande {
+    height: 400px;
+    object-fit: cover;
+    width: 100%;
+}
+.img-pequena {
+    height: 195px;
+    object-fit: cover;
+    width: 100%;
+}
 </style>
 
+<script>
+
+    //ANIMACION XYZ DE LAS CARD DE CATALOGO
+    document.querySelectorAll('.card-3d').forEach(card => {
+    const inner = card.querySelector('.card-inner');
+    const bg = card.querySelector('.card-bg');
+    const imageUrl = card.getAttribute('data-image');
+    bg.style.backgroundImage = `url('${imageUrl}')`;
+
+    card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        const rotateX = (-y / 20).toFixed(2);
+        const rotateY = (x / 20).toFixed(2);
+        inner.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+        inner.style.transform = `rotateX(0deg) rotateY(0deg)`;
+    });
+    });
+
+
+//ANIMACION DE LAS CARDS DEL CATALOGO TRANSICION A LA DERCHA
+
+    document.addEventListener("DOMContentLoaded", function () {
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+        if (entry.isIntersecting) {
+        entry.target.classList.add("active");
+        }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-right').forEach(el => {
+        observer.observe(el);
+    });
+    });
+
+//CARUSEL DE LAS CARDS DEL CATALOGO
+    document.addEventListener("DOMContentLoaded", function () {
+    const swiper = new Swiper('.categorias-swiper', {
+        slidesPerView: 6,
+        spaceBetween: 20,
+        loop: true,
+      loopedSlides: 12, // <- el doble que la cantidad original
+        autoplay: {
+        delay: 2000, // 2 segundos entre desplazamientos
+        disableOnInteraction: false
+        },
+      speed: 800, // velocidad de desplazamiento
+        breakpoints: {
+        1200: { slidesPerView: 6 },
+        992:  { slidesPerView: 4 },
+        768:  { slidesPerView: 3 },
+        576:  { slidesPerView: 2 },
+        0:    { slidesPerView: 1 },
+        }
+    });
+    });
+</script>
 @endsection
