@@ -27,4 +27,4 @@ Route::get('/user/loginUser', [UserController::class, 'Login'])->name('user.logi
 Route::get('/user/registerUser', [UserController::class, 'Registro'])->name('user.registerUser');
 Route::get('/user/galeria', [UserController::class, 'Galeria'])->name('user.galeria');
 
-
+Route::get('/admin/prestamos/historial', [AdminController::class, 'historialPrestamo'])->name('admin.prestamos.historial');

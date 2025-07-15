@@ -58,4 +58,11 @@ class AdminController extends Controller
     {
         return redirect('/login');  // Solo redirige al login
     }
+
+    // Historial de préstamos
+    public function historialPrestamo()
+    {
+        return view('admin.prestamosHistorial');
+    }
+
 }
