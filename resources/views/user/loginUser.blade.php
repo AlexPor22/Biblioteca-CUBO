@@ -146,7 +146,7 @@
   .cubo-image {
     width: 100%;
     height: 100%;
-    background-image: url('{{ asset("img/ElPrincipito.gif") }}');
+    background-image: url('{{asset("img/CADS-imgLibro.jpg") }}');
     background-size: cover;
     background-position: center;
     transition: transform 1s, background-image 1s ease-in-out;
@@ -243,9 +243,9 @@
   // Rotación automática de imágenes cada 5 segundos
   const imageElement = document.getElementById('animatedImage');
   const images = [
-    '{{ asset("img/ElPrincipito.gif") }}',
-    '{{ asset("img/biblioteca-virtual.jpg") }}',
-    '{{ asset("img/lectura-cubo.jpg") }}'
+    '{{ asset("img/CADS-imgLibro.jpg") }}',
+    '{{ asset("img/QDLM-imgLibro.jpg") }}',
+    '{{ asset("img/SDAAD-imgLibro.jpg") }}'
   ];
 
   let currentIndex = 0;

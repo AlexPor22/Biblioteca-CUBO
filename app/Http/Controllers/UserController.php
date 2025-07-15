@@ -17,9 +17,10 @@ class UserController extends Controller
         return view('user.registerUser');
     }
 
-    // Cerrar sesión (solo redirige por ahora)
-    public function cerrarSesion()
+     // Muestra el panel de Galeria
+    public function Galeria()
     {
-        return redirect('/login');  // Solo redirige al login
+        return view('user.galeria');
     }
+
 }

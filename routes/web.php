@@ -25,5 +25,6 @@ Route::post('/admin/cerrar-sesion', [AdminController::class, 'cerrarSesion'])->n
 
 Route::get('/user/loginUser', [UserController::class, 'Login'])->name('user.loginUser');
 Route::get('/user/registerUser', [UserController::class, 'Registro'])->name('user.registerUser');
+Route::get('/user/galeria', [UserController::class, 'Galeria'])->name('user.galeria');
 
 

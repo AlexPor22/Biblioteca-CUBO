@@ -20,7 +20,7 @@
             <li><a href="{{ route('inicio') }}">Inicio</a></li>
             <li><a href="{{ route('user.loginUser') }}">Iniciar Sesión</a></li>
             <li><a href="{{ route('user.registerUser') }}">Registrarse</a></li>
-            <li><a href="#">Galería</a></li>
+            <li><a href="{{ route('user.galeria') }}">Galería</a></li>
             <li><a href="#" class="btn-verde">Más Información</a></li>
         </ul>
     </nav>
