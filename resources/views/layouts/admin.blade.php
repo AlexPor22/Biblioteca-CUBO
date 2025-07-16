@@ -10,9 +10,14 @@
   <!-- SweetAlert2 -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   @vite(['resources/css/sidebar__admin.css', 'resources/js/sidebar__admin.js'])
+  @vite(['resources/css/globalsAdmin.css'])
+  @vite(['resources/css/animations.css'])
   @vite(['resources/css/index.css'])
   @vite(['resources/css/table.css'])
-  
+  @vite(['resources/css/search.css'])
+  @vite(['resources/css/recent__uploads.css'])
+  @vite(['resources/css/cards.css'])
+
 </head>
 <body>
 
@@ -43,7 +48,6 @@
         </button>
         <div class="submenu" id="usuariosSub">
           <a href="{{ route('admin.usuarios') }}">Gestión de Usuarios</a>
-          <a href="#">Roles y Permisos</a>
         </div>
       </div>
 

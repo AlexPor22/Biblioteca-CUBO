@@ -1,68 +1,6 @@
 @extends('layouts.admin')
 
 @section('content')
-<style>
-
-        @keyframes bounceIn {
-        0% {
-            opacity: 0;
-            transform: scale(0.3);
-        }
-        50% {
-            opacity: 1;
-            transform: scale(1.05);
-        }
-        70% {
-            transform: scale(0.9);
-        }
-        100% {
-            opacity: 1;
-            transform: scale(1);
-        }
-    }
-    .user-type {
-        padding: 0.4rem 1rem;
-        border-radius: 20px;
-        font-size: 0.8rem;
-        font-weight: 600;
-        transition: all 0.3s ease;
-        display: inline-block;
-    }
-    
-    .user-type:hover {
-        transform: scale(1.1);
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    }
-    
-    .type-admin {
-        background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
-        color: white;
-    }
-    
-    .type-empleado {
-        background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
-        color: white;
-    }
-    
-    .type-cliente {
-        background: linear-gradient(135deg, #6f42c1 0%, #563d7c 100%);
-        color: white;
-    }
-    
-    .action-buttons {
-        display: flex;
-        gap: 0.5rem;
-        align-items: center;
-    }
-    
-    .modal-header .btn-close {
-        background-color: red !important;
-        border-radius: 50%;
-        opacity: 1;
-        box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
-    }
-</style>
-
 <div class="user-management">
     <div class="container">
         <!-- Header panel -->
@@ -92,6 +30,16 @@
                     <div class="stat-label">Clientes</div>
                 </div>
             </div>
+        </div>
+
+        <!-- Barra de Búsqueda -->
+        <div class="search-bar">
+            <input type="text" class="search-input" placeholder="Buscar por nombre o correo...">
+            <button class="search-btn">
+                <svg fill="currentColor" viewBox="0 0 20 20" style="width: 20px; height: 20px;">
+                    <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
+                </svg>
+            </button>
         </div>
 
         <!-- Sección de contenido principal -->
@@ -195,10 +143,6 @@
                 </tbody>
             </table>
         </div>
-    </div>
-
-
-
     </div>
 </div>
 

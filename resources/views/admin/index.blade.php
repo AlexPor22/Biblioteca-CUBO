@@ -95,6 +95,7 @@
                 </a>
             </div>
 
+            <!-- Gestión de Libros -->
             <div class="dashboard-card">
                 <div class="card-icon books" style="color: #333;">
                     <svg fill="currentColor" viewBox="0 0 24 24" style="width: 40px; height: 40px;">
@@ -109,7 +110,7 @@
             </div>
         </div>
 
-        <!-- Botón de Acción Rápida -->
+        <!-- Botón de Acción Rápida 
         <div class="quick-actions">
             <button class="quick-action-btn" title="Acciones Rápidas">
                 <svg fill="currentColor" viewBox="0 0 20 20" style="width: 24px; height: 24px;">
@@ -117,6 +118,7 @@
                 </svg>
             </button>
         </div>
+        -->
     </div>
 </div>
 @endsection
