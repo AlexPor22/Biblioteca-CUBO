@@ -56,7 +56,7 @@ class AdminController extends Controller
     // Cerrar sesión (solo redirige por ahora)
     public function cerrarSesion()
     {
-        return redirect('/login');  // Solo redirige al login
+        return redirect('/');  // Solo redirige al inicio
     }
 
     // Historial de préstamos

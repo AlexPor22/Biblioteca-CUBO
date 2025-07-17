@@ -26,6 +26,78 @@
     margin: 0;
 }
 
+.filter-buttons {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.filter-btn {
+    padding: 0.5rem 1rem;
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    background: white;
+    color: #6c757d;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: #28a745;
+    color: white;
+    border-color: #28a745;
+    text-decoration: none;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 1.4s forwards;
+}
+
+.pagination a {
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    color: #0D0D0D;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(209, 213, 219, 0.3);
+    font-weight: 600;
+    position: relative;
+    overflow: hidden;
+}
+
+.pagination a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(34, 197, 94, 0.2), transparent);
+    transition: left 0.6s ease;
+}
+
+.pagination a:hover::before {
+    left: 100%;
+}
+
+.pagination a:hover,
+.pagination a.active {
+    background: linear-gradient(135deg, #22C55E, #16A34A);
+    color: #FFFFFF;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(34, 197, 94, 0.3);
+}
+
 .btn-add {
     background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
     color: white;
@@ -243,57 +315,62 @@
     color: #6B7280;
 }
 
-@media (max-width: 992px) {
-    .content-section {
-        padding: 1.5rem;
-        border-radius: 16px;
-    }
-
+@media (max-width: 1024px) {
     .section-header {
         flex-direction: column;
         align-items: flex-start;
         gap: 1rem;
     }
 
-    .section-title {
-        font-size: 1.3rem;
-        text-align: left;
+    .filter-buttons {
+        justify-content: flex-start;
+    }
+
+    .filter-btn {
+        font-size: 0.85rem;
+        padding: 0.4rem 0.8rem;
     }
 
     .btn-add {
-        padding: 0.6rem 1.2rem;
         font-size: 0.85rem;
-    }
-
-    .modern-table th,
-    .modern-table td {
-        padding: 1rem 1rem;
-        font-size: 0.85rem;
-    }
-
-    .btn-edit,
-    .btn-delete {
-        padding: 0.3rem 0.8rem;
-        font-size: 0.75rem;
-    }
-
-    .action-buttons {
-        flex-wrap: wrap;
-        justify-content: flex-start;
+        padding: 0.65rem 1.2rem;
     }
 }
 
 @media (max-width: 768px) {
-    .section-header {
-        align-items: stretch;
-        gap: 0.75rem;
+    .section-title {
+        font-size: 1.3rem;
+        text-align: center;
+    }
+
+    .filter-buttons {
+        justify-content: center;
+    }
+
+    .content-section {
+        padding: 0.75rem;
+    }
+
+    .modern-table th,
+    .modern-table td {
+        padding: 0.8rem 1rem;
+        font-size: 0.85rem;
+    }
+
+    .btn-edit,
+    .btn-delete,
+    .btn-renovar {
+        padding: 0.35rem 0.8rem;
+        font-size: 0.75rem;
     }
 
     .btn-add {
         width: 100%;
         justify-content: center;
     }
+}
 
+@media (max-width: 480px) {
     .modern-table thead {
         display: none;
     }
@@ -307,52 +384,38 @@
     }
 
     .modern-table tr {
-        margin-bottom: 1.5rem;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        margin-bottom: 1rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
         border-radius: 10px;
         overflow: hidden;
     }
 
     .modern-table td {
-        text-align: left;
-        padding: 0.8rem 1rem;
-        font-size: 0.9rem;
+        text-align: right;
+        padding-left: 50%;
         position: relative;
     }
 
     .modern-table td::before {
         content: attr(data-label);
+        position: absolute;
+        left: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
         font-weight: bold;
-        display: block;
-        color: #0D0D0D;
-        margin-bottom: 0.25rem;
-        font-size: 0.8rem;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        color: #6c757d;
     }
 
     .action-buttons {
-        justify-content: center;
-    }
-}
-
-@media (max-width: 576px) {
-    .content-section {
-        padding: 1rem;
-        border-radius: 12px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.4rem;
     }
 
-    .section-title {
-        font-size: 1.1rem;
-        text-align: center;
-    }
-
-    .btn-add {
-        font-size: 0.8rem;
-        padding: 0.5rem 1rem;
-    }
-
-    .btn-edit,
-    .btn-delete {
-        font-size: 0.7rem;
-        padding: 0.3rem 0.6rem;
+    .pagination a {
+        padding: 10px 12px;
+        font-size: 0.85rem;
     }
 }

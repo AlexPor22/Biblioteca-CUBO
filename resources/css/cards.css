@@ -168,3 +168,34 @@
     color: white;
     background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
 }
+
+/* Mejora en móviles ultra pequeños (<350px) */
+@media (max-width: 360px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+        padding: 0 0.5rem;
+    }
+
+    .dashboard-card {
+        padding: 1.5rem;
+    }
+
+    .card-title {
+        font-size: 1.1rem;
+    }
+
+    .card-description {
+        font-size: 0.95rem;
+    }
+
+    .card-button {
+        font-size: 0.9rem;
+        padding: 0.75rem 1.5rem;
+    }
+
+    .card-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 2rem;
+    }
+}

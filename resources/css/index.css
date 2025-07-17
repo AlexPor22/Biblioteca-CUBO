@@ -119,22 +119,60 @@
     box-shadow: 0 8px 30px rgba(40, 167, 69, 0.6);
 }
 
-@media (max-width: 768px) {
-    .welcome-title {
-        font-size: 2.5rem;
-    }
-
-    .dashboard-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-
-    .dashboard-card {
+/* === Media Queries para responsividad === */
+@media (max-width: 992px) {
+    .header {
         padding: 1.5rem;
+    }
+
+    .header-title {
+        font-size: 1.8rem;
+    }
+
+    .header-subtitle {
+        font-size: 0.95rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .header-title {
+        font-size: 1.6rem;
+        text-align: center;
+    }
+
+    .header-subtitle {
+        text-align: center;
+        font-size: 0.9rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stat-item {
+        padding: 0.8rem;
+    }
+
+    .stat-number {
+        font-size: 1.3rem;
+    }
+
+    .stat-label {
+        font-size: 0.75rem;
     }
 
     .quick-actions {
         bottom: 1rem;
         right: 1rem;
+    }
+
+    .quick-action-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
     }
 }

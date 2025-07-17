@@ -302,33 +302,6 @@
     animation: fadeInUp 0.8s ease-out forwards;
 }
 
-.filter-buttons {
-    display: flex;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.filter-btn {
-    padding: 0.5rem 1rem;
-    border: 2px solid #e9ecef;
-    border-radius: 10px;
-    background: white;
-    color: #6c757d;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    font-weight: 500;
-    font-size: 0.9rem;
-}
-
-.filter-btn:hover,
-.filter-btn.active {
-    background: #28a745;
-    color: white;
-    border-color: #28a745;
-    text-decoration: none;
-}
-
 .book-author {
     color: #6c757d;
     font-size: 0.85rem;
