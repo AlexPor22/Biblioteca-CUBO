@@ -1,0 +1,44 @@
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 1.4s forwards;
+}
+
+.pagination a {
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    color: #0D0D0D;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(209, 213, 219, 0.3);
+    font-weight: 600;
+    position: relative;
+    overflow: hidden;
+}
+
+.pagination a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(34, 197, 94, 0.2), transparent);
+    transition: left 0.6s ease;
+}
+
+.pagination a:hover::before {
+    left: 100%;
+}
+
+.pagination a:hover,
+.pagination a.active {
+    background: linear-gradient(135deg, #22C55E, #16A34A);
+    color: #FFFFFF;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(34, 197, 94, 0.3);
+}

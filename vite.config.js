@@ -7,6 +7,7 @@ export default defineConfig({
         laravel({
             input: [
                 "resources/css/globalsAdmin.css",
+                "resources/css/pagination.css",
                 "resources/css/animations.css",
                 "resources/css/index.css",
                 "resources/css/table.css",

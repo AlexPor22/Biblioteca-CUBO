@@ -10,6 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @vite(['resources/css/sidebar__admin.css', 'resources/js/sidebar__admin.js'])
     @vite(['resources/css/globalsAdmin.css'])
+    @vite(['resources/css/pagination.css'])
     @vite(['resources/css/animations.css'])
     @vite(['resources/css/index.css'])
     @vite(['resources/css/table.css'])

@@ -1,21 +1,21 @@
 .content-section {
     background: white;
     border-radius: 20px;
-    padding: 2rem;
+    padding: 1rem;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
     opacity: 0;
     animation: scaleIn 0.8s ease-out 0.4s forwards;
     position: relative;
     overflow: hidden;
-    margin-top: 1rem;
+    margin: 1rem 0;
 }
 
 .section-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 2rem;
-    padding-bottom: 1rem;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
     border-bottom: 2px solid #f2f2f2;
 }
 
@@ -81,7 +81,7 @@
 }
 
 .modern-table th {
-    padding: 1.25rem 1.5rem;
+    padding: 1rem;
     font-weight: 700;
     color: #0D0D0D;
     text-align: left;
@@ -197,8 +197,50 @@
     transition: left 0.5s ease;
 }
 
+.btn-renovar {
+    background: linear-gradient(135deg, #078531 0%, #10a524 100%);
+    border: none;
+    padding: 0.4rem 1rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: white;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-renovar:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(53, 220, 95, 0.4);
+    color: white;
+}
+
+.btn-renovar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
 .btn-delete:hover::before {
     left: 100%;
+}
+
+.book-title {
+    font-weight: 700;
+    color: #0D0D0D;
+    margin-bottom: 4px;
+}
+
+.book-author {
+    font-size: 12px;
+    color: #6B7280;
 }
 
 @media (max-width: 992px) {
