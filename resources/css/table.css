@@ -364,6 +364,9 @@
 }
 
 /* XXL - Pantallas grandes Full HD+ */
-@media (min-width: 1400px) {
+@media (max-width: 1400px) {
     /* Aumentar contenedores y columnas */
+    .pagination-controls {
+        display: none !important; /* Ocultar paginación en pantallas pequeñas */
+    }
 }
