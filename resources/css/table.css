@@ -175,7 +175,7 @@
 }
 
 .modern-table td {
-    padding: 1.25rem 1.5rem;
+    padding: 0.5rem;
     border: none;
     color: #495057;
     font-size: 0.95rem;
@@ -351,15 +351,6 @@
         padding: 0.5rem;
         font-weight: normal;
         font-size: 0.9rem;
-    }
-
-    .pagination {
-        display: none !important; /* Ocultar paginación en pantallas pequeñas */
-    }
-
-    .pagination a {
-        padding: 8px 12px;
-        font-size: 0.8rem;
     }
 }
 

@@ -51,7 +51,7 @@
           <a href="#" class="filter-btn" data-filter="">Reservados</a>
         </div>
         <!-- Paginación -->
-        <div class="pagination">
+        <div class="pagination pagination-controls">
           <a href="#">« Anterior</a>
           <a href="#" class="active">1</a>
           <a href="#">2</a>
@@ -64,7 +64,9 @@
           <tr>
             <th>ID</th>
             <th>Libro</th>
+            <!-- Categoría 
             <th>Categoría</th>
+            -->
             <th>ISBN</th>
             <th>Estado</th>
             <th>Fecha Registro</th>
@@ -78,9 +80,13 @@
               <div class="book-title">El Quijote de la Mancha</div>
               <div class="book-author">Miguel de Cervantes</div>
             </td>
+
+            <!-- Categoría 
             <td>
-              <span class="category-badge">Clásicos</span>
+              <span class="category-badge">Historia</span>
             </td>
+            -->
+            
             <td>978-84-376-0494-7</td>
             <td>
               <span class="status-badge status-disponible">
@@ -102,9 +108,7 @@
               <div class="book-title">El Quijote de la Mancha</div>
               <div class="book-author">Miguel de Cervantes</div>
             </td>
-            <td>
-              <span class="category-badge">Clásicos</span>
-            </td>
+            
             <td>978-84-376-0494-7</td>
             <td>
               <span class="status-badge status-prestado">
@@ -126,9 +130,7 @@
               <div class="book-title">Sapiens: De animales a dioses</div>
               <div class="book-author">Yuval Noah Harari</div>
             </td>
-            <td>
-              <span class="category-badge">Historia</span>
-            </td>
+            
             <td>978-0-06-231609-7</td>
             <td>
               <span class="status-badge status-reservado">
@@ -150,9 +152,7 @@
               <div class="book-title">El Quijote de la Mancha</div>
               <div class="book-author">Miguel de Cervantes</div>
             </td>
-            <td>
-              <span class="category-badge">Clásicos</span>
-            </td>
+            
             <td>978-84-376-0494-7</td>
             <td>
               <span class="status-badge status-disponible">
@@ -174,9 +174,7 @@
               <div class="book-title">El Quijote de la Mancha</div>
               <div class="book-author">Miguel de Cervantes</div>
             </td>
-            <td>
-              <span class="category-badge">Clásicos</span>
-            </td>
+            
             <td>978-84-376-0494-7</td>
             <td>
               <span class="status-badge status-prestado">
@@ -198,9 +196,7 @@
               <div class="book-title">Sapiens: De animales a dioses</div>
               <div class="book-author">Yuval Noah Harari</div>
             </td>
-            <td>
-              <span class="category-badge">Historia</span>
-            </td>
+            
             <td>978-0-06-231609-7</td>
             <td>
               <span class="status-badge status-reservado">
@@ -222,9 +218,7 @@
               <div class="book-title">El Quijote de la Mancha</div>
               <div class="book-author">Miguel de Cervantes</div>
             </td>
-            <td>
-              <span class="category-badge">Clásicos</span>
-            </td>
+            
             <td>978-84-376-0494-7</td>
             <td>
               <span class="status-badge status-disponible">
@@ -246,9 +240,7 @@
               <div class="book-title">El Quijote de la Mancha</div>
               <div class="book-author">Miguel de Cervantes</div>
             </td>
-            <td>
-              <span class="category-badge">Clásicos</span>
-            </td>
+            
             <td>978-84-376-0494-7</td>
             <td>
               <span class="status-badge status-prestado">
@@ -270,9 +262,7 @@
               <div class="book-title">Sapiens: De animales a dioses</div>
               <div class="book-author">Yuval Noah Harari</div>
             </td>
-            <td>
-              <span class="category-badge">Historia</span>
-            </td>
+            
             <td>978-0-06-231609-7</td>
             <td>
               <span class="status-badge status-reservado">
@@ -294,9 +284,7 @@
               <div class="book-title">Sapiens: De animales a dioses</div>
               <div class="book-author">Yuval Noah Harari</div>
             </td>
-            <td>
-              <span class="category-badge">Historia</span>
-            </td>
+            
             <td>978-0-06-231609-7</td>
             <td>
               <span class="status-badge status-reservado">

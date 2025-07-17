@@ -46,7 +46,7 @@
           <a href="#" class="filter-btn" data-filter="">Pendientes</a>
         </div>
         <!-- Paginación -->
-        <div class="pagination">
+        <div class="pagination pagination-controls">
           <a href="#">« Anterior</a>
           <a href="#" class="active">1</a>
           <a href="#">2</a>
