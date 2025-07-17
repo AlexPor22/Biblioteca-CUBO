@@ -315,107 +315,55 @@
     color: #6B7280;
 }
 
-@media (max-width: 1024px) {
-    .section-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1rem;
+/* EXTRA SMALL - Teléfonos pequeños */
+@media (max-width: 480px) {
+    /* Ajustes para móviles ultra compactos */
+}
+
+/* SMALL - Teléfonos */
+@media (max-width: 576px) {
+    /* Botones en bloque, ocultar columnas secundarias */
+}
+
+/* MEDIUM - Tablets */
+@media (max-width: 768px) {
+    /* Cambiar grid a columnas, ajustar tamaños de fuente */
+}
+
+/* LARGE - Tablets grandes y laptops pequeñas */
+@media (max-width: 992px) {
+    /* Reducción de paddings, menús colapsables */
+}
+
+/* EXTRA LARGE - Laptops normales */
+@media (max-width: 1200px) {
+
+    /* Ajustes finos en layouts y componentes */
+    .section-title {
+        font-size: 1.2rem;
     }
 
     .filter-buttons {
-        justify-content: flex-start;
+        gap: 0.2rem;
     }
 
     .filter-btn {
-        font-size: 0.85rem;
-        padding: 0.4rem 0.8rem;
+        padding: 0.5rem;
+        font-weight: normal;
+        font-size: 0.9rem;
     }
 
-    .btn-add {
-        font-size: 0.85rem;
-        padding: 0.65rem 1.2rem;
-    }
-}
-
-@media (max-width: 768px) {
-    .section-title {
-        font-size: 1.3rem;
-        text-align: center;
-    }
-
-    .filter-buttons {
-        justify-content: center;
-    }
-
-    .content-section {
-        padding: 0.75rem;
-    }
-
-    .modern-table th,
-    .modern-table td {
-        padding: 0.8rem 1rem;
-        font-size: 0.85rem;
-    }
-
-    .btn-edit,
-    .btn-delete,
-    .btn-renovar {
-        padding: 0.35rem 0.8rem;
-        font-size: 0.75rem;
-    }
-
-    .btn-add {
-        width: 100%;
-        justify-content: center;
-    }
-}
-
-@media (max-width: 480px) {
-    .modern-table thead {
-        display: none;
-    }
-
-    .modern-table,
-    .modern-table tbody,
-    .modern-table tr,
-    .modern-table td {
-        display: block;
-        width: 100%;
-    }
-
-    .modern-table tr {
-        margin-bottom: 1rem;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-        border-radius: 10px;
-        overflow: hidden;
-    }
-
-    .modern-table td {
-        text-align: right;
-        padding-left: 50%;
-        position: relative;
-    }
-
-    .modern-table td::before {
-        content: attr(data-label);
-        position: absolute;
-        left: 1rem;
-        top: 50%;
-        transform: translateY(-50%);
-        font-weight: bold;
-        text-transform: uppercase;
-        font-size: 0.75rem;
-        color: #6c757d;
-    }
-
-    .action-buttons {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0.4rem;
+    .pagination {
+        display: none !important; /* Ocultar paginación en pantallas pequeñas */
     }
 
     .pagination a {
-        padding: 10px 12px;
-        font-size: 0.85rem;
+        padding: 8px 12px;
+        font-size: 0.8rem;
     }
+}
+
+/* XXL - Pantallas grandes Full HD+ */
+@media (min-width: 1400px) {
+    /* Aumentar contenedores y columnas */
 }
