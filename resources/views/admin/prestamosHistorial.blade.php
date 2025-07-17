@@ -444,120 +444,124 @@
 
     }
     </style>
+    
 <div class="historial-page">
-    <div class="container">
-        <!-- Header panel -->
-        <div class="header">
-            <h1 class="header-title">Historial de Préstamos</h1>
-            <p class="header-subtitle">Administra y supervisa todos los préstamos de tu biblioteca digital.</p>
-        </div>
-
-        <!-- Sección de Estadísticas -->
-        <div class="stats-section">
-            <h3 style="color: #0D0D0D; font-weight: 700; margin-bottom: 1rem;">Estadísticas del Sistema</h3>
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <div class="stat-number">156</div>
-                    <div class="stat-label">Total Préstamos</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">23</div>
-                    <div class="stat-label">Préstamos Activos</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">8</div>
-                    <div class="stat-label">Préstamos Vencidos</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">125</div>
-                    <div class="stat-label">Préstamos Devueltos</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="filters">
-            <div class="filter-group">
-                <label>Estado</label>
-                <select>
-                    <option value="">Todos</option>
-                    <option value="activo">Activo</option>
-                    <option value="vencido">Vencido</option>
-                    <option value="devuelto">Devuelto</option>
-                    <option value="renovado">Renovado</option>
-                </select>
-            </div>
-            <div class="filter-group">
-                <label>Usuario</label>
-                <input type="text" placeholder="Buscar usuario...">
-            </div>
-            <div class="filter-group">
-                <label>Libro</label>
-                <input type="text" placeholder="Buscar libro...">
-            </div>
-            <div class="filter-group">
-                <label>Fecha desde</label>
-                <input type="date">
-            </div>
-            <div class="filter-group">
-                <label>Fecha hasta</label>
-                <input type="date">
-            </div>
-            <div class="filter-group">
-                <button class="btn btn-primary">Aplicar Filtros</button>
-            </div>
-        </div>
-
-        <div class="table-container">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Usuario</th>
-                        <th>Libro</th>
-                        <th>Fecha Préstamo</th>
-                        <th>Fecha Devolución</th>
-                        <th>Estado</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>001</td>
-                        <td>
-                            <div class="user-info">
-                                <div class="user-avatar">MA</div>
-                                <div>
-                                    <div>María Alejandra</div>
-                                    <div style="font-size: 12px; color: #6B7280;">maria@email.com</div>
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="book-info">
-                                <div class="book-title">Cien años de soledad</div>
-                                <div class="book-author">Gabriel García Márquez</div>
-                            </div>
-                        </td>
-                        <td>15/01/2024</td>
-                        <td>29/01/2024</td>
-                        <td><span class="status activo">Activo</span></td>
-                        <td>
-                            <a href="#" class="btn btn-warning btn-sm">Renovar</a>
-                            <a href="#" class="btn btn-primary btn-sm">Devolver</a>
-                            <a href="#" class="btn btn-danger btn-sm">Eliminar</a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div class="pagination">
-            <a href="#">« Anterior</a>
-            <a href="#" class="active">1</a>
-            <a href="#">2</a>
-            <a href="#">3</a>
-            <a href="#">Siguiente »</a>
-        </div>
+  <div class="container">
+    <!-- Header panel -->
+    <div class="header">
+      <h1 class="header-title">Historial de Préstamos</h1>
+      <p class="header-subtitle">Administra y supervisa todos los préstamos de tu biblioteca digital.</p>
     </div>
+
+    <!-- Sección de Estadísticas -->
+    <div class="stats-section">
+      <h3 style="color: #0D0D0D; font-weight: 700; margin-bottom: 1rem;">Estadísticas del Sistema</h3>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number">156</div>
+          <div class="stat-label">Total Préstamos</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">23</div>
+          <div class="stat-label">Préstamos Activos</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">8</div>
+          <div class="stat-label">Préstamos Vencidos</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">125</div>
+          <div class="stat-label">Préstamos Devueltos</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Filtros y Tabla de Préstamos -->
+    <div class="filters">
+      <div class="filter-group">
+        <label>Estado</label>
+        <select>
+          <option value="">Todos</option>
+          <option value="activo">Activo</option>
+          <option value="vencido">Vencido</option>
+          <option value="devuelto">Devuelto</option>
+          <option value="renovado">Renovado</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label>Usuario</label>
+        <input type="text" placeholder="Buscar usuario...">
+      </div>
+      <div class="filter-group">
+        <label>Libro</label>
+        <input type="text" placeholder="Buscar libro...">
+      </div>
+      <div class="filter-group">
+        <label>Fecha desde</label>
+        <input type="date">
+      </div>
+      <div class="filter-group">
+        <label>Fecha hasta</label>
+        <input type="date">
+      </div>
+      <div class="filter-group">
+        <button class="btn btn-primary">Aplicar Filtros</button>
+      </div>
+    </div>
+
+    <!-- Tabla de Préstamos -->
+    <div class="table-container">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Usuario</th>
+            <th>Libro</th>
+            <th>Fecha Préstamo</th>
+            <th>Fecha Devolución</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>001</td>
+            <td>
+              <div class="user-info">
+                <div class="user-avatar">MA</div>
+                <div>
+                  <div>María Alejandra</div>
+                  <div style="font-size: 12px; color: #6B7280;">maria@email.com</div>
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="book-info">
+                <div class="book-title">Cien años de soledad</div>
+                <div class="book-author">Gabriel García Márquez</div>
+              </div>
+            </td>
+            <td>15/01/2024</td>
+            <td>29/01/2024</td>
+            <td><span class="status activo">Activo</span></td>
+            <td>
+              <a href="#" class="btn btn-warning btn-sm">Renovar</a>
+              <a href="#" class="btn btn-primary btn-sm">Devolver</a>
+              <a href="#" class="btn btn-danger btn-sm">Eliminar</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Paginación -->
+    <div class="pagination">
+      <a href="#">« Anterior</a>
+      <a href="#" class="active">1</a>
+      <a href="#">2</a>
+      <a href="#">3</a>
+      <a href="#">Siguiente »</a>
+    </div>
+  </div>
 </div>
 @endsection
