@@ -47,11 +47,11 @@
         </div>
         <!-- Paginación -->
         <div class="pagination pagination-controls">
-          <a href="#">« Anterior</a>
+          <a href="#">Anterior</a>
           <a href="#" class="active">1</a>
           <a href="#">2</a>
           <a href="#">3</a>
-          <a href="#">Siguiente »</a>
+          <a href="#">Siguiente</a>
         </div>
         <a class="btn-add" data-bs-toggle="modal" data-bs-target="#modalAgregarCategoria">Nueva Categoría</a>
       </div>
@@ -270,20 +270,9 @@ function agregarCategoria(e) {
     <td>${estadoHTML}</td>
     <td>
       <div class="action-buttons">
-        <a href="#" class="btn-edit">
-            <svg width="12" height="12" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708L5.707 14.001 2 14.866l.855-3.707L12.146.146zm.353.354-1.5 15 3.5l1.5-1.5L12.5.5zm-2.5 2.5L2.5 10.5l-.457 2.043L4.086 12l7.5-7.5L9.999 3z"/>
-            </svg>
-            Editar
-        </a>
-        <a href="#" class="btn-delete">
-            <svg width="12" height="12" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-            </svg>
-            Eliminar
-        </a>
-      </div>
+                <a href="#" class="btn-edit">Editar</a>
+                <a href="#" class="btn-delete">Eliminar</a>
+              </div>
     </td>`;
 
   tabla.appendChild(nuevaFila);

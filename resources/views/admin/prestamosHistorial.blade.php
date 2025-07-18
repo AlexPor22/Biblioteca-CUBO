@@ -53,11 +53,11 @@
         </div>
         <!-- Paginación -->
         <div class="pagination pagination-controls">
-          <a href="#">« Anterior</a>
+          <a href="#">Anterior</a>
           <a href="#" class="active">1</a>
           <a href="#">2</a>
           <a href="#">3</a>
-          <a href="#">Siguiente »</a>
+          <a href="#">Siguiente</a>
         </div>
       </div>
       <table class="modern-table">

@@ -46,7 +46,7 @@
         <!-- Filtros -->
         <div class="filter-buttons">
           <a href="#" class="filter-btn active" data-filter="all">Todos</a>
-          <a href="#" class="filter-btn" data-filter="">Administradores</a>
+          <a href="#" class="filter-btn" data-filter="">Admin</a>
           <a href="#" class="filter-btn" data-filter="">Empleados</a>
           <a href="#" class="filter-btn" data-filter="">Clientes</a>
         </div>
@@ -395,19 +395,9 @@ function guardarUsuario(e) {
       <td><span class="user-type type-${rol}">${tipo}</span></td>
       <td>
         <div class="action-buttons">
-            <a href="#" class="btn-edit">
-                <svg class="icon" fill="currentColor" viewBox="0 0 20 20" style="width: 14px; height: 14px; margin-right: 4px;">
-                    <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.83-2.828z"></path>
-                </svg>
-                Editar
-            </a>
-            <a href="#" class="btn-delete">
-                <svg class="icon" fill="currentColor" viewBox="0 0 20 20" style="width: 14px; height: 14px; margin-right: 4px;">
-                    <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-clip-rule="evenodd"></path>
-                </svg>
-                Eliminar
-            </a>
-        </div>
+                <a href="#" class="btn-edit">Editar</a>
+                <a href="#" class="btn-delete">Eliminar</a>
+              </div>
       </td>`;
     tabla.appendChild(nuevaFila);
     Swal.fire({ icon: 'success', title: 'Usuario agregado correctamente', showConfirmButton: false, timer: 1500 });
