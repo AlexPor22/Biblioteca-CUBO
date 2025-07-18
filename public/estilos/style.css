@@ -208,21 +208,79 @@ body {
     align-items: center;
     gap: 20px; /* Separación entre los iconos y el logo */
 }
-
 .social-icons {
     display: flex;
-    gap: 15px;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
 }
 
+.social-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #1e1e1e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+}
+
+/* Iconos base */
 .social-icon i {
-    font-size: 30px; /* Tamaño de los iconos */
-    color: white;
-    transition: transform 0.3s ease;
+    font-size: 28px;
+    transition: all 0.3s ease;
+}
+
+/* Facebook */
+.social-icon[href*="facebook"] i {
+    color: #1877f2;
+}
+
+/* Instagram con degradado */
+.social-icon[href*="instagram"] i {
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Estilo TikTok con efecto de contorno neon fucsia y cyan */
+.social-icon[href*="tiktok"] i {
+    color: #000;
+    position: relative;
+    font-size: 28px;
+    text-shadow:
+        -1px -1px 0 #25F4EE,  /* Cyan arriba izquierda */
+         1px 1px 0 #F91880;   /* Fucsia abajo derecha */
+    transition: all 0.3s ease;
+}
+
+/* Hover con más glow */
+.social-icon[href*="tiktok"]:hover i {
+    text-shadow:
+        -1px -1px 6px #25F4EE,
+         1px 1px 6px #F91880;
+    transform: scale(1.15);
+}
+
+/* X (Twitter) con color celeste */
+.social-icon[href*="x.com"] i {
+    color: #1DA1F2;
+}
+
+/* Efecto al pasar el mouse */
+.social-icon:hover {
+    transform: scale(1.15);
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.2);
 }
 
 .social-icon:hover i {
-    transform: scale(1.1); /* Efecto de escala al pasar el ratón */
+    text-shadow: 0 0 6px currentColor;
 }
+
+
 
 .footer-logo img {
     max-width: 150px;

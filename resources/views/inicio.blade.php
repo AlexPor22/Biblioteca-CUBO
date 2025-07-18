@@ -71,6 +71,7 @@
     </div>
 </div>
 
+
 <!-- Sección de LINEA DECORATIVA DE CATALAGO -->
 <div class="linea-decorativa-css">
 <span class="icono-central">&#x269C;</span>
@@ -109,6 +110,52 @@
 </div>
 </div>
 
+<!-- Sección de LINEA DECORATIVA DE AUTORES -->
+<div class="linea2-decorativa-css">
+<span class="icono2-central">&#x269C;</span>
+</div>
+<!-- Título antes de las categorías -->
+<h2 class="text-center my-4 titulo-catalogo">LEE A TUS AUTORES FAVORITOS Y CONOCE A MUCHOS MAS</h2>
+
+<!-- IMAGNES AUTOR -->
+<article class="gallery">
+        <img src="https://literatinn.com/wp-content/uploads/2024/03/Pablo-Neruda.jpg" alt="deadpool & marvel">
+        <img src="https://www.pixelstalk.net/wp-content/uploads/2016/05/X-Men-Apocalypse-Wallpapers-HD.jpg" alt="deadpool & marvel">
+        <img src="https://www.pixelstalk.net/wp-content/uploads/images6/Deadpool-Pictures-Free-Download-1.jpg" alt="deadpool & marvel">
+        <img src="https://www.pixelstalk.net/wp-content/uploads/images6/Deadpool-Wide-Screen-Background.jpg" alt="deadpool & marvel">
+        <img src="https://www.pixelstalk.net/wp-content/uploads/images6/Cool-Deadpool-Wallpaper.jpg" alt="deadpool & marvel">
+        <img src="https://www.pixelstalk.net/wp-content/uploads/2016/05/Xmen-Wallpaper.jpg" alt="deadpool & marvel">
+        <img src="https://librografias.com/img/biografias/gabriel-garcia-marquez.jpg" alt="deadpool & marvel">
+        <img src="https://www.pixelstalk.net/wp-content/uploads/2016/05/Free-XMen-Full-HD-Wallpaper.jpg" alt="deadpool & marvel">
+    </article>
+
+
+  
+<!-- Sección COLECCION NACIONAL -->  
+<div class="container py-5">
+    <h2 class="text-center mb-4 display-5 fw-bold">Disfruta de nuestra coleccion Nacional</h2>
+
+    <div class="row justify-content-center">
+        @foreach ([
+            ['titulo' => 'Coleccion Nacional', 'subtitulo' => 'Autores Salvadoreños', 'img' => 'https://i.pinimg.com/736x/29/f1/0d/29f10db6ac5c9e08930e1dc457994c8c.jpg'],
+            ['titulo' => 'Coleccion General', 'subtitulo' => 'Recursos biblograficos de todas las areas', 'img' => 'https://i.pinimg.com/originals/42/56/34/4256345c02a2df67924e0d05ed392533.jpg'],
+            ['titulo' => 'Coleccion Historica y Arquelogica', 'subtitulo' => 'Recuros de nuestra historia y su arqueologia', 'img' => 'https://rutasturisticases901701391.wordpress.com/wp-content/uploads/2017/11/ruta-arqueologica-e1511240327611.jpg?w=886&h=328&crop=1']
+        ] as $card)
+            <div class="col-md-4 mb-4 d-flex justify-content-center">
+                <div class="custom-card">
+                    <img src="{{ $card['img'] }}" alt="Imagen" class="card-img">
+                    <div class="card-overlay">
+                        <h4>{{ $card['titulo'] }}</h4>
+                        <p>{{ $card['subtitulo'] }}</p>
+                    </div>
+                </div>
+            </div>
+        @endforeach
+    </div>
+</div>
+
+
+
 <!-- Sección de COMUNIDAD -->
 <section class="comunidad-section text-white">
 <div class="container-comunidad">
@@ -135,8 +182,9 @@
 </div>
 </section>
 
+
 <!-- Sección de VISITANOS -->
-<section style="background-color:rgb(206, 206, 206); padding: 50px 20px;">
+<section style="background-color:rgba(163, 163, 163, 1); padding: 50px 20px;">
 <div class="container">
     <h2 class="text-center mb-5" style="font-weight: bold; font-family: 'Poppins', sans-serif;">Visítanos en nuestras instalaciones</h2>
     <div class="row justify-content-center align-items-center">
@@ -167,6 +215,11 @@
 </div>
 </section>
 
+<!-- Botón para volver arriba -->
+<a href="#" class="btn-ir-arriba" title="Volver arriba">
+    <i class="fas fa-chevron-up"></i>
+</a>
+
 <style>
 
 body {
@@ -174,6 +227,8 @@ body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+    background-color: rgba(163, 163, 163, 1);
+    
 }
 
 /* DESCRIPCION DE LA WEB Y ANIMACION DE IMAGEN FLOTANTE */
@@ -458,7 +513,7 @@ body {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* LINEA DECORATIVA DE SEPARACION*/
+/* LINEA DECORATIVA2 DE SEPARACION*/
 .linea-decorativa-css {
     display: flex;
     align-items: center;
@@ -483,6 +538,8 @@ body {
     color: #daa520; 
     font-family: 'Georgia', serif;
 }
+
+
 
 
 /* SECCION DE CARDS DE CATEGORIA O CATALOGO*/
@@ -608,6 +665,163 @@ body {
     font-weight: 600;
 }
 
+
+
+/* LINEA2 DECORATIVA DE SEPARACION*/
+.linea2-decorativa-css {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 80px auto 30px auto; /* más espacio arriba, menos abajo */
+    position: relative;
+    width: 700px;      /*  ancho total de la línea decorativa */
+    max-width: 80%;    /* opcional: responsivo */
+}
+
+.linea2-decorativa-css::before,
+.linea2-decorativa-css::after {
+    content: "";
+    flex: 1;
+    height: 2px;
+    background: #000;
+    margin: 0 15px;
+}
+
+.icono2-central {
+    font-size: 24px;
+    color: #daa520; 
+    font-family: 'Georgia', serif;
+}
+
+
+/*SECCION DE AUTORES Y MUCHOS MAS */
+.gallery {
+    --size: 100px;
+    display: grid;
+    grid-template-columns: repeat(6, var(--size));
+    grid-auto-rows: var(--size);
+    margin-bottom: var(--size);
+    place-items: start center;
+    gap: 5px;
+    width: max-content;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    margin-bottom: 200px;
+}
+
+.gallery:has(:hover) img:not(:hover),
+.gallery:has(:focus) img:not(:focus) {
+    filter: brightness(0.5) contrast(0.5);
+}
+
+.gallery img {
+    object-fit: cover;
+    width: calc(var(--size) * 2);
+    height: calc(var(--size) * 2);
+    clip-path: path("M90,10 C100,0 100,0 110,10 190,90 190,90 190,90 200,100 200,100 190,110 190,110 110,190 110,190 100,200 100,200 90,190 90,190 10,110 10,110 0,100 0,100 10,90Z");
+    transition: clip-path 0.25s, filter 0.75s;
+    grid-column: auto / span 2;
+    border-radius: 5px;
+}
+
+.gallery img:nth-child(5n-1) {
+    grid-column: 2 / span 2;
+}
+
+.gallery img:hover,
+.gallery img:focus {
+    clip-path: path("M0,0 C0,0 200,0 200,0 200,0 200,100 200,100 200,100 200,200 200,200 200,200 100,200 100,200 100,200 100,200 0,200 0,200 0,100 0,100 0,100 0,100 0,100Z");
+    z-index: 1;
+    transition: clip-path 0.25s, filter 0.25s;
+}
+
+.gallery img:focus {
+    outline: 1px dashed black;
+    outline-offset: -5px;
+}
+
+@media (max-width: 1024px) {
+  .gallery {
+    grid-template-columns: repeat(4, var(--size));
+  }
+}
+
+@media (max-width: 768px) {
+  .gallery {
+    grid-template-columns: repeat(3, var(--size));
+  }
+}
+
+@media (max-width: 576px) {
+  .gallery {
+    grid-template-columns: repeat(2, var(--size));
+  }
+}
+
+
+
+  .custom-card {
+        position: relative;
+        display: inline-block;
+        width: 390px;
+        height: 450px;
+        overflow: hidden;
+        border: 1px solid #ccc;
+    }
+
+    .card-img {
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
+
+    .card-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 10px;
+        transition: all 0.4s ease-in-out;
+    }
+
+    .custom-card:hover .card-overlay {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .custom-card h4 {
+        font-size: 20px;
+        margin-bottom: 5px;
+    }
+
+    .custom-card p {
+        font-size: 14px;
+        margin: 0;
+    }
+
+    @media (max-width: 768px) {
+        .custom-card {
+            width: 100%;
+            height: auto;
+        }
+
+        .card-img {
+            height: auto;
+        }
+    }
+
+
+
+
 /*SECCION DE Conectando a la Comunidad con el Conocimiento*/
 .comunidad-section {
   background-color: #222; /* gris oscuro */
@@ -691,6 +905,37 @@ body {
     object-fit: cover;
     width: 100%;
 }
+
+
+/* Botón flotante de volver arriba */
+.btn-ir-arriba {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 999;
+    background-color: #28a745;
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    font-size: 24px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    opacity: 0.7;
+}
+
+.btn-ir-arriba:hover {
+    background-color: #218838;
+    transform: scale(1.1);
+    opacity: 1;
+}
+
+
+
 </style>
 
 <script>
@@ -754,5 +999,19 @@ body {
         }
     });
     });
+
+    //EFCTO DE BOTON PARA VOLER ARRIBA
+
+    document.querySelector('.btn-ir-arriba').addEventListener('click', function(e) {
+    e.preventDefault();
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+
+
+
+
 </script>
 @endsection
