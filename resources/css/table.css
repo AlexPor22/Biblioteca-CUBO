@@ -1,21 +1,21 @@
 .content-section {
     background: white;
     border-radius: 20px;
-    padding: 2rem;
+    padding: 1rem;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
     opacity: 0;
     animation: scaleIn 0.8s ease-out 0.4s forwards;
     position: relative;
     overflow: hidden;
-    margin-top: 1rem;
+    margin: 1rem 0;
 }
 
 .section-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 2rem;
-    padding-bottom: 1rem;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
     border-bottom: 2px solid #f2f2f2;
 }
 
@@ -24,6 +24,78 @@
     font-weight: 700;
     color: #0D0D0D;
     margin: 0;
+}
+
+.filter-buttons {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.filter-btn {
+    padding: 0.5rem 1rem;
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    background: white;
+    color: #6c757d;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: #28a745;
+    color: white;
+    border-color: #28a745;
+    text-decoration: none;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 1.4s forwards;
+}
+
+.pagination a {
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    color: #0D0D0D;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(209, 213, 219, 0.3);
+    font-weight: 600;
+    position: relative;
+    overflow: hidden;
+}
+
+.pagination a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(34, 197, 94, 0.2), transparent);
+    transition: left 0.6s ease;
+}
+
+.pagination a:hover::before {
+    left: 100%;
+}
+
+.pagination a:hover,
+.pagination a.active {
+    background: linear-gradient(135deg, #22C55E, #16A34A);
+    color: #FFFFFF;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(34, 197, 94, 0.3);
 }
 
 .btn-add {
@@ -81,7 +153,7 @@
 }
 
 .modern-table th {
-    padding: 1.25rem 1.5rem;
+    padding: 1rem;
     font-weight: 700;
     color: #0D0D0D;
     text-align: left;
@@ -103,7 +175,7 @@
 }
 
 .modern-table td {
-    padding: 1.25rem 1.5rem;
+    padding: 0.5rem;
     border: none;
     color: #495057;
     font-size: 0.95rem;
@@ -123,6 +195,47 @@
 
 .modern-table tbody tr:last-child td {
     border-bottom: none;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.btn-view {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+    border: none;
+    padding: 0.4rem 1rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: white;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-view:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
+    color: white;
+}
+
+.btn-view::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn-view:hover::before {
+    left: 100%;
 }
 
 .btn-edit {
@@ -191,6 +304,95 @@
     transition: left 0.5s ease;
 }
 
+.btn-renovar {
+    background: linear-gradient(135deg, #078531 0%, #10a524 100%);
+    border: none;
+    padding: 0.4rem 1rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: white;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-renovar:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(53, 220, 95, 0.4);
+    color: white;
+}
+
+.btn-renovar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
 .btn-delete:hover::before {
     left: 100%;
+}
+
+.book-title {
+    font-weight: 700;
+    color: #0D0D0D;
+    margin-bottom: 4px;
+}
+
+.book-author {
+    font-size: 12px;
+    color: #6B7280;
+}
+
+/* EXTRA SMALL - Teléfonos pequeños */
+@media (max-width: 480px) {
+    /* Ajustes para móviles ultra compactos */
+}
+
+/* SMALL - Teléfonos */
+@media (max-width: 576px) {
+    /* Botones en bloque, ocultar columnas secundarias */
+}
+
+/* MEDIUM - Tablets */
+@media (max-width: 768px) {
+    /* Cambiar grid a columnas, ajustar tamaños de fuente */
+}
+
+/* LARGE - Tablets grandes y laptops pequeñas */
+@media (max-width: 992px) {
+    /* Reducción de paddings, menús colapsables */
+}
+
+/* EXTRA LARGE - Laptops normales */
+@media (max-width: 1200px) {
+
+    /* Ajustes finos en layouts y componentes */
+    .section-title {
+        font-size: 1.2rem;
+    }
+
+    .filter-buttons {
+        gap: 0.2rem;
+    }
+
+    .filter-btn {
+        padding: 0.5rem;
+        font-weight: normal;
+        font-size: 0.9rem;
+    }
+}
+
+/* XXL - Pantallas grandes Full HD+ */
+@media (max-width: 1400px) {
+    /* Aumentar contenedores y columnas */
+    .pagination-controls {
+        display: none !important; /* Ocultar paginación en pantallas pequeñas */
+    }
 }

@@ -1,339 +1,143 @@
 @extends('layouts.admin')
 
 @section('content')
-<style>
-    .categories-page {
-        background: linear-gradient(135deg, #f8f9fa 0%, #F2F2F2 100%);
-        min-height: 100vh;
-        opacity: 0;
-        animation: fadeInUp 0.8s ease-out forwards;
-    }
-    
-    @keyframes fadeInUp {
-        0% {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        100% {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-    
-    @keyframes slideInLeft {
-        0% {
-            opacity: 0;
-            transform: translateX(-50px);
-        }
-        100% {
-            opacity: 1;
-            transform: translateX(0);
-        }
-    }
-    
-    @keyframes scaleIn {
-        0% {
-            opacity: 0;
-            transform: scale(0.8);
-        }
-        100% {
-            opacity: 1;
-            transform: scale(1);
-        }
-    }
-      
-    .section-title {
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: #0D0D0D;
-        margin: 0;
-    }
-    
-    .btn-add {
-        background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
-        color: white;
-        border: none;
-        padding: 0.75rem 1.5rem;
-        border-radius: 12px;
-        font-weight: 600;
-        font-size: 0.9rem;
-        text-decoration: none;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        transition: all 0.3s ease;
-        position: relative;
-        overflow: hidden;
-        box-shadow: 0 5px 20px rgba(40, 167, 69, 0.3);
-    }
-    
-    .btn-add::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-        transition: left 0.6s ease;
-    }
-    
-    .btn-add:hover::before {
-        left: 100%;
-    }
-    
-    .btn-add:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 30px rgba(40, 167, 69, 0.4);
-        color: white;
-        text-decoration: none;
-    }
-    
-    .id-badge {
-        background: linear-gradient(135deg, #0D0D0D 0%, #2c2c2c 100%);
-        color: white;
-        padding: 0.4rem 0.8rem;
-        border-radius: 8px;
-        font-weight: 600;
-        font-size: 0.8rem;
-        display: inline-block;
-        min-width: 40px;
-        text-align: center;
-    }
-    
-    .category-name {
-        font-weight: 600;
-        color: #0D0D0D;
-        font-size: 1rem;
-    }
-    
-    .action-buttons {
-        display: flex;
-        gap: 0.5rem;
-        align-items: center;
-    }
-    
-    
-
-    .empty-state {
-        text-align: center;
-        padding: 3rem 2rem;
-        color: #6c757d;
-        opacity: 0;
-        animation: fadeInUp 0.8s ease-out 1s forwards;
-    }
-    
-    .empty-icon {
-        font-size: 4rem;
-        color: #dee2e6;
-        margin-bottom: 1rem;
-    }
-    
-    .empty-message {
-        font-size: 1.2rem;
-        font-weight: 500;
-        margin-bottom: 0.5rem;
-    }
-
-    .modal-header .btn-close {
-        background-color: red !important;
-        border-radius: 50%;
-        opacity: 1;
-        box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
-    }
-    
-    .empty-description {
-        font-size: 0.9rem;
-        color: #adb5bd;
-    }
-    
-    @media (max-width: 768px) {
-        
-        .section-header {
-            flex-direction: column;
-            gap: 1rem;
-            align-items: flex-start;
-        }
-        
-        .modern-table {
-            font-size: 0.85rem;
-        }
-        
-        .modern-table th,
-        .modern-table td {
-            padding: 1rem;
-        }
-        
-        .action-buttons {
-            flex-direction: column;
-            gap: 0.25rem;
-        }
-        
-        .btn-edit,
-        .btn-delete {
-            width: 100%;
-            justify-content: center;
-        }
-    }
-
-    @keyframes fadeInDown {
-        from { opacity: 0; transform: translateY(-30px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-
-</style>
-
 <div class="categories-page">
-    <div class="container">
-        
-        <!-- Header panel -->
-        <div class="header">
-            <h1 class="header-title">Categorías de Libros</h1>
-            <p class="header-subtitle">Organiza y administra las categorías de tu biblioteca digital.</p>
-        </div>
-
-        <!-- Sección de Estadísticas -->
-        <div class="stats-section">
-            <h3 style="color: #0D0D0D; font-weight: 700; margin-bottom: 1rem;">Estadísticas del Sistema</h3>
-            <div class="stats-grid">
-                <div class="stat-item">
-                   <div class="stat-number">5</div>
-                   <div class="stat-label">Total Categorías</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">3</div>
-                    <div class="stat-label">Categorías Activas</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">24</div>
-                    <div class="stat-label">Libros Categorizados</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Sección de contenido principal -->
-        <div class="content-section">
-            <div class="section-header">
-                <h3 class="section-title">Gestión de Categorías</h3>
-                <a href="#" class="btn-add" data-bs-toggle="modal" data-bs-target="#modalAgregarCategoria">
-                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-                    </svg>
-                    Nueva Categoría
-                </a>
-            </div>
-
-            <table class="modern-table">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nombre de Categoría</th>
-                        <th>Libros</th>
-                        <th>Estado</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><span class="id-badg">1</span></td>
-                        <td><span class="category-name">Ficción</span></td>
-                        <td>12 libros</td>
-                        <td>
-                            <span style="color: #28a745; font-weight: 600;">
-                                <svg width="12" height="12" fill="currentColor" viewBox="0 0 16 16" style="margin-right: 0.25rem;">
-                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                                    <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.061L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
-                                </svg>
-                                Activa
-                            </span>
-                        </td>
-                        <td>
-                            <div class="action-buttons">
-                                <a href="#" class="btn-edit">
-                                    <svg width="12" height="12" fill="currentColor" viewBox="0 0 16 16">
-                                        <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708L5.707 14.001 2 14.866l.855-3.707L12.146.146zm.353.354-1.5 1.5L12.5 3.5l1.5-1.5L12.5.5zm-2.5 2.5L2.5 10.5l-.457 2.043L4.086 12l7.5-7.5L9.999 3z"/>
-                                    </svg>
-                                    Editar
-                                </a>
-                                <a href="#" class="btn-delete">
-                                    <svg width="12" height="12" fill="currentColor" viewBox="0 0 16 16">
-                                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                                        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-                                    </svg>
-                                    Eliminar
-                                </a>
-                            </div>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td><span class="id-badg">2</span></td>
-                        <td><span class="category-name">Ciencia Ficción</span></td>
-                        <td>8 libros</td>
-                        <td>
-                            <span style="color: #28a745; font-weight: 600;">
-                                <svg width="12" height="12" fill="currentColor" viewBox="0 0 16 16" style="margin-right: 0.25rem;">
-                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                                    <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.061L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
-                                </svg>
-                                Activa
-                            </span>
-                        </td>
-                        <td>
-                            <div class="action-buttons">
-                                <a href="#" class="btn-edit">
-                                    <svg width="12" height="12" fill="currentColor" viewBox="0 0 16 16">
-                                        <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708L5.707 14.001 2 14.866l.855-3.707L12.146.146zm.353.354-1.5 1.5L12.5 3.5l1.5-1.5L12.5.5zm-2.5 2.5L2.5 10.5l-.457 2.043L4.086 12l7.5-7.5L9.999 3z"/>
-                                    </svg>
-                                    Editar
-                                </a>
-                                <a href="#" class="btn-delete">
-                                    <svg width="12" height="12" fill="currentColor" viewBox="0 0 16 16">
-                                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                                        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-                                    </svg>
-                                    Eliminar
-                                </a>
-                            </div>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td><span class="id-badg">3</span></td>
-                        <td><span class="category-name">Romance</span></td>
-                        <td>4 libros</td>
-                        <td>
-                            <span style="color: #ffc107; font-weight: 600;">
-                                <svg width="12" height="12" fill="currentColor" viewBox="0 0 16 16" style="margin-right: 0.25rem;">
-                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                                    <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
-                                </svg>
-                                Pendiente
-                            </span>
-                        </td>
-                        <td>
-                            <div class="action-buttons">
-                                <a href="#" class="btn-edit">
-                                    <svg width="12" height="12" fill="currentColor" viewBox="0 0 16 16">
-                                        <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708L5.707 14.001 2 14.866l.855-3.707L12.146.146zm.353.354-1.5 1.5L12.5 3.5l1.5-1.5L12.5.5zm-2.5 2.5L2.5 10.5l-.457 2.043L4.086 12l7.5-7.5L9.999 3z"/>
-                                    </svg>
-                                    Editar
-                                </a>
-                                <a href="#" class="btn-delete">
-                                    <svg width="12" height="12" fill="currentColor" viewBox="0 0 16 16">
-                                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                                        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-                                    </svg>
-                                    Eliminar
-                                </a>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+  <div class="container">
+    <!-- Header panel -->
+    <div class="header">
+      <h1 class="header-title">Categorías de Libros</h1>
+      <p class="header-subtitle">Organiza y administra las categorías de tu biblioteca digital.</p>
     </div>
+    <!-- Sección de Estadísticas -->
+    <div class="stats-section">
+      <h3 style="color: #0D0D0D; font-weight: 700; margin-bottom: 1rem;">Estadísticas del Sistema</h3>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number">5</div>
+          <div class="stat-label">Total Categorías</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">3</div>
+          <div class="stat-label">Categorías Activas</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">24</div>
+          <div class="stat-label">Libros Categorizados</div>
+        </div>
+      </div>
+    </div>
+    <!-- Barra de Búsqueda -->
+    <div class="search-bar">
+      <input type="text" class="search-input" placeholder="Buscar por nombre o correo...">
+      <button class="search-btn">
+        <svg fill="currentColor" viewBox="0 0 20 20" style="width: 20px; height: 20px;">
+          <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
+        </svg>
+      </button>
+    </div>
+    <!-- Sección de contenido principal -->
+    <div class="content-section">
+      <div class="section-header">
+        <h3 class="section-title">Gestión de Categorías</h3>
+        <!-- Filtros -->
+        <div class="filter-buttons">
+          <a href="#" class="filter-btn active" data-filter="all">Todas</a>
+          <a href="#" class="filter-btn" data-filter="">Activas</a>
+          <a href="#" class="filter-btn" data-filter="">Pendientes</a>
+        </div>
+        <!-- Paginación -->
+        <div class="pagination pagination-controls">
+          <a href="#">Anterior</a>
+          <a href="#" class="active">1</a>
+          <a href="#">2</a>
+          <a href="#">3</a>
+          <a href="#">Siguiente</a>
+        </div>
+        <a class="btn-add" data-bs-toggle="modal" data-bs-target="#modalAgregarCategoria">Nueva Categoría</a>
+      </div>
+      <table class="modern-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre de Categoría</th>
+            <th>Libros</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span>1</span></td>
+            <td><span class="category-name">Ficción</span></td>
+            <td>12 libros</td>
+            <td>
+              <span style="color: #28a745; font-weight: 600;">
+                <svg width="12" height="12" fill="currentColor" viewBox="0 0 16 16" style="margin-right: 0.25rem;">
+                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                  <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.061L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+                </svg>
+                Activa
+              </span>
+            </td>
+            <td>
+              <div class="action-buttons">
+                <a href="#" class="btn-edit">Editar</a>
+                <a href="#" class="btn-delete">Eliminar</a>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><span>2</span></td>
+            <td><span class="category-name">Ciencia Ficción</span></td>
+            <td>8 libros</td>
+            <td>
+              <span style="color: #28a745; font-weight: 600;">
+                <svg width="12" height="12" fill="currentColor" viewBox="0 0 16 16" style="margin-right: 0.25rem;">
+                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                  <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.061L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+                </svg>
+                Activa
+              </span>
+            </td>
+            <td>
+              <div class="action-buttons">
+                <a href="#" class="btn-edit">Editar</a>
+                <a href="#" class="btn-delete">Eliminar</a>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><span>3</span></td>
+            <td><span class="category-name">Romance</span></td>
+            <td>4 libros</td>
+            <td>
+              <span style="color: #ffc107; font-weight: 600;">
+                <svg width="14" height="14" fill="currentColor" viewBox="0 0 16 16" style="margin-right: 4px;">
+                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                  <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+                </svg>
+                Pendiente
+              </span>
+            </td>
+            <td>
+              <div class="action-buttons">
+                <a href="#" class="btn-edit">Editar</a>
+                <a href="#" class="btn-delete">Eliminar</a>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- Paginación -->
+    <div class="pagination">
+      <a href="#">« Anterior</a>
+      <a href="#" class="active">1</a>
+      <a href="#">2</a>
+      <a href="#">3</a>
+      <a href="#">Siguiente »</a>
+    </div>
+  </div>
 </div>
 
 <!-- Modal: Nueva Categoría -->
@@ -344,12 +148,11 @@
         <h5 class="modal-title" id="modalAgregarCategoriaLabel">
           <i class="fas fa-tags me-2"></i>
           <span id="tituloModal">
-              Agregar Nueva Categoría
+          Agregar Nueva Categoría
           </span>
         </h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar" style="background-color: #dc3545;"></button>
       </div>
-
       <form id="formCategoria" onsubmit="agregarCategoria(event)">
         <div class="modal-body px-4 py-3">
           <div class="mb-3">
@@ -359,7 +162,6 @@
               <input type="text" class="form-control" id="nombre_categoria" placeholder="Ej. Literatura Clásica" required>
             </div>
           </div>
-
           <div class="mb-3">
             <label for="estado_categoria" class="form-label">Estado</label>
             <div class="input-group">
@@ -371,13 +173,12 @@
             </div>
           </div>
         </div>
-
         <div class="modal-footer px-4 py-3" style="justify-content: space-between;">
           <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
-            <i class="fas fa-times"></i> Cancelar
+          <i class="fas fa-times"></i> Cancelar
           </button>
           <button type="submit" class="btn btn-success">
-            <i class="fas fa-check"></i> Guardar
+          <i class="fas fa-check"></i> Guardar
           </button>
         </div>
       </form>
@@ -392,17 +193,15 @@
       <div class="modal-header text-white" style="background: linear-gradient(135deg, #343a40, #212529); border-top-left-radius: 16px; border-top-right-radius: 16px;">
         <h5 class="modal-title" id="modalEditarCategoriaLabel">
           <i class="fas fa-edit me-2"></i>
-            <span id="tituloModalEditar">
-                Editar Categoría
-            </span> 
+          <span id="tituloModalEditar">
+          Editar Categoría
+          </span> 
         </h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar" style="background-color: #dc3545;"></button>
       </div>
-
       <form id="formEditarCategoria" onsubmit="actualizarCategoria(event)">
         <div class="modal-body px-4 py-3">
           <input type="hidden" id="categoria_id">
-          
           <div class="mb-3">
             <label for="editar_nombre_categoria" class="form-label">Nombre de la Categoría</label>
             <div class="input-group">
@@ -410,7 +209,6 @@
               <input type="text" class="form-control" id="editar_nombre_categoria" required>
             </div>
           </div>
-
           <div class="mb-3">
             <label for="editar_estado_categoria" class="form-label">Estado</label>
             <div class="input-group">
@@ -422,20 +220,18 @@
             </div>
           </div>
         </div>
-
         <div class="modal-footer px-4 py-3" style="justify-content: space-between;">
           <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
-            <i class="fas fa-times"></i> Cancelar
+          <i class="fas fa-times"></i> Cancelar
           </button>
           <button type="submit" class="btn btn-primary">
-            <i class="fas fa-save"></i> Actualizar
+          <i class="fas fa-save"></i> Actualizar
           </button>
         </div>
       </form>
     </div>
   </div>
 </div>
-
 
 <!-- Script para insertar categoría dinámicamente -->
 <script>
@@ -474,20 +270,9 @@ function agregarCategoria(e) {
     <td>${estadoHTML}</td>
     <td>
       <div class="action-buttons">
-        <a href="#" class="btn-edit">
-            <svg width="12" height="12" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708L5.707 14.001 2 14.866l.855-3.707L12.146.146zm.353.354-1.5 15 3.5l1.5-1.5L12.5.5zm-2.5 2.5L2.5 10.5l-.457 2.043L4.086 12l7.5-7.5L9.999 3z"/>
-            </svg>
-            Editar
-        </a>
-        <a href="#" class="btn-delete">
-            <svg width="12" height="12" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-            </svg>
-            Eliminar
-        </a>
-      </div>
+                <a href="#" class="btn-edit">Editar</a>
+                <a href="#" class="btn-delete">Eliminar</a>
+              </div>
     </td>`;
 
   tabla.appendChild(nuevaFila);

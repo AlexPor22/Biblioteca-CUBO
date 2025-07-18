@@ -6,9 +6,14 @@ export default defineConfig({
     plugins: [
         laravel({
             input: [
+                "resources/css/globalsAdmin.css",
+                "resources/css/pagination.css",
+                "resources/css/animations.css",
                 "resources/css/index.css",
                 "resources/css/table.css",
-                "resources/css/app.css",
+                "resources/css/search.css",
+                "resources/css/recent__uploads.css",
+                "resources/css/cards.css",
                 "resources/js/app.js",
                 "resources/css/sidebar__admin.css",
                 "resources/js/sidebar__admin.js",
