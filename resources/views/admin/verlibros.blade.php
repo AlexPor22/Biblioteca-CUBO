@@ -50,14 +50,6 @@
           <a href="#" class="filter-btn" data-filter="">Prestados</a>
           <a href="#" class="filter-btn" data-filter="">Reservados</a>
         </div>
-        <!-- Paginación -->
-        <div class="pagination pagination-controls">
-          <a href="#">Anterior</a>
-          <a href="#" class="active">1</a>
-          <a href="#">2</a>
-          <a href="#">3</a>
-          <a href="#">Siguiente</a>
-        </div>
       </div>
       <table class="modern-table">
         <thead>
@@ -77,8 +69,8 @@
           <tr>
             <td><span>001</span></td>
             <td>
-              <div class="book-title">El Quijote de la Mancha</div>
-              <div class="book-author">Miguel de Cervantes</div>
+              <div >El Quijote de la Mancha</div>
+              <div >Miguel de Cervantes</div>
             </td>
 
             <!-- Categoría 
@@ -89,215 +81,56 @@
             
             <td>978-84-376-0494-7</td>
             <td>
-              <span class="status-badge status-disponible">
-              <i class="fas fa-clock "></i>
-              Disponible
-              </span>
+              <span class="status-badge status-disponible">Disponible</span>
             </td>
             <td>08/02/2024</td>
             <td>
               <div class="action-buttons">
-                <a href="#" class="btn-view">Ver</a>
-                <a href="#" class="btn-edit">Editar</a>
-                <a href="#" class="btn-delete">Eliminar</a>
+                <button class="btn-view">Ver</button>
+                <button class="btn-edit">Editar</button>
+                <button class="btn-delete">Eliminar</button>
               </div>
             </td>
           </tr>
+
           <tr>
-            <td><span class="id-badge">002</span></td>
+            <td><span >002</span></td>
             <td>
-              <div class="book-title">El Quijote de la Mancha</div>
-              <div class="book-author">Miguel de Cervantes</div>
+              <div >El Quijote de la Mancha</div>
+              <div >Miguel de Cervantes</div>
             </td>
             
             <td>978-84-376-0494-7</td>
             <td>
-              <span class="status-badge status-prestado">
-              <i class="fas fa-clock"></i>
-              Prestado
-              </span>
+              <span class="status-badge status-prestado">Prestado</span>
             </td>
             <td>08/02/2024</td>
             <td>
               <div class="action-buttons">
-                <a href="#" class="btn-edit">Editar</a>
-                <a href="#" class="btn-delete">Eliminar</a>
+                <button class="btn-view">Ver</button>
+                <button class="btn-edit">Editar</button>
+                <button class="btn-delete">Eliminar</button>
               </div>
             </td>
           </tr>
+
           <tr>
-            <td><span class="id-badge">003</span></td>
+            <td><span >003</span></td>
             <td>
-              <div class="book-title">Sapiens: De animales a dioses</div>
-              <div class="book-author">Yuval Noah Harari</div>
+              <div >Sapiens: De animales a dioses</div>
+              <div >Yuval Noah Harari</div>
             </td>
             
             <td>978-0-06-231609-7</td>
             <td>
-              <span class="status-badge status-reservado">
-              <i class="fas fa-bookmark"></i>
-              Reservado
-              </span>
+              <span class="status-badge status-reservado">Reservado</span>
             </td>
             <td>22/01/2024</td>
             <td>
               <div class="action-buttons">
-                <a href="#" class="btn-edit">Editar</a>
-                <a href="#" class="btn-delete">Eliminar</a>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td><span>001</span></td>
-            <td>
-              <div class="book-title">El Quijote de la Mancha</div>
-              <div class="book-author">Miguel de Cervantes</div>
-            </td>
-            
-            <td>978-84-376-0494-7</td>
-            <td>
-              <span class="status-badge status-disponible">
-              <i class="fas fa-clock "></i>
-              Disponible
-              </span>
-            </td>
-            <td>08/02/2024</td>
-            <td>
-              <div class="action-buttons">
-                <a href="#" class="btn-edit">Editar</a>
-                <a href="#" class="btn-delete">Eliminar</a>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td><span class="id-badge">002</span></td>
-            <td>
-              <div class="book-title">El Quijote de la Mancha</div>
-              <div class="book-author">Miguel de Cervantes</div>
-            </td>
-            
-            <td>978-84-376-0494-7</td>
-            <td>
-              <span class="status-badge status-prestado">
-              <i class="fas fa-clock"></i>
-              Prestado
-              </span>
-            </td>
-            <td>08/02/2024</td>
-            <td>
-              <div class="action-buttons">
-                <a href="#" class="btn-edit">Editar</a>
-                <a href="#" class="btn-delete">Eliminar</a>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td><span class="id-badge">003</span></td>
-            <td>
-              <div class="book-title">Sapiens: De animales a dioses</div>
-              <div class="book-author">Yuval Noah Harari</div>
-            </td>
-            
-            <td>978-0-06-231609-7</td>
-            <td>
-              <span class="status-badge status-reservado">
-              <i class="fas fa-bookmark"></i>
-              Reservado
-              </span>
-            </td>
-            <td>22/01/2024</td>
-            <td>
-              <div class="action-buttons">
-                <a href="#" class="btn-edit">Editar</a>
-                <a href="#" class="btn-delete">Eliminar</a>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td><span>001</span></td>
-            <td>
-              <div class="book-title">El Quijote de la Mancha</div>
-              <div class="book-author">Miguel de Cervantes</div>
-            </td>
-            
-            <td>978-84-376-0494-7</td>
-            <td>
-              <span class="status-badge status-disponible">
-              <i class="fas fa-clock "></i>
-              Disponible
-              </span>
-            </td>
-            <td>08/02/2024</td>
-            <td>
-              <div class="action-buttons">
-                <a href="#" class="btn-edit">Editar</a>
-                <a href="#" class="btn-delete">Eliminar</a>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td><span class="id-badge">002</span></td>
-            <td>
-              <div class="book-title">El Quijote de la Mancha</div>
-              <div class="book-author">Miguel de Cervantes</div>
-            </td>
-            
-            <td>978-84-376-0494-7</td>
-            <td>
-              <span class="status-badge status-prestado">
-              <i class="fas fa-clock"></i>
-              Prestado
-              </span>
-            </td>
-            <td>08/02/2024</td>
-            <td>
-              <div class="action-buttons">
-                <a href="#" class="btn-edit">Editar</a>
-                <a href="#" class="btn-delete">Eliminar</a>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td><span class="id-badge">003</span></td>
-            <td>
-              <div class="book-title">Sapiens: De animales a dioses</div>
-              <div class="book-author">Yuval Noah Harari</div>
-            </td>
-            
-            <td>978-0-06-231609-7</td>
-            <td>
-              <span class="status-badge status-reservado">
-              <i class="fas fa-bookmark"></i>
-              Reservado
-              </span>
-            </td>
-            <td>22/01/2024</td>
-            <td>
-              <div class="action-buttons">
-                <a href="#" class="btn-edit">Editar</a>
-                <a href="#" class="btn-delete">Eliminar</a>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td><span class="id-badge">003</span></td>
-            <td>
-              <div class="book-title">Sapiens: De animales a dioses</div>
-              <div class="book-author">Yuval Noah Harari</div>
-            </td>
-            
-            <td>978-0-06-231609-7</td>
-            <td>
-              <span class="status-badge status-reservado">
-              <i class="fas fa-bookmark"></i>
-              Reservado
-              </span>
-            </td>
-            <td>22/01/2024</td>
-            <td>
-              <div class="action-buttons">
-                <a href="#" class="btn-edit">Editar</a>
-                <a href="#" class="btn-delete">Eliminar</a>
+                <button class="btn-view">Ver</button>
+                <button class="btn-edit">Editar</button>
+                <button class="btn-delete">Eliminar</button>
               </div>
             </td>
           </tr>

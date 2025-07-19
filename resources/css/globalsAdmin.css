@@ -267,11 +267,6 @@
     display: inline-block;
 }
 
-.user-type:hover {
-    transform: scale(1.1);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-
 .type-admin {
     background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
     color: white;
@@ -302,11 +297,7 @@
     animation: fadeInUp 0.8s ease-out forwards;
 }
 
-.book-author {
-    color: #6c757d;
-    font-size: 0.85rem;
-    font-style: italic;
-}
+
 
 .category-badge {
     background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
@@ -387,9 +378,6 @@
         padding: 0.2rem 0.6rem;
     }
 
-    .book-author {
-        font-size: 0.8rem;
-    }
 }
 
 @media (max-width: 768px) {
@@ -452,9 +440,5 @@
     .category-badge,
     .status-badge {
         font-size: 0.65rem;
-    }
-
-    .book-author {
-        font-size: 0.75rem;
     }
 }

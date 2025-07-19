@@ -48,9 +48,9 @@ class AdminController extends Controller
     }
 
     // Ver libros
-    public function verLibros()
+    public function verlibros()
     {
-        return view('admin.verLibros');
+        return view('admin.verlibros');
     }
 
     // Cerrar sesión (solo redirige por ahora)

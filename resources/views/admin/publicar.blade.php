@@ -60,7 +60,7 @@
         <span>Subir Audiolibro</span>
         </button>
       </div>
-      <!-- Gestión de Libros -->
+      <!-- Gestión de Libros 
       <div class="dashboard-card">
         <div class="card-icon books" style="color: #333;">
           <svg fill="currentColor" viewBox="0 0 24 24" style="width: 40px; height: 40px;">
@@ -73,6 +73,7 @@
         <span>Ver Libros</span>
         </a>
       </div>
+      -->
     </div>
 
     <!-- Contenido Reciente -->

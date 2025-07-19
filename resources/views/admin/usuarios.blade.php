@@ -30,6 +30,7 @@
         </div>
       </div>
     </div>
+
     <!-- Barra de Búsqueda -->
     <div class="search-bar">
       <input type="text" class="search-input" placeholder="Buscar por nombre o correo...">
@@ -50,14 +51,7 @@
           <a href="#" class="filter-btn" data-filter="">Empleados</a>
           <a href="#" class="filter-btn" data-filter="">Clientes</a>
         </div>
-        <!-- Paginación -->
-        <div class="pagination pagination-controls">
-          <a href="#">Anterior</a>
-          <a href="#" class="active">1</a>
-          <a href="#">2</a>
-          <a href="#">3</a>
-          <a href="#">Siguiente</a>
-        </div>
+        
         <a class="btn-add" data-bs-toggle="modal" data-bs-target="#modalAgregarUsuario">Nuevo Usuario</a>
       </div>
       <table class="modern-table">
@@ -73,121 +67,39 @@
         <tbody>
           <tr>
             <td><span>1</span></td>
-            <td><span class="user-name">Denis</span></td>
-            <td><span class="user-email">martelldennis259@gmail.com</span></td>
+            <td><span >Denis</span></td>
+            <td><span >martelldennis259@gmail.com</span></td>
             <td><span class="user-type type-admin">Admin</span></td>
             <td>
               <div class="action-buttons">
-                <a href="#" class="btn-edit">Editar</a>
-                <a href="#" class="btn-delete">Eliminar</a>
+                <button class="btn-edit">Editar</button>
+                <button class="btn-delete">Eliminar</button>
               </div>
             </td>
           </tr>
+
           <tr>
             <td><span>2</span></td>
-            <td><span class="user-name">Alexander</span></td>
-            <td><span class="user-email">martelldennis259@gmail.com</span></td>
+            <td><span >Alexander</span></td>
+            <td><span >martelldennis259@gmail.com</span></td>
             <td><span class="user-type type-empleado">Empleado</span></td>
             <td>
               <div class="action-buttons">
-                <a href="#" class="btn-edit">Editar</a>
-                <a href="#" class="btn-delete">Eliminar</a>
+                <button class="btn-edit">Editar</button>
+                <button class="btn-delete">Eliminar</button>
               </div>
             </td>
           </tr>
+
           <tr>
             <td><span>3</span></td>
-            <td><span class="user-name">Martel</span></td>
-            <td><span class="user-email">martelldennis259@gmail.com</span></td>
+            <td><span >Martel</span></td>
+            <td><span >martelldennis259@gmail.com</span></td>
             <td><span class="user-type type-cliente">Cliente</span></td>
             <td>
               <div class="action-buttons">
-                <a href="#" class="btn-edit">Editar</a>
-                <a href="#" class="btn-delete">Eliminar</a>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td><span>1</span></td>
-            <td><span class="user-name">Denis</span></td>
-            <td><span class="user-email">martelldennis259@gmail.com</span></td>
-            <td><span class="user-type type-admin">Admin</span></td>
-            <td>
-              <div class="action-buttons">
-                <a href="#" class="btn-edit">Editar</a>
-                <a href="#" class="btn-delete">Eliminar</a>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td><span>2</span></td>
-            <td><span class="user-name">Alexander</span></td>
-            <td><span class="user-email">martelldennis259@gmail.com</span></td>
-            <td><span class="user-type type-empleado">Empleado</span></td>
-            <td>
-              <div class="action-buttons">
-                <a href="#" class="btn-edit">Editar</a>
-                <a href="#" class="btn-delete">Eliminar</a>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td><span>3</span></td>
-            <td><span class="user-name">Martel</span></td>
-            <td><span class="user-email">martelldennis259@gmail.com</span></td>
-            <td><span class="user-type type-cliente">Cliente</span></td>
-            <td>
-              <div class="action-buttons">
-                <a href="#" class="btn-edit">Editar</a>
-                <a href="#" class="btn-delete">Eliminar</a>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td><span>1</span></td>
-            <td><span class="user-name">Denis</span></td>
-            <td><span class="user-email">martelldennis259@gmail.com</span></td>
-            <td><span class="user-type type-admin">Admin</span></td>
-            <td>
-              <div class="action-buttons">
-                <a href="#" class="btn-edit">Editar</a>
-                <a href="#" class="btn-delete">Eliminar</a>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td><span>2</span></td>
-            <td><span class="user-name">Alexander</span></td>
-            <td><span class="user-email">martelldennis259@gmail.com</span></td>
-            <td><span class="user-type type-empleado">Empleado</span></td>
-            <td>
-              <div class="action-buttons">
-                <a href="#" class="btn-edit">Editar</a>
-                <a href="#" class="btn-delete">Eliminar</a>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td><span>3</span></td>
-            <td><span class="user-name">Martel</span></td>
-            <td><span class="user-email">martelldennis259@gmail.com</span></td>
-            <td><span class="user-type type-cliente">Cliente</span></td>
-            <td>
-              <div class="action-buttons">
-                <a href="#" class="btn-edit">Editar</a>
-                <a href="#" class="btn-delete">Eliminar</a>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td><span>3</span></td>
-            <td><span class="user-name">Martel</span></td>
-            <td><span class="user-email">martelldennis259@gmail.com</span></td>
-            <td><span class="user-type type-cliente">Cliente</span></td>
-            <td>
-              <div class="action-buttons">
-                <a href="#" class="btn-edit">Editar</a>
-                <a href="#" class="btn-delete">Eliminar</a>
+                <button class="btn-edit">Editar</button>
+                <button class="btn-delete">Eliminar</button>
               </div>
             </td>
           </tr>
@@ -391,7 +303,7 @@ function guardarUsuario(e) {
     const nuevaFila = document.createElement('tr');
     nuevaFila.innerHTML = `
       <td><span class="user-id">${id}</span></td>
-      <td><span class="user-name">${nombre}</span></td>
+      <td><span >${nombre}</span></td>
       <td><span class="user-type type-${rol}">${tipo}</span></td>
       <td>
         <div class="action-buttons">

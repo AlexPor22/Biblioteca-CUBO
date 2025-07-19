@@ -19,7 +19,7 @@ Route::get('/admin/categorias-libros', [AdminController::class, 'categoriasLibro
 Route::get('/admin/clientes', [AdminController::class, 'clientes'])->name('admin.clientes');
 Route::get('/admin/publicar', [AdminController::class, 'publicar'])->name('admin.publicar');
 Route::get('/admin/prestamos', [AdminController::class, 'prestamos'])->name('admin.prestamos');
-Route::get('/admin/verlibros', [AdminController::class, 'verLibros'])->name('admin.verlibros');
+Route::get('/admin/verlibros', [AdminController::class, 'verlibros'])->name('admin.verlibros');
 Route::get('/admin/prestamos/historial', [AdminController::class, 'historialPrestamo'])->name('admin.prestamos.historial');
 
 // Cerrar sesión (solo redirige por ahora)

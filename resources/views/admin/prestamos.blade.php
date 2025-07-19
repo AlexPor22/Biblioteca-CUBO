@@ -49,7 +49,7 @@
         <span>Crear Prestamo</span>
         </button>
       </div>
-      <!-- Préstamos Activos -->
+      <!-- Préstamos Activos 
       <div class="dashboard-card">
         <div class="card-icon prestamo-activo">
           <svg fill="currentColor" viewBox="0 0 20 20" style="width: 40px; height: 40px;">
@@ -62,7 +62,8 @@
         <span>Ver Activos</span>
         </a>
       </div>
-      <!-- Historial -->
+      -->
+      <!-- Historial 
       <div class="dashboard-card">
         <div class="card-icon publish">
           <svg fill="currentColor" viewBox="0 0 20 20" style="width: 40px; height: 40px;">
@@ -75,6 +76,7 @@
         <span>Ver Historial</span>
         </a>
       </div>
+      -->
     </div>
     <!-- Contenido Reciente -->
     <div class="recent-uploads">

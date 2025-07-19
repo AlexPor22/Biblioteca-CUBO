@@ -51,14 +51,6 @@
           <a href="#" class="filter-btn" data-filter="">Devueltos</a>
           <a href="#" class="filter-btn" data-filter="">Renovados</a>
         </div>
-        <!-- Paginación -->
-        <div class="pagination pagination-controls">
-          <a href="#">Anterior</a>
-          <a href="#" class="active">1</a>
-          <a href="#">2</a>
-          <a href="#">3</a>
-          <a href="#">Siguiente</a>
-        </div>
       </div>
       <table class="modern-table">
         <thead>
@@ -74,252 +66,79 @@
         </thead>
         <tbody>
           <tr>
-            <td><span class="id-badge">001</span></td>
+            <td><span >001</span></td>
             <td>
               <div class="user-info">
                 <div>
                   <div>María Alejandra</div>
-                  <div style="font-size: 12px; color: #6B7280;">maria@email.com</div>
+                  <div >maria@email.com</div>
                 </div>
               </div>
             </td>
             <td>
-              <div class="book-title">El Quijote de la Mancha</div>
-              <div class="book-author">Miguel de Cervantes</div>
+              <div >El Quijote de la Mancha</div>
+              <div >Miguel de Cervantes</div>
             </td>
             <td>15/01/2024</td>
             <td>29/01/2024</td>
             <td><span class="status activo">Activo</span></td>
             <td>
               <div class="action-buttons">
-                <a href="#" class="btn-renovar">Renovar</a>
-                <a href="#" class="btn-edit">Editar</a>
-                <a href="#" class="btn-delete">Eliminar</a>
+                <button class="btn-renew">Renovar</button>
+                <button class="btn-edit">Editar</button>
+                <button class="btn-delete">Eliminar</button>
               </div>
             </td>
           </tr>
+
           <tr>
-            <td><span class="id-badge">002</span></td>
+            <td><span >002</span></td>
             <td>
               <div class="user-info">
                 <div>
                   <div>María Alejandra</div>
-                  <div style="font-size: 12px; color: #6B7280;">maria@email.com</div>
+                  <div >maria@email.com</div>
                 </div>
               </div>
             </td>
             <td>
-              <div class="book-title">El Quijote de la Mancha</div>
-              <div class="book-author">Miguel de Cervantes</div>
+              <div >El Quijote de la Mancha</div>
+              <div >Miguel de Cervantes</div>
             </td>
             <td>15/01/2024</td>
             <td>29/01/2024</td>
             <td><span class="status vencido">Vencido</span></td>
             <td>
               <div class="action-buttons">
-                <a href="#" class="btn-renovar">Renovar</a>
-                <a href="#" class="btn-edit">Editar</a>
-                <a href="#" class="btn-delete">Eliminar</a>
+                <button class="btn-renew">Renovar</button>
+                <button class="btn-edit">Editar</button>
+                <button class="btn-delete">Eliminar</button>
               </div>
             </td>
           </tr>
+
           <tr>
-            <td><span class="id-badge">003</span></td>
+            <td><span >003</span></td>
             <td>
               <div class="user-info">
                 <div>
                   <div>María Alejandra</div>
-                  <div style="font-size: 12px; color: #6B7280;">maria@email.com</div>
+                  <div >maria@email.com</div>
                 </div>
               </div>
             </td>
             <td>
-              <div class="book-title">El Quijote de la Mancha</div>
-              <div class="book-author">Miguel de Cervantes</div>
+              <div >El Quijote de la Mancha</div>
+              <div >Miguel de Cervantes</div>
             </td>
             <td>15/01/2024</td>
             <td>29/01/2024</td>
             <td><span class="status devuelto">Devuelto</span></td>
             <td>
               <div class="action-buttons">
-                <a href="#" class="btn-renovar">Renovar</a>
-                <a href="#" class="btn-edit">Editar</a>
-                <a href="#" class="btn-delete">Eliminar</a>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td><span class="id-badge">004</span></td>
-            <td>
-              <div class="user-info">
-                <div>
-                  <div>María Alejandra</div>
-                  <div style="font-size: 12px; color: #6B7280;">maria@email.com</div>
-                </div>
-              </div>
-            </td>
-            <td>
-              <div class="book-title">El Quijote de la Mancha</div>
-              <div class="book-author">Miguel de Cervantes</div>
-            </td>
-            <td>15/01/2024</td>
-            <td>29/01/2024</td>
-            <td><span class="status renovado">Renovado</span></td>
-            <td>
-              <div class="action-buttons">
-                <a href="#" class="btn-renovar">Renovar</a>
-                <a href="#" class="btn-edit">Editar</a>
-                <a href="#" class="btn-delete">Eliminar</a>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td><span class="id-badge">005</span></td>
-            <td>
-              <div class="user-info">
-                <div>
-                  <div>María Alejandra</div>
-                  <div style="font-size: 12px; color: #6B7280;">maria@email.com</div>
-                </div>
-              </div>
-            </td>
-            <td>
-              <div class="book-title">El Quijote de la Mancha</div>
-              <div class="book-author">Miguel de Cervantes</div>
-            </td>
-            <td>15/01/2024</td>
-            <td>29/01/2024</td>
-            <td><span class="status renovado">Renovado</span></td>
-            <td>
-              <div class="action-buttons">
-                <a href="#" class="btn-renovar">Renovar</a>
-                <a href="#" class="btn-edit">Editar</a>
-                <a href="#" class="btn-delete">Eliminar</a>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td><span class="id-badge">006</span></td>
-            <td>
-              <div class="user-info">
-                <div>
-                  <div>María Alejandra</div>
-                  <div style="font-size: 12px; color: #6B7280;">maria@email.com</div>
-                </div>
-              </div>
-            </td>
-            <td>
-              <div class="book-title">El Quijote de la Mancha</div>
-              <div class="book-author">Miguel de Cervantes</div>
-            </td>
-            <td>15/01/2024</td>
-            <td>29/01/2024</td>
-            <td><span class="status renovado">Renovado</span></td>
-            <td>
-              <div class="action-buttons">
-                <a href="#" class="btn-renovar">Renovar</a>
-                <a href="#" class="btn-edit">Editar</a>
-                <a href="#" class="btn-delete">Eliminar</a>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td><span class="id-badge">007</span></td>
-            <td>
-              <div class="user-info">
-                <div>
-                  <div>María Alejandra</div>
-                  <div style="font-size: 12px; color: #6B7280;">maria@email.com</div>
-                </div>
-              </div>
-            </td>
-            <td>
-              <div class="book-title">El Quijote de la Mancha</div>
-              <div class="book-author">Miguel de Cervantes</div>
-            </td>
-            <td>15/01/2024</td>
-            <td>29/01/2024</td>
-            <td><span class="status renovado">Renovado</span></td>
-            <td>
-              <div class="action-buttons">
-                <a href="#" class="btn-renovar">Renovar</a>
-                <a href="#" class="btn-edit">Editar</a>
-                <a href="#" class="btn-delete">Eliminar</a>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td><span class="id-badge">008</span></td>
-            <td>
-              <div class="user-info">
-                <div>
-                  <div>María Alejandra</div>
-                  <div style="font-size: 12px; color: #6B7280;">maria@email.com</div>
-                </div>
-              </div>
-            </td>
-            <td>
-              <div class="book-title">El Quijote de la Mancha</div>
-              <div class="book-author">Miguel de Cervantes</div>
-            </td>
-            <td>15/01/2024</td>
-            <td>29/01/2024</td>
-            <td><span class="status renovado">Renovado</span></td>
-            <td>
-              <div class="action-buttons">
-                <a href="#" class="btn-renovar">Renovar</a>
-                <a href="#" class="btn-edit">Editar</a>
-                <a href="#" class="btn-delete">Eliminar</a>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td><span class="id-badge">009</span></td>
-            <td>
-              <div class="user-info">
-                <div>
-                  <div>María Alejandra</div>
-                  <div style="font-size: 12px; color: #6B7280;">maria@email.com</div>
-                </div>
-              </div>
-            </td>
-            <td>
-              <div class="book-title">El Quijote de la Mancha</div>
-              <div class="book-author">Miguel de Cervantes</div>
-            </td>
-            <td>15/01/2024</td>
-            <td>29/01/2024</td>
-            <td><span class="status renovado">Renovado</span></td>
-            <td>
-              <div class="action-buttons">
-                <a href="#" class="btn-renovar">Renovar</a>
-                <a href="#" class="btn-edit">Editar</a>
-                <a href="#" class="btn-delete">Eliminar</a>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td><span class="id-badge">010</span></td>
-            <td>
-              <div class="user-info">
-                <div>
-                  <div>María Alejandra</div>
-                  <div style="font-size: 12px; color: #6B7280;">maria@email.com</div>
-                </div>
-              </div>
-            </td>
-            <td>
-              <div class="book-title">El Quijote de la Mancha</div>
-              <div class="book-author">Miguel de Cervantes</div>
-            </td>
-            <td>15/01/2024</td>
-            <td>29/01/2024</td>
-            <td><span class="status renovado">Renovado</span></td>
-            <td>
-              <div class="action-buttons">
-                <a href="#" class="btn-renovar">Renovar</a>
-                <a href="#" class="btn-edit">Editar</a>
-                <a href="#" class="btn-delete">Eliminar</a>
+                <button class="btn-renew">Renovar</button>
+                <button class="btn-edit">Editar</button>
+                <button class="btn-delete">Eliminar</button>
               </div>
             </td>
           </tr>

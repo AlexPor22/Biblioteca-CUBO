@@ -45,14 +45,6 @@
           <a href="#" class="filter-btn" data-filter="">Activas</a>
           <a href="#" class="filter-btn" data-filter="">Pendientes</a>
         </div>
-        <!-- Paginación -->
-        <div class="pagination pagination-controls">
-          <a href="#">Anterior</a>
-          <a href="#" class="active">1</a>
-          <a href="#">2</a>
-          <a href="#">3</a>
-          <a href="#">Siguiente</a>
-        </div>
         <a class="btn-add" data-bs-toggle="modal" data-bs-target="#modalAgregarCategoria">Nueva Categoría</a>
       </div>
       <table class="modern-table">
@@ -68,61 +60,30 @@
         <tbody>
           <tr>
             <td><span>1</span></td>
-            <td><span class="category-name">Ficción</span></td>
+            <td><span >Ficción</span></td>
             <td>12 libros</td>
             <td>
-              <span style="color: #28a745; font-weight: 600;">
-                <svg width="12" height="12" fill="currentColor" viewBox="0 0 16 16" style="margin-right: 0.25rem;">
-                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                  <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.061L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
-                </svg>
-                Activa
-              </span>
+              <span >Activa</span>
             </td>
             <td>
               <div class="action-buttons">
-                <a href="#" class="btn-edit">Editar</a>
-                <a href="#" class="btn-delete">Eliminar</a>
+                <button class="btn-edit">Editar</button>
+                <button class="btn-delete">Eliminar</button>
               </div>
             </td>
           </tr>
-          <tr>
-            <td><span>2</span></td>
-            <td><span class="category-name">Ciencia Ficción</span></td>
-            <td>8 libros</td>
-            <td>
-              <span style="color: #28a745; font-weight: 600;">
-                <svg width="12" height="12" fill="currentColor" viewBox="0 0 16 16" style="margin-right: 0.25rem;">
-                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                  <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.061L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
-                </svg>
-                Activa
-              </span>
-            </td>
-            <td>
-              <div class="action-buttons">
-                <a href="#" class="btn-edit">Editar</a>
-                <a href="#" class="btn-delete">Eliminar</a>
-              </div>
-            </td>
-          </tr>
+         
           <tr>
             <td><span>3</span></td>
-            <td><span class="category-name">Romance</span></td>
+            <td><span >Romance</span></td>
             <td>4 libros</td>
             <td>
-              <span style="color: #ffc107; font-weight: 600;">
-                <svg width="14" height="14" fill="currentColor" viewBox="0 0 16 16" style="margin-right: 4px;">
-                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                  <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
-                </svg>
-                Pendiente
-              </span>
+              <span >Pendiente</span>
             </td>
             <td>
               <div class="action-buttons">
-                <a href="#" class="btn-edit">Editar</a>
-                <a href="#" class="btn-delete">Eliminar</a>
+                <button class="btn-edit">Editar</button>
+                <button class="btn-delete">Eliminar</button>
               </div>
             </td>
           </tr>
@@ -248,14 +209,14 @@ function agregarCategoria(e) {
   const id = tabla.rows.length + 1;
 
   const estadoHTML = estado === 'activa' ?
-    `<span style="color: #28a745; font-weight: 600;">
+    `<span >
         <svg width="12" height="12" fill="currentColor" viewBox="0 0 16 16" style="margin-right: 0.25rem;">
             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
             <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.061L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
         </svg>
         Activa
     </span>` :
-    `<span style="color: #ffc107; font-weight: 600;">
+    `<span >
         <svg width="12" height="12" fill="currentColor" viewBox="0 0 16 16" style="margin-right: 0.25rem;">
             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
             <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
@@ -264,8 +225,8 @@ function agregarCategoria(e) {
     </span>`;
 
   nuevaFila.innerHTML = `
-    <td><span class="id-badge">${id}</span></td>
-    <td><span class="category-name">${nombre}</span></td>
+    <td><span >${id}</span></td>
+    <td><span >${nombre}</span></td>
     <td>0 libros</td>
     <td>${estadoHTML}</td>
     <td>

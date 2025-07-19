@@ -10,6 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @vite(['resources/css/sidebar__admin.css', 'resources/js/sidebar__admin.js'])
     @vite(['resources/css/globalsAdmin.css'])
+    @vite(['resources/css/buttons.css'])
     @vite(['resources/css/pagination.css'])
     @vite(['resources/css/animations.css'])
     @vite(['resources/css/index.css'])
@@ -27,10 +28,12 @@
     <div class="sidebar" id="sidebar">
       <div>
         <h4>CUBO</h4>
-        <!-- Buscador -->
+        <!-- Buscador 
         <div class="search-box mb-3">
           <input type="text" class="form-control" placeholder="Buscar..." id="sidebarSearch">
         </div>
+        -->
+
         <!-- Menú de navegación -->
         <div class="menu-section" id="menuItems">
           <a href="{{ route('admin.index') }}" class="{{ request()->routeIs('admin.index') ? 'active' : '' }}">
