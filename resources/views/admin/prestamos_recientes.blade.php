@@ -5,7 +5,8 @@
   <div class="container">
     <!-- Header panel -->
     <div class="header">
-      <h1 class="header-title">Gestión de Préstamos</h1>
+      <h1 class="header-title">Préstamos Recientes</h1>
+      <!-- Subtítulo descriptivo -->
       <p class="header-subtitle">Administra préstamos de libros digitales y audiolibros. Controla fechas de vencimiento, renovaciones y historial de préstamos.</p>
     </div>
     <!-- Sección de Estadísticas -->
@@ -72,7 +73,7 @@
         </div>
         <h5 class="card-title">Historial</h5>
         <p class="card-description">Consulta el historial completo de préstamos. Genera reportes y estadísticas detalladas por período.</p>
-        <a href="{{ route('admin.prestamos.historial') }}" class="card-button">
+        <a href="" class="card-button">
         <span>Ver Historial</span>
         </a>
       </div>

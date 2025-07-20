@@ -5,8 +5,9 @@
   <div class="container">
     <!-- Header panel -->
     <div class="header">
-      <h1 class="header-title">Publicar Contenido</h1>
-      <p class="header-subtitle">Sube y gestiona libros digitales y audiolibros. Comparte conocimiento y enriquece la biblioteca digital con contenido de calidad.</p>
+      <h1 class="header-title">Contenido Reciente</h1>
+      <!-- Subtítulo descriptivo -->
+      <p class="header-subtitle">Consulta y gestiona los últimos libros y audiolibros publicados en la plataforma. Aquí podrás ver el estado de cada contenido, así como realizar acciones de edición o eliminación.</p>
     </div>
 
     <!-- Sección de Estadísticas -->
@@ -73,7 +74,7 @@
         </div>
         <h5 class="card-title">Gestión de Libros</h5>
         <p class="card-description">Consulta y administra todos los libros disponibles. Revisa detalles, clasificaciones y accede a las opciones de visualización.</p>
-        <a href="{{ route('admin.verlibros') }}" class="card-button">
+        <a href="" class="card-button">
         <span>Ver Libros</span>
         </a>
       </div>

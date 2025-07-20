@@ -5,7 +5,8 @@
   <div class="container">
     <!-- Header panel -->
     <div class="header">
-      <h1 class="header-title">Historial de Préstamos</h1>
+      <h1 class="header-title">Gestión de Préstamos</h1>
+      <!-- Subtítulo descriptivo -->
       <p class="header-subtitle">Administra y supervisa todos los préstamos de tu biblioteca digital.</p>
     </div>
     <!-- Sección de Estadísticas -->
@@ -32,7 +33,7 @@
     </div>
     <!-- Barra de Búsqueda -->
     <div class="search-bar">
-      <input type="text" class="search-input" placeholder="Buscar por nombre o correo...">
+      <input type="text" class="search-input" placeholder="Buscar por nombre de usuario y nombre del libro...">
       <button class="search-btn">
         <svg fill="currentColor" viewBox="0 0 20 20" style="width: 20px; height: 20px;">
           <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
@@ -262,4 +263,37 @@
     </div>
   </div>
 </div>
+
+<script>
+  document.querySelectorAll('.btn-delete').forEach(btn => {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+
+      Swal.fire({
+        title: '¿Estás seguro?',
+        text: "Esta acción no se puede deshacer.",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#dc3545',
+        cancelButtonColor: '#6c757d',
+        confirmButtonText: 'Sí, eliminar',
+        cancelButtonText: 'Cancelar'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // Acción real aquí. Por ejemplo:
+          // eliminarUsuario(id);
+          Swal.fire({
+            icon: 'success',
+            title: 'Eliminado',
+            text: 'El registro ha sido eliminado exitosamente.',
+            confirmButtonColor: '#28a745'
+          });
+
+          // También puedes eliminar dinámicamente la fila:
+          // btn.closest('tr').remove();
+        }
+      });
+    });
+});
+</script>
 @endsection

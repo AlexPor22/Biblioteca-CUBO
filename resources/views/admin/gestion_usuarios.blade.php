@@ -6,6 +6,7 @@
     <!-- Header panel -->
     <div class="header">
       <h1 class="header-title">Gestión de Usuarios</h1>
+      <!-- Subtítulo descriptivo -->
       <p class="header-subtitle">Administra y controla todos los usuarios del sistema.</p>
     </div>
     <!-- Sección de Estadísticas -->
@@ -32,7 +33,7 @@
     </div>
     <!-- Barra de Búsqueda -->
     <div class="search-bar">
-      <input type="text" class="search-input" placeholder="Buscar por nombre o correo...">
+      <input type="text" class="search-input" placeholder="Buscar por nombre de usuario o correo electrónico...">
       <button class="search-btn">
         <svg fill="currentColor" viewBox="0 0 20 20" style="width: 20px; height: 20px;">
           <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>

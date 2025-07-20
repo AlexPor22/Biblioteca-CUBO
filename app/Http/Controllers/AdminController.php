@@ -6,17 +6,62 @@ use Illuminate\Http\Request;
 class AdminController extends Controller
 {
     // Muestra el panel de administración
-    public function index()
+    public function panelAdministracion()
     {
-        return view('admin.index');
+        return view('admin.panel_administracion');
     }
 
-    // Gestión de usuarios
-    public function usuarios()
+    // Gestión de usuarios 
+    public function gestionUsuarios()
     {
-        return view('admin.usuarios');
+        return view('admin.gestion_usuarios');
     }
 
+    // Gestión de categorías
+    public function gestionCategorias()
+    {
+        return view('admin.gestion_categorias');
+    }
+
+    // Gestión de préstamos
+    public function gestionPrestamos()
+    {
+        return view('admin.gestion_prestamos');
+    }
+
+    // Gestión de libros y audiolibros
+    public function gestionLibrosAudiolibros()
+    {
+        return view('admin.gestion_libros_audiolibros');
+    }
+
+    // Préstamos recientes
+    public function prestamosRecientes()
+    {
+        return view('admin.prestamos_recientes');
+    }
+
+    // Contenido reciente
+    public function contenidoReciente()
+    {
+        return view('admin.contenido_reciente');
+    }
+
+    // Estadisticas del sistema
+    public function estadisticasSistema()
+    {
+        return view('admin.estadisticas_sistema');
+    }
+
+    // Cerrar sesión (solo redirige por ahora)
+    public function cerrarSesion()
+    {
+        return redirect('/');  // Solo redirige al inicio
+    }
+
+
+
+    
     // Gestión de empleados
     public function empleados()
     {
@@ -28,41 +73,4 @@ class AdminController extends Controller
     {
         return view('admin.clientes');
     }
-
-    // Gestión de categorías de libros
-    public function categoriasLibros()
-    {
-        return view('admin.categoriasLibros');
-    }
-
-    // Publicación de libros y audiolibros
-    public function publicar()
-    {
-        return view('admin.publicar');
-    }
-
-    // Gestión de préstamos
-    public function prestamos()
-    {
-        return view('admin.prestamos');
-    }
-
-    // Ver libros
-    public function verlibros()
-    {
-        return view('admin.verlibros');
-    }
-
-    // Cerrar sesión (solo redirige por ahora)
-    public function cerrarSesion()
-    {
-        return redirect('/');  // Solo redirige al inicio
-    }
-
-    // Historial de préstamos
-    public function historialPrestamo()
-    {
-        return view('admin.prestamosHistorial');
-    }
-
 }
