@@ -51,6 +51,7 @@
           <a href="#" class="filter-btn" data-filter="">Devueltos</a>
           <a href="#" class="filter-btn" data-filter="">Renovados</a>
         </div>
+        <a class="btn-add" data-bs-toggle="modal" data-bs-target="#modalAgregarPrestamo">Nuevo Préstamo</a>
       </div>
       <table class="modern-table">
         <thead>
@@ -66,7 +67,7 @@
         </thead>
         <tbody>
           <tr>
-            <td><span >001</span></td>
+            <td><span >1</span></td>
             <td>
               <div class="user-info">
                 <div>
@@ -85,14 +86,13 @@
             <td>
               <div class="action-buttons">
                 <button class="btn-renew">Renovar</button>
-                <button class="btn-edit">Editar</button>
-                <button class="btn-delete">Eliminar</button>
+                <button class="btn-edit" data-id="1" data-bs-toggle="modal" data-bs-target="#modalEditarPrestamo">Editar</button>
+                <button class="btn-delete" data-id="1">Eliminar</button>
               </div>
             </td>
           </tr>
-
           <tr>
-            <td><span >002</span></td>
+            <td><span >2</span></td>
             <td>
               <div class="user-info">
                 <div>
@@ -111,14 +111,13 @@
             <td>
               <div class="action-buttons">
                 <button class="btn-renew">Renovar</button>
-                <button class="btn-edit">Editar</button>
-                <button class="btn-delete">Eliminar</button>
+                <button class="btn-edit" data-id="2" data-bs-toggle="modal" data-bs-target="#modalEditarPrestamo">Editar</button>
+                <button class="btn-delete" data-id="2">Eliminar</button>
               </div>
             </td>
           </tr>
-
           <tr>
-            <td><span >003</span></td>
+            <td><span >3</span></td>
             <td>
               <div class="user-info">
                 <div>
@@ -137,8 +136,8 @@
             <td>
               <div class="action-buttons">
                 <button class="btn-renew">Renovar</button>
-                <button class="btn-edit">Editar</button>
-                <button class="btn-delete">Eliminar</button>
+                <button class="btn-edit" data-id="3" data-bs-toggle="modal" data-bs-target="#modalEditarPrestamo">Editar</button>
+                <button class="btn-delete" data-id="3">Eliminar</button>
               </div>
             </td>
           </tr>
@@ -152,6 +151,114 @@
       <a href="#">2</a>
       <a href="#">3</a>
       <a href="#">Siguiente »</a>
+    </div>
+  </div>
+</div>
+
+<!-- Modal para agregar préstamo -->
+<div class="modal fade" id="modalAgregarPrestamo" tabindex="-1" aria-labelledby="agregarPrestamoLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <form id="formAgregarPrestamo">
+        <div class="modal-header">
+          <h5 class="modal-title" id="agregarPrestamoLabel">Nuevo Préstamo</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label">Nombre del Usuario</label>
+              <input type="text" class="form-control" name="usuario" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Correo del Usuario</label>
+              <input type="email" class="form-control" name="correo_usuario" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Título del Libro</label>
+              <input type="text" class="form-control" name="titulo_libro" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Código del Libro</label>
+              <input type="text" class="form-control" name="codigo_libro" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Fecha Préstamo</label>
+              <input type="date" class="form-control" name="fecha_prestamo" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Fecha Devolución</label>
+              <input type="date" class="form-control" name="fecha_devolucion" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Estado</label>
+              <select class="form-select" name="estado" required>
+                <option value="activo">Activo</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-success">Registrar Préstamo</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal para editar préstamo -->
+<div class="modal fade" id="modalEditarPrestamo" tabindex="-1" aria-labelledby="editarPrestamoLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <form id="formEditarPrestamo">
+        <input type="hidden" name="id">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editarPrestamoLabel">Editar Préstamo</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label">Nombre del Usuario</label>
+              <input type="text" class="form-control" name="usuario" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Correo del Usuario</label>
+              <input type="email" class="form-control" name="correo_usuario" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Título del Libro</label>
+              <input type="text" class="form-control" name="titulo_libro" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Código del Libro</label>
+              <input type="text" class="form-control" name="codigo_libro" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Fecha Préstamo</label>
+              <input type="date" class="form-control" name="fecha_prestamo" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Fecha Devolución</label>
+              <input type="date" class="form-control" name="fecha_devolucion" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Estado</label>
+              <select class="form-select" name="estado" required>
+                <option value="activo">Activo</option>
+                <option value="vencido">Vencido</option>
+                <option value="devuelto">Devuelto</option>
+                <option value="renovado">Renovado</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Actualizar Préstamo</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>

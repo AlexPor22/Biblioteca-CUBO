@@ -30,7 +30,6 @@
         </div>
       </div>
     </div>
-
     <!-- Barra de Búsqueda -->
     <div class="search-bar">
       <input type="text" class="search-input" placeholder="Buscar por nombre o correo...">
@@ -51,7 +50,6 @@
           <a href="#" class="filter-btn" data-filter="">Empleados</a>
           <a href="#" class="filter-btn" data-filter="">Clientes</a>
         </div>
-        
         <a class="btn-add" data-bs-toggle="modal" data-bs-target="#modalAgregarUsuario">Nuevo Usuario</a>
       </div>
       <table class="modern-table">
@@ -72,12 +70,11 @@
             <td><span class="user-type type-admin">Admin</span></td>
             <td>
               <div class="action-buttons">
-                <button class="btn-edit">Editar</button>
-                <button class="btn-delete">Eliminar</button>
+                <button class="btn-edit" data-id="1" data-bs-toggle="modal" data-bs-target="#modalEditarUsuario">Editar</button>
+                <button class="btn-delete" data-id="1">Eliminar</button>
               </div>
             </td>
           </tr>
-
           <tr>
             <td><span>2</span></td>
             <td><span >Alexander</span></td>
@@ -85,12 +82,11 @@
             <td><span class="user-type type-empleado">Empleado</span></td>
             <td>
               <div class="action-buttons">
-                <button class="btn-edit">Editar</button>
-                <button class="btn-delete">Eliminar</button>
+                <button class="btn-edit" data-id="2" data-bs-toggle="modal" data-bs-target="#modalEditarUsuario">Editar</button>
+                <button class="btn-delete" data-id="2">Eliminar</button>
               </div>
             </td>
           </tr>
-
           <tr>
             <td><span>3</span></td>
             <td><span >Martel</span></td>
@@ -98,8 +94,8 @@
             <td><span class="user-type type-cliente">Cliente</span></td>
             <td>
               <div class="action-buttons">
-                <button class="btn-edit">Editar</button>
-                <button class="btn-delete">Eliminar</button>
+                <button class="btn-edit" data-id="3" data-bs-toggle="modal" data-bs-target="#modalEditarUsuario">Editar</button>
+                <button class="btn-delete" data-id="3">Eliminar</button>
               </div>
             </td>
           </tr>
@@ -118,78 +114,63 @@
 </div>
 
 <!-- Modal para agregar usuario con estilo -->
-<div class="modal fade" id="modalAgregarUsuario" tabindex="-1" aria-labelledby="modalAgregarUsuarioLabel" aria-hidden="true">
+<div class="modal fade" id="modalAgregarUsuario" tabindex="-1" aria-labelledby="agregarUsuarioLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content shadow-lg" style="border-radius: 16px; animation: bounceIn 0.5s;">
-      <div class="modal-header" style="background: linear-gradient(135deg, #0D0D0D, #2c2c2c); color: white; border-top-left-radius: 16px; border-top-right-radius: 16px;">
-        <h5 class="modal-title" id="modalAgregarUsuarioLabel">
-          <i class="fas fa-user-plus me-2"></i><span id="tituloModal">Agregar Nuevo Usuario</span>
-        </h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar" style="background-color: #dc3545;"></button>
-      </div>
-      <form id="formUsuario" onsubmit="guardarUsuario(event)">
-        <div class="modal-body p-4">
-          <input type="hidden" id="usuarioIndex">
+    <div class="modal-content">
+      <form id="formAgregarUsuario">
+        <div class="modal-header">
+          <h5 class="modal-title" id="agregarUsuarioLabel">Agregar Usuario</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
           <div class="row g-3">
             <div class="col-md-6">
-              <label for="nombre" class="form-label">Nombre Completo</label>
-              <input type="text" class="form-control" id="nombre" required>
+              <label class="form-label">Nombre Completo</label>
+              <input type="text" class="form-control" name="nombre_completo" required>
             </div>
             <div class="col-md-6">
-              <label for="usuario" class="form-label">Usuario</label>
-              <input type="text" class="form-control" id="usuario" required>
+              <label class="form-label">Edad</label>
+              <input type="number" class="form-control" name="edad" min="0" required>
             </div>
             <div class="col-md-6">
-              <label for="telefono" class="form-label">Teléfono</label>
-              <input type="tel" class="form-control" id="telefono">
-            </div>
-            <div class="col-md-6">
-              <label for="edad" class="form-label">Edad</label>
-              <input type="number" class="form-control" id="edad" min="0">
-            </div>
-            <div class="col-md-6">
-              <label for="sexo" class="form-label">Sexo</label>
-              <select class="form-select" id="sexo">
-                <option value="">Seleccione...</option>
-                <option value="Masculino">Masculino</option>
-                <option value="Femenino">Femenino</option>
-                <option value="Otro">Otro</option>
+              <label class="form-label">Sexo</label>
+              <select class="form-select" name="sexo" required>
+                <option value="" disabled selected>Seleccione</option>
+                <option value="masculino">Masculino</option>
+                <option value="femenino">Femenino</option>
+                <option value="otro">Otro</option>
               </select>
             </div>
             <div class="col-md-6">
-              <label for="direccion" class="form-label">Dirección</label>
-              <textarea class="form-control" id="direccion" rows="2"></textarea>
+              <label class="form-label">Nombre de Usuario</label>
+              <input type="text" class="form-control" name="nombre_usuario" required>
             </div>
             <div class="col-md-6">
-              <label for="correo" class="form-label">Correo Electrónico</label>
-              <input type="email" class="form-control" id="correo" required>
+              <label class="form-label">Correo Electrónico</label>
+              <input type="email" class="form-control" name="correo" required>
             </div>
             <div class="col-md-6">
-              <label for="rol" class="form-label">Tipo de Usuario</label>
-              <select class="form-select" id="rol" required>
-                <option value="">Seleccione...</option>
-                <option value="admin">Administrador</option>
+              <label class="form-label">Rol</label>
+              <select class="form-select" name="rol" required>
+                <option value="" disabled selected>Seleccione un rol</option>
+                <option value="admin">Admin</option>
                 <option value="empleado">Empleado</option>
                 <option value="cliente">Cliente</option>
               </select>
             </div>
             <div class="col-md-6">
-              <label for="password" class="form-label">Contraseña</label>
-              <input type="password" class="form-control" id="password" required>
+              <label class="form-label">Contraseña</label>
+              <input type="password" class="form-control" name="password" required>
             </div>
             <div class="col-md-6">
-              <label for="password_confirmation" class="form-label">Confirmar Contraseña</label>
-              <input type="password" class="form-control" id="password_confirmation" required>
+              <label class="form-label">Confirmar Contraseña</label>
+              <input type="password" class="form-control" name="password_confirmation" required>
             </div>
           </div>
         </div>
-        <div class="modal-footer px-4 py-3" style="justify-content: space-between;">
-          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
-          <i class="fas fa-times"></i> Cancelar
-          </button>
-          <button type="submit" class="btn btn-success">
-          <i class="fas fa-check"></i> Guardar
-          </button>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-success">Guardar</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
         </div>
       </form>
     </div>
@@ -197,70 +178,54 @@
 </div>
 
 <!-- Modal: Editar Usuario -->
-<div class="modal fade" id="modalEditarUsuario" tabindex="-1" aria-labelledby="modalEditarUsuarioLabel" aria-hidden="true">
+<div class="modal fade" id="modalEditarUsuario" tabindex="-1" aria-labelledby="editarUsuarioLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content shadow-lg" style="border-radius: 16px; animation: bounceIn 0.5s;">
-      <div class="modal-header" style="background: linear-gradient(135deg, #0D0D0D, #2c2c2c); color: white; border-top-left-radius: 16px; border-top-right-radius: 16px;">
-        <h5 class="modal-title" id="modalAgregarUsuarioLabel">
-          <i class="fas fa-user-edit me-2"></i><span id="tituloModal">Editar Usuario</span>
-        </h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar" style="background-color: #dc3545;"></button>
-      </div>
-      <form id="formUsuario" onsubmit="guardarUsuario(event)">
-        <div class="modal-body p-4">
-          <input type="hidden" id="usuarioIndex">
+    <div class="modal-content">
+      <form id="formEditarUsuario">
+        <input type="hidden" name="id">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editarUsuarioLabel">Editar Usuario</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
           <div class="row g-3">
             <div class="col-md-6">
-              <label for="nombre" class="form-label">Nombre Completo</label>
-              <input type="text" class="form-control" id="nombre" required>
+              <label class="form-label">Nombre Completo</label>
+              <input type="text" class="form-control" name="nombre_completo" required>
             </div>
             <div class="col-md-6">
-              <label for="usuario" class="form-label">Usuario</label>
-              <input type="text" class="form-control" id="usuario" required>
+              <label class="form-label">Edad</label>
+              <input type="number" class="form-control" name="edad" min="0" required>
             </div>
             <div class="col-md-6">
-              <label for="telefono" class="form-label">Teléfono</label>
-              <input type="tel" class="form-control" id="telefono">
-            </div>
-            <div class="col-md-6">
-              <label for="edad" class="form-label">Edad</label>
-              <input type="number" class="form-control" id="edad" min="0">
-            </div>
-            <div class="col-md-6">
-              <label for="sexo" class="form-label">Sexo</label>
-              <select class="form-select" id="sexo">
-                <option value="">Seleccione...</option>
-                <option value="Masculino">Masculino</option>
-                <option value="Femenino">Femenino</option>
-                <option value="Otro">Otro</option>
+              <label class="form-label">Sexo</label>
+              <select class="form-select" name="sexo" required>
+                <option value="masculino">Masculino</option>
+                <option value="femenino">Femenino</option>
+                <option value="otro">Otro</option>
               </select>
             </div>
             <div class="col-md-6">
-              <label for="direccion" class="form-label">Dirección</label>
-              <textarea class="form-control" id="direccion" rows="2"></textarea>
+              <label class="form-label">Nombre de Usuario</label>
+              <input type="text" class="form-control" name="nombre_usuario" required>
             </div>
             <div class="col-md-6">
-              <label for="correo" class="form-label">Correo Electrónico</label>
-              <input type="email" class="form-control" id="correo" required>
+              <label class="form-label">Correo Electrónico</label>
+              <input type="email" class="form-control" name="correo" required>
             </div>
             <div class="col-md-6">
-              <label for="rol" class="form-label">Tipo de Usuario</label>
-              <select class="form-select" id="rol" required>
-                <option value="">Seleccione...</option>
-                <option value="admin">Administrador</option>
+              <label class="form-label">Rol</label>
+              <select class="form-select" name="rol" required>
+                <option value="admin">Admin</option>
                 <option value="empleado">Empleado</option>
                 <option value="cliente">Cliente</option>
               </select>
             </div>
           </div>
         </div>
-        <div class="modal-footer px-4 py-3" style="justify-content: space-between;">
-          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
-          <i class="fas fa-times"></i> Cancelar
-          </button>
-          <button type="submit" class="btn btn-success">
-          <i class="fas fa-check"></i> Guardar
-          </button>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Actualizar</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
         </div>
       </form>
     </div>
@@ -268,87 +233,7 @@
 </div>
 
 <script>
-function guardarUsuario(e) {
-  e.preventDefault();
-  const nombre = document.getElementById('nombre').value.trim();
-  const usuario = document.getElementById('usuario').value.trim();
-  const correo = document.getElementById('correo').value.trim();
-  const rol = document.getElementById('rol').value;
-  const pass = document.getElementById('password').value;
-  const confirm = document.getElementById('password_confirmation').value;
-  const index = document.getElementById('usuarioIndex').value;
-
-  if (!nombre || !usuario || !correo || !pass || !confirm || !rol) {
-    Swal.fire({ icon: 'error', title: 'Campos requeridos', text: 'Completa todos los campos obligatorios.' });
-    return;
-  }
-  if (pass !== confirm) {
-    Swal.fire({ icon: 'error', title: 'Contraseñas no coinciden' });
-    return;
-  }
-
-  const tabla = document.querySelector(".users-table tbody");
-
-  if (index !== '') {
-    const fila = tabla.rows[index];
-    fila.querySelector('.user-name').innerText = nombre;
-    const tipo = rol.charAt(0).toUpperCase() + rol.slice(1);
-    const spanTipo = fila.querySelector('.user-type');
-    spanTipo.innerText = tipo;
-    spanTipo.className = `user-type type-${rol}`;
-    Swal.fire({ icon: 'success', title: 'Usuario actualizado', showConfirmButton: false, timer: 1500 });
-  } else {
-    const id = String(tabla.rows.length + 1).padStart(2, '0');
-    const tipo = rol.charAt(0).toUpperCase() + rol.slice(1);
-    const nuevaFila = document.createElement('tr');
-    nuevaFila.innerHTML = `
-      <td><span class="user-id">${id}</span></td>
-      <td><span >${nombre}</span></td>
-      <td><span class="user-type type-${rol}">${tipo}</span></td>
-      <td>
-        <div class="action-buttons">
-                <a href="#" class="btn-edit">Editar</a>
-                <a href="#" class="btn-delete">Eliminar</a>
-              </div>
-      </td>`;
-    tabla.appendChild(nuevaFila);
-    Swal.fire({ icon: 'success', title: 'Usuario agregado correctamente', showConfirmButton: false, timer: 1500 });
-  }
-
-  actualizarEstadisticas();
-  bootstrap.Modal.getOrCreateInstance(document.getElementById('modalAgregarUsuario')).hide();
-  document.getElementById('formUsuario').reset();
-  document.getElementById('usuarioIndex').value = '';
-  document.getElementById('tituloModal').innerText = 'Agregar Nuevo Usuario';
-}
-
-function editarUsuario(btn) {
-  const fila = btn.closest('tr');
-  const index = [...fila.parentNode.children].indexOf(fila);
-  document.getElementById('nombre').value = fila.querySelector('.user-name').innerText;
-  document.getElementById('rol').value = fila.querySelector('.user-type').innerText.toLowerCase();
-  document.getElementById('usuarioIndex').value = index;
-  document.getElementById('tituloModal').innerText = 'Editar Usuario';
-  bootstrap.Modal.getOrCreateInstance(document.getElementById('modalAgregarUsuario')).show();
-}
-
-document.querySelectorAll('.btn-edit').forEach(btn => {
-    btn.addEventListener('click', function (e) {
-      e.preventDefault();
-      
-      // Cambiar el título del modal
-      document.getElementById('tituloModal').textContent = 'Editar Usuario';
-
-      // Mostrar el modal
-      const modal = new bootstrap.Modal(document.getElementById('modalEditarUsuario'));
-      modal.show();
-
-      // Aquí podrías precargar datos si trabajas con una tabla real
-      // Por ejemplo: cargarUsuario(id)
-    });
-  });
-
-document.querySelectorAll('.btn-delete').forEach(btn => {
+  document.querySelectorAll('.btn-delete').forEach(btn => {
     btn.addEventListener('click', function (e) {
       e.preventDefault();
 
@@ -378,7 +263,5 @@ document.querySelectorAll('.btn-delete').forEach(btn => {
       });
     });
 });
-
 </script>
-
 @endsection

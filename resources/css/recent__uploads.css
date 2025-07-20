@@ -64,23 +64,7 @@
     font-size: 0.9rem;
 }
 
-.upload-status {
-    padding: 0.25rem 0.75rem;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 500;
-    text-transform: uppercase;
-}
 
-.status-published {
-    background: rgba(40, 167, 69, 0.1);
-    color: #28a745;
-}
-
-.status-draft {
-    background: rgba(255, 193, 7, 0.1);
-    color: #ffc107;
-}
 
 .prestamo-details {
     flex: 1;
@@ -120,29 +104,7 @@
     font-weight: 500;
 }
 
-.prestamo-estado {
-    padding: 0.25rem 0.75rem;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 500;
-    text-transform: uppercase;
-}
-
-.estado-activo {
-    background: rgba(40, 167, 69, 0.1);
-    color: #28a745;
-}
-
 .prestamos-activos .prestamo-title {
     font-size: 1.2rem;
 }
 
-.estado-vencido {
-    background: rgba(220, 53, 69, 0.1);
-    color: #dc3545;
-}
-
-.estado-por-vencer {
-    background: rgba(255, 193, 7, 0.1);
-    color: #ffc107;
-}
