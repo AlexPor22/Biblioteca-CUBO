@@ -29,4 +29,7 @@ Route::get('/user/loginUser', [UserController::class, 'Login'])->name('user.logi
 Route::get('/user/registerUser', [UserController::class, 'Registro'])->name('user.registerUser');
 Route::get('/user/galeria', [UserController::class, 'Galeria'])->name('user.galeria');
 
+Route::get('/user/informacion', [UserController::class, 'Informacion'])->name('user.informacion');
+
+
 

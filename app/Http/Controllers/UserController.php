@@ -23,4 +23,10 @@ class UserController extends Controller
         return view('user.galeria');
     }
 
+    public function Informacion()
+    {
+        return view('user.informacion');
+    }
+
+
 }

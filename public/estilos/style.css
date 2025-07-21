@@ -265,10 +265,6 @@ body {
     transform: scale(1.15);
 }
 
-/* X (Twitter) con color celeste */
-.social-icon[href*="x.com"] i {
-    color: #1DA1F2;
-}
 
 /* Efecto al pasar el mouse */
 .social-icon:hover {
