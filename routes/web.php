@@ -10,20 +10,39 @@ Route::get('/', function () {
 })->name('inicio');
 
 // Rutas del Panel de Administración (sin autenticación)
-Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+Route::get('/admin/panel/administracion', [AdminController::class, 'panelAdministracion'])->name('admin.panelAdministracion');
 
-Route::get('/admin/empleados', [AdminController::class, 'empleados'])->name('admin.empleados');
+// Rutas de gestión de usuarios del panel de administración
+Route::get('/admin/gestion/usuarios', [AdminController::class, 'gestionUsuarios'])->name('admin.gestionUsuarios');
 
-Route::get('/admin/usuarios', [AdminController::class, 'usuarios'])->name('admin.usuarios');
-Route::get('/admin/categorias-libros', [AdminController::class, 'categoriasLibros'])->name('admin.categoriasLibros');
-Route::get('/admin/clientes', [AdminController::class, 'clientes'])->name('admin.clientes');
-Route::get('/admin/publicar', [AdminController::class, 'publicar'])->name('admin.publicar');
-Route::get('/admin/prestamos', [AdminController::class, 'prestamos'])->name('admin.prestamos');
-Route::get('/admin/verlibros', [AdminController::class, 'verLibros'])->name('admin.verlibros');
-Route::get('/admin/prestamos/historial', [AdminController::class, 'historialPrestamo'])->name('admin.prestamos.historial');
+// Rutas de gestión de categorías de libros del panel de administración
+Route::get('/admin/gestion/categorias', [AdminController::class, 'gestionCategorias'])->name('admin.gestionCategorias');
+
+// Rutas de gestión de préstamos del panel de administración
+Route::get('/admin/gestion/prestamos', [AdminController::class, 'gestionPrestamos'])->name('admin.gestionPrestamos');
+
+// Rutas de gestión de libros y audiolibros del panel de administración
+Route::get('/admin/gestion/libros/audiolibros', [AdminController::class, 'gestionLibrosAudiolibros'])->name('admin.gestionLibrosAudiolibros');
+
+// Rutas de préstamos recientes del panel de administración
+Route::get('/admin/prestamos/recientes', [AdminController::class, 'prestamosRecientes'])->name('admin.prestamosRecientes');
+
+// Rutas de contenido reciente del panel de administración
+Route::get('/admin/contenido/reciente', [AdminController::class, 'contenidoReciente'])->name('admin.contenidoReciente');
+
+// Ruta de estadísticas del sistema del panel de administración
+Route::get('/admin/estadisticas/sistema', [AdminController::class, 'estadisticasSistema'])->name('admin.estadisticasSistema');
 
 // Cerrar sesión (solo redirige por ahora)
 Route::post('/', [AdminController::class, 'cerrarSesion'])->name('admin.cerrarSesion');
+
+
+
+
+
+Route::get('/admin/clientes', [AdminController::class, 'clientes'])->name('admin.clientes');
+
+Route::get('/admin/empleados', [AdminController::class, 'empleados'])->name('admin.empleados');
 
 Route::get('/user/loginUser', [UserController::class, 'Login'])->name('user.loginUser');
 Route::get('/user/registerUser', [UserController::class, 'Registro'])->name('user.registerUser');

@@ -34,7 +34,7 @@
 }
 
 .filter-btn {
-    padding: 0.5rem 1rem;
+    padding: 0.2rem 0.5rem;
     border: 2px solid #e9ecef;
     border-radius: 10px;
     background: white;
@@ -62,7 +62,7 @@
 }
 
 .pagination a {
-    padding: 12px 16px;
+    padding: 0.2rem 0.5rem;
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(20px);
     color: #0D0D0D;
@@ -102,7 +102,7 @@
     background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
     color: white;
     border: none;
-    padding: 0.75rem 1.5rem;
+    padding: 0.5rem;
     border-radius: 12px;
     font-weight: 600;
     font-size: 0.9rem;
@@ -136,6 +136,7 @@
     box-shadow: 0 8px 30px rgba(40, 167, 69, 0.4);
     color: white;
     text-decoration: none;
+    cursor: pointer;
 }
 
 .modern-table {
@@ -195,159 +196,6 @@
 
 .modern-table tbody tr:last-child td {
     border-bottom: none;
-}
-
-.action-buttons {
-    display: flex;
-    gap: 0.5rem;
-    align-items: center;
-}
-
-.btn-view {
-    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
-    border: none;
-    padding: 0.4rem 1rem;
-    border-radius: 6px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: white;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    position: relative;
-    overflow: hidden;
-}
-
-.btn-view:hover {
-    transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
-    color: white;
-}
-
-.btn-view::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-    transition: left 0.5s ease;
-}
-
-.btn-view:hover::before {
-    left: 100%;
-}
-
-.btn-edit {
-    background: linear-gradient(135deg, #ffc107 0%, #ffeb3b 100%);
-    border: none;
-    padding: 0.4rem 1rem;
-    border-radius: 6px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: #0D0D0D;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    position: relative;
-    overflow: hidden;
-}
-
-.btn-edit:hover {
-    transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 6px 20px rgba(255, 193, 7, 0.4);
-    color: #0D0D0D;
-}
-
-.btn-edit::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-    transition: left 0.5s ease;
-}
-
-.btn-edit:hover::before {
-    left: 100%;
-}
-
-.btn-delete {
-    background: linear-gradient(135deg, #dc3545 0%, #e74c3c 100%);
-    border: none;
-    padding: 0.4rem 1rem;
-    border-radius: 6px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: white;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    position: relative;
-    overflow: hidden;
-}
-
-.btn-delete:hover {
-    transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 6px 20px rgba(220, 53, 69, 0.4);
-    color: white;
-}
-
-.btn-delete::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-    transition: left 0.5s ease;
-}
-
-.btn-renovar {
-    background: linear-gradient(135deg, #078531 0%, #10a524 100%);
-    border: none;
-    padding: 0.4rem 1rem;
-    border-radius: 6px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: white;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    position: relative;
-    overflow: hidden;
-}
-
-.btn-renovar:hover {
-    transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 6px 20px rgba(53, 220, 95, 0.4);
-    color: white;
-}
-
-.btn-renovar::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-    transition: left 0.5s ease;
-}
-
-.btn-delete:hover::before {
-    left: 100%;
-}
-
-.book-title {
-    font-weight: 700;
-    color: #0D0D0D;
-    margin-bottom: 4px;
-}
-
-.book-author {
-    font-size: 12px;
-    color: #6B7280;
 }
 
 /* EXTRA SMALL - Teléfonos pequeños */

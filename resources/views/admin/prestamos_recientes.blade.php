@@ -5,7 +5,8 @@
   <div class="container">
     <!-- Header panel -->
     <div class="header">
-      <h1 class="header-title">Gestión de Préstamos</h1>
+      <h1 class="header-title">Préstamos Recientes</h1>
+      <!-- Subtítulo descriptivo -->
       <p class="header-subtitle">Administra préstamos de libros digitales y audiolibros. Controla fechas de vencimiento, renovaciones y historial de préstamos.</p>
     </div>
     <!-- Sección de Estadísticas -->
@@ -34,9 +35,10 @@
         </div>
       </div>
     </div>
-    <!-- Cards de Gestión -->
+
+    <!-- Cards de Gestión
     <div class="dashboard-grid">
-      <!-- Nuevo Préstamo -->
+      <!-- Nuevo Préstamo 
       <div class="dashboard-card">
         <div class="card-icon nuevo-prestamo">
           <svg fill="currentColor" viewBox="0 0 20 20" style="width: 40px; height: 40px;">
@@ -49,7 +51,7 @@
         <span>Crear Prestamo</span>
         </button>
       </div>
-      <!-- Préstamos Activos -->
+      <!-- Préstamos Activos
       <div class="dashboard-card">
         <div class="card-icon prestamo-activo">
           <svg fill="currentColor" viewBox="0 0 20 20" style="width: 40px; height: 40px;">
@@ -62,7 +64,7 @@
         <span>Ver Activos</span>
         </a>
       </div>
-      <!-- Historial -->
+      <!-- Historial 
       <div class="dashboard-card">
         <div class="card-icon publish">
           <svg fill="currentColor" viewBox="0 0 20 20" style="width: 40px; height: 40px;">
@@ -71,11 +73,13 @@
         </div>
         <h5 class="card-title">Historial</h5>
         <p class="card-description">Consulta el historial completo de préstamos. Genera reportes y estadísticas detalladas por período.</p>
-        <a href="{{ route('admin.prestamos.historial') }}" class="card-button">
+        <a href="" class="card-button">
         <span>Ver Historial</span>
         </a>
       </div>
     </div>
+    -->
+
     <!-- Contenido Reciente -->
     <div class="recent-uploads">
       <h3>Prestamos Recientes</h3>
@@ -154,7 +158,7 @@
   </div>
 </div>
 
-<!-- Modal: Nuevo Préstamo -->
+<!-- Modal: Nuevo Préstamo 
 <div class="modal fade" id="modalNuevoPrestamo" tabindex="-1" aria-labelledby="modalNuevoPrestamoLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content shadow-lg border-0" style="border-radius: 16px; animation: fadeInDown 0.4s;">
@@ -205,34 +209,5 @@
     </div>
   </div>
 </div>
-
-<script>
-document.getElementById('formNuevoPrestamo').addEventListener('submit', function(event) {
-  event.preventDefault();
-
-  const usuario = document.getElementById('nombre_usuario').value.trim();
-  const libro = document.getElementById('titulo_libro').value.trim();
-  const autor = document.getElementById('autor_libro').value.trim();
-
-  if (!usuario || !libro || !autor) {
-    Swal.fire({
-      icon: 'warning',
-      title: 'Campos incompletos',
-      text: 'Por favor completa todos los campos.'
-    });
-    return;
-  }
-
-  Swal.fire({
-    icon: 'success',
-    title: '¡Préstamo registrado!',
-    html: `<b>${libro}</b> de <i>${autor}</i> ha sido asignado a <b>${usuario}</b>.`
-  });
-
-  bootstrap.Modal.getInstance(document.getElementById('modalNuevoPrestamo')).hide();
-  this.reset();
-});
-</script>
-
-
+-->
 @endsection
