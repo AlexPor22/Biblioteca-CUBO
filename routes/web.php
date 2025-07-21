@@ -47,3 +47,11 @@ Route::get('/admin/empleados', [AdminController::class, 'empleados'])->name('adm
 Route::get('/user/loginUser', [UserController::class, 'Login'])->name('user.loginUser');
 Route::get('/user/registerUser', [UserController::class, 'Registro'])->name('user.registerUser');
 Route::get('/user/galeria', [UserController::class, 'Galeria'])->name('user.galeria');
+
+
+/**************************************************************************************************************************** */
+Route::get('/admin/usuarios', [AdminController::class, 'gestionUsuarios'])->name('admin.usuarios.index');
+Route::post('/admin/usuarios', [AdminController::class, 'storeUsuario'])->name('admin.usuarios.store');
+Route::put('/admin/usuarios/{id}', [AdminController::class, 'updateUsuario'])->name('admin.usuarios.update');
+Route::delete('/admin/usuarios/{id}', [AdminController::class, 'destroyUsuario'])->name('admin.usuarios.destroy');
+/**************************************************************************************************************************** */
