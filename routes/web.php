@@ -2,6 +2,15 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\Admin\UsuarioController as AdminUsuarioController;
+use App\Http\Controllers\Admin\CategoriaController as AdminCategoriaController;
+use App\Http\Controllers\Admin\PrestamoController as AdminPrestamoController;
+use App\Http\Controllers\Admin\LibroAudiolibroController as AdminLibroAudiolibroController;
+use App\Http\Controllers\Admin\PrestamoRecienteController as AdminPrestamoRecienteController;
+use App\Http\Controllers\Admin\ContenidoRecienteController as AdminContenidoRecienteController;
+use App\Http\Controllers\Admin\LibrosFisicosController as AdminLibrosFisicosController;
+use App\Http\Controllers\Admin\EstadisticasController as AdminEstadisticasController;
+
 use Illuminate\Support\Facades\Route;
 
 //RUTA INICIO 
@@ -13,25 +22,34 @@ Route::get('/', function () {
 Route::get('/admin/panel/administracion', [AdminController::class, 'panelAdministracion'])->name('admin.panelAdministracion');
 
 // Rutas de gestión de usuarios del panel de administración
-Route::get('/admin/gestion/usuarios', [AdminController::class, 'gestionUsuarios'])->name('admin.gestionUsuarios');
+Route::get('/admin/gestion/usuarios', [AdminUsuarioController::class, 'index'])->name('admin.gestionUsuarios');
+Route::post('/admin/gestion/usuarios', [AdminUsuarioController::class, 'store'])->name('admin.gestionUsuarios.store');
+Route::put('/admin/gestion/usuarios/{id}', [AdminUsuarioController::class, 'update'])->name('admin.gestionUsuarios.update');
+Route::delete('/admin/gestion/usuarios/{id}', [AdminUsuarioController::class, 'destroy'])->name('admin.gestionUsuarios.destroy');
 
 // Rutas de gestión de categorías de libros del panel de administración
-Route::get('/admin/gestion/categorias', [AdminController::class, 'gestionCategorias'])->name('admin.gestionCategorias');
+Route::get('/admin/gestion/categorias', [AdminCategoriaController::class, 'index'])->name('admin.gestionCategorias');
+Route::post('/admin/gestion/categorias', [AdminCategoriaController::class, 'store'])->name('admin.gestionCategorias.store');
+
+Route::delete('/admin/gestion/categorias/{id}', [AdminCategoriaController::class, 'destroy'])->name('admin.gestionCategorias.destroy');
 
 // Rutas de gestión de préstamos del panel de administración
-Route::get('/admin/gestion/prestamos', [AdminController::class, 'gestionPrestamos'])->name('admin.gestionPrestamos');
+Route::get('/admin/gestion/prestamos', [AdminPrestamoController::class, 'index'])->name('admin.gestionPrestamos');
 
 // Rutas de gestión de libros y audiolibros del panel de administración
-Route::get('/admin/gestion/libros/audiolibros', [AdminController::class, 'gestionLibrosAudiolibros'])->name('admin.gestionLibrosAudiolibros');
+Route::get('/admin/gestion/libros/audiolibros', [AdminLibroAudiolibroController::class, 'index'])->name('admin.gestionLibrosAudiolibros');
 
 // Rutas de préstamos recientes del panel de administración
-Route::get('/admin/prestamos/recientes', [AdminController::class, 'prestamosRecientes'])->name('admin.prestamosRecientes');
+Route::get('/admin/prestamos/recientes', [AdminPrestamoRecienteController::class, 'index'])->name('admin.prestamosRecientes');
 
 // Rutas de contenido reciente del panel de administración
-Route::get('/admin/contenido/reciente', [AdminController::class, 'contenidoReciente'])->name('admin.contenidoReciente');
+Route::get('/admin/contenido/reciente', [AdminContenidoRecienteController::class, 'index'])->name('admin.contenidoReciente');
+
+// Rutas de gestión de libros físicos del panel de administración
+Route::get('/admin/gestion/libros/fisicos', [AdminLibrosFisicosController::class, 'index'])->name('admin.gestionLibrosFisicos');
 
 // Ruta de estadísticas del sistema del panel de administración
-Route::get('/admin/estadisticas/sistema', [AdminController::class, 'estadisticasSistema'])->name('admin.estadisticasSistema');
+Route::get('/admin/estadisticas/sistema', [AdminEstadisticasController::class, 'index'])->name('admin.estadisticasSistema');
 
 // Cerrar sesión (solo redirige por ahora)
 Route::post('/', [AdminController::class, 'cerrarSesion'])->name('admin.cerrarSesion');
@@ -50,8 +68,6 @@ Route::get('/user/galeria', [UserController::class, 'Galeria'])->name('user.gale
 
 
 /**************************************************************************************************************************** */
-Route::get('/admin/usuarios', [AdminController::class, 'gestionUsuarios'])->name('admin.usuarios.index');
-Route::post('/admin/usuarios', [AdminController::class, 'storeUsuario'])->name('admin.usuarios.store');
-Route::put('/admin/usuarios/{id}', [AdminController::class, 'updateUsuario'])->name('admin.usuarios.update');
-Route::delete('/admin/usuarios/{id}', [AdminController::class, 'destroyUsuario'])->name('admin.usuarios.destroy');
+
+
 /**************************************************************************************************************************** */

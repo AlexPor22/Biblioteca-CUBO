@@ -90,9 +90,10 @@
                         data-correo="{{ $usuario->correo }}"
                         data-rol="{{ $usuario->rol }}"
                         data-bs-toggle="modal"
-                        data-bs-target="#modalEditarUsuario">Editar</button>
+                        data-bs-target="#modalEditarUsuario">Editar
+                      </button>
 
-                <form action="{{ route('admin.usuarios.destroy', $usuario->id) }}" method="POST" style="display: inline-block;">
+                <form action="{{ route('admin.gestionUsuarios.destroy', $usuario->id) }}" method="POST" style="display: inline-block;">
                   @csrf
                   @method('DELETE')
                   <button type="submit" class="btn-delete">Eliminar</button>
@@ -119,7 +120,7 @@
 <div class="modal fade" id="modalAgregarUsuario" tabindex="-1" aria-labelledby="agregarUsuarioLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
-      <form id="formAgregarUsuario" action="{{ route('admin.usuarios.store') }}" method="POST">
+      <form id="formAgregarUsuario" action="{{ route('admin.gestionUsuarios.store') }}" method="POST">
       @csrf
         <div class="modal-header">
           <h5 class="modal-title" id="agregarUsuarioLabel">Agregar Usuario</h5>

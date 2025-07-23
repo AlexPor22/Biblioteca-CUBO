@@ -14,15 +14,15 @@
       <h3 style="color: #0D0D0D; font-weight: 700; margin-bottom: 1rem;">Estadísticas del Sistema</h3>
       <div class="stats-grid">
         <div class="stat-item">
-          <div class="stat-number">5</div>
+          <div class="stat-number">{{ $total }}</div>
           <div class="stat-label">Total Categorías</div>
         </div>
         <div class="stat-item">
-          <div class="stat-number">3</div>
+          <div class="stat-number">{{ $totalCategorias }}</div>
           <div class="stat-label">Categorías Activas</div>
         </div>
         <div class="stat-item">
-          <div class="stat-number">24</div>
+          <div class="stat-number">12</div>
           <div class="stat-label">Libros Categorizados</div>
         </div>
       </div>
@@ -59,6 +59,34 @@
           </tr>
         </thead>
         <tbody>
+          @foreach ($categorias as $categoria)
+            <tr>
+              <td><span>{{ $categoria->id }}</span></td>
+              <td><span>{{ $categoria->nombre }}</span></td>
+              <td>{{ $categoria->cantidad_libros }} libros</td>
+              <td>
+                <span>{{ $categoria->estado }}</span>
+              </td>
+              <td>
+                <div class="action-buttons">
+                  <button class="btn-edit" 
+                  data-id="{{ $categoria->id }}"
+                  data-nombre="{{ $categoria->nombre }}"
+                  data-estado="{{ $categoria->estado }}"
+                  data-bs-toggle="modal" data-bs-target="#modalEditarCategoria">Editar</button>
+
+                  <form action="{{ route('admin.gestionCategorias.destroy', $categoria->id) }}" method="POST" style="display: inline-block;">
+                    @csrf
+                    @method('DELETE')
+                  <button type="submit" class="btn-delete">Eliminar</button>
+                  </form>
+                </div>
+              </td>
+            </tr>
+          @endforeach
+
+
+          <!-- 
           <tr>
             <td><span>1</span></td>
             <td><span >Ficción</span></td>
@@ -87,6 +115,7 @@
               </div>
             </td>
           </tr>
+          -->
         </tbody>
       </table>
     </div>
@@ -105,23 +134,33 @@
 <div class="modal fade" id="modalAgregarCategoria" tabindex="-1" aria-labelledby="agregarCategoriaLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-md">
     <div class="modal-content">
-      <form id="formAgregarCategoria">
+      <form id="formAgregarCategoria" action="{{ route('admin.gestionCategorias.store') }}" method="POST">
+        @csrf
         <div class="modal-header">
           <h5 class="modal-title" id="agregarCategoriaLabel">Agregar Nueva Categoría</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
         <div class="modal-body">
+          @if ($errors->any())
+            <div class="alert alert-danger">
+              <ul class="mb-0">
+                @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+                @endforeach
+              </ul>
+            </div>
+          @endif
           <div class="row g-3">
             <div class="col-md-12">
               <label class="form-label">Nombre de la Categoría</label>
-              <input type="text" class="form-control" name="nombre_categoria" required>
+              <input type="text" class="form-control" name="nombre_categoria" value="{{ old('nombre') }}" required>
             </div>
             <div class="col-md-12">
               <label class="form-label">Estado</label>
               <select class="form-select" name="estado" required>
                 <option value="" disabled selected>Seleccione un estado</option>
-                <option value="habilitada">Habilitar</option>
-                <option value="deshabilitada">Deshabilitar</option>
+                <option value="habilitado">Habilitar</option>
+                <option value="deshabilitado">Deshabilitar</option>
               </select>
             </div>
           </div>
@@ -139,8 +178,10 @@
 <div class="modal fade" id="modalEditarCategoria" tabindex="-1" aria-labelledby="editarCategoriaLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-md">
     <div class="modal-content">
-      <form id="formEditarCategoria">
-        <input type="hidden" name="id">
+      <form id="formEditarCategoria" method="POST">
+        @csrf
+        @method('PUT')
+        <input type="hidden" name="id" value="">
         <div class="modal-header">
           <h5 class="modal-title" id="editarCategoriaLabel">Editar Categoría</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
@@ -154,8 +195,8 @@
             <div class="col-md-12">
               <label class="form-label">Estado</label>
               <select class="form-select" name="estado" required>
-                <option value="habilitada">Habilitar</option>
-                <option value="deshabilitada">Deshabilitar</option>
+                <option value="habilitado">Habilitar</option>
+                <option value="deshabilitado">Deshabilitar</option>
               </select>
             </div>
           </div>
@@ -174,6 +215,7 @@
 document.querySelectorAll('.btn-delete').forEach(btn => {
     btn.addEventListener('click', function (e) {
       e.preventDefault();
+      const form = this.closest('form');
 
       Swal.fire({
         title: '¿Estás seguro?',
@@ -188,6 +230,7 @@ document.querySelectorAll('.btn-delete').forEach(btn => {
         if (result.isConfirmed) {
           // Acción real aquí. Por ejemplo:
           // eliminarUsuario(id);
+          form.submit();
           Swal.fire({
             icon: 'success',
             title: 'Eliminado',
@@ -201,6 +244,22 @@ document.querySelectorAll('.btn-delete').forEach(btn => {
       });
     });
 });
+
+
+document.querySelectorAll('.btn-edit').forEach(btn => {
+    btn.addEventListener('click', function () {
+      const form = document.getElementById('formEditarCategoria');
+
+      form.action = `/admin/categorias/${this.getAttribute('data-id')}`;
+
+      form.querySelector('input[name="id"]').value = this.getAttribute('data-id');
+      form.querySelector('input[name="nombre_categoria"]').value = this.getAttribute('data-nombre');
+      form.querySelector('select[name="estado"]').value = this.getAttribute('data-estado');
+    });
+});
+
+
+
 
 </script>
 

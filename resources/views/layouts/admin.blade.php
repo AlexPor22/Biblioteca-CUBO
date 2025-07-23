@@ -46,6 +46,9 @@
           <a href="{{ route('admin.gestionLibrosAudiolibros') }}" class="{{ request()->routeIs('admin.gestionLibrosAudiolibros') ? 'active' : '' }}">
           <i class="bi bi-cloud-upload"></i> Gestión de Libros y Audiolibros
           </a>
+          <a href="{{ route('admin.gestionLibrosFisicos') }}" class="{{ request()->routeIs('admin.gestionLibrosFisicos') ? 'active' : '' }}">
+          <i class="bi bi-book"></i> Gestión de Libros Físicos
+          </a>
           <a href="{{ route('admin.prestamosRecientes') }}" class="{{ request()->routeIs('admin.prestamosRecientes') ? 'active' : '' }}">
           <i class="bi bi-book-half"></i> Préstamos Recientes
           </a>
