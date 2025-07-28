@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\LibroDigital;
 
-class LibroAudiolibroController extends Controller
+class LibroDigitalController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,9 @@ class LibroAudiolibroController extends Controller
     public function index()
     {
         //
-        return view('admin.gestion_libros_audiolibros');
+        $libros_digital = LibroDigital::all(); // Obtiene todos los libros digitales
+
+        return view('admin.gestion_libros_digitales', compact('libros_digital'));
     }
 
     /**

@@ -63,7 +63,7 @@
             <tr>
               <td><span>{{ $categoria->id }}</span></td>
               <td><span>{{ $categoria->nombre }}</span></td>
-              <td>{{ $categoria->cantidad_libros }} libros</td>
+              <td>{{ $categoria->audiolibros->count() }} libros</td>
               <td>
                 <span>{{ $categoria->estado }}</span>
               </td>

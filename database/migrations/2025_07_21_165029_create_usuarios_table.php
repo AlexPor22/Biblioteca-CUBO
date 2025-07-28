@@ -20,7 +20,7 @@ class CreateUsuariosTable extends Migration
             $table->string('direccion')->nullable();
             $table->enum('estado', ['activo', 'inactivo'])->default('activo');
             $table->string('contrasena');
-            $table->string('url_imagen')->nullable();
+            $table->string('url_imagen')->default('https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg');
             $table->timestamps();
         });
     }

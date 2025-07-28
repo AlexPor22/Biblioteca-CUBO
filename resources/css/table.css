@@ -154,7 +154,7 @@
 }
 
 .modern-table th {
-    padding: 1rem;
+    padding: 1rem 0.5rem;
     font-weight: 700;
     color: #0D0D0D;
     text-align: left;

@@ -102,7 +102,7 @@
         </div>
         <h5 class="card-title">Gestión de Libros y Audiolibros</h5>
         <p class="card-description">Sube, edita y organiza libros en PDF o audiolibros. Gestiona todo el contenido disponible para los usuarios.</p>
-        <a href="{{ route('admin.gestionLibrosAudiolibros') }}" class="card-button"><span>Gestionar Contenido</span></a>
+        <a href="{{ route('admin.gestionAudiolibros') }}" class="card-button"><span>Gestionar Contenido</span></a>
       </div>
 
       <!-- Préstamos Recientes -->

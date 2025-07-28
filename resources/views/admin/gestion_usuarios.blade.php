@@ -63,24 +63,28 @@
       <table class="modern-table">
         <thead>
           <tr>
-            <th>ID</th>
-            <th>Nombre de Usuario</th>
-            <th>Correo Electronico</th>
-            <th>Tipo de Usuario</th>
+            <!--<th>ID</th>-->
+            <th>Usuario</th>
+            <th>Correo</th>
+            <th>Direccion</th>
+            <th>Rol</th>
             <th>Acciones</th>
           </tr>
         </thead>
         <tbody>
           @foreach($usuarios as $usuario)
           <tr data-rol="{{ strtolower($usuario->rol) }}">
-            <td>{{ $usuario->id }}</td>
-            <td>{{ $usuario->nombre_usuario }}</td>
-            <td>{{ $usuario->correo }}</td>
+            <!--<td>{{ $usuario->id }}</td>-->
+            <td><span>{{ $usuario->nombre_usuario }}</span></td>
+            <td><span>{{ $usuario->correo }}</span></td>
+            <td><span>{{ $usuario->direccion }}</span></td>
             <td>
               <span class="user-type type-{{ strtolower($usuario->rol) }}">{{ ucfirst($usuario->rol) }}</span>
             </td>
             <td>
               <div class="action-buttons">
+                <button class="btn-view" data-id="{{ $usuario->id }}">Ver Perfil</button>
+
                 <button class="btn-edit"
                         data-id="{{ $usuario->id }}"
                         data-nombre="{{ $usuario->nombre_completo }}"
@@ -89,6 +93,10 @@
                         data-nombre_usuario="{{ $usuario->nombre_usuario }}"
                         data-correo="{{ $usuario->correo }}"
                         data-rol="{{ $usuario->rol }}"
+                        data-telefono="{{ $usuario->numero_telefono }}"
+                        data-direccion="{{ $usuario->direccion }}"
+                        data-contrasena="{{ $usuario->contrasena }}"
+                        data-url_imagen="{{ $usuario->url_imagen }}"
                         data-bs-toggle="modal"
                         data-bs-target="#modalEditarUsuario">Editar
                       </button>
@@ -137,31 +145,41 @@
             </div>
           @endif
           <div class="row g-3">
+            <!-- Nombre Completo -->
             <div class="col-md-6">
               <label class="form-label">Nombre Completo</label>
               <input type="text" class="form-control" name="nombre_completo" value="{{ old('nombre_completo') }}" required>
             </div>
+
+            <!-- Edad -->
             <div class="col-md-6">
               <label class="form-label">Edad</label>
-              <input type="number" class="form-control" name="edad" min="0" value="{{ old('edad') }}" required>
+              <input type="text" class="form-control" name="edad" maxlength="2" value="{{ old('edad') }}" required>
             </div>
+
+            <!-- Sexo -->
             <div class="col-md-6">
               <label class="form-label">Sexo</label>
               <select class="form-select" name="sexo" required>
                 <option value="" disabled selected>Seleccione</option>
                 <option value="masculino">Masculino</option>
                 <option value="femenino">Femenino</option>
-                <option value="otro">Otro</option>
               </select>
             </div>
+
+            <!-- Nombre de Usuario -->
             <div class="col-md-6">
               <label class="form-label">Nombre de Usuario</label>
               <input type="text" class="form-control" name="nombre_usuario" value="{{ old('nombre_usuario') }}" required>
             </div>
+
+            <!-- Correo Electrónico -->
             <div class="col-md-6">
               <label class="form-label">Correo Electrónico</label>
               <input type="email" class="form-control" name="correo" value="{{ old('correo') }}" required>
             </div>
+
+            <!-- Rol -->
             <div class="col-md-6">
               <label class="form-label">Rol</label>
               <select class="form-select" name="rol" required>
@@ -171,13 +189,42 @@
                 <option value="cliente">Cliente</option>
               </select>
             </div>
+
+            <!-- Numero de Teléfono -->
+            <div class="col-md-6">
+              <label class="form-label">Número de Teléfono</label>
+              <input type="text" class="form-control" name="numero_telefono" value="{{ old('numero_telefono') }}" required>
+            </div>
+
+            <!-- Dirección -->
+            <div class="col-md-6">
+              <label class="form-label">Dirección</label>
+              <input type="text" class="form-control" name="direccion" value="{{ old('direccion') }}" required>
+            </div>
+
+            <!-- Contraseña -->
             <div class="col-md-6">
               <label class="form-label">Contraseña</label>
               <input type="password" class="form-control" name="password" value="{{ old('password') }}" required>
             </div>
+
+            <!-- Confirmar Contraseña -->
             <div class="col-md-6">
               <label class="form-label">Confirmar Contraseña</label>
               <input type="password" class="form-control" name="password_confirmation" value="{{ old('password_confirmation') }}" required>
+            </div>
+
+            <!-- Imagen de Perfil 
+            <div class="col-md-12">
+              <label class="form-label">Imagen de Perfil (opcional)</label> 
+              <input type="file" class="form-control" name="imagen_perfil" accept="image/*">
+            </div>
+            -->
+
+            <!-- Imagen de Perfil URL -->
+            <div class="col-md-12">
+              <label class="form-label">Imagen de Perfil (URL)</label>
+              <input type="text" class="form-control" name="url_imagen" value="{{ old('url_imagen') }}" required>
             </div>
           </div>
         </div>
@@ -204,37 +251,74 @@
         </div>
         <div class="modal-body">
           <div class="row g-3">
+            <!-- Nombre Completo -->
             <div class="col-md-6">
               <label class="form-label">Nombre Completo</label>
               <input type="text" class="form-control" name="nombre_completo" required>
             </div>
+
+            <!-- Edad -->
             <div class="col-md-6">
               <label class="form-label">Edad</label>
-              <input type="number" class="form-control" name="edad" min="0" required>
+              <input type="text" class="form-control" name="edad" maxlength="2" required>
             </div>
+
+            <!-- Sexo -->
             <div class="col-md-6">
               <label class="form-label">Sexo</label>
               <select class="form-select" name="sexo" required>
+                <option value="" disabled selected>Seleccione</option>
                 <option value="masculino">Masculino</option>
                 <option value="femenino">Femenino</option>
-                <option value="otro">Otro</option>
               </select>
             </div>
+
+            <!-- Nombre de Usuario -->
             <div class="col-md-6">
               <label class="form-label">Nombre de Usuario</label>
               <input type="text" class="form-control" name="nombre_usuario" required>
             </div>
+
+            <!-- Correo Electrónico -->
             <div class="col-md-6">
               <label class="form-label">Correo Electrónico</label>
               <input type="email" class="form-control" name="correo" required>
             </div>
+
+            <!-- Rol -->
             <div class="col-md-6">
               <label class="form-label">Rol</label>
               <select class="form-select" name="rol" required>
+                <option value="" disabled selected>Seleccione un rol</option>
                 <option value="admin">Admin</option>
                 <option value="empleado">Empleado</option>
                 <option value="cliente">Cliente</option>
               </select>
+            </div>
+
+            <!-- Numero de Teléfono -->
+            <div class="col-md-6">
+              <label class="form-label">Número de Teléfono</label>
+              <input type="text" class="form-control" name="numero_telefono" required>
+            </div>
+
+            <!-- Dirección -->
+            <div class="col-md-6">
+              <label class="form-label">Dirección</label>
+              <input type="text" class="form-control" name="direccion" required>
+            </div>
+
+            <!-- Imagen de Perfil 
+            <div class="col-md-12">
+              <label class="form-label">Imagen de Perfil (opcional)</label> 
+              <input type="file" class="form-control" name="imagen_perfil" accept="image/*">
+            </div>
+            -->
+
+            <!-- Imagen de Perfil URL -->
+            <div class="col-md-12">
+              <label class="form-label">Imagen de Perfil (URL)</label>
+              <input type="text" class="form-control" name="url_imagen">
             </div>
           </div>
         </div>
@@ -243,6 +327,121 @@
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
         </div>
       </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Vista Profesional de Usuario -->
+<div class="modal fade" id="modalVistaUsuario" tabindex="-1" aria-labelledby="modalVistaUsuarioLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content border-0 shadow-lg rounded-4">
+
+      <div class="modal-header bg-dark text-white rounded-top-4">
+        <h5 class="modal-title" id="modalVistaUsuarioLabel">Perfil de Usuario</h5>
+      </div>
+
+      <div class="modal-body p-0">
+        <div class="card border-0">
+
+          <!-- Imagen + usuario -->
+          <div class="text-center p-1 bg-light border-bottom">
+            <img id="card_imagen" src="" alt="Imagen de perfil" class="rounded-circle" style="width: 150px; height: 150px;">
+            <h4 class="fw-bold" id="card_nombre_usuario">usuario</h4>
+            <span class="badge bg-success" id="card_estado">Activo</span>
+          </div>
+
+          <!-- Tabs -->
+          <ul class="nav nav-tabs nav-justified fw-semibold border-bottom bg-white" id="tabRol" role="tablist">
+            <li class="nav-item">
+              <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tabInfo">🧾 Información</button>
+            </li>
+            <li class="nav-item d-none" id="tabCliente">
+              <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tabHistorial">📚 Historial</button>
+            </li>
+            <li class="nav-item d-none" id="tabEmpleado">
+              <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tabActividad">📋 Actividad</button>
+            </li>
+            <li class="nav-item d-none" id="tabAdmin">
+              <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tabSistema">🛠️ Sistema</button>
+            </li>
+          </ul>
+
+          <!-- Tab content -->
+          <div class="tab-content p-4">
+            <!-- Info general -->
+            <div class="tab-pane fade show active" id="tabInfo">
+              <div class="row">
+                <div class="col-md-6">
+                  <label class="text-muted">Nombre completo</label>
+                  <p class="fw-bold" id="card_nombre_completo">-</p>
+                </div>
+                <div class="col-md-3">
+                  <label class="text-muted">Edad</label>
+                  <p class="fw-bold" id="card_edad">-</p>
+                </div>
+                <div class="col-md-3">
+                  <label class="text-muted">Sexo</label>
+                  <p class="fw-bold" id="card_sexo">-</p>
+                </div>
+                <div class="col-md-6">
+                  <label class="text-muted">Correo</label>
+                  <p class="fw-bold" id="card_correo">-</p>
+                </div>
+                <div class="col-md-6">
+                  <label class="text-muted">Teléfono</label>
+                  <p class="fw-bold" id="card_telefono">-</p>
+                </div>
+                <div class="col-12">
+                  <label class="text-muted">Dirección</label>
+                  <p class="fw-bold" id="card_direccion">-</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Cliente: historial -->
+            <div class="tab-pane fade" id="tabHistorial">
+              <p class="text-muted">Últimos préstamos, libros descargados, audiolibros escuchados, etc.</p>
+              <ul class="list-group">
+                <li class="list-group-item">📘 Último préstamo: <span class="text-muted">N/A</span></li>
+                <li class="list-group-item">⏳ Total préstamos: <span class="text-muted">0</span></li>
+              </ul>
+            </div>
+
+            <!-- Empleado: actividad -->
+            <div class="tab-pane fade" id="tabActividad">
+              <p class="text-muted">Registro de actividades de gestión: registros, ediciones, préstamos, etc.</p>
+              <ul class="list-group">
+                <li class="list-group-item">✅ Última acción: <span class="text-muted">-</span></li>
+                <li class="list-group-item">📄 Registros gestionados: <span class="text-muted">-</span></li>
+              </ul>
+            </div>
+
+            <!-- Admin: sistema -->
+            <div class="tab-pane fade" id="tabSistema">
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label class="text-muted">Rol</label>
+                  <p class="fw-bold" id="card_rol">admin</p>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label class="text-muted">Estado</label>
+                  <p class="fw-bold" id="card_estado_2">activo</p>
+                </div>
+                <div class="col-md-12 mb-3">
+                  <label class="text-muted">Creado el</label>
+                  <p class="fw-bold" id="card_fecha_creacion">—</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="modal-footer bg-light rounded-bottom-4">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+
     </div>
   </div>
 </div>
@@ -286,7 +485,7 @@ document.querySelectorAll('.btn-edit').forEach(button => {
   button.addEventListener('click', function () {
     const form = document.getElementById('formEditarUsuario');
 
-    form.action = `/admin/usuarios/${this.dataset.id}`; // Asume ruta REST
+    form.action = `/admin/gestion/usuarios/${this.dataset.id}`; // Asume ruta REST
 
     form.querySelector('input[name="id"]').value = this.dataset.id;
     form.querySelector('input[name="nombre_completo"]').value = this.dataset.nombre;
@@ -295,8 +494,13 @@ document.querySelectorAll('.btn-edit').forEach(button => {
     form.querySelector('input[name="nombre_usuario"]').value = this.dataset.nombre_usuario;
     form.querySelector('input[name="correo"]').value = this.dataset.correo;
     form.querySelector('select[name="rol"]').value = this.dataset.rol;
+    form.querySelector('input[name="numero_telefono"]').value = this.dataset.telefono;
+    form.querySelector('input[name="direccion"]').value = this.dataset.direccion;
+    form.querySelector('input[name="url_imagen"]').value = this.dataset.url_imagen
   });
 });
+
+
 
 // Script para el buscador de usuarios
 document.addEventListener('DOMContentLoaded', function () {
@@ -341,6 +545,46 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 });
+
+document.addEventListener('click', async (e) => {
+  if (e.target.matches('.btn-view')) {
+    const id = e.target.dataset.id;
+
+    try {
+      const res = await fetch(`/admin/gestion/usuarios/${id}`);
+      const usuario = await res.json();
+
+      // Info general
+      document.getElementById('card_nombre_usuario').textContent = usuario.nombre_usuario;
+      document.getElementById('card_nombre_completo').textContent = usuario.nombre_completo;
+      document.getElementById('card_edad').textContent = usuario.edad;
+      document.getElementById('card_sexo').textContent = usuario.sexo;
+      document.getElementById('card_correo').textContent = usuario.correo;
+      document.getElementById('card_telefono').textContent = usuario.numero_telefono;
+      document.getElementById('card_direccion').textContent = usuario.direccion;
+      document.getElementById('card_estado').textContent = usuario.estado;
+      document.getElementById('card_estado_2').textContent = usuario.estado;
+      document.getElementById('card_rol').textContent = usuario.rol;
+      document.getElementById('card_fecha_creacion').textContent = new Date(usuario.created_at).toLocaleDateString();
+
+      document.getElementById('card_imagen').src = usuario.url_imagen || 'https://via.placeholder.com/150';
+
+      // Mostrar solo las tabs correspondientes al rol
+      document.getElementById('tabCliente').classList.toggle('d-none', usuario.rol !== 'cliente');
+      document.getElementById('tabEmpleado').classList.toggle('d-none', usuario.rol !== 'empleado');
+      document.getElementById('tabAdmin').classList.toggle('d-none', usuario.rol !== 'admin');
+
+      // Mostrar modal
+      new bootstrap.Modal(document.getElementById('modalVistaUsuario')).show();
+
+    } catch (err) {
+      console.error(err);
+      alert("Error al cargar usuario.");
+    }
+  }
+});
+
+
 
 /**********************************************************************************************/
 </script>

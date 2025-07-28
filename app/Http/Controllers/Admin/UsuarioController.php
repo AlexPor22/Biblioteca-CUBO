@@ -22,7 +22,6 @@ class UsuarioController extends Controller
         $empleados = $usuarios->where('rol', 'empleado')->count();
         $clientes = $usuarios->where('rol', 'cliente')->count();
 
-
         return view('admin.gestion_usuarios', compact('usuarios', 'total', 'admins', 'empleados', 'clientes'));
     }
 
@@ -48,7 +47,10 @@ class UsuarioController extends Controller
             'nombre_usuario' => 'required|string|unique:usuarios,nombre_usuario',
             'correo' => 'required|email|unique:usuarios,correo',
             'rol' => 'required|in:admin,empleado,cliente',
+            'numero_telefono' => 'required|string|max:15',
+            'direccion' => 'required|string|max:255',
             'password' => 'required|confirmed|min:6',
+            'url_imagen' => 'nullable|string|max:255',
         ]);
 
         Usuario::create([
@@ -58,8 +60,11 @@ class UsuarioController extends Controller
             'nombre_usuario' => $request->nombre_usuario,
             'correo' => $request->correo,
             'rol' => $request->rol,
+            'numero_telefono' => $request->numero_telefono,
+            'direccion' => $request->direccion,
+            'estado' => 'activo', // Por defecto, el estado es activo
             'contrasena' => Hash::make($request->password),
-            'estado' => 'activo'
+            'url_imagen' => $request->url_imagen,
         ]);
 
         return redirect()->back()->with('success', 'Usuario creado exitosamente.');
@@ -71,6 +76,8 @@ class UsuarioController extends Controller
     public function show(string $id)
     {
         //
+        $usuario = Usuario::findOrFail($id);
+        return response()->json($usuario);
     }
 
     /**
@@ -90,12 +97,15 @@ class UsuarioController extends Controller
         $usuario = Usuario::findOrFail($id);
 
         $request->validate([
-            'nombre_completo' => 'required|string|max:100',
+            'nombre_completo' => 'required|string|max:255',
             'edad' => 'required|integer|min:0',
             'sexo' => 'required|in:masculino,femenino,otro',
             'nombre_usuario' => 'required|string|unique:usuarios,nombre_usuario,' . $id,
             'correo' => 'required|email|unique:usuarios,correo,' . $id,
             'rol' => 'required|in:admin,empleado,cliente',
+            'numero_telefono' => 'nullable|string|max:15',
+            'direccion' => 'nullable|string|max:255',
+            'url_imagen' => 'nullable|string|max:255',
         ]);
 
         $usuario->update([
@@ -104,7 +114,10 @@ class UsuarioController extends Controller
             'sexo' => $request->sexo,
             'nombre_usuario' => $request->nombre_usuario,
             'correo' => $request->correo,
-            'rol' => $request->rol
+            'rol' => $request->rol,
+            'numero_telefono' => $request->numero_telefono,
+            'direccion' => $request->direccion,
+            'url_imagen' => $request->url_imagen,
         ]);
 
         return redirect()->back()->with('success', 'Usuario actualizado correctamente');

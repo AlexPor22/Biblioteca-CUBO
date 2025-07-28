@@ -37,12 +37,12 @@ class CategoriaController extends Controller
         //
 
         $request->validate([
-            'nombre' => 'required|string|max:100',
+            'nombre_categoria' => 'required|string|max:100',
             'estado' => 'required|in:habilitado,deshabilitado',
         ]);
 
         Categoria::create([
-            'nombre' => $request->nombre,
+            'nombre' => $request->nombre_categoria,
             'estado' => $request->estado,
         ]);
 

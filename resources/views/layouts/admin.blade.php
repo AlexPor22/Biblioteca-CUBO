@@ -40,14 +40,17 @@
           <a href="{{ route('admin.gestionCategorias') }}" class="{{ request()->routeIs('admin.gestionCategorias') ? 'active' : '' }}">
           <i class="bi bi-tags"></i> Gestión de Categorías
           </a>
-          <a href="{{ route('admin.gestionPrestamos') }}" class="{{ request()->routeIs('admin.gestionPrestamos') ? 'active' : '' }}">
-          <i class="bi bi-journal-bookmark"></i> Gestión de Préstamos
+          <a href="{{ route('admin.gestionLibrosDigitales') }}" class="{{ request()->routeIs('admin.gestionLibrosDigitales') ? 'active' : '' }}">
+          <i class="bi bi-cloud-upload"></i> Gestión de Libros Digitales
           </a>
-          <a href="{{ route('admin.gestionLibrosAudiolibros') }}" class="{{ request()->routeIs('admin.gestionLibrosAudiolibros') ? 'active' : '' }}">
-          <i class="bi bi-cloud-upload"></i> Gestión de Libros y Audiolibros
+          <a href="{{ route('admin.gestionAudiolibros') }}" class="{{ request()->routeIs('admin.gestionAudiolibros') ? 'active' : '' }}">
+          <i class="bi bi-cloud-upload"></i> Gestión de Audiolibros
           </a>
           <a href="{{ route('admin.gestionLibrosFisicos') }}" class="{{ request()->routeIs('admin.gestionLibrosFisicos') ? 'active' : '' }}">
           <i class="bi bi-book"></i> Gestión de Libros Físicos
+          </a>
+          <a href="{{ route('admin.gestionPrestamos') }}" class="{{ request()->routeIs('admin.gestionPrestamos') ? 'active' : '' }}">
+          <i class="bi bi-journal-bookmark"></i> Gestión de Préstamos
           </a>
           <a href="{{ route('admin.prestamosRecientes') }}" class="{{ request()->routeIs('admin.prestamosRecientes') ? 'active' : '' }}">
           <i class="bi bi-book-half"></i> Préstamos Recientes

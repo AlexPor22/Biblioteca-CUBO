@@ -14,6 +14,7 @@ class Categoria extends Authenticatable
     // Definición de los campos que se pueden llenar masivamente
     protected $fillable = [
         'nombre',
+        'cantidad_libros', // Actualizable manual o con trigger
         'estado',
     ];
 
@@ -26,4 +27,17 @@ class Categoria extends Authenticatable
     {
         return $this->nombre;
     }
+
+    // Relación: Una categoría puede tener muchos libros digitales
+    //public function librosDigitales()
+    //{
+        //return $this->hasMany(LibroDigital::class, 'categoria_id');
+    //}
+
+    // Relación: Una categoría puede tener muchos audiolibros
+    public function audiolibros()
+    {
+        return $this->hasMany(AudioLibro::class, 'categoria_id');
+    }
+
 }

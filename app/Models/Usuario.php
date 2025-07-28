@@ -26,7 +26,7 @@ class Usuario extends Authenticatable
         'url_imagen',
     ];
 
-   protected $hidden = ['password']; // Oculta el campo de contraseña en las respuestas JSON
+   protected $hidden = ['contrasena']; // Oculta el campo de contraseña en las respuestas JSON
 
     // Método para obtener la contraseña del usuario
     // Esto es necesario para la autenticación
