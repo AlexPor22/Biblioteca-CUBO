@@ -38,14 +38,20 @@
       </div>
     </div>
     <!-- Barra de Búsqueda -->
-    <div class="search-bar">
-      <input type="text" class="search-input" id="buscadorUsuario" placeholder="Buscar por nombre de usuario o correo electrónico...">
-     <!-- <button class="search-btn">
-        <svg fill="currentColor" viewBox="0 0 20 20" style="width: 20px; height: 20px;">
-          <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
-        </svg>
-      </button> -->
-    </div>
+      <form method="GET" action="{{ route('admin.gestionUsuarios') }}" class="search-bar" style="margin-bottom: 1rem;">
+        <input 
+          type="text" 
+          name="search" 
+          class="search-input" 
+          id="buscadorUsuario" 
+          placeholder="Buscar por nombre de usuario o correo electrónico..." 
+          value="{{ request('search') }}">
+        <button class="search-btn">
+          <svg fill="currentColor" viewBox="0 0 20 20" style="width: 20px; height: 20px;">
+            <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
+          </svg>
+        </button>
+      </form>
     <!-- Sección de contenido principal -->
     <div class="content-section">
       <div class="section-header">
@@ -114,21 +120,17 @@
       </table>
     </div>
     <!-- Paginación -->
-    <div class="pagination">
-      <a href="#">« Anterior</a>
-      <a href="#" class="active">1</a>
-      <a href="#">2</a>
-      <a href="#">3</a>
-      <a href="#">Siguiente »</a>
+    <div class="pagination-container d-flex justify-content-center mt-4">
+      {{ $usuarios->appends(request()->query())->links('pagination::bootstrap-5') }}
     </div>
   </div>
 </div>
 
-<!-- Modal para agregar usuario con estilo -->
+<!-- Modal para agregar usuarios nuevos-->
 <div class="modal fade" id="modalAgregarUsuario" tabindex="-1" aria-labelledby="agregarUsuarioLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
-      <form id="formAgregarUsuario" action="{{ route('admin.gestionUsuarios.store') }}" method="POST">
+      <form id="formAgregarUsuario" action="{{ route('admin.gestionUsuarios.store') }}" method="POST" enctype="multipart/form-data">
       @csrf
         <div class="modal-header">
           <h5 class="modal-title" id="agregarUsuarioLabel">Agregar Usuario</h5>
@@ -214,18 +216,18 @@
               <input type="password" class="form-control" name="password_confirmation" value="{{ old('password_confirmation') }}" required>
             </div>
 
-            <!-- Imagen de Perfil 
+            <!-- Imagen de Perfil -->
             <div class="col-md-12">
               <label class="form-label">Imagen de Perfil (opcional)</label> 
               <input type="file" class="form-control" name="imagen_perfil" accept="image/*">
             </div>
-            -->
 
-            <!-- Imagen de Perfil URL -->
+            <!-- Imagen de Perfil URL
             <div class="col-md-12">
               <label class="form-label">Imagen de Perfil (URL)</label>
               <input type="text" class="form-control" name="url_imagen" value="{{ old('url_imagen') }}" required>
             </div>
+             -->
           </div>
         </div>
         <div class="modal-footer">
@@ -308,18 +310,18 @@
               <input type="text" class="form-control" name="direccion" required>
             </div>
 
-            <!-- Imagen de Perfil 
+            <!-- Imagen de Perfil -->
             <div class="col-md-12">
               <label class="form-label">Imagen de Perfil (opcional)</label> 
               <input type="file" class="form-control" name="imagen_perfil" accept="image/*">
             </div>
-            -->
 
-            <!-- Imagen de Perfil URL -->
+            <!-- Imagen de Perfil URL
             <div class="col-md-12">
               <label class="form-label">Imagen de Perfil (URL)</label>
               <input type="text" class="form-control" name="url_imagen">
             </div>
+             -->
           </div>
         </div>
         <div class="modal-footer">
@@ -499,7 +501,6 @@ document.querySelectorAll('.btn-edit').forEach(button => {
     form.querySelector('input[name="url_imagen"]').value = this.dataset.url_imagen
   });
 });
-
 
 
 // Script para el buscador de usuarios

@@ -32,7 +32,8 @@ Route::delete('/admin/gestion/usuarios/{id}', [AdminUsuarioController::class, 'd
 // Rutas de gestión de categorías de libros del panel de administración
 Route::get('/admin/gestion/categorias', [AdminCategoriaController::class, 'index'])->name('admin.gestionCategorias');
 Route::post('/admin/gestion/categorias', [AdminCategoriaController::class, 'store'])->name('admin.gestionCategorias.store');
-
+Route::get('/admin/gestion/categorias/{id}', [AdminCategoriaController::class, 'show'])->name('admin.gestionCategorias.show');
+Route::put('/admin/gestion/categorias/{id}', [AdminCategoriaController::class, 'update'])->name('admin.gestionCategorias.update');
 Route::delete('/admin/gestion/categorias/{id}', [AdminCategoriaController::class, 'destroy'])->name('admin.gestionCategorias.destroy');
 
 // Rutas de gestión de préstamos del panel de administración

@@ -12,17 +12,30 @@ class UsuarioController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
-        $usuarios = Usuario::all();
+        $query = Usuario::query();
 
-        $total = $usuarios->count();
-        $admins = $usuarios->where('rol', 'admin')->count();
-        $empleados = $usuarios->where('rol', 'empleado')->count();
-        $clientes = $usuarios->where('rol', 'cliente')->count();
+        // Si hay búsqueda, filtramos por nombre de usuario o correo
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $query->where(function ($q) use ($search) {
+                $q->where('nombre_usuario', 'ilike', "%{$search}%")
+                ->orWhere('rol', 'ilike', "%{$search}%")
+                ->orWhere('correo', 'ilike', "%{$search}%");
+            });
+        }
 
-        return view('admin.gestion_usuarios', compact('usuarios', 'total', 'admins', 'empleados', 'clientes'));
+        // Paginamos
+        $usuarios = $query->paginate(10)->appends($request->query());
+
+        return view('admin.gestion_usuarios', [
+            'usuarios' => $usuarios,
+            'total' => Usuario::count(),
+            'admins' => Usuario::where('rol', 'admin')->count(),
+            'empleados' => Usuario::where('rol', 'empleado')->count(),
+            'clientes' => Usuario::where('rol', 'cliente')->count()
+        ]);
     }
 
     /**

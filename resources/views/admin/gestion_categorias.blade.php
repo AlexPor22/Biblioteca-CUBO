@@ -2,6 +2,12 @@
 
 @section('content')
 <div class="categories-page">
+  @if(session('success'))
+    <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+      {{ session('success') }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+    </div>
+  @endif
   <div class="container">
     <!-- Header panel -->
     <div class="header">
@@ -22,20 +28,30 @@
           <div class="stat-label">Categorías Activas</div>
         </div>
         <div class="stat-item">
-          <div class="stat-number">12</div>
-          <div class="stat-label">Libros Categorizados</div>
+          <div class="stat-number">{{ $totalDeshabilitadas }}</div>
+          <div class="stat-label">Categorías Inactivas</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">{{ $totallibros }}</div>
+          <div class="stat-label">Total Libros Categorizados</div>
         </div>
       </div>
     </div>
     <!-- Barra de Búsqueda -->
-    <div class="search-bar">
-      <input type="text" class="search-input" placeholder="Buscar por categoria...">
-      <button class="search-btn">
-        <svg fill="currentColor" viewBox="0 0 20 20" style="width: 20px; height: 20px;">
-          <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
-        </svg>
-      </button>
-    </div>
+    <form method="GET" action="{{ route('admin.gestionCategorias') }}" class="search-bar" style="margin-bottom: 1rem;">
+        <input 
+          type="text" 
+          name="search" 
+          class="search-input" 
+          id="buscadorCategoria" 
+          placeholder="Buscar por nombre de categoría y estado..." 
+          value="{{ request('search') }}">
+        <button class="search-btn">
+          <svg fill="currentColor" viewBox="0 0 20 20" style="width: 20px; height: 20px;">
+            <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
+          </svg>
+        </button>
+    </form>
     <!-- Sección de contenido principal -->
     <div class="content-section">
       <div class="section-header">
@@ -43,15 +59,15 @@
         <!-- Filtros -->
         <div class="filter-buttons">
           <a href="#" class="filter-btn active" data-filter="all">Todas</a>
-          <a href="#" class="filter-btn" data-filter="">Habilitadas</a>
-          <a href="#" class="filter-btn" data-filter="">Deshabilitadas</a>
+          <a href="#" class="filter-btn" data-filter="habilitado">Habilitadas</a>
+          <a href="#" class="filter-btn" data-filter="deshabilitado">Deshabilitadas</a>
         </div>
         <a class="btn-add" data-bs-toggle="modal" data-bs-target="#modalAgregarCategoria">Nueva Categoría</a>
       </div>
       <table class="modern-table">
         <thead>
           <tr>
-            <th>ID</th>
+            <!--<th>ID</th> -->
             <th>Nombre de Categoría</th>
             <th>Libros</th>
             <th>Estado</th>
@@ -60,10 +76,10 @@
         </thead>
         <tbody>
           @foreach ($categorias as $categoria)
-            <tr>
-              <td><span>{{ $categoria->id }}</span></td>
+            <tr data-estado="{{ strtolower($categoria->estado) }}">
+              <!--<td><span>{{ $categoria->id }}</span></td>-->
               <td><span>{{ $categoria->nombre }}</span></td>
-              <td>{{ $categoria->audiolibros->count() }} libros</td>
+              <td>{{ $categoria->sumarCantidadLibros() }} libros</td>
               <td>
                 <span>{{ $categoria->estado }}</span>
               </td>
@@ -84,48 +100,12 @@
               </td>
             </tr>
           @endforeach
-
-
-          <!-- 
-          <tr>
-            <td><span>1</span></td>
-            <td><span >Ficción</span></td>
-            <td>12 libros</td>
-            <td>
-              <span>Habilitada</span>
-            </td>
-            <td>
-              <div class="action-buttons">
-                <button class="btn-edit" data-id="1" data-bs-toggle="modal" data-bs-target="#modalEditarCategoria">Editar</button>
-                <button class="btn-delete" data-id="1">Eliminar</button>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td><span>2</span></td>
-            <td><span >Romance</span></td>
-            <td>4 libros</td>
-            <td>
-              <span >Deshabilitada</span>
-            </td>
-            <td>
-              <div class="action-buttons">
-                <button class="btn-edit" data-id="2" data-bs-toggle="modal" data-bs-target="#modalEditarCategoria">Editar</button>
-                <button class="btn-delete" data-id="2">Eliminar</button>
-              </div>
-            </td>
-          </tr>
-          -->
         </tbody>
       </table>
     </div>
     <!-- Paginación -->
-    <div class="pagination">
-      <a href="#">« Anterior</a>
-      <a href="#" class="active">1</a>
-      <a href="#">2</a>
-      <a href="#">3</a>
-      <a href="#">Siguiente »</a>
+    <div class="pagination-container d-flex justify-content-center mt-4">
+      {{ $categorias->appends(request()->query())->links('pagination::bootstrap-5') }}
     </div>
   </div>
 </div>
@@ -153,7 +133,7 @@
           <div class="row g-3">
             <div class="col-md-12">
               <label class="form-label">Nombre de la Categoría</label>
-              <input type="text" class="form-control" name="nombre_categoria" value="{{ old('nombre') }}" required>
+              <input type="text" class="form-control" name="nombre" value="{{ old('nombre') }}" required>
             </div>
             <div class="col-md-12">
               <label class="form-label">Estado</label>
@@ -190,7 +170,7 @@
           <div class="row g-3">
             <div class="col-md-12">
               <label class="form-label">Nombre de la Categoría</label>
-              <input type="text" class="form-control" name="nombre_categoria" required>
+              <input type="text" class="form-control" name="nombre" required>
             </div>
             <div class="col-md-12">
               <label class="form-label">Estado</label>
@@ -245,22 +225,58 @@ document.querySelectorAll('.btn-delete').forEach(btn => {
     });
 });
 
-
 document.querySelectorAll('.btn-edit').forEach(btn => {
     btn.addEventListener('click', function () {
       const form = document.getElementById('formEditarCategoria');
 
-      form.action = `/admin/categorias/${this.getAttribute('data-id')}`;
+      form.action = `/admin/gestion/categorias/${this.dataset.id}`;
 
-      form.querySelector('input[name="id"]').value = this.getAttribute('data-id');
-      form.querySelector('input[name="nombre_categoria"]').value = this.getAttribute('data-nombre');
-      form.querySelector('select[name="estado"]').value = this.getAttribute('data-estado');
+      form.querySelector('input[name="id"]').value = this.dataset.id;
+      form.querySelector('input[name="nombre"]').value = this.dataset.nombre;
+      form.querySelector('select[name="estado"]').value = this.dataset.estado;
     });
 });
 
+document.addEventListener('DOMContentLoaded', function () {
+  const input = document.getElementById('buscadorCategoria');
+  const filas = document.querySelectorAll('.modern-table tbody tr');
+  const filtros = document.querySelectorAll('.filter-btn');
 
+  let filtroActivo = 'all';
 
+  function filtrar() {
+    const texto = input.value.toLowerCase().trim();
 
+    filas.forEach(fila => {
+      const nombre = fila.children[0].textContent.toLowerCase();
+      const estadoData = fila.children[2].textContent.toLowerCase();
+      const estado = fila.dataset.estado;
+
+      const coincideFiltro = filtroActivo === 'all' || filtroActivo === estado;
+      const coincideBusqueda = (nombre.includes(texto) || estadoData.includes(texto));
+
+      if (coincideFiltro && coincideBusqueda) {
+        fila.style.display = '';
+      } else {
+        fila.style.display = 'none';
+      }
+    });
+  }
+
+  input.addEventListener('keyup', filtrar);
+
+  filtros.forEach(btn => {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+
+      filtros.forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      
+      filtroActivo = this.dataset.filter;
+      filtrar();
+    });
+  });
+})
 </script>
 
 @endsection

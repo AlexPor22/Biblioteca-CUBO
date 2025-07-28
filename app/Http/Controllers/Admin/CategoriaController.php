@@ -13,13 +13,37 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        //
-        $categorias = Categoria::all();
-        $total = $categorias->count();
-        $totalCategorias = $categorias->count();
+        $query = Categoria::query();
 
-        return view('admin.gestion_categorias', compact('categorias', 'total', 'totalCategorias'));
+        // Filtro de búsqueda por nombre o estado
+        if (request()->has('search')) {
+            $search = request()->input('search');
+            $query->where(function($q) use ($search) {
+                $q->where('nombre', 'LIKE', "%{$search}%")
+                ->orWhere('estado', 'LIKE', "%{$search}%");
+            });
+        }
+
+        // Paginamos los resultados
+        $categoriasPaginadas = $query->paginate(10)->appends(request()->query());
+
+        // Obtenemos todas las categorías con libros para contar
+        $categoriasConRelaciones = Categoria::with(['librosDigitales', 'audiolibros'])->get();
+
+        // Sumamos los libros por categoría (digitales + audiolibros)
+        $totalLibros = $categoriasConRelaciones->sum(function ($categoria) {
+            return $categoria->librosDigitales->count() + $categoria->audiolibros->count();
+        });
+
+        return view('admin.gestion_categorias', [
+            'categorias' => $categoriasPaginadas,
+            'total' => Categoria::count(),
+            'totalCategorias' => Categoria::where('estado', 'habilitado')->count(),
+            'totalDeshabilitadas' => Categoria::where('estado', 'deshabilitado')->count(),
+            'totallibros' => $totalLibros
+        ]);
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -35,14 +59,13 @@ class CategoriaController extends Controller
     public function store(Request $request)
     {
         //
-
         $request->validate([
-            'nombre_categoria' => 'required|string|max:100',
+            'nombre' => 'required|string|max:255|unique:categorias,nombre',
             'estado' => 'required|in:habilitado,deshabilitado',
         ]);
 
         Categoria::create([
-            'nombre' => $request->nombre_categoria,
+            'nombre' => $request->nombre,
             'estado' => $request->estado,
         ]);
 
@@ -74,7 +97,7 @@ class CategoriaController extends Controller
         $categorias = Categoria::findOrFail($id);
 
         $request->validate([
-            'nombre' => 'required|string|max:100',
+            'nombre' => 'required|string|max:255|unique:categorias,nombre,' . $id,
             'estado' => 'required|in:habilitado,deshabilitado',
         ]);
 
