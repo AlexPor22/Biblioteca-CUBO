@@ -13,10 +13,15 @@ class LibroDigital extends Authenticatable
     // Definición de los campos que se pueden llenar masivamente
     protected $fillable = [
         'titulo',
+        'codigo',
         'autor',
-        'archivo',
-        'categoria_id',
-        'estado',
+        'tipo', // Por defecto será 'libro'
+        'categoria_id', // Relación con la tabla de categorías
+        'permiso_acceso', // Puede ser 'publico' o 'privado'
+        'portada_url',
+        'archivo_url', // URL del archivo digital
+        'estado', // Puede ser 'habilitado' o 'deshabilitado'
+        'fecha_registro',
     ];
 
     protected $hidden = ['created_at', 'updated_at']; // Oculta los campos de timestamps en las respuestas JSON

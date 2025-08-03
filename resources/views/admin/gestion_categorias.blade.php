@@ -46,11 +46,14 @@
           id="buscadorCategoria" 
           placeholder="Buscar por nombre de categoría y estado..." 
           value="{{ request('search') }}">
+
+        <!-- Botón de búsqueda
         <button class="search-btn">
           <svg fill="currentColor" viewBox="0 0 20 20" style="width: 20px; height: 20px;">
             <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
           </svg>
         </button>
+        -->
     </form>
     <!-- Sección de contenido principal -->
     <div class="content-section">
@@ -71,6 +74,7 @@
             <th>Nombre de Categoría</th>
             <th>Libros</th>
             <th>Estado</th>
+            <th>Fecha de Creación</th>
             <th>Acciones</th>
           </tr>
         </thead>
@@ -83,6 +87,7 @@
               <td>
                 <span>{{ $categoria->estado }}</span>
               </td>
+              <td><span>{{ $categoria->created_at->format('d/m/Y') }}</span></td>
               <td>
                 <div class="action-buttons">
                   <button class="btn-edit" 
@@ -269,7 +274,7 @@ document.addEventListener('DOMContentLoaded', function () {
     btn.addEventListener('click', function (e) {
       e.preventDefault();
 
-      filtros.forEach(b => b.classList.remove('active'));
+      filtros.forEach(btn => btn.classList.remove('active'));
       this.classList.add('active');
       
       filtroActivo = this.dataset.filter;

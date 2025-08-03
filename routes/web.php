@@ -35,15 +35,25 @@ Route::post('/admin/gestion/categorias', [AdminCategoriaController::class, 'stor
 Route::get('/admin/gestion/categorias/{id}', [AdminCategoriaController::class, 'show'])->name('admin.gestionCategorias.show');
 Route::put('/admin/gestion/categorias/{id}', [AdminCategoriaController::class, 'update'])->name('admin.gestionCategorias.update');
 Route::delete('/admin/gestion/categorias/{id}', [AdminCategoriaController::class, 'destroy'])->name('admin.gestionCategorias.destroy');
+Route::get('/admin/gestion/categorias/buscar', [AdminCategoriaController::class, 'buscar'])->name('admin.gestionCategorias.buscar');
 
 // Rutas de gestión de préstamos del panel de administración
 Route::get('/admin/gestion/prestamos', [AdminPrestamoController::class, 'index'])->name('admin.gestionPrestamos');
 
-// Rutas de gestión de libros y audiolibros del panel de administración
+// Rutas de gestión de audiolibros del panel de administración
 Route::get('/admin/gestion/libros/audiolibros', [AdminAudiolibroController::class, 'index'])->name('admin.gestionAudiolibros');
+Route::post('/admin/gestion/libros/audiolibros', [AdminAudiolibroController::class, 'store'])->name('admin.gestionAudiolibros.store');
+Route::get('/admin/gestion/libros/audiolibros/{id}', [AdminAudiolibroController::class, 'show'])->name('admin.gestionAudiolibros.show');
+Route::put('/admin/gestion/libros/audiolibros/{id}', [AdminAudiolibroController::class, 'update'])->name('admin.gestionAudiolibros.update');
+Route::delete('/admin/gestion/libros/audiolibros/{id}', [AdminAudiolibroController::class, 'destroy'])->name('admin.gestionAudiolibros.destroy');
 
 // Rutas de gestión de libros digitales del panel de administración
 Route::get('/admin/gestion/libros/digitales', [AdminLibroDigitalController::class, 'index'])->name('admin.gestionLibrosDigitales');
+Route::post('/admin/gestion/libros/digitales', [AdminLibroDigitalController::class, 'store'])->name('admin.gestionLibrosDigitales.store');
+Route::get('/admin/gestion/libros/digitales/{id}', [AdminLibroDigitalController::class, 'show'])->name('admin.gestionLibrosDigitales.show');
+Route::put('/admin/gestion/libros/digitales/{id}', [AdminLibroDigitalController::class, 'update'])->name('admin.gestionLibrosDigitales.update');
+Route::delete('/admin/gestion/libros/digitales/{id}', [AdminLibroDigitalController::class, 'destroy'])->name('admin.gestionLibrosDigitales.destroy');
+
 
 // Rutas de préstamos recientes del panel de administración
 Route::get('/admin/prestamos/recientes', [AdminPrestamoRecienteController::class, 'index'])->name('admin.prestamosRecientes');

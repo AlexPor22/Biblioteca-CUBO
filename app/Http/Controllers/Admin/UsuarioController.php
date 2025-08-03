@@ -16,7 +16,7 @@ class UsuarioController extends Controller
     {
         $query = Usuario::query();
 
-        // Si hay búsqueda, filtramos por nombre de usuario o correo
+        // Si hay búsqueda, filtramos por nombre de usuario, rol o correo
         if ($request->has('search')) {
             $search = $request->input('search');
             $query->where(function ($q) use ($search) {
@@ -25,6 +25,9 @@ class UsuarioController extends Controller
                 ->orWhere('correo', 'ilike', "%{$search}%");
             });
         }
+
+        // Ordenamos alfabéticamente por nombre_usuario
+        $query->orderBy('nombre_usuario', 'asc');
 
         // Paginamos
         $usuarios = $query->paginate(10)->appends($request->query());
@@ -37,6 +40,7 @@ class UsuarioController extends Controller
             'clientes' => Usuario::where('rol', 'cliente')->count()
         ]);
     }
+
 
     /**
      * Show the form for creating a new resource.

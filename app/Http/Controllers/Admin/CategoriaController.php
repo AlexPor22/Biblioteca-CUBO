@@ -24,17 +24,21 @@ class CategoriaController extends Controller
             });
         }
 
+        // Ordenar por nombre alfabéticamente
+        $query->orderBy('nombre', 'asc');
+
         // Paginamos los resultados
         $categoriasPaginadas = $query->paginate(10)->appends(request()->query());
 
-        // Obtenemos todas las categorías con libros para contar
+        // Obtenemos todas las categorías con relaciones para sumar libros
         $categoriasConRelaciones = Categoria::with(['librosDigitales', 'audiolibros'])->get();
 
-        // Sumamos los libros por categoría (digitales + audiolibros)
+        // Sumamos libros digitales + audiolibros
         $totalLibros = $categoriasConRelaciones->sum(function ($categoria) {
             return $categoria->librosDigitales->count() + $categoria->audiolibros->count();
         });
 
+        // Retornamos la vista
         return view('admin.gestion_categorias', [
             'categorias' => $categoriasPaginadas,
             'total' => Categoria::count(),
@@ -43,6 +47,7 @@ class CategoriaController extends Controller
             'totallibros' => $totalLibros
         ]);
     }
+
 
 
     /**
@@ -79,6 +84,13 @@ class CategoriaController extends Controller
     {
         //
     }
+public function buscar(Request $request)
+{
+    dd('¡Sí entra!');
+}
+
+
+
 
     /**
      * Show the form for editing the specified resource.

@@ -163,7 +163,7 @@
             <div class="col-md-6">
               <label class="form-label">Sexo</label>
               <select class="form-select" name="sexo" required>
-                <option value="" disabled selected>Seleccione</option>
+                <option value="" disabled selected>Seleccione un sexo</option>
                 <option value="masculino">Masculino</option>
                 <option value="femenino">Femenino</option>
               </select>
@@ -216,18 +216,17 @@
               <input type="password" class="form-control" name="password_confirmation" value="{{ old('password_confirmation') }}" required>
             </div>
 
-            <!-- Imagen de Perfil -->
+            <!-- Imagen de Perfil 
             <div class="col-md-12">
               <label class="form-label">Imagen de Perfil (opcional)</label> 
               <input type="file" class="form-control" name="imagen_perfil" accept="image/*">
-            </div>
+            </div> -->
 
-            <!-- Imagen de Perfil URL
+            <!-- Imagen de Perfil URL -->
             <div class="col-md-12">
               <label class="form-label">Imagen de Perfil (URL)</label>
               <input type="text" class="form-control" name="url_imagen" value="{{ old('url_imagen') }}" required>
             </div>
-             -->
           </div>
         </div>
         <div class="modal-footer">
@@ -501,7 +500,6 @@ document.querySelectorAll('.btn-edit').forEach(button => {
     form.querySelector('input[name="url_imagen"]').value = this.dataset.url_imagen
   });
 });
-
 
 // Script para el buscador de usuarios
 document.addEventListener('DOMContentLoaded', function () {

@@ -5,18 +5,52 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\AudioLibro;
 use Illuminate\Http\Request;
-
+use App\Models\Categoria;
 class AudiolibroController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
-        $audiolibros = AudioLibro::all(); // Obtiene todos los audiolibros
+        // Iniciamos la consulta para obtener los audiolibros
+        $query = AudioLibro::query()->with('categoria');
 
-        return view('admin.gestion_audiolibros', compact('audiolibros'));
+        // Obtenemos todas las categorías habilitadas para el filtro
+        $categorias = Categoria::where('estado', 'habilitado')
+            ->orderBy('nombre')
+            ->get();
+
+        // Si hay búsqueda, filtramos por título, autor, código, estado, tipo o categoría
+        if ($request->has('search')) {
+            $search = $request->input('search');
+
+            $query->where(function ($q) use ($search) {
+                $q->where('titulo', 'ilike', "%{$search}%")
+                ->orWhere('autor', 'ilike', "%{$search}%")
+                ->orWhere('codigo', 'ilike', "%{$search}%")
+                ->orWhere('estado', 'ilike', "%{$search}%")
+                ->orWhere('tipo', 'ilike', "%{$search}%")
+                ->orWhereHas('categoria', function ($sub) use ($search) {
+                    $sub->where('nombre', 'ilike', "%{$search}%");
+                });
+            });
+        }
+
+        // Ordenar alfabéticamente por título
+        $audiolibros = $query
+            ->orderBy('titulo', 'asc')
+            ->paginate(10)
+            ->appends($request->query());
+        
+        // Retornar vista con datos
+        return view('admin.gestion_audiolibros', [
+            'audiolibros' => $audiolibros,
+            'total' => AudioLibro::count(),
+            'habilitados' => AudioLibro::where('estado', 'habilitado')->count(),
+            'deshabilitados' => AudioLibro::where('estado', 'deshabilitado')->count(),
+            'categorias' => $categorias
+        ]);
     }
 
     /**
@@ -65,5 +99,9 @@ class AudiolibroController extends Controller
     public function destroy(string $id)
     {
         //
+        $audiolibro = AudioLibro::findOrFail($id);
+        $audiolibro->delete();
+
+        return redirect()->route('admin.gestionAudiolibros')->with('success', 'Audiolibro eliminado correctamente.');
     }
 }

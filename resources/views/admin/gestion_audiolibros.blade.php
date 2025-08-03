@@ -2,6 +2,12 @@
 
 @section('content')
 <div class="libros-page">
+  @if(session('success'))
+    <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+      {{ session('success') }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+    </div>
+  @endif
   <div class="container">
     <!-- Header panel -->
     <div class="header">
@@ -14,15 +20,15 @@
       <h3 style="color: #0D0D0D; font-weight: 700; margin-bottom: 1rem;">Estadísticas del Sistema</h3>
       <div class="stats-grid">
         <div class="stat-item">
-          <div class="stat-number">1,247</div>
+          <div class="stat-number"> {{ $total }} </div>
           <div class="stat-label">Total de Libros</div>
         </div>
         <div class="stat-item">
-          <div class="stat-number">1,089</div>
+          <div class="stat-number">{{ $habilitados }}</div>
           <div class="stat-label">Habilitados</div>
         </div>
         <div class="stat-item">
-          <div class="stat-number">158</div>
+          <div class="stat-number">{{ $deshabilitados }}</div>
           <div class="stat-label">Deshabilitados</div>
         </div>
       </div>
@@ -53,7 +59,6 @@
       <table class="modern-table">
         <thead>
           <tr>
-            <th>ID</th>
             <th>Libro</th>
             <th>Categoría</th>
             <th>Codigo</th>
@@ -66,7 +71,6 @@
         <tbody>
           @foreach ($audiolibros as $audiolibro)
           <tr>
-            <td><span>{{ $audiolibro->id }}</span></td>
             <td>
               <div>{{ $audiolibro->titulo }}</div>
               <div>{{ $audiolibro->autor }}</div>
@@ -85,133 +89,22 @@
               <div class="action-buttons">
                 <button class="btn-view">Ver</button>
                 <button class="btn-edit" data-id="{{ $audiolibro->id }}" data-bs-toggle="modal" data-bs-target="#modalEditarAudio">Editar</button>
-                <button class="btn-delete" data-id="{{ $audiolibro->id }}">Eliminar</button>
+
+                <form action="{{ route('admin.gestionAudiolibros.destroy', $audiolibro->id) }}" method="POST" style="display: inline-block;">
+                  @csrf
+                  @method('DELETE')
+                  <button type="submit" class="btn-delete">Eliminar</button>
+                </form>
               </div>
             </td>
           </tr>
           @endforeach
-
-          <!--
-          <tr>
-            <td><span>1</span></td>
-            <td>
-              <div >El Quijote de la Mancha</div>
-              <div >Miguel de Cervantes</div>
-            </td>
-            <td><span>Historia</span></td>
-            <td>978-84-376-0494-7</td>
-            <td>
-              <span class="status-badge status-disponible">Disponible</span>
-            </td>
-            <td><span>Libro</span></td>
-            <td>08/02/2024</td>
-            <td>
-              <div class="action-buttons">
-                <button class="btn-view">Ver</button>
-                <button class="btn-edit" data-id="1" data-bs-toggle="modal" data-bs-target="#modalEditarLibro">Editar</button>
-                <button class="btn-delete" data-id="1">Eliminar</button>
-              </div>
-            </td>
-          </tr>
-
-          <tr>
-            <td><span >2</span></td>
-            <td>
-              <div >El Quijote de la Mancha</div>
-              <div >Miguel de Cervantes</div>
-            </td>
-            <td><span>Ficción</span></td>
-            <td>978-84-376-0494-7</td>
-            <td>
-              <span class="status-badge status-prestado">Prestado</span>
-            </td>
-            <td><span>Libro</span></td>
-            <td>08/02/2024</td>
-            <td>
-              <div class="action-buttons">
-                <button class="btn-view">Ver</button>
-                <button class="btn-edit" data-id="2" data-bs-toggle="modal" data-bs-target="#modalEditarLibro">Editar</button>
-                <button class="btn-delete" data-id="2">Eliminar</button>
-              </div>
-            </td>
-          </tr>
-
-          <tr>
-            <td><span>3</span></td>
-            <td>
-              <div >Sapiens: De animales a dioses</div>
-              <div >Yuval Noah Harari</div>
-            </td>
-            <td><span>Ciencia</span></td>
-            <td>978-0-06-231609-7</td>
-            <td>
-              <span class="status-badge status-reservado">Reservado</span>
-            </td>
-            <td><span>Libro</span></td>
-            <td>22/01/2024</td>
-            <td>
-              <div class="action-buttons">
-                <button class="btn-view">Ver</button>
-                <button class="btn-edit" data-id="3" data-bs-toggle="modal" data-bs-target="#modalEditarLibro">Editar</button>
-                <button class="btn-delete" data-id="3">Eliminar</button>
-              </div>
-            </td>
-          </tr>
-
-          <tr>
-            <td><span>4</span></td>
-            <td>
-              <div >Sapiens: De animales a dioses</div>
-              <div >Yuval Noah Harari</div>
-            </td>
-            <td><span>Ciencia</span></td>
-            <td>978-0-06-231609-7</td>
-            <td>
-              <span class="status-badge status-habilitado">Habilitado</span>
-            </td>
-            <td><span>Audiolibro</span></td>
-            <td>22/01/2024</td>
-            <td>
-              <div class="action-buttons">
-                <button class="btn-view">Ver</button>
-                <button class="btn-edit" data-id="4" data-bs-toggle="modal" data-bs-target="#modalEditarAudio">Editar</button>
-                <button class="btn-delete" data-id="4">Eliminar</button>
-              </div>
-            </td>
-          </tr>
-
-          <tr>
-            <td><span>5</span></td>
-            <td>
-              <div >Sapiens: De animales a dioses</div>
-              <div >Yuval Noah Harari</div>
-            </td>
-            <td><span>Ciencia</span></td>
-            <td>978-0-06-231609-7</td>
-            <td>
-              <span class="status-badge status-deshabilitado">Deshabilitado</span>
-            </td>
-            <td><span>Audiolibro</span></td>
-            <td>22/01/2024</td>
-            <td>
-              <div class="action-buttons">
-                <button class="btn-view">Ver</button>
-                <button class="btn-edit" data-id="5" data-bs-toggle="modal" data-bs-target="#modalEditarAudio">Editar</button>
-                <button class="btn-delete" data-id="5">Eliminar</button>
-              </div>
-            </td>
-          </tr>
-          -->
         </tbody>
       </table>
     </div>
     <!-- Paginación -->
-    <div class="pagination">
-      <a href="#">« Anterior</a>
-      <a href="#" class="active">1</a>
-      <a href="#">2</a>
-      <a href="#">3</a>
-      <a href="#">Siguiente »</a>
+    <div class="pagination-container d-flex justify-content-center mt-4">
+      {{ $audiolibros->appends(request()->query())->links('pagination::bootstrap-5') }}
     </div>
   </div>
 </div>
@@ -336,6 +229,7 @@
     document.querySelectorAll('.btn-delete').forEach(btn => {
     btn.addEventListener('click', function (e) {
       e.preventDefault();
+      const form = this.closest('form');
 
       Swal.fire({
         title: '¿Estás seguro?',
@@ -350,6 +244,7 @@
         if (result.isConfirmed) {
           // Acción real aquí. Por ejemplo:
           // eliminarUsuario(id);
+          form.submit(); // Envía el formulario para eliminar el usuario
           Swal.fire({
             icon: 'success',
             title: 'Eliminado',
