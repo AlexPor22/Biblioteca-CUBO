@@ -66,7 +66,36 @@ class AudiolibroController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validamos los datos del formulario
+        $request->validate([
+            'titulo' => 'required|string|max:255',
+            'codigo' => 'required|string|unique:audiolibros,codigo',
+            'autor' => 'required|string|max:100',
+            'narrador' => 'required|string|max:100',
+            'categoria_id' => 'required|exists:categorias,id',
+            'duracion' => 'required|string|max:20', // Formato "HH:MM:SS"
+            'portada_url' => 'required|url',
+            'audio_url' => 'required|url',
+            'estado' => 'required|in:habilitado,deshabilitado',
+            'fecha_registro' => 'nullable|date',
+        ]);
+
+        // Creamos el nuevo audiolibro con los datos validados
+        AudioLibro::create([
+            'titulo' => $request->titulo,
+            'codigo' => $request->codigo,
+            'autor' => $request->autor,
+            'narrador' => $request->narrador,
+            'tipo' => 'audiolibro', // Por defecto será 'audiolibro'
+            'categoria_id' => $request->categoria_id,
+            'duracion' => $request->duracion,
+            'portada_url' => $request->portada_url,
+            'audio_url' => $request->audio_url,
+            'estado' => $request->estado,
+            'fecha_registro' => $request->fecha_registro ?: now(),
+        ]);
+
+        return redirect()->back()->with('success', 'Audiolibro creado correctamente.');
     }
 
     /**
@@ -75,6 +104,21 @@ class AudiolibroController extends Controller
     public function show(string $id)
     {
         //
+        $audiolibro = AudioLibro::with('categoria')->findOrFail($id);
+
+        return response()->json([
+            'titulo' => $audiolibro->titulo,
+            'codigo' => $audiolibro->codigo,
+            'autor' => $audiolibro->autor,
+            'narrador' => $audiolibro->narrador,
+            'categoria' => $audiolibro->categoria->nombre ?? 'Sin categoría',
+            'duracion' => $audiolibro->duracion,
+            'portada_url' => $audiolibro->portada_url,
+            'audio_url' => $audiolibro->audio_url,
+            'estado' => $audiolibro->estado,
+            'tipo' => $audiolibro->tipo,
+            'fecha_registro' => $audiolibro->fecha_registro,
+        ]);
     }
 
     /**
@@ -90,7 +134,38 @@ class AudiolibroController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // Obtenemos el audiolibro por su ID
+        $audiolibro = AudioLibro::findOrFail($id);
+
+        // Validamos los datos del formulario
+        $request->validate([
+            'titulo' => 'required|string|max:255',
+            'codigo' => 'required|string|unique:audiolibros,codigo,' . $audiolibro->id,
+            'autor' => 'required|string|max:100',
+            'narrador' => 'nullable|string|max:100',
+            'categoria_id' => 'required|exists:categorias,id',
+            'duracion' => 'nullable|string|max:20', // Formato "HH:MM:SS"
+            'portada_url' => 'nullable|url',
+            'audio_url' => 'required|url',
+            'estado' => 'required|in:habilitado,deshabilitado',
+            'fecha_registro' => 'nullable|date',
+        ]);
+
+        // Actualizamos el audiolibro con los datos validados
+        $audiolibro->update([
+            'titulo' => $request->titulo,
+            'codigo' => $request->codigo,
+            'autor' => $request->autor,
+            'narrador' => $request->narrador,
+            'categoria_id' => $request->categoria_id,
+            'duracion' => $request->duracion,
+            'portada_url' => $request->portada_url,
+            'audio_url' => $request->audio_url,
+            'estado' => $request->estado,
+            'fecha_registro' => $request->fecha_registro ?: now(),
+        ]);
+
+        return redirect()->back()->with('success', 'Audiolibro actualizado correctamente.');
     }
 
     /**

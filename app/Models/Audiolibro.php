@@ -15,10 +15,15 @@ class AudioLibro extends Authenticatable
     protected $fillable = [
         'titulo',
         'autor',
+        'narrador',
+        'tipo', // Por defecto será 'audiolibro'
+        'codigo',
+        'categoria_id', // Relación con la tabla de categorías
         'duracion',
-        'archivo',
-        'categoria_id',
+        'portada_url',
+        'audio_url', // URL del archivo de audio
         'estado',
+        'fecha_registro',
     ];
 
     protected $hidden = ['created_at', 'updated_at']; // Oculta los campos de timestamps en las respuestas JSON
