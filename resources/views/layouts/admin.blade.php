@@ -9,16 +9,20 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <!-- SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    @vite(['resources/css/sidebar__admin.css', 'resources/js/sidebar__admin.js'])
-    @vite(['resources/css/globalsAdmin.css'])
-    @vite(['resources/css/buttons.css'])
-    @vite(['resources/css/status.css'])
-    @vite(['resources/css/animations.css'])
-    @vite(['resources/css/index.css'])
-    @vite(['resources/css/table.css'])
-    @vite(['resources/css/search.css'])
-    @vite(['resources/css/recent__uploads.css'])
-    @vite(['resources/css/cards.css'])
+    @vite([
+      'resources/css/globalsAdmin.css',
+      'resources/css/buttons.css',
+      'resources/css/status.css',
+      'resources/css/animations.css',
+      'resources/css/index.css',
+      'resources/css/table.css',
+      'resources/css/search.css',
+      'resources/css/recent__uploads.css',
+      'resources/css/cards.css',
+      'resources/css/sidebar__admin.css',
+      'resources/js/sidebar__admin.js',
+    ])
+
   </head>
   <body>
     <!-- Botón hamburguesa -->
