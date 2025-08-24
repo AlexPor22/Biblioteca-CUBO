@@ -3,6 +3,10 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Models\LibroDigital;
+use App\Models\AudioLibro;
+use App\Observers\LibroDigitalObserver;
+use App\Observers\AudioLibroObserver;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -20,5 +24,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         //
+        LibroDigital::observe(LibroDigitalObserver::class);
+        AudioLibro::observe(AudioLibroObserver::class);
     }
 }
