@@ -3,10 +3,23 @@
 @section('content')
 <div class="libros-page">
   @if(session('success'))
-    <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+    <div id="alert-success" class="alert alert-success alert-dismissible fade show mt-3" role="alert">
       {{ session('success') }}
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
     </div>
+
+    <script>
+      // Espera 4 segundos y luego desaparece el alert
+      setTimeout(() => {
+        const alert = document.getElementById('alert-success');
+        if (alert) {
+          // Usamos Bootstrap para ocultarlo con animación
+          alert.classList.remove('show');
+          alert.classList.add('fade');
+          // Lo eliminamos del DOM después de la animación (opcional)
+          setTimeout(() => alert.remove(), 300); 
+        }
+      }, 4000); // 4000 ms = 4 segundos
+    </script>
   @endif
   <div class="container">
     <!-- Header panel -->

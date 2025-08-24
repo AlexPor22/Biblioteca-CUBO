@@ -309,18 +309,18 @@
               <input type="text" class="form-control" name="direccion" required>
             </div>
 
-            <!-- Imagen de Perfil -->
+            <!-- Imagen de Perfil 
             <div class="col-md-12">
               <label class="form-label">Imagen de Perfil (opcional)</label> 
               <input type="file" class="form-control" name="imagen_perfil" accept="image/*">
             </div>
+            -->
 
-            <!-- Imagen de Perfil URL
+            <!-- Imagen de Perfil URL -->
             <div class="col-md-12">
               <label class="form-label">Imagen de Perfil (URL)</label>
               <input type="text" class="form-control" name="url_imagen">
             </div>
-             -->
           </div>
         </div>
         <div class="modal-footer">
