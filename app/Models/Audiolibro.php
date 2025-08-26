@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class AudioLibro extends Authenticatable
+class Audiolibro extends Authenticatable
 {
     use Notifiable;
 

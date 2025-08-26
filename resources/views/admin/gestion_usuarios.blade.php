@@ -216,17 +216,11 @@
               <input type="password" class="form-control" name="password_confirmation" value="{{ old('password_confirmation') }}" required>
             </div>
 
-            <!-- Imagen de Perfil 
+            <!-- Imagen de Perfil -->
             <div class="col-md-12">
               <label class="form-label">Imagen de Perfil (opcional)</label> 
               <input type="file" class="form-control" name="imagen_perfil" accept="image/*">
-            </div> -->
-
-            <!-- Imagen de Perfil URL -->
-            <div class="col-md-12">
-              <label class="form-label">Imagen de Perfil (URL)</label>
-              <input type="text" class="form-control" name="url_imagen" value="{{ old('url_imagen') }}" required>
-            </div>
+            </div> 
           </div>
         </div>
         <div class="modal-footer">
@@ -242,7 +236,7 @@
 <div class="modal fade" id="modalEditarUsuario" tabindex="-1" aria-labelledby="editarUsuarioLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
-      <form id="formEditarUsuario" method="POST">
+      <form id="formEditarUsuario" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <input type="hidden" name="id" value="">
@@ -309,17 +303,10 @@
               <input type="text" class="form-control" name="direccion" required>
             </div>
 
-            <!-- Imagen de Perfil 
+            <!-- Imagen de Perfil -->
             <div class="col-md-12">
               <label class="form-label">Imagen de Perfil (opcional)</label> 
               <input type="file" class="form-control" name="imagen_perfil" accept="image/*">
-            </div>
-            -->
-
-            <!-- Imagen de Perfil URL -->
-            <div class="col-md-12">
-              <label class="form-label">Imagen de Perfil (URL)</label>
-              <input type="text" class="form-control" name="url_imagen">
             </div>
           </div>
         </div>
