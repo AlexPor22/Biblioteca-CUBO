@@ -120,17 +120,17 @@
 <!-- IMAGNES AUTOR -->
 <article class="gallery">
         <img src="https://literatinn.com/wp-content/uploads/2024/03/Pablo-Neruda.jpg" alt="deadpool & marvel">
-        <img src="https://www.pixelstalk.net/wp-content/uploads/2016/05/X-Men-Apocalypse-Wallpapers-HD.jpg" alt="deadpool & marvel">
-        <img src="https://www.pixelstalk.net/wp-content/uploads/images6/Deadpool-Pictures-Free-Download-1.jpg" alt="deadpool & marvel">
-        <img src="https://www.pixelstalk.net/wp-content/uploads/images6/Deadpool-Wide-Screen-Background.jpg" alt="deadpool & marvel">
+        <img src="https://i.pinimg.com/originals/41/3f/df/413fdf31d484da7d3933eb6ca655176a.jpg " alt="deadpool & marvel">
+        <img src="https://m.media-amazon.com/images/I/71H76HAPA4L._UF1000,1000_QL80_.jpg" alt="deadpool & marvel">
+        <img src="https://www.shutterstock.com/image-vector/moscow-russia-september-26-2018-600nw-1206900742.jpg" alt="deadpool & marvel">
         <img src="https://www.pixelstalk.net/wp-content/uploads/images6/Cool-Deadpool-Wallpaper.jpg" alt="deadpool & marvel">
-        <img src="https://www.pixelstalk.net/wp-content/uploads/2016/05/Xmen-Wallpaper.jpg" alt="deadpool & marvel">
+        <img src="https://m.media-amazon.com/images/I/71mpuJpqY-L._UF1000,1000_QL80_.jpg "alt="deadpool & marvel">
         <img src="https://librografias.com/img/biografias/gabriel-garcia-marquez.jpg" alt="deadpool & marvel">
-        <img src="https://www.pixelstalk.net/wp-content/uploads/2016/05/Free-XMen-Full-HD-Wallpaper.jpg" alt="deadpool & marvel">
+        <img src="https://pixelescuscatlecos.com/wp-content/uploads/2024/06/alfredo-espino.jpg" alt="deadpool & marvel">
     </article>
 
 
-  
+
 <!-- Sección COLECCION NACIONAL -->  
 <div class="container py-5">
     <h2 class="text-center mb-4 display-5 fw-bold">Disfruta de nuestra coleccion Nacional</h2>

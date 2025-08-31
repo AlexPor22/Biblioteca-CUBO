@@ -1,5 +1,9 @@
 <?php
+
+
 namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
@@ -9,9 +13,13 @@ class AdminController extends Controller
         return view('admin.panel_administracion');
     }
 
-    // Cerrar sesión (solo redirige por ahora)
-    public function cerrarSesion()
+    // Cerrar sesión
+    public function cerrarSesion(Request $request)
     {
-        return redirect('/');  // Solo redirige al inicio
+        auth()->logout(); // Cierra la sesión del administrador
+        $request->session()->invalidate(); // Invalida la sesión
+        $request->session()->regenerateToken(); // Regenera el token CSRF
+
+        return redirect('/');  // Redirige al inicio después de cerrar sesión
     }
 }

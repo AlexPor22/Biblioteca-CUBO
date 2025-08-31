@@ -57,4 +57,10 @@ class LibroDigital extends Authenticatable
 
         return '';
     }
+
+    public function audiolibro()
+{
+    return $this->hasOne(Audiolibro::class, 'codigo', 'codigo');
+}
+
 }

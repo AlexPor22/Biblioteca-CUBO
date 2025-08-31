@@ -12,12 +12,20 @@ use App\Http\Controllers\Admin\ContenidoRecienteController as AdminContenidoReci
 use App\Http\Controllers\Admin\LibrosFisicosController as AdminLibrosFisicosController;
 use App\Http\Controllers\Admin\EstadisticasController as AdminEstadisticasController;
 
+use App\Http\Controllers\LibroDigitalController;
+use App\Http\Controllers\PrestamosController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 //RUTA INICIO 
 Route::get('/', function () {
     return view('inicio');
 })->name('inicio');
+
+// Panel de admin me deireg al panel si soy admin
+Route::get('/admin/panel', function () {
+    return view('admin.panel_administracion');
+})->name('admin.panel')->middleware('auth');
 
 // Rutas del Panel de Administración (sin autenticación)
 Route::get('/admin', [AdminController::class, 'panelAdministracion'])->name('admin.panelAdministracion');
@@ -78,14 +86,93 @@ Route::get('/admin/clientes', [AdminController::class, 'clientes'])->name('admin
 
 Route::get('/admin/empleados', [AdminController::class, 'empleados'])->name('admin.empleados');
 
+
+
 Route::get('/user/loginUser', [UserController::class, 'Login'])->name('user.loginUser');
-Route::get('/user/registerUser', [UserController::class, 'Registro'])->name('user.registerUser');
+
+// Ruta para procesar el formulario de inicio de sesión (POST)
+Route::post('/user/loginUser', [UserController::class, 'loginUser'])->name('user.login');
+
+
+
+
 Route::get('/user/galeria', [UserController::class, 'Galeria'])->name('user.galeria');
 
 Route::get('/user/informacion', [UserController::class, 'Informacion'])->name('user.informacion');
 
 
+// Formulario de registro
+Route::get('/user/registerUser', [UserController::class, 'Registro'])->name('user.registerUser');
 
+// Envío del formulario (POST)
+Route::post('/user/registerUser', [UserController::class, 'store'])->name('user.store');
+
+
+
+// Ruta para mostrar los libros
+Route::get('/libros', [LibroDigitalController::class, 'index'])->name('libros.index');
+
+// Redirigir a la ruta correcta que maneja los libros con lógica de controlador
+//Route::get('/libros/digitales', function () {
+   // return redirect()->route('libros.index');  // Redirige a /libros
+//})->name('libros.digitales');
+
+
+
+// Ruta para leer un libro (con el código del libro)
+Route::get('/libros/{codigo}/leer', [LibroDigitalController::class, 'read'])->name('libros.read');
+
+// Ruta para escuchar el audiolibro (con el código del libro)
+Route::get('/libros/{codigo}/escuchar', [LibroDigitalController::class, 'listen'])->name('libros.listen');
+
+// Escuchar libro
+Route::get('/libros/{codigo}/listen', [App\Http\Controllers\LibroDigitalController::class, 'listen'])
+    ->name('libros.listen');
+
+    //cierra seinson prtegida
+Route::get('/libros/digitales', function () {
+    return redirect()->route('libros.index');
+})->middleware('auth')->name('libros.digitales');
+
+
+// Alias compatible con el middleware 'auth'
+Route::get('/login', [UserController::class, 'Login'])->name('login');
+
+
+// Cerrar sesión (ruta de logout)
+// Ruta de logout
+Route::post('/logout', function () {
+    Auth::logout(); // Cierra la sesión del usuario
+    request()->session()->invalidate(); // Invalida la sesión
+    request()->session()->regenerateToken(); // Regenera el token CSRF
+
+    // Redirige a la página de inicio
+    return redirect()->route('inicio');
+})->name('logout');
+
+
+Route::middleware('auth')->group(function () {
+    Route::get('/perfil', [UserController::class, 'perfil'])->name('user.perfil');
+    Route::put('/perfil', [UserController::class, 'actualizarPerfil'])->name('user.perfil.update');
+    Route::put('/perfil/password', [UserController::class, 'actualizarPassword'])->name('user.perfil.password');
+    Route::put('/perfil/imagen', [UserController::class, 'actualizarImagen'])->name('user.perfil.imagen');
+});
+
+
+//perfil
+Route::middleware('auth')->group(function () {
+    Route::get('/perfil', [UserController::class, 'perfil'])->name('user.perfil');
+});
+
+
+
+//prestamo
+Route::get('/solicitar-prestamo', [PrestamosController::class, 'solicitarPrestamo'])->name('solicitarPrestamo');
+
+
+
+// Ruta para procesar el préstamo
+Route::post('/solicitar-prestamo', [PrestamosController::class, 'store'])->name('prestamos.store');
 
 
 /**************************************************************************************************************************** */

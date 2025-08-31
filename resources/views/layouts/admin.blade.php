@@ -69,11 +69,10 @@
         </div>
       </div>
       <!-- Footer -->
-      <div class="sidebar-footer">
-        <a href="{{ route('admin.cerrarSesion') }}">
-        <i class="fas fa-sign-out-alt"></i>Cerrar Sesión
-        </a>
-      </div>
+      <form action="{{ route('admin.cerrarSesion') }}" method="POST" style="display:inline;">
+    @csrf
+    <button type="submit"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</button>
+    </form>
     </div>
     <!-- Contenido -->
     <div class="content" id="content">
