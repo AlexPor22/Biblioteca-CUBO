@@ -303,11 +303,12 @@
               <input type="text" class="form-control" name="direccion" required>
             </div>
 
-            <!-- Imagen de Perfil -->
+            <!-- Imagen de Perfil 
             <div class="col-md-12">
               <label class="form-label">Imagen de Perfil (opcional)</label> 
               <input type="file" class="form-control" name="imagen_perfil" accept="image/*">
             </div>
+            -->
           </div>
         </div>
         <div class="modal-footer">
@@ -484,7 +485,7 @@ document.querySelectorAll('.btn-edit').forEach(button => {
     form.querySelector('select[name="rol"]').value = this.dataset.rol;
     form.querySelector('input[name="numero_telefono"]').value = this.dataset.telefono;
     form.querySelector('input[name="direccion"]').value = this.dataset.direccion;
-    form.querySelector('input[name="url_imagen"]').value = this.dataset.url_imagen
+    //form.querySelector('input[name="url_imagen"]').value = this.dataset.url_imagen
   });
 });
 

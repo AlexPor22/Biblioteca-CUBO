@@ -198,13 +198,13 @@
             <!-- Portada del Libro -->
             <div class="col-md-12">
               <label class="form-label">Portada del Libro (JPG, PNG)</label>
-              <input type="text" class="form-control" name="portada_url" value="{{ old('portada_url') }}" accept=".jpg,.jpeg,.png" required>
+              <input type="file" class="form-control" name="portada_url" accept="image/*">
             </div>
 
             <!-- Archivo del Libro -->
             <div class="col-md-12">
               <label class="form-label">Archivo del Libro (PDF, EPUB, MOBI)</label>
-              <input type="text" class="form-control" name="archivo_url" value="{{ old('archivo_url') }}" accept=".pdf,.epub,.mobi" required>
+              <input type="file" class="form-control" name="archivo_url" accept=".pdf,.epub,.mobi">
             </div>
           </div>
         </div>
@@ -283,17 +283,19 @@
               </select>
             </div>
 
-            <!-- Portada del Libro (opcional) -->
+            <!-- Portada del Libro (opcional)
             <div class="col-md-12">
               <label class="form-label">Portada (opcional)</label>
               <input type="text" class="form-control" name="portada_url" accept=".jpg,.jpeg,.png">
             </div>
+             -->
 
-            <!-- Archivo del Libro (opcional) -->
+            <!-- Archivo del Libro (opcional) 
             <div class="col-md-12">
               <label class="form-label">Archivo del Libro (opcional)</label>
               <input type="text" class="form-control" name="archivo_url" accept=".pdf,.epub,.mobi">
             </div>
+            -->
           </div>
         </div>
         <div class="modal-footer">
@@ -464,8 +466,8 @@ document.querySelectorAll('.btn-edit').forEach(button => {
     form.querySelector('select[name="categoria_id"]').value = this.dataset.categoria;
     form.querySelector('select[name="permiso_acceso"]').value = this.dataset.acceso;
     form.querySelector('select[name="estado"]').value = this.dataset.estado;
-    form.querySelector('input[name="portada_url"]').value = this.dataset.portada;
-    form.querySelector('input[name="archivo_url"]').value = this.dataset.archivo;
+    //form.querySelector('input[name="portada_url"]').value = this.dataset.portada;
+    //form.querySelector('input[name="archivo_url"]').value = this.dataset.archivo;
 
     // Forzar el cambio de categoría si por alguna razón no se refleja en la UI
     const categoriaSelect = form.querySelector('select[name="categoria_id"]');

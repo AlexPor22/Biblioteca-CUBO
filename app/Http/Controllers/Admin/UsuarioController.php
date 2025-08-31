@@ -175,7 +175,7 @@ class UsuarioController extends Controller
             'rol' => 'required|in:admin,empleado,cliente',
             'numero_telefono' => 'nullable|string|max:15',
             'direccion' => 'nullable|string|max:255',
-            'url_imagen' => 'nullable|string|max:255',
+            //'url_imagen' => 'nullable|string|max:255',
         ]);
 
         $usuario->update([
@@ -187,7 +187,7 @@ class UsuarioController extends Controller
             'rol' => $request->rol,
             'numero_telefono' => $request->numero_telefono,
             'direccion' => $request->direccion,
-            'url_imagen' => $request->url_imagen,
+            //'url_imagen' => $request->url_imagen,
         ]);
 
         return redirect()->back()->with('success', 'Usuario actualizado correctamente');
