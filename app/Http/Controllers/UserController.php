@@ -35,6 +35,11 @@ class UserController extends Controller
             'imagen'     => 'nullable|image|max:2048',
         ]);
 
+        // Avatar por defecto (NO NULL)
+        $defaultAvatar = 'https://ui-avatars.com/api/?name='
+            . urlencode($request->nombre_completo ?: 'Usuario')
+            . '&background=2C7A7B&color=fff&size=256';
+
         $usuario = Usuario::create([
             'nombre_completo' => $validated['nombre'],
             'edad'            => $validated['edad'] ?? null,
@@ -44,6 +49,7 @@ class UserController extends Controller
             'numero_telefono' => $validated['telefono'] ?? null,
             'direccion'       => $validated['direccion'] ?? null,
             'contrasena'      => Hash::make($validated['password']),
+            'imagen'          => $defaultAvatar,
         ]);
 
         if ($request->hasFile('imagen')) {
