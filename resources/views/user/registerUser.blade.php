@@ -149,7 +149,7 @@
       <div class="text-center mt-3">
         <p>O regístrate con:</p>
         <a href="{{ route('login.google') }}" class="btn btn-google">
-  <i class="fab fa-google"></i> Google
+  <i class="fab fa-google"></i>Google
 </a>
 
       </div>
