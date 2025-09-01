@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Categoria;
+use App\Models\categoria;
 
 class CategoriaController extends Controller
 {
@@ -13,7 +13,7 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        $query = Categoria::query();
+        $query = categoria::query();
 
         // Filtro de búsqueda por nombre o estado
         if (request()->has('search')) {
@@ -31,7 +31,7 @@ class CategoriaController extends Controller
         $categoriasPaginadas = $query->paginate(10)->appends(request()->query());
 
         // Obtenemos todas las categorías con relaciones para sumar libros
-        $categoriasConRelaciones = Categoria::with(['librosDigitales', 'audiolibros'])->get();
+        $categoriasConRelaciones = categoria::with(['librosDigitales', 'audiolibros'])->get();
 
         // Sumamos libros digitales + audiolibros
         $totalLibros = $categoriasConRelaciones->sum(function ($categoria) {
@@ -41,9 +41,9 @@ class CategoriaController extends Controller
         // Retornamos la vista
         return view('admin.gestion_categorias', [
             'categorias' => $categoriasPaginadas,
-            'total' => Categoria::count(),
-            'totalCategorias' => Categoria::where('estado', 'habilitado')->count(),
-            'totalDeshabilitadas' => Categoria::where('estado', 'deshabilitado')->count(),
+            'total' => categoria::count(),
+            'totalCategorias' => categoria::where('estado', 'habilitado')->count(),
+            'totalDeshabilitadas' => categoria::where('estado', 'deshabilitado')->count(),
             'totallibros' => $totalLibros
         ]);
     }
@@ -69,7 +69,7 @@ class CategoriaController extends Controller
             'estado' => 'required|in:habilitado,deshabilitado',
         ]);
 
-        Categoria::create([
+        categoria::create([
             'nombre' => $request->nombre,
             'estado' => $request->estado,
         ]);
@@ -106,7 +106,7 @@ public function buscar(Request $request)
     public function update(Request $request, string $id)
     {
         //
-        $categorias = Categoria::findOrFail($id);
+        $categorias = categoria::findOrFail($id);
 
         $request->validate([
             'nombre' => 'required|string|max:255|unique:categorias,nombre,' . $id,
@@ -127,7 +127,7 @@ public function buscar(Request $request)
     public function destroy(string $id)
     {
         //
-        $categoria = Categoria::findOrFail($id);
+        $categoria = categoria::findOrFail($id);
         $categoria->delete();
 
         return redirect()->back()->with('success', 'Categoría eliminada exitosamente.');

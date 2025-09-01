@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\LibroDigital;
-use App\Models\Categoria;
+use App\Models\categoria;
 use Illuminate\Http\Request;
-use App\Models\AudioLibro;
+use App\Models\Audiolibro;
 
 class LibroDigitalController extends Controller
 {
@@ -34,7 +34,7 @@ class LibroDigitalController extends Controller
 
     $libros = $librosQuery->get();
 
-    $categorias = Categoria::select('id', 'nombre')
+    $categorias = categoria::select('id', 'nombre')
         ->withCount(['librosDigitales as total' => function ($q) {
             $q->where('estado', 'habilitado');
         }])
@@ -76,7 +76,7 @@ class LibroDigitalController extends Controller
 public function listen($codigo)
 {
     $libro = LibroDigital::where('codigo', $codigo)->firstOrFail();
-    $audiolibro = AudioLibro::where('codigo', $codigo)->first(); // Buscamos por el mismo código
+    $audiolibro = Audiolibro::where('codigo', $codigo)->first(); // Buscamos por el mismo código
 
     return view('libros.listen', compact('libro', 'audiolibro'));
 }
