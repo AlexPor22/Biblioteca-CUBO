@@ -1,25 +1,11 @@
 @extends('layouts.admin')
-
 @section('content')
 <div class="libros-page">
   @if(session('success'))
-    <div id="alert-success" class="alert alert-success alert-dismissible fade show mt-3" role="alert">
-      {{ session('success') }}
-    </div>
-
-    <script>
-      // Espera 4 segundos y luego desaparece el alert
-      setTimeout(() => {
-        const alert = document.getElementById('alert-success');
-        if (alert) {
-          // Usamos Bootstrap para ocultarlo con animación
-          alert.classList.remove('show');
-          alert.classList.add('fade');
-          // Lo eliminamos del DOM después de la animación (opcional)
-          setTimeout(() => alert.remove(), 300); 
-        }
-      }, 4000); // 4000 ms = 4 segundos
-    </script>
+  <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+    {{ session('success') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+  </div>
   @endif
   <div class="container">
     <!-- Header panel -->
@@ -49,12 +35,12 @@
     <!-- Barra de Búsqueda -->
     <form method="GET" action="{{ route('admin.gestionAudiolibros') }}" class="search-bar" style="margin-bottom: 1rem;">
       <input 
-      type="text"
-      name="search"
-      class="search-input"
-      id="buscarAudiolibro"
-      placeholder="Buscar por nombre del libro, categoría, código, estado y tipo..."
-      value="{{ request('search') }}">
+        type="text"
+        name="search"
+        class="search-input"
+        id="buscarAudiolibro"
+        placeholder="Buscar por nombre del libro, categoría, código, estado y tipo..."
+        value="{{ request('search') }}">
     </form>
     <!-- Sección de contenido principal -->
     <div class="content-section">
@@ -93,7 +79,7 @@
             <td>{{ $audiolibro->codigo }}</td>
             <td>
               <span class="status-badge {{ $audiolibro->estado }} {{ $audiolibro->getEstadoClass() }}"> 
-                {{ ucfirst($audiolibro->estado) }}
+              {{ ucfirst($audiolibro->estado) }}
               </span>
             </td>
             <td><span>Audiolibro</span></td>
@@ -101,20 +87,18 @@
             <td>
               <div class="action-buttons">
                 <button class="btn-view" data-id="{{ $audiolibro->id }}">Ver Audiolibro</button>
-
                 <button class="btn-edit" 
-                data-id="{{ $audiolibro->id }}"
-                data-titulo="{{ $audiolibro->titulo }}"
-                data-codigo="{{ $audiolibro->codigo }}"
-                data-autor="{{ $audiolibro->autor }}"
-                data-narrador="{{ $audiolibro->narrador }}"
-                data-categoria="{{ $audiolibro->categoria_id }}"
-                data-duracion="{{ $audiolibro->duracion }}"
-                data-portada="{{ $audiolibro->portada_url }}"
-                data-audio="{{ $audiolibro->audio_url }}"
-                data-estado="{{ $audiolibro->estado }}"
-                data-bs-toggle="modal" data-bs-target="#modalEditarAudio">Editar</button>
-
+                  data-id="{{ $audiolibro->id }}"
+                  data-titulo="{{ $audiolibro->titulo }}"
+                  data-codigo="{{ $audiolibro->codigo }}"
+                  data-autor="{{ $audiolibro->autor }}"
+                  data-narrador="{{ $audiolibro->narrador }}"
+                  data-categoria="{{ $audiolibro->categoria_id }}"
+                  data-duracion="{{ $audiolibro->duracion }}"
+                  data-portada="{{ $audiolibro->portada_url }}"
+                  data-audio="{{ $audiolibro->audio_url }}"
+                  data-estado="{{ $audiolibro->estado }}"
+                  data-bs-toggle="modal" data-bs-target="#modalEditarAudio">Editar</button>
                 <form action="{{ route('admin.gestionAudiolibros.destroy', $audiolibro->id) }}" method="POST" style="display: inline-block;">
                   @csrf
                   @method('DELETE')
@@ -133,7 +117,6 @@
     </div>
   </div>
 </div>
-
 <!-- Modal: Publicar Audiolibro -->
 <div class="modal fade" id="modalPublicarAudio" tabindex="-1" aria-labelledby="publicarAudioLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -146,13 +129,13 @@
         </div>
         <div class="modal-body">
           @if ($errors->any())
-            <div class="alert alert-danger">
-              <ul class="mb-0">
-                @foreach ($errors->all() as $error)
-                  <li>{{ $error }}</li>
-                @endforeach
-              </ul>
-            </div>
+          <div class="alert alert-danger">
+            <ul class="mb-0">
+              @foreach ($errors->all() as $error)
+              <li>{{ $error }}</li>
+              @endforeach
+            </ul>
+          </div>
           @endif
           <div class="row g-3">
             <!-- Título del Audiolibro -->
@@ -160,31 +143,26 @@
               <label class="form-label">Título del Audiolibro</label>
               <input type="text" class="form-control" name="titulo" value="{{ old('titulo') }}" required>
             </div>
-
             <!-- Código del Audiolibro -->
             <div class="col-md-6">
               <label class="form-label">Código del Audiolibro</label>
               <input type="text" class="form-control" name="codigo" value="{{ old('codigo') }}" required>
             </div>
-
             <!-- Autor del Audiolibro -->
             <div class="col-md-6">
               <label class="form-label">Autor</label>
               <input type="text" class="form-control" name="autor" value="{{ old('autor') }}" required>
             </div>
-
             <!-- Narrador del Audiolibro -->
             <div class="col-md-6">
               <label class="form-label">Narrador</label>
               <input type="text" class="form-control" name="narrador" value="{{ old('narrador') }}" required>
             </div>
-
             <!-- Duración del Audiolibro -->
             <div class="col-md-6">
               <label class="form-label">Duración (minutos)</label>
               <input type="text" class="form-control" name="duracion" value="{{ old('duracion') }}" min="1" required>
             </div>
-
             <!-- Estado del Audiolibro -->
             <div class="col-md-6">
               <label class="form-label">Estado</label>
@@ -194,29 +172,26 @@
                 <option value="deshabilitado">Deshabilitar</option>
               </select>
             </div>
-
             <!-- Categoría del Audiolibro -->
             <div class="col-md-12">
               <label for="categoria_id" class="form-label">Categoría</label>
               <select class="form-select" name="categoria_id" id="categoria_id" required>
                 <option value="" disabled selected>Selecciona una categoría</option>
                 @foreach($categorias as $categoria)
-                  <option value="{{ $categoria->id }}" {{ old('categoria_id') == $categoria->id ? 'selected' : '' }}>
-                    {{ $categoria->nombre }}
-                  </option>
+                <option value="{{ $categoria->id }}" {{ old('categoria_id') == $categoria->id ? 'selected' : '' }}>
+                {{ $categoria->nombre }}
+                </option>
                 @endforeach
               </select>
               @error('categoria_id')
-                <div class="text-danger">{{ $message }}</div>
+              <div class="text-danger">{{ $message }}</div>
               @enderror
             </div>
-
             <!-- Portada del Audiolibro -->
             <div class="col-md-12">
               <label class="form-label">Portada del Audiolibro (JPG, PNG)</label>
               <input type="text" class="form-control" name="portada_url" accept=".jpg,.jpeg,.png" required>
             </div>
-
             <!-- Archivo de Audio -->
             <div class="col-md-12">
               <label class="form-label">Archivo de Audio (MP3, M4A, WAV)</label>
@@ -232,7 +207,6 @@
     </div>
   </div>
 </div>
-
 <!-- Modal: Editar Audiolibro -->
 <div class="modal fade" id="modalEditarAudio" tabindex="-1" aria-labelledby="editarAudioLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -252,31 +226,26 @@
               <label class="form-label">Título</label>
               <input type="text" class="form-control" name="titulo" required>
             </div>
-
             <!-- Código del Audiolibro -->
             <div class="col-md-6">
               <label class="form-label">Código del Audiolibro</label>
               <input type="text" class="form-control" name="codigo" required>
             </div>
-
             <!-- Autor del Audiolibro -->
             <div class="col-md-6">
               <label class="form-label">Autor</label>
               <input type="text" class="form-control" name="autor" required>
             </div>
-
             <!-- Narrador del Audiolibro -->
             <div class="col-md-6">
               <label class="form-label">Narrador</label>
               <input type="text" class="form-control" name="narrador" required>
             </div>
-
             <!-- Duración del Audiolibro -->
             <div class="col-md-6">
               <label class="form-label">Duración (minutos)</label>
               <input type="text" class="form-control" name="duracion" required>
             </div>
-
             <!-- Estado del Audiolibro -->
             <div class="col-md-6">
               <label class="form-label">Estado</label>
@@ -285,28 +254,25 @@
                 <option value="deshabilitado">Deshabilitado</option>
               </select>
             </div>
-
             <!-- Categoría del Audiolibro -->
             <div class="col-md-12">
               <label for="categoria_id" class="form-label">Categoría</label>
               <select class="form-select" name="categoria_id" id="categoria_id" required>
-                @foreach($categorias as $categoria)
-                  <option value="{{ $categoria->id }}" {{ old('categoria_id') == $categoria->id ? 'selected' : '' }}>
-                    {{ $categoria->nombre }}
-                  </option>
-                @endforeach
+              @foreach($categorias as $categoria)
+              <option value="{{ $categoria->id }}" {{ old('categoria_id') == $categoria->id ? 'selected' : '' }}>
+              {{ $categoria->nombre }}
+              </option>
+              @endforeach
               </select>
               @error('categoria_id')
-                <div class="text-danger">{{ $message }}</div>
+              <div class="text-danger">{{ $message }}</div>
               @enderror
             </div>
-
             <!-- Portada del Audiolibro -->
             <div class="col-md-12">
               <label class="form-label">Portada (opcional)</label>
               <input type="text" class="form-control" name="portada_url" accept=".jpg,.jpeg,.png">
             </div>
-
             <!-- Archivo de Audio -->
             <div class="col-md-12">
               <label class="form-label">Archivo de Audio (opcional)</label>
@@ -314,7 +280,6 @@
             </div>
           </div>
         </div>
-
         <div class="modal-footer">
           <button type="submit" class="btn btn-primary">Actualizar Audiolibro</button>
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
@@ -323,28 +288,23 @@
     </div>
   </div>
 </div>
-
 <!-- Modal: Vista Detallada de Audiolibro -->
 <div class="modal fade" id="modalVistaAudiolibro" tabindex="-1" aria-labelledby="modalVistaAudiolibroLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-centered">
     <div class="modal-content border-0 shadow-lg rounded-4">
-
       <div class="modal-header bg-dark text-white rounded-top-4">
         <h5 class="modal-title" id="modalVistaAudiolibroLabel">Detalles del Audiolibro</h5>
       </div>
-
       <div class="modal-body p-0">
         <div class="card border-0">
-
           <!-- Portada + título -->
           <div class="text-center p-1 bg-light border-bottom">
             <img id="audiolibro_portada" src="" alt="Portada del audiolibro"
-            class="rounded shadow cursor-pointer"
-            style="width: 140px; height: 190px; object-fit: cover; cursor: pointer;"
-            data-bs-toggle="modal" data-bs-target="#modalImagenPortada">
+              class="rounded shadow cursor-pointer"
+              style="width: 140px; height: 190px; object-fit: cover; cursor: pointer;"
+              data-bs-toggle="modal" data-bs-target="#modalImagenPortada">
             <h4 class="fw-bold mt-3" id="audiolibro_titulo">-</h4>
           </div>
-
           <!-- Tabs -->
           <ul class="nav nav-tabs nav-justified fw-semibold border-bottom bg-white" id="tabAudiolibro" role="tablist">
             <li class="nav-item">
@@ -354,7 +314,6 @@
               <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tabAccesoAudiolibro">Audio</button>
             </li>
           </ul>
-
           <!-- Tab content -->
           <div class="tab-content p-4">
             <!-- Información -->
@@ -394,7 +353,6 @@
                 </div>
               </div>
             </div>
-
             <!-- Acceso -->
             <div class="tab-pane fade" id="tabAccesoAudiolibro">
               <div class="mb-3">
@@ -410,32 +368,24 @@
               </div>
             </div>
           </div>
-
         </div>
       </div>
-
       <div class="modal-footer bg-light rounded-bottom-4">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
       </div>
-
     </div>
   </div>
 </div>
-
 <!-- Modal para mostrar portada en grande -->
 <div class="modal fade" id="modalImagenPortada" tabindex="-1" aria-labelledby="modalImagenPortadaLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-xl">
     <div class="modal-content bg-transparent border-0 text-center position-relative">
-
       <!-- Botón de cerrar -->
       <button type="button" class="btn-close position-absolute top-0 end-0 m-3 bg-white rounded-circle p-2"
-              data-bs-dismiss="modal" aria-label="Cerrar"
-              style="z-index: 1055;"></button>
-
+        data-bs-dismiss="modal" aria-label="Cerrar"
+        style="z-index: 1055;"></button>
       <!-- Imagen ampliada -->
       <img id="imagen_ampliada" src="" alt="Portada grande"class="img-fluid rounded shadow-lg border border-white" style="max-height: 85vh;">
-
-
     </div>
   </div>
 </div>

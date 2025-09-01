@@ -14,11 +14,11 @@
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <body>
     @if (View::hasSection('custom-header'))
-  @yield('custom-header')
-@else
-  @include('portails.header')
-@endif
- <!-- Carga el header -->
+    @yield('custom-header')
+    @else
+    @include('portails.header')
+    @endif
+    <!-- Carga el header -->
     <main>
       @if (Request::is('/')) 
       {{-- Si es la ruta home, sin container --}}

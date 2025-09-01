@@ -8,35 +8,33 @@
       <!-- Subtítulo descriptivo -->
       <p class="header-subtitle">Bienvenido al panel de administración del sistema. Aquí podrás gestionar todos los aspectos de la plataforma de forma centralizada.</p>
     </div>
-
     <!-- Sección de Estadísticas 
-    <div class="stats-section">
-      <h3 style="color: #0D0D0D; font-weight: 700; margin-bottom: 1rem;">Estadísticas del Sistema</h3>
-      <div class="stats-grid">
-        <div class="stat-item">
-          <div class="stat-number">3</div>
-          <div class="stat-label">Usuarios Activos</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number">5</div>
-          <div class="stat-label">Categorías</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number">12</div>
-          <div class="stat-label">Libros Publicados</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number">8</div>
-          <div class="stat-label">Audiolibros</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number">6</div>
-          <div class="stat-label">Préstamos Activos</div>
+      <div class="stats-section">
+        <h3 style="color: #0D0D0D; font-weight: 700; margin-bottom: 1rem;">Estadísticas del Sistema</h3>
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-number">3</div>
+            <div class="stat-label">Usuarios Activos</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">5</div>
+            <div class="stat-label">Categorías</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">12</div>
+            <div class="stat-label">Libros Publicados</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">8</div>
+            <div class="stat-label">Audiolibros</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">6</div>
+            <div class="stat-label">Préstamos Activos</div>
+          </div>
         </div>
       </div>
-    </div>
-    -->
-
+      -->
     <!-- Sección de Gestión -->
     <div class="dashboard-grid">
       <!-- Gestión de Usuarios -->
@@ -51,7 +49,6 @@
         <p class="card-description">Controla y administra todos los usuarios del sistema. Modifica roles, accesos y perfiles según necesidad.</p>
         <a href="{{ route('admin.gestionUsuarios') }}" class="card-button"><span>Gestionar Usuarios</span></a>
       </div>
-
       <!-- Gestión de Categorías -->
       <div class="dashboard-card">
         <div class="card-icon categories">
@@ -64,7 +61,6 @@
         <p class="card-description">Organiza el contenido mediante categorías. Crea, edita o elimina clasificaciones para libros y audiolibros.</p>
         <a href="{{ route('admin.gestionCategorias') }}" class="card-button"><span>Gestionar Categorías</span></a>
       </div>
-
       <!--Gestión de Libros -->
       <div class="dashboard-card">
         <div class="card-icon upload">
@@ -77,7 +73,6 @@
         <p class="card-description">Sube, edita y organiza libros digitales en PDF o EPUB. Gestiona todo el contenido disponible para los usuarios.</p>
         <a href="{{ route('admin.gestionLibrosDigitales') }}" class="card-button"><span>Gestionar Libros</span></a>
       </div>
-
       <!-- Gestión de Audiolibros -->
       <div class="dashboard-card">
         <div class="card-icon upload">
@@ -90,7 +85,6 @@
         <p class="card-description">Sube, edita y organiza audiolibros en MP3 u otros formatos. Facilita el acceso a contenido sonoro para los usuarios.</p>
         <a href="{{ route('admin.gestionAudiolibros') }}" class="card-button"><span>Gestionar Audiolibros</span></a>
       </div>
-
       <!-- Gestión de Libros físicos -->
       <div class="dashboard-card">
         <div class="card-icon upload">
@@ -104,7 +98,6 @@
         <p class="card-description">Sube, edita y organiza los libros físicos disponibles. Gestiona todo el contenido disponible para los usuarios.</p>
         <a href="{{ route('admin.gestionLibrosFisicos') }}" class="card-button"><span>Gestionar Contenido</span></a>
       </div>
-
       <!-- Gestión de Préstamos -->
       <div class="dashboard-card">
         <div class="card-icon loans">
@@ -117,7 +110,6 @@
         <p class="card-description">Administra todos los préstamos activos, vencidos o devueltos. Genera reportes y controla la circulación del material.</p>
         <a href="{{ route('admin.gestionPrestamos') }}" class="card-button"><span>Gestionar Préstamos</span></a>
       </div>
-
       <!-- Préstamos Recientes -->
       <div class="dashboard-card">
         <div class="card-icon recent-loans">
@@ -130,7 +122,6 @@
         <p class="card-description">Consulta los préstamos realizados. Monitorea actividad reciente del sistema.</p>
         <a href="{{ route('admin.prestamosRecientes') }}" class="card-button"><span>Ver Préstamos</span></a>
       </div>
-
       <!-- Contenido Reciente -->
       <div class="dashboard-card">
         <div class="card-icon recent-content">
@@ -143,7 +134,6 @@
         <p class="card-description">Visualiza los últimos libros y audiolibros publicados en la plataforma.</p>
         <a href="{{ route('admin.contenidoReciente') }}" class="card-button"><span>Ver Contenido</span></a>
       </div>
-
       <!-- Estadísticas del Sistema -->
       <div class="dashboard-card">
         <div class="card-icon statistics">
@@ -156,7 +146,6 @@
         <p class="card-description">Consulta métricas clave del sistema: actividad de usuarios, contenido y rendimiento general.</p>
         <a href="{{ route('admin.estadisticasSistema') }}" class="card-button"><span>Ver Estadísticas</span></a>
       </div>
-
     </div>
   </div>
 </div>

@@ -1,12 +1,11 @@
 @extends('layouts.admin')
-
 @section('content')
 <div class="publish-dashboard">
   @if(session('success'))
-    <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
-      {{ session('success') }}
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
-    </div>
+  <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+    {{ session('success') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+  </div>
   @endif
   <div class="container">
     <!-- Header panel -->
@@ -15,7 +14,6 @@
       <!-- Subtítulo descriptivo -->
       <p class="header-subtitle">Administra y controla todos los libros físicos del sistema.</p>
     </div>
-
     <!-- Sección de Estadísticas -->
     <div class="stats-section">
       <h3 style="color: #0D0D0D; font-weight: 700; margin-bottom: 1rem;">Estadísticas del Sistema</h3>
@@ -34,7 +32,6 @@
         </div>
       </div>
     </div>
-
     <!-- Barra de Búsqueda -->
     <form method="GET" action="" class="search-bar" style="margin-bottom: 1rem;">
       <input 
@@ -45,7 +42,6 @@
         placeholder="Buscar por nombre del libro, categoría, código, estado y tipo..."
         value="">
     </form>
-
     <!-- Sección de contenido principal -->
     <div class="content-section">
       <div class="section-header">
@@ -73,12 +69,9 @@
           </tr>
         </thead>
         <tbody>
-
         </tbody>
       </table>
     </div>
-
-
   </div>
 </div>
 @endsection

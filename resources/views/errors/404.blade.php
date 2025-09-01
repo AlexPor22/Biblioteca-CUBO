@@ -63,9 +63,9 @@
       <h1>404</h1>
       <h1>¡Oops! Página no encontrada</h1>
       @auth
-        <a class="btn" href="{{ route('libros.index') }}">Volver a libros</a>
+      <a class="btn" href="{{ route('libros.index') }}">Volver a libros</a>
       @else
-        <a class="btn" href="{{ url('/') }}">Volver al inicio</a>
+      <a class="btn" href="{{ url('/') }}">Volver al inicio</a>
       @endauth
     </div>
   </div>

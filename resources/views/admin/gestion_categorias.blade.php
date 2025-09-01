@@ -1,12 +1,11 @@
 @extends('layouts.admin')
-
 @section('content')
 <div class="categories-page">
   @if(session('success'))
-    <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
-      {{ session('success') }}
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
-    </div>
+  <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+    {{ session('success') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+  </div>
   @endif
   <div class="container">
     <!-- Header panel -->
@@ -39,21 +38,13 @@
     </div>
     <!-- Barra de Búsqueda -->
     <form method="GET" action="{{ route('admin.gestionCategorias') }}" class="search-bar" style="margin-bottom: 1rem;">
-        <input 
-          type="text" 
-          name="search" 
-          class="search-input" 
-          id="buscadorCategoria" 
-          placeholder="Buscar por nombre de categoría y estado..." 
-          value="{{ request('search') }}">
-
-        <!-- Botón de búsqueda
-        <button class="search-btn">
-          <svg fill="currentColor" viewBox="0 0 20 20" style="width: 20px; height: 20px;">
-            <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
-          </svg>
-        </button>
-        -->
+      <input 
+        type="text" 
+        name="search" 
+        class="search-input" 
+        id="buscadorCategoria" 
+        placeholder="Buscar por nombre de categoría y estado..." 
+        value="{{ request('search') }}">
     </form>
     <!-- Sección de contenido principal -->
     <div class="content-section">
@@ -80,30 +71,29 @@
         </thead>
         <tbody>
           @foreach ($categorias as $categoria)
-            <tr data-estado="{{ strtolower($categoria->estado) }}">
-              <!--<td><span>{{ $categoria->id }}</span></td>-->
-              <td><span>{{ $categoria->nombre }}</span></td>
-              <td>{{ $categoria->sumarCantidadLibros() }} libros</td>
-              <td>
-                <span>{{ $categoria->estado }}</span>
-              </td>
-              <td><span>{{ $categoria->created_at->format('d/m/Y') }}</span></td>
-              <td>
-                <div class="action-buttons">
-                  <button class="btn-edit" 
+          <tr data-estado="{{ strtolower($categoria->estado) }}">
+            <!--<td><span>{{ $categoria->id }}</span></td>-->
+            <td><span>{{ $categoria->nombre }}</span></td>
+            <td>{{ $categoria->sumarCantidadLibros() }} libros</td>
+            <td>
+              <span>{{ $categoria->estado }}</span>
+            </td>
+            <td><span>{{ $categoria->created_at->format('d/m/Y') }}</span></td>
+            <td>
+              <div class="action-buttons">
+                <button class="btn-edit" 
                   data-id="{{ $categoria->id }}"
                   data-nombre="{{ $categoria->nombre }}"
                   data-estado="{{ $categoria->estado }}"
                   data-bs-toggle="modal" data-bs-target="#modalEditarCategoria">Editar</button>
-
-                  <form action="{{ route('admin.gestionCategorias.destroy', $categoria->id) }}" method="POST" style="display: inline-block;">
-                    @csrf
-                    @method('DELETE')
+                <form action="{{ route('admin.gestionCategorias.destroy', $categoria->id) }}" method="POST" style="display: inline-block;">
+                  @csrf
+                  @method('DELETE')
                   <button type="submit" class="btn-delete">Eliminar</button>
-                  </form>
-                </div>
-              </td>
-            </tr>
+                </form>
+              </div>
+            </td>
+          </tr>
           @endforeach
         </tbody>
       </table>
@@ -114,7 +104,6 @@
     </div>
   </div>
 </div>
-
 <!-- Modal: Nueva Categoría -->
 <div class="modal fade" id="modalAgregarCategoria" tabindex="-1" aria-labelledby="agregarCategoriaLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-md">
@@ -127,13 +116,13 @@
         </div>
         <div class="modal-body">
           @if ($errors->any())
-            <div class="alert alert-danger">
-              <ul class="mb-0">
-                @foreach ($errors->all() as $error)
-                  <li>{{ $error }}</li>
-                @endforeach
-              </ul>
-            </div>
+          <div class="alert alert-danger">
+            <ul class="mb-0">
+              @foreach ($errors->all() as $error)
+              <li>{{ $error }}</li>
+              @endforeach
+            </ul>
+          </div>
           @endif
           <div class="row g-3">
             <div class="col-md-12">
@@ -158,7 +147,6 @@
     </div>
   </div>
 </div>
-
 <!-- Modal: Editar Categoría -->
 <div class="modal fade" id="modalEditarCategoria" tabindex="-1" aria-labelledby="editarCategoriaLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-md">

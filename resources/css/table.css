@@ -54,29 +54,30 @@
 }
 
 .pagination-container nav {
-  background-color: #f8f9fa;
-  padding: 12px 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    background-color: #f8f9fa;
+    padding: 12px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .pagination .page-item .page-link {
-  color: #198754; /* Verde Bootstrap */
-  border-radius: 6px;
-  transition: all 0.3s ease;
-  margin: 0 2px;
+    color: #198754;
+    /* Verde Bootstrap */
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    margin: 0 2px;
 }
 
 .pagination .page-item.active .page-link {
-  background-color: #198754;
-  border-color: #198754;
-  color: white;
-  font-weight: bold;
+    background-color: #198754;
+    border-color: #198754;
+    color: white;
+    font-weight: bold;
 }
 
 .pagination .page-item .page-link:hover {
-  background-color: #157347;
-  color: white;
+    background-color: #157347;
+    color: white;
 }
 
 .btn-add {
@@ -220,8 +221,10 @@
 
 /* XXL - Pantallas grandes Full HD+ */
 @media (max-width: 1400px) {
+
     /* Aumentar contenedores y columnas */
     .pagination-controls {
-        display: none !important; /* Ocultar paginación en pantallas pequeñas */
+        display: none !important;
+        /* Ocultar paginación en pantallas pequeñas */
     }
 }

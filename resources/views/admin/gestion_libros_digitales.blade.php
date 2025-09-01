@@ -1,12 +1,11 @@
 @extends('layouts.admin')
-
 @section('content')
 <div class="libros-page">
   @if(session('success'))
-    <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
-      {{ session('success') }}
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
-    </div>
+  <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+    {{ session('success') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+  </div>
   @endif
   <div class="container">
     <!-- Header panel -->
@@ -80,7 +79,7 @@
             <td>{{ $librodigital->codigo }}</td>
             <td>
               <span class="status-badge {{ $librodigital->estado }} {{ $librodigital->getEstadoClass() }}">
-                {{ ucfirst($librodigital->estado) }}
+              {{ ucfirst($librodigital->estado) }}
               </span>
             </td>
             <td><span>{{ $librodigital->permiso_acceso }}</span></td>
@@ -88,19 +87,17 @@
             <td>
               <div class="action-buttons">
                 <button class="btn-view" data-id="{{ $librodigital->id }}">Ver libro</button>
-
                 <button class="btn-edit" 
-                data-id="{{ $librodigital->id }}"
-                data-titulo="{{ $librodigital->titulo }}"
-                data-codigo="{{ $librodigital->codigo }}"
-                data-autor="{{ $librodigital->autor }}"
-                data-categoria="{{ $librodigital->categoria_id }}"
-                data-acceso="{{ $librodigital->permiso_acceso }}"
-                data-estado="{{ $librodigital->estado }}"
-                data-portada="{{ $librodigital->portada_url }}"
-                data-archivo="{{ $librodigital->archivo_url }}"
-                data-bs-toggle="modal" data-bs-target="#modalEditarLibro">Editar</button>
-
+                  data-id="{{ $librodigital->id }}"
+                  data-titulo="{{ $librodigital->titulo }}"
+                  data-codigo="{{ $librodigital->codigo }}"
+                  data-autor="{{ $librodigital->autor }}"
+                  data-categoria="{{ $librodigital->categoria_id }}"
+                  data-acceso="{{ $librodigital->permiso_acceso }}"
+                  data-estado="{{ $librodigital->estado }}"
+                  data-portada="{{ $librodigital->portada_url }}"
+                  data-archivo="{{ $librodigital->archivo_url }}"
+                  data-bs-toggle="modal" data-bs-target="#modalEditarLibro">Editar</button>
                 <form action="{{ route('admin.gestionLibrosDigitales.destroy', $librodigital->id) }}" method="POST" style="display: inline-block;">
                   @csrf
                   @method('DELETE')
@@ -119,7 +116,6 @@
     </div>
   </div>
 </div>
-
 <!-- Modal: Publicar Libro Digital -->
 <div class="modal fade" id="modalPublicarLibro" tabindex="-1" aria-labelledby="publicarLibroLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -132,13 +128,13 @@
         </div>
         <div class="modal-body">
           @if ($errors->any())
-            <div class="alert alert-danger">
-              <ul class="mb-0">
-                @foreach ($errors->all() as $error)
-                  <li>{{ $error }}</li>
-                @endforeach
-              </ul>
-            </div>
+          <div class="alert alert-danger">
+            <ul class="mb-0">
+              @foreach ($errors->all() as $error)
+              <li>{{ $error }}</li>
+              @endforeach
+            </ul>
+          </div>
           @endif
           <div class="row g-3">
             <!-- Titulo del libro -->
@@ -146,35 +142,31 @@
               <label class="form-label">Título del Libro</label>
               <input type="text" class="form-control" name="titulo" value="{{ old('titulo') }}" required>
             </div>
-
             <!-- Código del libro -->
             <div class="col-md-6">
               <label class="form-label">Código del Libro</label>
               <input type="text" class="form-control" name="codigo" value="{{ old('codigo') }}" required>
             </div>
-
             <!-- Autor del libro -->
             <div class="col-md-6">
               <label class="form-label">Autor</label>
               <input type="text" class="form-control" name="autor" value="{{ old('autor') }}" required>
             </div>
-
             <!-- Categoría del libro -->
             <div class="col-md-6">
               <label for="categoria_id" class="form-label">Categoría</label>
               <select class="form-select" name="categoria_id" id="categoria_id" required>
                 <option value="" disabled selected>Selecciona una categoría</option>
                 @foreach($categorias as $categoria)
-                  <option value="{{ $categoria->id }}" {{ old('categoria_id') == $categoria->id ? 'selected' : '' }}>
-                    {{ $categoria->nombre }}
-                  </option>
+                <option value="{{ $categoria->id }}" {{ old('categoria_id') == $categoria->id ? 'selected' : '' }}>
+                {{ $categoria->nombre }}
+                </option>
                 @endforeach
               </select>
               @error('categoria_id')
-                <div class="text-danger">{{ $message }}</div>
+              <div class="text-danger">{{ $message }}</div>
               @enderror
             </div>
-
             <!-- Permisos de acceso -->
             <div class="col-md-6">
               <label class="form-label">Permisos de Acceso</label>
@@ -184,7 +176,6 @@
                 <option value="privado">Privado</option>
               </select>
             </div>
-
             <!-- Estado del libro -->
             <div class="col-md-6">
               <label class="form-label">Estado</label>
@@ -194,13 +185,11 @@
                 <option value="deshabilitado">Deshabilitar</option>
               </select>
             </div>
-
             <!-- Portada del Libro -->
             <div class="col-md-12">
               <label class="form-label">Portada del Libro (JPG, PNG)</label>
               <input type="text" class="form-control" name="portada_url" value="{{ old('portada_url') }}" accept=".jpg,.jpeg,.png" required>
             </div>
-
             <!-- Archivo del Libro -->
             <div class="col-md-12">
               <label class="form-label">Archivo del Libro (PDF, EPUB, MOBI)</label>
@@ -216,7 +205,6 @@
     </div>
   </div>
 </div>
-
 <!-- Modal: Editar Libro Digital -->
 <div class="modal fade" id="modalEditarLibro" tabindex="-1" aria-labelledby="editarLibroLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -236,35 +224,31 @@
               <label class="form-label">Título</label>
               <input type="text" class="form-control" name="titulo" required>
             </div>
-
             <!-- Código del Libro -->
             <div class="col-md-6">
               <label class="form-label">Código del Libro</label>
               <input type="text" class="form-control" name="codigo" required>
             </div>
-
             <!-- Autor del Libro -->
             <div class="col-md-6">
               <label class="form-label">Autor</label>
               <input type="text" class="form-control" name="autor" required>
             </div>
-
             <!-- Categoría del Libro -->
             <div class="col-md-6">
               <label for="categoria_id" class="form-label">Categoría</label>
               <select class="form-select" name="categoria_id" id="categoria_id" required>
                 <option value="" disabled selected>Selecciona una categoría</option>
                 @foreach($categorias as $categoria)
-                  <option value="{{ $categoria->id }}" {{ old('categoria_id') == $categoria->id ? 'selected' : '' }}>
-                    {{ $categoria->nombre }}
-                  </option>
+                <option value="{{ $categoria->id }}" {{ old('categoria_id') == $categoria->id ? 'selected' : '' }}>
+                {{ $categoria->nombre }}
+                </option>
                 @endforeach
               </select>
               @error('categoria_id')
-                <div class="text-danger">{{ $message }}</div>
+              <div class="text-danger">{{ $message }}</div>
               @enderror
             </div>
-
             <!-- Permisos de Acceso -->
             <div class="col-md-6">
               <label class="form-label">Permisos de Acceso</label>
@@ -273,7 +257,6 @@
                 <option value="privado">Privado</option>
               </select>
             </div>
-
             <!-- Estado del Libro -->
             <div class="col-md-6">
               <label class="form-label">Estado del Libro</label>
@@ -282,13 +265,11 @@
                 <option value="deshabilitado">Deshabilitar</option>
               </select>
             </div>
-
             <!-- Portada del Libro (opcional) -->
             <div class="col-md-12">
               <label class="form-label">Portada (opcional)</label>
               <input type="text" class="form-control" name="portada_url" accept=".jpg,.jpeg,.png">
             </div>
-
             <!-- Archivo del Libro (opcional) -->
             <div class="col-md-12">
               <label class="form-label">Archivo del Libro (opcional)</label>
@@ -304,29 +285,23 @@
     </div>
   </div>
 </div>
-
 <!-- Modal: Vista Detallada de Libro Digital -->
 <div class="modal fade" id="modalVistaLibro" tabindex="-1" aria-labelledby="modalVistaLibroLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-centered">
     <div class="modal-content border-0 shadow-lg rounded-4">
-
       <div class="modal-header bg-dark text-white rounded-top-4">
         <h5 class="modal-title" id="modalVistaLibroLabel">Detalles del Libro Digital</h5>
       </div>
-
       <div class="modal-body p-0">
         <div class="card border-0">
-
           <!-- Portada + título -->
           <div class="text-center p-1 bg-light border-bottom">
             <img id="libro_portada" src="" alt="Portada del libro"
-            class="rounded shadow cursor-pointer"
-            style="width: 140px; height: 190px; object-fit: cover; cursor: pointer;"
-            data-bs-toggle="modal" data-bs-target="#modalImagenPortada">
-
+              class="rounded shadow cursor-pointer"
+              style="width: 140px; height: 190px; object-fit: cover; cursor: pointer;"
+              data-bs-toggle="modal" data-bs-target="#modalImagenPortada">
             <h4 class="fw-bold mt-3" id="libro_titulo">-</h4>
           </div>
-
           <!-- Tabs -->
           <ul class="nav nav-tabs nav-justified fw-semibold border-bottom bg-white" id="tabLibro" role="tablist">
             <li class="nav-item">
@@ -336,7 +311,6 @@
               <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tabAccesoLibro">Acceso</button>
             </li>
           </ul>
-
           <!-- Tab content -->
           <div class="tab-content p-4">
             <!-- Información -->
@@ -354,25 +328,20 @@
                   <label class="text-muted">Código</label>
                   <p class="fw-bold" id="libro_codigo">-</p>
                 </div>
-
                 <div class="col-md-6 mb-3">
                   <label class="text-muted">Estado</label>
                   <p class="fw-bold" id="libro_estado">-</p>
                 </div>
-
                 <div class="col-md-6 mb-3">
                   <label class="text-muted">Tipo</label>
                   <p class="fw-bold" id="libro_tipo">-</p>
-
                 </div>
-
                 <div class="col-md-6 mb-3">
                   <label class="text-muted">Registrado el</label>
                   <p class="fw-bold" id="libro_fecha">-</p>
                 </div>
               </div>
             </div>
-
             <!-- Acceso -->
             <div class="tab-pane fade" id="tabAccesoLibro">
               <div class="mb-3">
@@ -385,32 +354,24 @@
               </div>
             </div>
           </div>
-
         </div>
       </div>
-
       <div class="modal-footer bg-light rounded-bottom-4">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
       </div>
-
     </div>
   </div>
 </div>
-
 <!-- Modal para mostrar portada en grande -->
 <div class="modal fade" id="modalImagenPortada" tabindex="-1" aria-labelledby="modalImagenPortadaLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-xl">
     <div class="modal-content bg-transparent border-0 text-center position-relative">
-
       <!-- Botón de cerrar -->
       <button type="button" class="btn-close position-absolute top-0 end-0 m-3 bg-white rounded-circle p-2"
-              data-bs-dismiss="modal" aria-label="Cerrar"
-              style="z-index: 1055;"></button>
-
+        data-bs-dismiss="modal" aria-label="Cerrar"
+        style="z-index: 1055;"></button>
       <!-- Imagen ampliada -->
       <img id="imagen_ampliada" src="" alt="Portada grande"class="img-fluid rounded shadow-lg border border-white" style="max-height: 85vh;">
-
-
     </div>
   </div>
 </div>

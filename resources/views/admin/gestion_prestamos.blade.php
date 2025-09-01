@@ -1,5 +1,4 @@
 @extends('layouts.admin')
-
 @section('content')
 <div class="historial-page">
   <div class="container">
@@ -146,16 +145,15 @@
       </table>
     </div>
     <!-- Paginación 
-    <div class="pagination">
-      <a href="#">« Anterior</a>
-      <a href="#" class="active">1</a>
-      <a href="#">2</a>
-      <a href="#">3</a>
-      <a href="#">Siguiente »</a>
-    </div> -->
+      <div class="pagination">
+        <a href="#">« Anterior</a>
+        <a href="#" class="active">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">Siguiente »</a>
+      </div> -->
   </div>
 </div>
-
 <!-- Modal para agregar préstamo -->
 <div class="modal fade" id="modalAgregarPrestamo" tabindex="-1" aria-labelledby="agregarPrestamoLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -207,7 +205,6 @@
     </div>
   </div>
 </div>
-
 <!-- Modal para editar préstamo -->
 <div class="modal fade" id="modalEditarPrestamo" tabindex="-1" aria-labelledby="editarPrestamoLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg">
