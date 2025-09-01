@@ -140,14 +140,23 @@ Route::get('/login', [UserController::class, 'Login'])->name('login');
 
 // Cerrar sesión (ruta de logout)
 // Ruta de logout
-Route::post('/logout', function () {
-    Auth::logout(); // Cierra la sesión del usuario
-    request()->session()->invalidate(); // Invalida la sesión
-    request()->session()->regenerateToken(); // Regenera el token CSRF
 
-    // Redirige a la página de inicio
+// Logout de clientes/usuarios normales
+Route::post('/logout', function () {
+    Auth::logout();
+    request()->session()->invalidate();
+    request()->session()->regenerateToken();
     return redirect()->route('inicio');
 })->name('logout');
+
+// Logout exclusivo para admin
+Route::post('/admin/logout', function () {
+    Auth::logout();
+    request()->session()->invalidate();
+    request()->session()->regenerateToken();
+    return redirect()->route('inicio');
+})->name('admin.cerrarSesion');
+
 
 
 Route::middleware('auth')->group(function () {

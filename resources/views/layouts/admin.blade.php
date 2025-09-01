@@ -72,6 +72,7 @@
       <form action="{{ route('admin.cerrarSesion') }}" method="POST" style="display:inline;">
     @csrf
     <button type="submit"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</button>
+</form>
     </form>
     </div>
     <!-- Contenido -->
