@@ -16,12 +16,13 @@
       <div class="stats-grid">
         <div class="stat-item">
           <div class="stat-number">12</div>
-          <div class="stat-label">Libros Publicados</div>
+          <div class="stat-label">Libros Digitales</div>
         </div>
         <div class="stat-item">
           <div class="stat-number">8</div>
           <div class="stat-label">Audiolibros</div>
         </div>
+        <!-- Nuevos ítems añadidos
         <div class="stat-item">
           <div class="stat-number">5</div>
           <div class="stat-label">Borradores</div>
@@ -30,6 +31,7 @@
           <div class="stat-number">156</div>
           <div class="stat-label">Descargas Total</div>
         </div>
+         -->
       </div>
     </div>
 

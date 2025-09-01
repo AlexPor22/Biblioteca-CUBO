@@ -1,7 +1,5 @@
 @extends('layouts.admin')
-
 @section('content')
-
 <div class="admin-dashboard">
   <div class="container">
     <!-- Header panel -->
@@ -38,21 +36,8 @@
       </div>
     </div>
 
+    <!-- Sección de Gestión -->
     <div class="dashboard-grid">
-      <!-- Panel de Administración 
-      <div class="dashboard-card">
-        <div class="card-icon dashboard">
-          <!-- Icono: Dashboard con paneles 
-          <svg viewBox="0 0 24 24" width="40" height="40" fill="currentColor">
-            <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/>
-          </svg>
-        </div>
-        <h5 class="card-title">Panel de Administración</h5>
-        <p class="card-description">Accede al panel principal del sistema y supervisa de forma global las funcionalidades clave de la plataforma.</p>
-        <a href="{{ route('admin.panelAdministracion') }}" class="card-button"><span>Ir al Panel</span></a>
-      </div>
-      -->
-
       <!-- Gestión de Usuarios -->
       <div class="dashboard-card">
         <div class="card-icon users">
@@ -79,6 +64,46 @@
         <a href="{{ route('admin.gestionCategorias') }}" class="card-button"><span>Gestionar Categorías</span></a>
       </div>
 
+      <!--Gestión de Libros -->
+      <div class="dashboard-card">
+        <div class="card-icon upload">
+          <!-- Icono: Libro -->
+          <svg viewBox="0 0 24 24" width="40" height="40" fill="currentColor">
+            <path d="M19.35 10.04A7.49 7.49 0 0012 4a7.49 7.49 0 00-7.36 6.03C3.34 10.36 2 12.28 2 14.5A4.5 4.5 0 006.5 19H19a4 4 0 00.35-8zm-6.85 2.91V17h-2v-4.05l-1.29 1.3-1.42-1.42L12 9l3.54 3.54-1.42 1.42-1.29-1.3z"/>
+          </svg>
+        </div>
+        <h5 class="card-title">Gestión de Libros</h5>
+        <p class="card-description">Sube, edita y organiza libros digitales en PDF o EPUB. Gestiona todo el contenido disponible para los usuarios.</p>
+        <a href="{{ route('admin.gestionLibrosDigitales') }}" class="card-button"><span>Gestionar Libros</span></a>
+      </div>
+
+      <!-- Gestión de Audiolibros -->
+      <div class="dashboard-card">
+        <div class="card-icon upload">
+          <!-- Icono: Audiolibro -->
+          <svg viewBox="0 0 24 24" width="40" height="40" fill="currentColor">
+            <path d="M12 3v10.55a4 4 0 11-2-3.45V6h2m6-3h-2v18h2V3zM6 9H4v12h2V9z"/>
+          </svg>
+        </div>
+        <h5 class="card-title">Gestión de Audiolibros</h5>
+        <p class="card-description">Sube, edita y organiza audiolibros en MP3 u otros formatos. Facilita el acceso a contenido sonoro para los usuarios.</p>
+        <a href="{{ route('admin.gestionAudiolibros') }}" class="card-button"><span>Gestionar Audiolibros</span></a>
+      </div>
+
+      <!-- Gestión de Libros físicos -->
+      <div class="dashboard-card">
+        <div class="card-icon upload">
+          <!-- Icono: Subir nube -->
+          <svg viewBox="0 0 24 24" width="40" height="40" fill="currentColor">
+            <path d="M18 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12v-2H6V4h12v16h2V4a2 2 0 00-2-2z"/>
+            <path d="M8 6h8v2H8zM8 10h8v2H8zM8 14h5v2H8z"/>
+          </svg>
+        </div>
+        <h5 class="card-title">Gestión de Libros físicos</h5>
+        <p class="card-description">Sube, edita y organiza los libros físicos disponibles. Gestiona todo el contenido disponible para los usuarios.</p>
+        <a href="{{ route('admin.gestionLibrosFisicos') }}" class="card-button"><span>Gestionar Contenido</span></a>
+      </div>
+
       <!-- Gestión de Préstamos -->
       <div class="dashboard-card">
         <div class="card-icon loans">
@@ -92,19 +117,6 @@
         <a href="{{ route('admin.gestionPrestamos') }}" class="card-button"><span>Gestionar Préstamos</span></a>
       </div>
 
-      <!-- Libros y Audiolibros -->
-      <div class="dashboard-card">
-        <div class="card-icon upload">
-          <!-- Icono: Subir nube -->
-          <svg viewBox="0 0 24 24" width="40" height="40" fill="currentColor">
-            <path d="M19.35 10.04A7.49 7.49 0 0012 4a7.49 7.49 0 00-7.36 6.03C3.34 10.36 2 12.28 2 14.5A4.5 4.5 0 006.5 19H19a4 4 0 00.35-8zm-6.85 2.91V17h-2v-4.05l-1.29 1.3-1.42-1.42L12 9l3.54 3.54-1.42 1.42-1.29-1.3z"/>
-          </svg>
-        </div>
-        <h5 class="card-title">Gestión de Libros y Audiolibros</h5>
-        <p class="card-description">Sube, edita y organiza libros en PDF o audiolibros. Gestiona todo el contenido disponible para los usuarios.</p>
-        <a href="{{ route('admin.gestionAudiolibros') }}" class="card-button"><span>Gestionar Contenido</span></a>
-      </div>
-
       <!-- Préstamos Recientes -->
       <div class="dashboard-card">
         <div class="card-icon recent-loans">
@@ -114,7 +126,7 @@
           </svg>
         </div>
         <h5 class="card-title">Préstamos Recientes</h5>
-        <p class="card-description">Consulta los últimos préstamos realizados por los usuarios. Monitorea actividad reciente del sistema.</p>
+        <p class="card-description">Consulta los préstamos realizados. Monitorea actividad reciente del sistema.</p>
         <a href="{{ route('admin.prestamosRecientes') }}" class="card-button"><span>Ver Préstamos</span></a>
       </div>
 
@@ -143,17 +155,8 @@
         <p class="card-description">Consulta métricas clave del sistema: actividad de usuarios, contenido y rendimiento general.</p>
         <a href="{{ route('admin.estadisticasSistema') }}" class="card-button"><span>Ver Estadísticas</span></a>
       </div>
-    </div>
 
-    <!-- Botón de Acción Rápida 
-      <div class="quick-actions">
-          <button class="quick-action-btn" title="Acciones Rápidas">
-              <svg fill="currentColor" viewBox="0 0 20 20" style="width: 24px; height: 24px;">
-                  <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path>
-              </svg>
-          </button>
-      </div>
-      -->
+    </div>
   </div>
 </div>
 @endsection
