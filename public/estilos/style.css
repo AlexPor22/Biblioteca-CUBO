@@ -111,8 +111,11 @@ body {
 
 /* Estilos del botón hamburguesa */
 /* Botón hamburguesa oculto por defecto */
-.menu-toggle {
-    display: none;
+.menu-toggle{
+  position:absolute;
+  left:-9999px;        /* lo saca de pantalla */
+  width:1px;height:1px;
+  overflow:hidden;
 }
 
 /* Icono hamburguesa visible en móvil */
