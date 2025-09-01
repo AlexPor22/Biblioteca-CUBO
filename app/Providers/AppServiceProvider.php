@@ -25,6 +25,6 @@ class AppServiceProvider extends ServiceProvider
     {
         //
         LibroDigital::observe(LibroDigitalObserver::class);
-        AudioLibro::observe(AudioLibroObserver::class);
+        Audiolibro::observe(AudioLibroObserver::class);
     }
 }
