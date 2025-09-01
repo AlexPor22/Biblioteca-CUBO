@@ -71,7 +71,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
 
 
-  <!-- Tarjeta tipo CUBO -->
+  <!-- Tarjeta tipo CUBO 
   <div class="cubo-card">
     <div class="cubo-image-container">
       <div class="cubo-image" id="animatedImage"></div>
@@ -81,10 +81,11 @@
       <p>Explora libros, audiolibros, eventos culturales y todo un mundo de aprendizaje desde un solo lugar. Esta plataforma está diseñada para inspirarte, informarte y acompañarte en cada paso de tu formación.</p>
       <div class="card-actions">
         <button class="scroll-login-btn">Login</button>
-        <a href="{{ route('user.registerUser') }}" class="register-btn">Registrarse</a>
+        <a href="" class="register-btn">Registrarse</a>
       </div>
     </div>
   </div>
+  -->
 
   <!-- ESTILOS -->
   <style>

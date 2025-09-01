@@ -5,8 +5,9 @@
     </a>
   </div>
 
-  <!-- Menú hamburguesa -->
+  <!-- Menú hamburguesa 
   <input type="checkbox" id="menu-toggle" class="menu-toggle">
+  -->
   <label for="menu-toggle" class="hamburger">
     <span></span>
     <span></span>
