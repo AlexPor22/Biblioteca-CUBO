@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\AudioLibro;
+use App\Models\Audiolibro;
 use Illuminate\Http\Request;
-use App\Models\Categoria;
+use App\Models\categoria;
 class AudiolibroController extends Controller
 {
     /**
@@ -14,10 +14,10 @@ class AudiolibroController extends Controller
     public function index(Request $request)
     {
         // Iniciamos la consulta para obtener los audiolibros
-        $query = AudioLibro::query()->with('categoria');
+        $query = Audiolibro::query()->with('categoria');
 
         // Obtenemos todas las categorías habilitadas para el filtro
-        $categorias = Categoria::where('estado', 'habilitado')
+        $categorias = categoria::where('estado', 'habilitado')
             ->orderBy('nombre')
             ->get();
 
@@ -46,9 +46,9 @@ class AudiolibroController extends Controller
         // Retornar vista con datos
         return view('admin.gestion_audiolibros', [
             'audiolibros' => $audiolibros,
-            'total' => AudioLibro::count(),
-            'habilitados' => AudioLibro::where('estado', 'habilitado')->count(),
-            'deshabilitados' => AudioLibro::where('estado', 'deshabilitado')->count(),
+            'total' => Audiolibro::count(),
+            'habilitados' => Audiolibro::where('estado', 'habilitado')->count(),
+            'deshabilitados' => Audiolibro::where('estado', 'deshabilitado')->count(),
             'categorias' => $categorias
         ]);
     }
@@ -81,7 +81,7 @@ class AudiolibroController extends Controller
         ]);
 
         // Creamos el nuevo audiolibro con los datos validados
-        AudioLibro::create([
+        Audiolibro::create([
             'titulo' => $request->titulo,
             'codigo' => $request->codigo,
             'autor' => $request->autor,
@@ -104,7 +104,7 @@ class AudiolibroController extends Controller
     public function show(string $id)
     {
         //
-        $audiolibro = AudioLibro::with('categoria')->findOrFail($id);
+        $audiolibro = Audiolibro::with('categoria')->findOrFail($id);
 
         return response()->json([
             'titulo' => $audiolibro->titulo,
@@ -135,7 +135,7 @@ class AudiolibroController extends Controller
     public function update(Request $request, string $id)
     {
         // Obtenemos el audiolibro por su ID
-        $audiolibro = AudioLibro::findOrFail($id);
+        $audiolibro = Audiolibro::findOrFail($id);
 
         // Validamos los datos del formulario
         $request->validate([
@@ -174,7 +174,7 @@ class AudiolibroController extends Controller
     public function destroy(string $id)
     {
         //
-        $audiolibro = AudioLibro::findOrFail($id);
+        $audiolibro = Audiolibro::findOrFail($id);
         $audiolibro->delete();
 
         return redirect()->route('admin.gestionAudiolibros')->with('success', 'Audiolibro eliminado correctamente.');
