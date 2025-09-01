@@ -30,6 +30,8 @@ Route::get('/admin/panel', function () {
 })->name('admin.panel')->middleware('auth');
 
 Route::middleware(['auth', IsAdmin::class])->group(function () {
+});
+
     // Rutas del Panel de Administración (sin autenticación)
     Route::get('/admin', [AdminController::class, 'panelAdministracion'])->name('admin.panelAdministracion');
 
@@ -80,7 +82,6 @@ Route::middleware(['auth', IsAdmin::class])->group(function () {
 
     // Cerrar sesión (solo redirige por ahora)
     Route::post('/', [AdminController::class, 'cerrarSesion'])->name('admin.cerrarSesion');
-});
 
 Route::get('/admin/clientes', [AdminController::class, 'clientes'])->name('admin.clientes');
 
