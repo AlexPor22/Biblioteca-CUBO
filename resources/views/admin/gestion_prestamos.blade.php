@@ -145,14 +145,14 @@
         </tbody>
       </table>
     </div>
-    <!-- Paginación -->
+    <!-- Paginación 
     <div class="pagination">
       <a href="#">« Anterior</a>
       <a href="#" class="active">1</a>
       <a href="#">2</a>
       <a href="#">3</a>
       <a href="#">Siguiente »</a>
-    </div>
+    </div> -->
   </div>
 </div>
 
