@@ -23,8 +23,8 @@ class LibroDigitalController extends Controller
             ->get();
 
         // Si hay búsqueda, filtramos por título, autor, código, estado, tipo o categoría
-        if ($request->has('search')) {
-            $search = $request->input('search');
+        if (request()->has('search')) {
+            $search = request()->input('search');
 
             $query->where(function ($q) use ($search) {
                 $q->where('titulo', 'ilike', "%{$search}%")

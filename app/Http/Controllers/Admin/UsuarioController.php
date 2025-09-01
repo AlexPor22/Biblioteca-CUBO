@@ -17,8 +17,8 @@ class UsuarioController extends Controller
         $query = Usuario::query();
 
         // Si hay búsqueda, filtramos por nombre de usuario, rol o correo
-        if ($request->has('search')) {
-            $search = $request->input('search');
+        if (request()->has('search')) {
+            $search = request()->input('search');
             $query->where(function ($q) use ($search) {
                 $q->where('nombre_usuario', 'ilike', "%{$search}%")
                 ->orWhere('rol', 'ilike', "%{$search}%")
