@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\LibroDigital;
-use App\Models\Categoria;
+use App\Models\categoria;
 
 class LibroDigitalController extends Controller
 {
@@ -18,7 +18,7 @@ class LibroDigitalController extends Controller
         $query = LibroDigital::query()->with('categoria');
 
         // Obtenemos todas las categorías habilitadas para el filtro
-        $categorias = Categoria::where('estado', 'habilitado')
+        $categorias = categoria::where('estado', 'habilitado')
             ->orderBy('nombre')
             ->get();
 
