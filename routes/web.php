@@ -18,6 +18,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\IsAdmin;
 
+use Illuminate\Support\Str;
+use Laravel\Socialite\Facades\Socialite;
+use App\Models\Usuario;
 
 //RUTA INICIO 
 Route::get('/', function () {
@@ -187,3 +190,30 @@ Route::post('/solicitar-prestamo', [PrestamosController::class, 'store'])->name(
 
 
 /**************************************************************************************************************************** */
+
+// ===== Login con Google =====
+Route::get('auth/google', fn() => Socialite::driver('google')->redirect())->name('login.google');
+
+Route::get('auth/google/callback', function () {
+    $g = Socialite::driver('google')->stateless()->user();
+
+    // Buscar por correo
+    $user = Usuario::where('correo', $g->getEmail())->first();
+
+    // Si no existe, crear cliente (sin usar foto de Google)
+    if (!$user) {
+        $user = Usuario::create([
+            'nombre_completo' => $g->getName(),
+            'correo'          => $g->getEmail(),
+            'nombre_usuario'  => explode('@', $g->getEmail())[0],
+            'contrasena'      => bcrypt(Str::random(16)),
+            'rol'             => 'cliente',
+            'imagen'          => 'https://ui-avatars.com/api/?name=' . urlencode($g->getName()),
+            // 'direccion'    => 'San Salvador',
+        ]);
+    }
+
+    auth()->login($user);
+
+    return redirect()->route('libros.digitales')->with('success', '¡Bienvenido con Google!');
+});
