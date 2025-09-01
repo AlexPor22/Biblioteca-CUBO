@@ -41,12 +41,13 @@
 
           <div class="or-divider">— o iniciar con —</div>
 
-          <button class="google-btn">
-            <div class="google-icon-wrapper">
-              <img class="google-icon" src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google logo">
-            </div>
-            <span class="btn-text">Iniciar sesión con Google</span>
-          </button>
+<a href="{{ route('login.google') }}" class="google-btn">
+  <div class="google-icon-wrapper">
+    <img class="google-icon" src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google logo">
+  </div>
+  <span class="btn-text">Iniciar sesión con Google</span>
+</a>
+
         </form>
 
         @if ($errors->any())

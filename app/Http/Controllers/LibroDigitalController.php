@@ -23,14 +23,17 @@ class LibroDigitalController extends Controller
         }
 
         if ($busqueda) {
-            $librosQuery->where(function ($query) use ($busqueda) {
-                $query->where('titulo', 'ILIKE', "%$busqueda%")
-                    ->orWhere('autor', 'ILIKE', "%$busqueda%")
-                    ->orWhereHas('categoria', function ($q) use ($busqueda) {
-                        $q->where('nombre', 'ILIKE', "%$busqueda%");
-                    });
+    $term = mb_strtolower($busqueda);
+
+    $librosQuery->where(function ($query) use ($term) {
+        $query->whereRaw('LOWER(titulo) LIKE ?', ["%{$term}%"])
+            ->orWhereRaw('LOWER(autor) LIKE ?', ["%{$term}%"])
+            ->orWhereHas('categoria', function ($q) use ($term) {
+                $q->whereRaw('LOWER(nombre) LIKE ?', ["%{$term}%"]);
             });
-        }
+    });
+}
+
 
         $libros = $librosQuery->get();
 

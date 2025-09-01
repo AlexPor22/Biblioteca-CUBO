@@ -38,52 +38,42 @@
           <a href="{{ route('admin.panelAdministracion') }}" class="{{ request()->routeIs('admin.panelAdministracion') ? 'active' : '' }}">
           <i class="bi bi-house-door"></i> Panel de Administración
           </a>
-
           <!-- Gestión de usuarios: admins, empleados y clientes -->
           <a href="{{ route('admin.gestionUsuarios') }}" class="{{ request()->routeIs('admin.gestionUsuarios') ? 'active' : '' }}">
           <i class="bi bi-person-badge"></i> Gestión de Usuarios
           </a>
-
           <!-- Gestión de categorías de libros -->
           <a href="{{ route('admin.gestionCategorias') }}" class="{{ request()->routeIs('admin.gestionCategorias') ? 'active' : '' }}">
           <i class="bi bi-folder2-open"></i> Gestión de Categorías
           </a>
-
           <!-- Gestión de libros digitales (PDF, EPUB) -->
           <a href="{{ route('admin.gestionLibrosDigitales') }}" class="{{ request()->routeIs('admin.gestionLibrosDigitales') ? 'active' : '' }}">
           <i class="bi bi-file-earmark-pdf"></i> Gestión de Libros Digitales
           </a>
-
           <!-- Gestión de audiolibros (MP3, WAV) -->
           <a href="{{ route('admin.gestionAudiolibros') }}" class="{{ request()->routeIs('admin.gestionAudiolibros') ? 'active' : '' }}">
           <i class="bi bi-headphones"></i> Gestión de Audiolibros
           </a>
-          
           <!-- Gestión de libros físicos (inventario y disponibilidad) -->
           <a href="{{ route('admin.gestionLibrosFisicos') }}" class="{{ request()->routeIs('admin.gestionLibrosFisicos') ? 'active' : '' }}">
           <i class="bi bi-journal-bookmark-fill"></i> Gestión de Libros Físicos
           </a>
-
           <!-- Gestión de préstamos de libros -->
           <a href="{{ route('admin.gestionPrestamos') }}" class="{{ request()->routeIs('admin.gestionPrestamos') ? 'active' : '' }}">
           <i class="bi bi-arrow-left-right"></i> Gestión de Préstamos
           </a>
-
           <!-- Listado de préstamos recientes -->
           <a href="{{ route('admin.prestamosRecientes') }}" class="{{ request()->routeIs('admin.prestamosRecientes') ? 'active' : '' }}">
           <i class="bi bi-hourglass-split"></i> Préstamos Recientes
           </a>
-
           <!-- Contenido recientemente agregado al sistema -->
           <a href="{{ route('admin.contenidoReciente') }}" class="{{ request()->routeIs('admin.contenidoReciente') ? 'active' : '' }}">
           <i class="bi bi-newspaper"></i> Contenido Reciente
           </a>
-
           <!-- Estadísticas generales del sistema -->
           <a href="{{ route('admin.estadisticasSistema') }}" class="{{ request()->routeIs('admin.estadisticasSistema') ? 'active' : '' }}">
           <i class="bi bi-bar-chart-line"></i> Estadísticas del Sistema
           </a>
-          
         </div>
       </div>
       <!-- Footer -->

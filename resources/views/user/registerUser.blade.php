@@ -148,9 +148,10 @@
       <!-- Botón de registro con Google (placeholder) -->
       <div class="text-center mt-3">
         <p>O regístrate con:</p>
-        <a href="#" class="btn btn-google">
-          <i class="fab fa-google"></i> Google
-        </a>
+        <a href="{{ route('login.google') }}" class="btn btn-google">
+  <i class="fab fa-google"></i>Google
+</a>
+
       </div>
     </div>
   </form>
