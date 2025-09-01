@@ -9,7 +9,7 @@
       <p class="header-subtitle">Bienvenido al panel de administración del sistema. Aquí podrás gestionar todos los aspectos de la plataforma de forma centralizada.</p>
     </div>
 
-    <!-- Sección de Estadísticas -->
+    <!-- Sección de Estadísticas 
     <div class="stats-section">
       <h3 style="color: #0D0D0D; font-weight: 700; margin-bottom: 1rem;">Estadísticas del Sistema</h3>
       <div class="stats-grid">
@@ -35,6 +35,7 @@
         </div>
       </div>
     </div>
+    -->
 
     <!-- Sección de Gestión -->
     <div class="dashboard-grid">
