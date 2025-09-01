@@ -1,43 +1,37 @@
 @extends('layouts.app')
-
 @section('custom-header')
 <header class="header">
   <div class="logo">
     <a href="{{ route('inicio') }}">
-      <img src="{{ asset('img/CUBOLogoColor.png') }}" alt="Biblioteca Virtual CUBO" class="logo-img">
+    <img src="{{ asset('img/CUBOLogoColor.png') }}" alt="Biblioteca Virtual CUBO" class="logo-img">
     </a>
   </div>
-
   <!-- Menú hamburguesa -->
   <input type="checkbox" id="menu-toggle" class="menu-toggle">
   <label for="menu-toggle" class="hamburger">
-    <span></span>
-    <span></span>
-    <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
   </label>
-
   <nav class="navbar">
     <ul>
       <li><a href="{{ route('inicio') }}"><i class="fa-solid fa-house"></i>Inicio</a></li>
       <li><a href="{{ route('solicitarPrestamo') }}"><i class="fa-solid fa-book-open-reader"></i>Solicitar Préstamo</a></li>
-
-        {{-- PERFIL -> va a /perfil --}}
+      {{-- PERFIL -> va a /perfil --}}
       <li><a href="{{ route('user.perfil') }}"><i class="fa-regular fa-face-smile"></i>Perfil</a></li>
       <li>
         <form action="{{ route('logout') }}" method="POST" style="display:inline;">
-        @csrf
-        <button type="submit"><i class="fa-solid fa-arrow-right-from-bracket"></i>Cerrar Sesión</button>
+          @csrf
+          <button type="submit"><i class="fa-solid fa-arrow-right-from-bracket"></i>Cerrar Sesión</button>
         </form>
       </li>
     </ul>
   </nav>
 </header>
 @endsection
-
 @section('content')
 <div class="container py-4">
   <div class="row g-5 align-items-start">
-
     {{-- ===== SIDEBAR DESKTOP ===== --}}
     <div class="col-12 col-md-3 ps-md-0 d-none d-md-block">
       <aside class="cat-sidebar fancy">
@@ -47,39 +41,32 @@
           </svg>
           Categorías
         </div>
-
         <a href="{{ route('libros.index') }}" class="cat-btn {{ empty($categoriaId) ? 'active' : '' }}">
-          <span>Todas</span>
-          <span class="badge">{{ isset($categorias) ? $categorias->sum('total') : 0 }}</span>
+        <span>Todas</span>
+        <span class="badge">{{ isset($categorias) ? $categorias->sum('total') : 0 }}</span>
         </a>
-
         @foreach($categorias ?? [] as $cat)
-          <a href="{{ route('libros.index', ['categoria' => $cat->id]) }}"
-            class="cat-btn {{ (isset($categoriaId) && $categoriaId == $cat->id) ? 'active' : '' }}">
-            <span>{{ $cat->nombre }}</span>
-            <span class="badge">{{ $cat->total }}</span>
-          </a>
+        <a href="{{ route('libros.index', ['categoria' => $cat->id]) }}"
+          class="cat-btn {{ (isset($categoriaId) && $categoriaId == $cat->id) ? 'active' : '' }}">
+        <span>{{ $cat->nombre }}</span>
+        <span class="badge">{{ $cat->total }}</span>
+        </a>
         @endforeach
       </aside>
     </div>
-
-
     {{-- ===== CONTENIDO ===== --}}
     <div class="col-12 col-md-9 ps-md-5 position-relative">
       <div class="content-sep d-none d-md-block" aria-hidden="true"></div>
-
       {{-- ===== BUSCADOR DE LIBROS ===== --}}
-<form action="{{ route('libros.index') }}" method="GET" class="search-bar mb-4">
-  <input type="text" name="buscar" placeholder="Buscar libro por título, autor o categoría..." value="{{ request('buscar') }}">
-  <button type="submit"><i class="fas fa-search"></i></button>
-</form>
-
+      <form action="{{ route('libros.index') }}" method="GET" class="search-bar mb-4">
+        <input type="text" name="buscar" placeholder="Buscar libro por título, autor o categoría..." value="{{ request('buscar') }}">
+        <button type="submit"><i class="fas fa-search"></i></button>
+      </form>
       {{-- Hamburguesa móvil (CSS only) --}}
       <input type="checkbox" id="catsToggle" class="cats-toggle d-none">
       <label for="catsToggle" class="btn btn-outline-success w-100 d-md-none mb-3 mt-2">
-        &#9776; Categorías
+      &#9776; Categorías
       </label>
-
       {{-- Drawer móvil --}}
       <div class="cats-drawer d-md-none">
         <label for="catsToggle" class="cats-drawer-backdrop"></label>
@@ -91,58 +78,53 @@
           <div class="cats-drawer-body">
             <a href="{{ route('libros.index') }}"
               class="cat-btn {{ empty($categoriaId) ? 'active' : '' }}">
-              <span>Todas</span>
-              <span class="badge">{{ isset($categorias) ? $categorias->sum('total') : 0 }}</span>
+            <span>Todas</span>
+            <span class="badge">{{ isset($categorias) ? $categorias->sum('total') : 0 }}</span>
             </a>
             @foreach($categorias ?? [] as $cat)
-              <a href="{{ route('libros.index', ['categoria' => $cat->id]) }}"
-                class="cat-btn {{ (isset($categoriaId) && $categoriaId == $cat->id) ? 'active' : '' }}">
-                <span>{{ $cat->nombre }}</span>
-                <span class="badge">{{ $cat->total }}</span>
-              </a>
+            <a href="{{ route('libros.index', ['categoria' => $cat->id]) }}"
+              class="cat-btn {{ (isset($categoriaId) && $categoriaId == $cat->id) ? 'active' : '' }}">
+            <span>{{ $cat->nombre }}</span>
+            <span class="badge">{{ $cat->total }}</span>
+            </a>
             @endforeach
           </div>
         </div>
       </div>
-
-      <h2 class="text-center mb-4 mt-0"></h2> {{-- ===== tetxo de titulo pendiente ===== --}}
-
+      <h2 class="text-center mb-4 mt-0"></h2>
+      {{-- ===== tetxo de titulo pendiente ===== --}}
       @if(($libros ?? collect())->isEmpty())
-        <div class="alert alert-light border text-center">No hay libros para mostrar.</div>
+      <div class="alert alert-light border text-center">No hay libros para mostrar.</div>
       @else
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-          @foreach($libros as $libro)
-            <div class="col">
-              <div class="card shadow-sm card-float">
-                <div class="image-container">
-                  <img src="{{ $libro->portada_url ?: 'https://via.placeholder.com/150' }}"
-                      class="card-img-top" alt="{{ $libro->titulo }}">
-                </div>
-
-                <div class="card-body">
-                  <h5 class="card-title">{{ $libro->titulo }}</h5>
-                  <p class="card-text"><strong>Autor:</strong> {{ $libro->autor }}</p>
-                  <p class="card-text"><strong>Categoría:</strong> {{ $libro->getNombreCategoria() }}</p>
-                  <p class="card-text">{{ \Illuminate\Support\Str::limit($libro->descripcion, 100) }}</p>
-
-                  {{-- ===== BOTONES COMPACTOS CON ICONOS ===== --}}
-                  <div class="card-actions">
-                    <a href="{{ route('libros.read', $libro->codigo) }}" class="btn-action btn-read">
-                    <i class="fas fa-book"></i>
-                    <span>Leer</span>
-                  </a>
-
-                    <a href="{{ route('libros.listen', $libro->codigo) }}" class="btn btn-listen">
-    <i class="fas fa-headphones"></i> Escuchar
-</a>
-
-                    </div>
-                  {{-- ===== /BOTONES ===== --}}
-                </div>
-              </div>
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach($libros as $libro)
+        <div class="col">
+          <div class="card shadow-sm card-float">
+            <div class="image-container">
+              <img src="{{ $libro->portada_url ?: 'https://via.placeholder.com/150' }}"
+                class="card-img-top" alt="{{ $libro->titulo }}">
             </div>
-          @endforeach
+            <div class="card-body">
+              <h5 class="card-title">{{ $libro->titulo }}</h5>
+              <p class="card-text"><strong>Autor:</strong> {{ $libro->autor }}</p>
+              <p class="card-text"><strong>Categoría:</strong> {{ $libro->getNombreCategoria() }}</p>
+              <p class="card-text">{{ \Illuminate\Support\Str::limit($libro->descripcion, 100) }}</p>
+              {{-- ===== BOTONES COMPACTOS CON ICONOS ===== --}}
+              <div class="card-actions">
+                <a href="{{ route('libros.read', $libro->codigo) }}" class="btn-action btn-read">
+                <i class="fas fa-book"></i>
+                <span>Leer</span>
+                </a>
+                <a href="{{ route('libros.listen', $libro->codigo) }}" class="btn btn-listen">
+                <i class="fas fa-headphones"></i> Escuchar
+                </a>
+              </div>
+              {{-- ===== /BOTONES ===== --}}
+            </div>
+          </div>
         </div>
+        @endforeach
+      </div>
       @endif
     </div>
   </div>

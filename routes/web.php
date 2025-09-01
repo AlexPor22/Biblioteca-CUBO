@@ -35,7 +35,6 @@ Route::get('/admin/panel', function () {
 Route::middleware(['auth', IsAdmin::class])->group(function () {
 });
 
-
     // Rutas del Panel de Administración (sin autenticación)
     Route::get('/admin', [AdminController::class, 'panelAdministracion'])->name('admin.panelAdministracion');
 

@@ -1,62 +1,53 @@
 @extends('layouts.app')
 @section('custom-header')
 <header class="header">
-    <div class="logo">
-        <a href="{{ route('inicio') }}">
-            <img src="{{ asset('img/CUBOLogoColor.png') }}" alt="Biblioteca Virtual CUBO" class="logo-img">
-        </a>
-    </div>
-
-    <input type="checkbox" id="menu-toggle" class="menu-toggle">
-    <label for="menu-toggle" class="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-    </label>
-
-   <nav class="navbar">
+  <div class="logo">
+    <a href="{{ route('inicio') }}">
+    <img src="{{ asset('img/CUBOLogoColor.png') }}" alt="Biblioteca Virtual CUBO" class="logo-img">
+    </a>
+  </div>
+  <input type="checkbox" id="menu-toggle" class="menu-toggle">
+  <label for="menu-toggle" class="hamburger">
+  <span></span>
+  <span></span>
+  <span></span>
+  </label>
+  <nav class="navbar">
     <ul>
-        <li><a href="{{ route('inicio') }}"><i class="fa-solid fa-house"></i> Inicio</a></li>
-        <li><a href="{{ route('libros.index') }}"><i class="fas fa-book"></i>Libros</a></li>
-        <li><a href="{{ route('solicitarPrestamo') }}"><i class="fa-solid fa-book-open-reader"></i>Solicitar Préstamo</a></li>
-        <li><a href=""><i class="fa-regular fa-face-smile"></i>Perfil</a></li>
-        <li>
-            <form action="{{ route('logout') }}" method="POST" style="display:inline;">
-        @csrf
-        <button type="submit"><i class="fa-solid fa-arrow-right-from-bracket"></i>Cerrar Sesión</button>
+      <li><a href="{{ route('inicio') }}"><i class="fa-solid fa-house"></i> Inicio</a></li>
+      <li><a href="{{ route('libros.index') }}"><i class="fas fa-book"></i>Libros</a></li>
+      <li><a href="{{ route('solicitarPrestamo') }}"><i class="fa-solid fa-book-open-reader"></i>Solicitar Préstamo</a></li>
+      <li><a href=""><i class="fa-regular fa-face-smile"></i>Perfil</a></li>
+      <li>
+        <form action="{{ route('logout') }}" method="POST" style="display:inline;">
+          @csrf
+          <button type="submit"><i class="fa-solid fa-arrow-right-from-bracket"></i>Cerrar Sesión</button>
         </form>
-        </li>
+      </li>
     </ul>
-</nav>
-
+  </nav>
 </header>
 @endsection
-
 @section('content')
 <div class="container py-5">
   <h2 class="text-center mb-4">{{ $libro->titulo }}</h2>
-
   <!-- ===== Toolbar estilo Bookviser ===== -->
   <div class="reader-toolbar d-flex flex-wrap gap-2 align-items-center justify-content-center mb-3">
     <div class="btn-group">
       <button class="btn btn-sm btn-outline-dark" id="smaller">A−</button>
       <button class="btn btn-sm btn-outline-dark" id="bigger">A+</button>
     </div>
-
     <div class="btn-group" role="group" aria-label="themes">
       <button class="btn btn-sm btn-outline-dark" data-theme="light">Claro</button>
       <button class="btn btn-sm btn-outline-dark" data-theme="sepia">Sepia</button>
       <button class="btn btn-sm btn-outline-dark" data-theme="dark">Noche</button>
     </div>
-
     <div class="btn-group">
       <button class="btn btn-sm btn-outline-dark" id="justifyToggle">Justificar</button>
       <button class="btn btn-sm btn-outline-dark" id="hyphenToggle">Guiones</button>
     </div>
-
     <button class="btn btn-sm btn-outline-primary" id="tocToggle">☰ Índice</button>
   </div>
-
   <!-- Progreso -->
   <div class="reader-progress text-center mb-2">
     <input type="range" id="progress" min="0" max="1000" value="0" style="width: min(900px, 90%);" />
@@ -64,18 +55,15 @@
       <span id="pageLabel">p. 1</span> · <span id="percentLabel">0%</span>
     </div>
   </div>
-
   {{-- VIEWPORT: muestra SIEMPRE dos páginas, sin scroll visible --}}
   <div id="viewport" class="book-viewport">
     <div id="book-content"></div>
   </div>
-
   <div class="text-center mt-3">
     <button id="prevBtn" class="btn btn-lime me-2">← Página anterior</button>
     <button id="nextBtn" class="btn btn-lime">Página siguiente →</button>
   </div>
 </div>
-
 <!-- Panel TOC -->
 <aside id="tocPanel" class="toc-panel">
   <div class="toc-header">
