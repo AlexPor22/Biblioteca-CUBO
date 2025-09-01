@@ -30,7 +30,7 @@ class categoria extends Model
 
     public function audiolibros()
     {
-        return $this->hasMany(AudioLibro::class, 'categoria_id');
+        return $this->hasMany(Audiolibro::class, 'categoria_id');
     }
 
     public function sumarCantidadLibros()

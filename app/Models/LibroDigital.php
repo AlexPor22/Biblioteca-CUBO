@@ -37,7 +37,7 @@ class LibroDigital extends Authenticatable
     // Relación: Un libro digital pertenece a una categoría
     public function categoria()
     {
-        return $this->belongsTo(Categoria::class);
+        return $this->belongsTo(categoria::class);
     }
     
     // Método para obtener el nombre de la categoría directamente
