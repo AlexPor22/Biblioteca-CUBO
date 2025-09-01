@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App\Models\LibroDigital;
-use App\Models\AudioLibro;
+use App\Models\Audiolibro;
 use App\Observers\LibroDigitalObserver;
 use App\Observers\AudioLibroObserver;
 
