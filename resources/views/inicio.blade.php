@@ -1,223 +1,194 @@
 @extends('layouts.app')
-
 @section('content')
-
 <div class="hero-section">
-    <div class="hero-content">
-        
-        <!-- TEXTO CON BOTÓN -->
-        <div class="hero-text animar-entrada">
-            <h1 class="titulo">Biblioteca Virtual CUBO</h1>
-            <p class="descripcion">
-                Bienvenidos a la Biblioteca Virtual CUBO. Aquí podrás encontrar una gran variedad de libros y recursos digitales para tu aprendizaje. ¡Explora y disfruta de nuestro catálogo!
-            </p>
-            <a href="#registro" class="btn-iniciar">INICIAR GRATIS</a>
-        </div>
-
-        <!-- IMAGEN -->
-        <div class="hero-image-wrapper animar-entrada">
-            <img src="{{ asset('img/PORTADA1.png') }}" alt="Imagen Biblioteca" class="hero-image">
-        </div>
-
+  <div class="hero-content">
+    <!-- TEXTO CON BOTÓN -->
+    <div class="hero-text animar-entrada">
+      <h1 class="titulo">Biblioteca Virtual CUBO</h1>
+      <p class="descripcion">
+        Bienvenidos a la Biblioteca Virtual CUBO. Aquí podrás encontrar una gran variedad de libros y recursos digitales para tu aprendizaje. ¡Explora y disfruta de nuestro catálogo!
+      </p>
+      <a href="#registro" class="btn-iniciar">INICIAR GRATIS</a>
     </div>
+    <!-- IMAGEN -->
+    <div class="hero-image-wrapper animar-entrada">
+      <img src="{{ asset('img/PORTADA1.png') }}" alt="Imagen Biblioteca" class="hero-image">
+    </div>
+  </div>
 </div>
-
 <!-- Sección de Nuestros Servicios -->
 <div class="services-section">
-    <div class="services-container">
-        <h2 class="services-title">Nuestros Servicios</h2>
-        <div class="cards-container">
-
-            <div class="card">
-                <div class="card-icon bg-verde">
-                    <svg viewBox="0 0 24 24" width="28" height="28" fill="white">
-                        <path d="M21 4a1 1 0 00-1-1h-6.5a2.5 2.5 0 00-2.5 2.5V18a.5.5 0 00.832.374L13 17.118l1.168 1.256A.5.5 0 0015 18V5.5A.5.5 0 0115.5 5H20v13h-4.5a.5.5 0 01-.5-.5V16a1 1 0 00-2 0v1.5A2.5 2.5 0 0015.5 20H21a1 1 0 001-1V4zM10 5.5a.5.5 0 00-.5-.5H4v13h4.5a.5.5 0 00.5-.5V16a1 1 0 012 0v1.5A2.5 2.5 0 018.5 20H3a1 1 0 01-1-1V4a1 1 0 011-1h6.5A.5.5 0 0110 4.5V5.5z" />
-                    </svg>
-                </div>
-                <h3 class="card-title">Lectura</h3>
-                <p class="card-description">
-                    Accede a una amplia variedad de libros en formato digital para tu lectura y aprendizaje.
-                </p>
-            </div>
-
-            <div class="card">
-                <div class="card-icon bg-azul">
-                    <svg fill="white" viewBox="0 0 24 24" width="28" height="28">
-                        <path d="M12 3a9 9 0 00-9 9v6a3 3 0 003 3h1v-8H6a6 6 0 1112 0h-1v8h1a3 3 0 003-3v-6a9 9 0 00-9-9z" />
-                    </svg>
-                </div>
-                <h3 class="card-title">Audiolibros</h3>
-                <p class="card-description">
-                    Disfruta de tus libros favoritos en formato de audiolibro, perfecto para escuchar en cualquier momento.
-                </p>
-            </div>
-
-            <div class="card">
-                <div class="card-icon bg-naranja">
-                    <svg fill="white" viewBox="0 0 24 24" width="28" height="28">
-                        <path d="M17 3h-2.18A3 3 0 0012 1a3 3 0 00-2.82 2H7a2 2 0 00-2 2v16a2 2 0 002 2h10a2 2 0 002-2V5a2 2 0 00-2-2zM12 3a1 1 0 11-1 1 1 1 0 011-1zm1 14H8v-2h5zm3-4H8v-2h8z" />
-                    </svg>
-                </div>
-                <h3 class="card-title">Préstamos</h3>
-                <p class="card-description">
-                    Realiza préstamos de libros físicos para leerlos en casa, de manera cómoda y sencilla.
-                </p>
-            </div>
+  <div class="services-container">
+    <h2 class="services-title">Nuestros Servicios</h2>
+    <div class="cards-container">
+      <div class="card">
+        <div class="card-icon bg-verde">
+          <svg viewBox="0 0 24 24" width="28" height="28" fill="white">
+            <path d="M21 4a1 1 0 00-1-1h-6.5a2.5 2.5 0 00-2.5 2.5V18a.5.5 0 00.832.374L13 17.118l1.168 1.256A.5.5 0 0015 18V5.5A.5.5 0 0115.5 5H20v13h-4.5a.5.5 0 01-.5-.5V16a1 1 0 00-2 0v1.5A2.5 2.5 0 0015.5 20H21a1 1 0 001-1V4zM10 5.5a.5.5 0 00-.5-.5H4v13h4.5a.5.5 0 00.5-.5V16a1 1 0 012 0v1.5A2.5 2.5 0 018.5 20H3a1 1 0 01-1-1V4a1 1 0 011-1h6.5A.5.5 0 0110 4.5V5.5z" />
+          </svg>
         </div>
-        <div class="button-container">
-            <a href="#c" class="btn-descubre">Descúbrelo ahora</a>
+        <h3 class="card-title">Lectura</h3>
+        <p class="card-description">
+          Accede a una amplia variedad de libros en formato digital para tu lectura y aprendizaje.
+        </p>
+      </div>
+      <div class="card">
+        <div class="card-icon bg-azul">
+          <svg fill="white" viewBox="0 0 24 24" width="28" height="28">
+            <path d="M12 3a9 9 0 00-9 9v6a3 3 0 003 3h1v-8H6a6 6 0 1112 0h-1v8h1a3 3 0 003-3v-6a9 9 0 00-9-9z" />
+          </svg>
         </div>
-
+        <h3 class="card-title">Audiolibros</h3>
+        <p class="card-description">
+          Disfruta de tus libros favoritos en formato de audiolibro, perfecto para escuchar en cualquier momento.
+        </p>
+      </div>
+      <div class="card">
+        <div class="card-icon bg-naranja">
+          <svg fill="white" viewBox="0 0 24 24" width="28" height="28">
+            <path d="M17 3h-2.18A3 3 0 0012 1a3 3 0 00-2.82 2H7a2 2 0 00-2 2v16a2 2 0 002 2h10a2 2 0 002-2V5a2 2 0 00-2-2zM12 3a1 1 0 11-1 1 1 1 0 011-1zm1 14H8v-2h5zm3-4H8v-2h8z" />
+          </svg>
+        </div>
+        <h3 class="card-title">Préstamos</h3>
+        <p class="card-description">
+          Realiza préstamos de libros físicos para leerlos en casa, de manera cómoda y sencilla.
+        </p>
+      </div>
     </div>
+    <div class="button-container">
+      <a href="#c" class="btn-descubre">Descúbrelo ahora</a>
+    </div>
+  </div>
 </div>
-
-
 <!-- Sección de LINEA DECORATIVA DE CATALAGO -->
 <div class="linea-decorativa-css">
-<span class="icono-central">&#x269C;</span>
+  <span class="icono-central">&#x269C;</span>
 </div>
 <!-- Título antes de las categorías -->
 <h2 class="text-center my-4 titulo-catalogo">Explora Nuestro Amplio Catálogo</h2>
-
 <!-- Sección de Categorías -->
 <div class="swiper-container categorias-swiper carrusel-espaciado">
-<div class="swiper-wrapper">
+  <div class="swiper-wrapper">
     @php
     $categorias = [
-        ['titulo' => 'Novelas', 'descripcion' => 'Sumérgete en historias emocionantes y mundos ficticios.', 'imagen' => 'https://www.elindependiente.com/wp-content/uploads/2023/07/libros-2023-lunes10j.jpg'],
-        ['titulo' => 'Ciencia', 'descripcion' => 'Explora el mundo de la ciencia en cada página.', 'imagen' => 'https://www.muyinteresante.com/wp-content/uploads/sites/5/2024/06/23/6677ce2d06420.jpeg'],
-        ['titulo' => 'Historia', 'descripcion' => 'Conoce el pasado a través de grandes obras.', 'imagen' => 'https://s1.elespanol.com/2021/04/22/cultura/historia/575704626_178952264_1706x960.jpg'],
-        ['titulo' => 'Infantil', 'descripcion' => 'Libros divertidos para los más pequeños.', 'imagen' => 'https://www.elindependiente.com/wp-content/uploads/2023/07/libros-infantiles.jpg'],
-        ['titulo' => 'Autoayuda', 'descripcion' => 'Desarrollo personal y bienestar emocional.', 'imagen' => 'https://universoabierto.org/wp-content/uploads/2020/01/padre-rico-padre-pobre-400-libros-de-finanzas-y-autoayuda-d_nq_np_764254-mla29429659184_022019-f.jpg'],
-        ['titulo' => 'Educativo', 'descripcion' => 'Refuerza tu conocimiento con estos libros.', 'imagen' => 'https://www.educaciontrespuntocero.com/wp-content/uploads/2023/12/libros-educativos-favoritos-del-2023.png'],
+    ['titulo' => 'Novelas', 'descripcion' => 'Sumérgete en historias emocionantes y mundos ficticios.', 'imagen' => 'https://www.elindependiente.com/wp-content/uploads/2023/07/libros-2023-lunes10j.jpg'],
+    ['titulo' => 'Ciencia', 'descripcion' => 'Explora el mundo de la ciencia en cada página.', 'imagen' => 'https://www.muyinteresante.com/wp-content/uploads/sites/5/2024/06/23/6677ce2d06420.jpeg'],
+    ['titulo' => 'Historia', 'descripcion' => 'Conoce el pasado a través de grandes obras.', 'imagen' => 'https://s1.elespanol.com/2021/04/22/cultura/historia/575704626_178952264_1706x960.jpg'],
+    ['titulo' => 'Infantil', 'descripcion' => 'Libros divertidos para los más pequeños.', 'imagen' => 'https://www.elindependiente.com/wp-content/uploads/2023/07/libros-infantiles.jpg'],
+    ['titulo' => 'Autoayuda', 'descripcion' => 'Desarrollo personal y bienestar emocional.', 'imagen' => 'https://universoabierto.org/wp-content/uploads/2020/01/padre-rico-padre-pobre-400-libros-de-finanzas-y-autoayuda-d_nq_np_764254-mla29429659184_022019-f.jpg'],
+    ['titulo' => 'Educativo', 'descripcion' => 'Refuerza tu conocimiento con estos libros.', 'imagen' => 'https://www.educaciontrespuntocero.com/wp-content/uploads/2023/12/libros-educativos-favoritos-del-2023.png'],
     ];
-      $duplicado = array_merge($categorias, $categorias); // duplicamos para que el loop funcione
+    $duplicado = array_merge($categorias, $categorias); // duplicamos para que el loop funcione
     @endphp
-
     @foreach($duplicado as $categoria)
     <div class="swiper-slide fade-right">
-    <div class="card-3d small-card" data-image="{{ $categoria['imagen'] }}">
+      <div class="card-3d small-card" data-image="{{ $categoria['imagen'] }}">
         <div class="card-inner">
-            <div class="card-bg"></div>
-            <div class="card-info">
-                <h3>{{ $categoria['titulo'] }}</h3>
-                <p>{{ $categoria['descripcion'] }}</p>
-            </div>
+          <div class="card-bg"></div>
+          <div class="card-info">
+            <h3>{{ $categoria['titulo'] }}</h3>
+            <p>{{ $categoria['descripcion'] }}</p>
+          </div>
         </div>
+      </div>
     </div>
-</div>
     @endforeach
+  </div>
 </div>
-</div>
-
 <!-- Sección de LINEA DECORATIVA DE AUTORES -->
 <div class="linea2-decorativa-css">
-<span class="icono2-central">&#x269C;</span>
+  <span class="icono2-central">&#x269C;</span>
 </div>
 <!-- Título antes de las categorías -->
 <h2 class="text-center my-4 titulo-catalogo">LEE A TUS AUTORES FAVORITOS Y CONOCE A MUCHOS MAS</h2>
-
 <!-- IMAGNES AUTOR -->
 <article class="gallery">
-        <img src="https://literatinn.com/wp-content/uploads/2024/03/Pablo-Neruda.jpg" alt="deadpool & marvel">
-        <img src="https://i.pinimg.com/originals/41/3f/df/413fdf31d484da7d3933eb6ca655176a.jpg " alt="deadpool & marvel">
-        <img src="https://m.media-amazon.com/images/I/71H76HAPA4L._UF1000,1000_QL80_.jpg" alt="deadpool & marvel">
-        <img src="https://www.shutterstock.com/image-vector/moscow-russia-september-26-2018-600nw-1206900742.jpg" alt="deadpool & marvel">
-        <img src="https://www.pixelstalk.net/wp-content/uploads/images6/Cool-Deadpool-Wallpaper.jpg" alt="deadpool & marvel">
-        <img src="https://m.media-amazon.com/images/I/71mpuJpqY-L._UF1000,1000_QL80_.jpg "alt="deadpool & marvel">
-        <img src="https://librografias.com/img/biografias/gabriel-garcia-marquez.jpg" alt="deadpool & marvel">
-        <img src="https://pixelescuscatlecos.com/wp-content/uploads/2024/06/alfredo-espino.jpg" alt="deadpool & marvel">
-    </article>
-
-
-
+  <img src="https://literatinn.com/wp-content/uploads/2024/03/Pablo-Neruda.jpg" alt="deadpool & marvel">
+  <img src="https://i.pinimg.com/originals/41/3f/df/413fdf31d484da7d3933eb6ca655176a.jpg " alt="deadpool & marvel">
+  <img src="https://m.media-amazon.com/images/I/71H76HAPA4L._UF1000,1000_QL80_.jpg" alt="deadpool & marvel">
+  <img src="https://www.shutterstock.com/image-vector/moscow-russia-september-26-2018-600nw-1206900742.jpg" alt="deadpool & marvel">
+  <img src="https://www.pixelstalk.net/wp-content/uploads/images6/Cool-Deadpool-Wallpaper.jpg" alt="deadpool & marvel">
+  <img src="https://m.media-amazon.com/images/I/71mpuJpqY-L._UF1000,1000_QL80_.jpg "alt="deadpool & marvel">
+  <img src="https://librografias.com/img/biografias/gabriel-garcia-marquez.jpg" alt="deadpool & marvel">
+  <img src="https://pixelescuscatlecos.com/wp-content/uploads/2024/06/alfredo-espino.jpg" alt="deadpool & marvel">
+</article>
 <!-- Sección COLECCION NACIONAL -->  
 <div class="container py-5">
-    <h2 class="text-center mb-4 display-5 fw-bold">Disfruta de nuestra coleccion Nacional</h2>
-
-    <div class="row justify-content-center">
-        @foreach ([
-            ['titulo' => 'Coleccion Nacional', 'subtitulo' => 'Autores Salvadoreños', 'img' => 'https://i.pinimg.com/736x/29/f1/0d/29f10db6ac5c9e08930e1dc457994c8c.jpg'],
-            ['titulo' => 'Coleccion General', 'subtitulo' => 'Recursos biblograficos de todas las areas', 'img' => 'https://i.pinimg.com/originals/42/56/34/4256345c02a2df67924e0d05ed392533.jpg'],
-            ['titulo' => 'Coleccion Historica y Arquelogica', 'subtitulo' => 'Recuros de nuestra historia y su arqueologia', 'img' => 'https://rutasturisticases901701391.wordpress.com/wp-content/uploads/2017/11/ruta-arqueologica-e1511240327611.jpg?w=886&h=328&crop=1']
-        ] as $card)
-            <div class="col-md-4 mb-4 d-flex justify-content-center">
-                <div class="custom-card">
-                    <img src="{{ $card['img'] }}" alt="Imagen" class="card-img">
-                    <div class="card-overlay">
-                        <h4>{{ $card['titulo'] }}</h4>
-                        <p>{{ $card['subtitulo'] }}</p>
-                    </div>
-                </div>
-            </div>
-        @endforeach
+  <h2 class="text-center mb-4 display-5 fw-bold">Disfruta de nuestra coleccion Nacional</h2>
+  <div class="row justify-content-center">
+    @foreach ([
+    ['titulo' => 'Coleccion Nacional', 'subtitulo' => 'Autores Salvadoreños', 'img' => 'https://i.pinimg.com/736x/29/f1/0d/29f10db6ac5c9e08930e1dc457994c8c.jpg'],
+    ['titulo' => 'Coleccion General', 'subtitulo' => 'Recursos biblograficos de todas las areas', 'img' => 'https://i.pinimg.com/originals/42/56/34/4256345c02a2df67924e0d05ed392533.jpg'],
+    ['titulo' => 'Coleccion Historica y Arquelogica', 'subtitulo' => 'Recuros de nuestra historia y su arqueologia', 'img' => 'https://rutasturisticases901701391.wordpress.com/wp-content/uploads/2017/11/ruta-arqueologica-e1511240327611.jpg?w=886&h=328&crop=1']
+    ] as $card)
+    <div class="col-md-4 mb-4 d-flex justify-content-center">
+      <div class="custom-card">
+        <img src="{{ $card['img'] }}" alt="Imagen" class="card-img">
+        <div class="card-overlay">
+          <h4>{{ $card['titulo'] }}</h4>
+          <p>{{ $card['subtitulo'] }}</p>
+        </div>
+      </div>
     </div>
+    @endforeach
+  </div>
 </div>
-
-
-
 <!-- Sección de COMUNIDAD -->
 <section class="comunidad-section text-white">
-<div class="container-comunidad">
+  <div class="container-comunidad">
     <h2 class="comunidad-title">Conectando a la Comunidad con el Conocimiento</h2>
     <div class="comunidad-cards">
-    <div class="comunidad-card">
+      <div class="comunidad-card">
         <div class="comunidad-icon"><i class="fas fa-check-circle"></i></div>
         <h4>Acceso Gratuito</h4>
-    </div>
-    <div class="comunidad-card">
+      </div>
+      <div class="comunidad-card">
         <div class="comunidad-icon"><i class="fas fa-check-circle"></i></div>
         <h4>Variedad de Recursos</h4>
-    </div>
-    <div class="comunidad-card">
+      </div>
+      <div class="comunidad-card">
         <div class="comunidad-icon"><i class="fas fa-check-circle"></i></div>
         <h4>Seguridad y Privacidad</h4>
-    </div>
+      </div>
     </div>
     <p class="comunidad-final">
-    Te invitamos a explorar la <strong>Biblioteca Virtual CUBO San Miguel</strong> y a descubrir todo lo que tenemos para ofrecerte.<br />
-    <em>¡Sumérgete en un mundo de conocimiento y aventura!</em>
+      Te invitamos a explorar la <strong>Biblioteca Virtual CUBO San Miguel</strong> y a descubrir todo lo que tenemos para ofrecerte.<br />
+      <em>¡Sumérgete en un mundo de conocimiento y aventura!</em>
     </p>
-    
-</div>
+  </div>
 </section>
-
-
 <!-- Sección de VISITANOS -->
 <section style="background-color:rgba(163, 163, 163, 1); padding: 50px 20px;">
-<div class="container">
+  <div class="container">
     <h2 class="text-center mb-5" style="font-weight: bold; font-family: 'Poppins', sans-serif;">Visítanos en nuestras instalaciones</h2>
     <div class="row justify-content-center align-items-center">
-    <!-- Imagen grande -->
-    <div class="col-lg-6 col-md-12 mb-4 mb-lg-0 text-center">
+      <!-- Imagen grande -->
+      <div class="col-lg-6 col-md-12 mb-4 mb-lg-0 text-center">
         <img src="https://cubo.gob.sv/wp-content/uploads/2023/01/CUBO-Milagro03.jpg" alt="Imagen grande" class="img-fluid imagen-efecto img-grande">
         </a>
-    </div>
-    <!-- Dos imágenes verticales pequeñas -->
-    <div class="col-lg-4 col-md-12 d-flex flex-column justify-content-between gap-4">
+      </div>
+      <!-- Dos imágenes verticales pequeñas -->
+      <div class="col-lg-4 col-md-12 d-flex flex-column justify-content-between gap-4">
         <img src="https://cubo.gob.sv/wp-content/uploads/2022/12/Zacamil.jpg" alt="Imagen 1" class="img-fluid imagen-efecto img-pequena">
         </a>
         <img src="https://cubo.gob.sv/wp-content/uploads/2022/12/CUBO-Image01-999x1024.jpg" alt="Imagen 2" class="img-fluid imagen-efecto img-pequena">
         </a>
+      </div>
     </div>
-    </div>
-
     <!-- Ubicación -->
     <div class="text-center mt-5">
-    <h3 style="font-weight: bold; font-family: 'Poppins', sans-serif;">Nuestra Ubicación</h3>
-    <div class="mt-3" style="width: 100%; max-width: 800px; margin: 0 auto;">
+      <h3 style="font-weight: bold; font-family: 'Poppins', sans-serif;">Nuestra Ubicación</h3>
+      <div class="mt-3" style="width: 100%; max-width: 800px; margin: 0 auto;">
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3814.4607890159455!2d-88.19408550000001!3d13.4654441!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f7b2bb7208b5bd5%3A0xd3e595f11181c3bd!2sCentro%20Urbano%20de%20Bienestar%20y%20Oportunidades%20(CUBO)%20Milagro%20de%20La%20Paz!5e1!3m2!1ses-419!2ssv!4v1752523028409!5m2!1ses-419!2ssv" 
-        width="100%" height="350" style="border:0; border-radius: 12px;" allowfullscreen="" loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"></iframe>
-
+          width="100%" height="350" style="border:0; border-radius: 12px;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
     </div>
-    </div>
-</div>
+  </div>
 </section>
-
 <!-- Botón para volver arriba -->
 <a href="#" class="btn-ir-arriba" title="Volver arriba">
-    <i class="fas fa-chevron-up"></i>
+<i class="fas fa-chevron-up"></i>
 </a>
 
 <style>

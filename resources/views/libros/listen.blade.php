@@ -1,132 +1,122 @@
 @extends('layouts.app')
 @section('custom-header')
 <header class="header">
-    <div class="logo">
-        <a href="{{ route('inicio') }}">
-            <img src="{{ asset('img/CUBOLogoColor.png') }}" alt="Biblioteca Virtual CUBO" class="logo-img">
-        </a>
-    </div>
-
-    <input type="checkbox" id="menu-toggle" class="menu-toggle">
-    <label for="menu-toggle" class="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-    </label>
-
-   <nav class="navbar">
+  <div class="logo">
+    <a href="{{ route('inicio') }}">
+    <img src="{{ asset('img/CUBOLogoColor.png') }}" alt="Biblioteca Virtual CUBO" class="logo-img">
+    </a>
+  </div>
+  <input type="checkbox" id="menu-toggle" class="menu-toggle">
+  <label for="menu-toggle" class="hamburger">
+  <span></span>
+  <span></span>
+  <span></span>
+  </label>
+  <nav class="navbar">
     <ul>
-        <li><a href="{{ route('inicio') }}"><i class="fa-solid fa-house"></i> Inicio</a></li>
-        <li><a href="{{ route('libros.index') }}"><i class="fas fa-book"></i>Libros</a></li>
-        <li><a href=""><i class="fa-regular fa-face-smile"></i></i>Perfil</a></li>
-        <li>
+      <li><a href="{{ route('inicio') }}"><i class="fa-solid fa-house"></i> Inicio</a></li>
+      <li><a href="{{ route('libros.index') }}"><i class="fas fa-book"></i>Libros</a></li>
+      <li><a href=""><i class="fa-regular fa-face-smile"></i></i>Perfil</a></li>
+      <li>
         <form action="{{ route('logout') }}" method="POST" style="display:inline;">
-        @csrf
-        <button type="submit"><i class="fa-solid fa-arrow-right-from-bracket"></i>Cerrar Sesión</button>
+          @csrf
+          <button type="submit"><i class="fa-solid fa-arrow-right-from-bracket"></i>Cerrar Sesión</button>
         </form>
-
-        </li>
+      </li>
     </ul>
-</nav>
-
+  </nav>
 </header>
 @endsection
 @section('content')
 <div class="container py-5">
-    <div class="audiobook-card">
-
-        {{-- Portada --}}
-        <img src="{{ $audiolibro->portada_url ?? $libro->portada_url }}"
-             alt="Portada de {{ $libro->titulo }}"
-             class="audiobook-cover">
-
-        {{-- Información + reproductor --}}
-        <div class="audiobook-info">
-            <h2 class="audiobook-title">{{ $libro->titulo }}</h2>
-            <p class="audiobook-author">{{ $libro->autor }}</p>
-
-            @if(!empty($audiolibro) && !empty($audiolibro->audio_url))
-                {{-- Contenedor del reproductor --}}
-                <div id="waveform"></div>
-
-                <div class="d-flex align-items-center justify-content-between mt-2">
-                    <div>
-                        <button id="back10" class="btn btn-dark btn-sm">-10s</button>
-                        <button id="playPause" class="btn btn-success btn-sm">▶</button>
-                        <button id="forward10" class="btn btn-dark btn-sm">+10s</button>
-                    </div>
-                    <div id="time" class="text-muted small">
-                        0:00 / 0:00
-                    </div>
-                </div>
-
-                {{-- Script del reproductor solo si hay audio --}}
-                <script src="https://unpkg.com/wavesurfer.js"></script>
-                <script>
-                document.addEventListener("DOMContentLoaded", function () {
-                    const wavesurfer = WaveSurfer.create({
-                        container: '#waveform',
-                        waveColor: '#555',
-                        progressColor: '#8ef0a2',   // verde claro
-                        cursorColor: '#28a745',
-                        barWidth: 2,
-                        height: 80,
-                        responsive: true,
-                    });
-
-                    // ✅ Solo carga si existe la URL
-                    wavesurfer.load("{{ $audiolibro->audio_url }}");
-
-                    const playPauseBtn = document.getElementById("playPause");
-                    const back10Btn = document.getElementById("back10");
-                    const forward10Btn = document.getElementById("forward10");
-                    const timeDisplay = document.getElementById("time");
-
-                    const formatTime = (seconds) => {
-                        if (!seconds) return "0:00";
-                        const m = Math.floor(seconds / 60);
-                        const s = Math.floor(seconds % 60).toString().padStart(2, "0");
-                        return `${m}:${s}`;
-                    };
-
-                    // Reproducir / pausar
-                    playPauseBtn.addEventListener("click", () => {
-                        wavesurfer.playPause();
-                        playPauseBtn.textContent = wavesurfer.isPlaying() ? "⏸" : "▶";
-                    });
-
-                    // Adelantar / retroceder
-                    back10Btn.addEventListener("click", () => wavesurfer.skip(-10));
-                    forward10Btn.addEventListener("click", () => wavesurfer.skip(10));
-
-                    // Actualizar tiempos
-                    wavesurfer.on("audioprocess", () => {
-                        const current = wavesurfer.getCurrentTime();
-                        const total = wavesurfer.getDuration();
-                        timeDisplay.textContent = `${formatTime(current)} / ${formatTime(total)}`;
-                    });
-
-                    wavesurfer.on("ready", () => {
-                        const total = wavesurfer.getDuration();
-                        timeDisplay.textContent = `0:00 / ${formatTime(total)}`;
-                    });
-
-                    wavesurfer.on("finish", () => {
-                        playPauseBtn.textContent = "▶";
-                    });
-                });
-                </script>
-            @else
-                <div class="alert alert-warning mt-3">
-                    📢 Audiolibro no disponible.
-                </div>
-            @endif
+  <div class="audiobook-card">
+    {{-- Portada --}}
+    <img src="{{ $audiolibro->portada_url ?? $libro->portada_url }}"
+      alt="Portada de {{ $libro->titulo }}"
+      class="audiobook-cover">
+    {{-- Información + reproductor --}}
+    <div class="audiobook-info">
+      <h2 class="audiobook-title">{{ $libro->titulo }}</h2>
+      <p class="audiobook-author">{{ $libro->autor }}</p>
+      @if(!empty($audiolibro) && !empty($audiolibro->audio_url))
+      {{-- Contenedor del reproductor --}}
+      <div id="waveform"></div>
+      <div class="d-flex align-items-center justify-content-between mt-2">
+        <div>
+          <button id="back10" class="btn btn-dark btn-sm">-10s</button>
+          <button id="playPause" class="btn btn-success btn-sm">▶</button>
+          <button id="forward10" class="btn btn-dark btn-sm">+10s</button>
         </div>
+        <div id="time" class="text-muted small">
+          0:00 / 0:00
+        </div>
+      </div>
+      {{-- Script del reproductor solo si hay audio --}}
+      <script src="https://unpkg.com/wavesurfer.js"></script>
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const wavesurfer = WaveSurfer.create({
+                container: '#waveform',
+                waveColor: '#555',
+                progressColor: '#8ef0a2',   // verde claro
+                cursorColor: '#28a745',
+                barWidth: 2,
+                height: 80,
+                responsive: true,
+            });
+        
+            // Solo carga si existe la URL
+            wavesurfer.load("{{ $audiolibro->audio_url }}");
+        
+            const playPauseBtn = document.getElementById("playPause");
+            const back10Btn = document.getElementById("back10");
+            const forward10Btn = document.getElementById("forward10");
+            const timeDisplay = document.getElementById("time");
+        
+            const formatTime = (seconds) => {
+                if (!seconds) return "0:00";
+                const m = Math.floor(seconds / 60);
+                const s = Math.floor(seconds % 60).toString().padStart(2, "0");
+                return `${m}:${s}`;
+            };
+        
+            // Reproducir / pausar
+            playPauseBtn.addEventListener("click", () => {
+                wavesurfer.playPause();
+                playPauseBtn.textContent = wavesurfer.isPlaying() ? "⏸" : "▶";
+            });
+        
+            // Adelantar / retroceder
+            back10Btn.addEventListener("click", () => wavesurfer.skip(-10));
+            forward10Btn.addEventListener("click", () => wavesurfer.skip(10));
+        
+            // Actualizar tiempos
+            wavesurfer.on("audioprocess", () => {
+                const current = wavesurfer.getCurrentTime();
+                const total = wavesurfer.getDuration();
+                timeDisplay.textContent = `${formatTime(current)} / ${formatTime(total)}`;
+            });
+        
+            wavesurfer.on("ready", () => {
+                const total = wavesurfer.getDuration();
+                timeDisplay.textContent = `0:00 / ${formatTime(total)}`;
+            });
+        
+            wavesurfer.on("finish", () => {
+                playPauseBtn.textContent = "▶";
+            });
+        });
+      </script>
+      @else
+      <div class="alert alert-warning mt-3">
+        Audiolibro no disponible.
+      </div>
+      @endif
     </div>
-
-    <div class="text-center mt-4">
-        <a href="{{ route('libros.index') }}" class="btn btn-secondary">Volver al catálogo</a>
-    </div>
+  </div>
+  <div class="text-center mt-4">
+    <a href="{{ route('libros.index') }}" class="btn btn-secondary">Volver al catálogo</a>
+  </div>
 </div>
 
 <style>
