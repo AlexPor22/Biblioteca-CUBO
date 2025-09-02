@@ -226,8 +226,35 @@ body {
     padding: 0;
     overflow-x: hidden;
     background-color: rgba(163, 163, 163, 1);
+    position: relative;
     
 }
+
+/* El header siempre arriba */
+header, .header {
+    position: fixed;   /* se queda fijo arriba */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 99999 !important;
+}
+
+/* Para evitar que el hero tape al header */
+.hero-section {
+    margin-top: 120px; /* ajusta este valor al alto del header */
+}
+
+/* Aseguramos que el modal también tape todo si aparece */
+.modal {
+    z-index: 999999 !important;
+}
+
+
+/* Canvas por debajo del header, pero visible */
+#fireworks-canvas {
+    z-index: 1000 !important;
+}
+
 
 .bandera-3d {
         width: 250px;
