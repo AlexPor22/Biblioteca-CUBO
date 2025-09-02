@@ -150,20 +150,21 @@
 
 <style>
 
-  body, html {
+  html, body {
   height: 100%;
   margin: 0;
-  padding: 0;
-}
-
-main {
-  min-height: calc(100vh - 100px); /* 100px es altura del header aprox. */
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: flex-start; /* Si quieres centrar vertical usa: center */
-  padding-top: 40px; /* espacio para que no se pegue al header */
 }
+
+
+main {
+  flex: 1; /* ocupa todo el espacio disponible */
+  display: flex;
+  flex-direction: column;
+  padding-top: 40px;
+}
+
 
   /* ===== Sidebar desktop ===== */
   .cat-sidebar.fancy{
