@@ -177,7 +177,7 @@ Route::middleware('auth')->group(function () {
 
 
 //prestamo
-Route::get('/solicitar-prestamo', [PrestamosController::class, 'solicitarPrestamo'])->name('solicitarPrestamo');
+//Route::get('/solicitar-prestamo', [PrestamosController::class, 'solicitarPrestamo'])->name('solicitarPrestamo');
 
 
 
@@ -216,3 +216,12 @@ Route::get('auth/google/callback', function () {
 
     return redirect()->route('libros.digitales')->with('success', '¡Bienvenido con Google!');
 });
+
+
+
+
+// Solicitar préstamo vista con mensaje en cosntruccion
+Route::middleware('auth')->get('/solicitar-prestamo', function () {
+    return view('en_construccion'); // sin 404/501/503
+})->name('solicitarPrestamo');
+
