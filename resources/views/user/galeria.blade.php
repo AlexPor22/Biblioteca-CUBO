@@ -68,7 +68,7 @@
   <section class="seccion-promocional" style="background-image: url('https://i0.wp.com/alexandrade.net/wp-content/uploads/2022/08/Como-leer-libros-tecnicos-o-academicos-christin-hume-k2Kcwkandwg-unsplash-2.webp?resize=900%2C600&ssl=1');">
     <div class="contenido-promocional">
       <h2>¿Sabías que puedes leer los libros de las imágenes de arriba?</h2>
-      <a href="/ruta-a-libros" class="boton-leer">A LEER</a>
+      <a href="{{ route('user.loginUser') }}" class="boton-leer">A LEER</a>
     </div>
   </section>
 </div>

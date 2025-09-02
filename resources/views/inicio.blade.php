@@ -8,7 +8,7 @@
       <p class="descripcion">
         Bienvenidos a la Biblioteca Virtual CUBO. Aquí podrás encontrar una gran variedad de libros y recursos digitales para tu aprendizaje. ¡Explora y disfruta de nuestro catálogo!
       </p>
-      <a href="#registro" class="btn-iniciar">INICIAR GRATIS</a>
+      <a href="{{ route('user.loginUser') }}" class="btn-iniciar">INICIAR GRATIS</a> 
     </div>
     <!-- IMAGEN -->
     <div class="hero-image-wrapper animar-entrada">
