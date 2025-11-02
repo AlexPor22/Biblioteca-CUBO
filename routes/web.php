@@ -22,7 +22,7 @@ use Illuminate\Support\Str;
 use Laravel\Socialite\Facades\Socialite;
 use App\Models\Usuario;
 
-//RUTA INICIO 
+//RUTA INICIO
 Route::get('/', function () {
     return view('inicio');
 })->name('inicio');
@@ -33,6 +33,7 @@ Route::get('/admin/panel', function () {
 })->name('admin.panel')->middleware('auth');
 
 Route::middleware(['auth', IsAdmin::class])->group(function () {
+
     // Rutas del Panel de Administración
     Route::get('/admin', [AdminController::class, 'panelAdministracion'])->name('admin.panelAdministracion');
 
@@ -77,6 +78,10 @@ Route::middleware(['auth', IsAdmin::class])->group(function () {
 
     // Rutas de gestión de libros físicos del panel de administración
     Route::get('/admin/gestion/libros/fisicos', [AdminLibrosFisicosController::class, 'index'])->name('admin.gestionLibrosFisicos');
+    Route::post('/admin/gestion/libros/fisicos', [AdminLibrosFisicosController::class, 'store'])->name('admin.gestionLibrosFisicos.store');
+    Route::get('/admin/gestion/libros/fisicos/{id}', [AdminLibrosFisicosController::class, 'show'])->name('admin.gestionLibrosFisicos.show');
+    Route::put('/admin/gestion/libros/fisicos/{id}', [AdminLibrosFisicosController::class, 'update'])->name('admin.gestionLibrosFisicos.update');
+    Route::delete('/admin/gestion/libros/fisicos/{id}', [AdminLibrosFisicosController::class, 'destroy'])->name('admin.gestionLibrosFisicos.destroy');
 
     // Ruta de estadísticas del sistema del panel de administración
     Route::get('/admin/estadisticas/sistema', [AdminEstadisticasController::class, 'index'])->name('admin.estadisticasSistema');
