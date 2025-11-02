@@ -17,7 +17,7 @@
       <li><a href="{{ route('inicio') }}"><i class="fa-solid fa-house"></i> Inicio</a></li>
       <li><a href="{{ route('libros.index') }}"><i class="fas fa-book"></i>Libros</a></li>
       <li><a href="{{ route('solicitarPrestamo') }}"><i class="fa-solid fa-book-open-reader"></i>Solicitar Préstamo</a></li>
-      <li><a href=""><i class="fa-regular fa-face-smile"></i>Perfil</a></li>
+      <li><a href="{{ route('user.perfil') }}"><i class="fa-regular fa-face-smile"></i>Perfil</a></li>
       <li>
         <form action="{{ route('logout') }}" method="POST" style="display:inline;">
           @csrf

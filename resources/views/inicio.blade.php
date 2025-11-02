@@ -191,35 +191,36 @@
 <i class="fas fa-chevron-up"></i>
 </a>
 
-<!-- Modal transparente para el mes patrotiotico -->
- <!-- Canvas de fuegos artificiales -->
-    <canvas id="fireworks-canvas" 
-        style="position: fixed; top:0; left:0; width:100%; height:100%; z-index:1040; pointer-events:none;">
-    </canvas>
-
-    <!-- Modal transparente para el mes patrotiotico -->
-    <div class="modal fade" id="independenciaModal" tabindex="-1" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content text-center p-4" 
-             style="background: transparent; border: none; box-shadow: none;">
-          <h2 style="color: #ffffff; font-family: 'Poppins', sans-serif; font-size: 2rem;">
-            ¡Feliz Independencia El Salvador!
-          </h2>
-          <img src="https://upload.wikimedia.org/wikipedia/commons/3/34/Flag_of_El_Salvador.svg" 
-               alt="Bandera de El Salvador" 
-               class="bandera-3d">
-          <p style="font-size: 1.3rem; color: #ffffff; font-family: 'Poppins', sans-serif;">
-            Unidos en libertad y esperanza
-          </p>
-        </div>
-      </div>
+<!-- Modal de video hallowen -->
+<div class="modal fade" id="videoPatrioticoModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen m-0">
+    <div class="modal-content p-0" style="background: #000; border: none; box-shadow: none;">
+      <!-- Video para escritorio -->
+      <video id="videoPatrioticoDesktop" class="video-desktop" style="width:100vw; height:100vh; object-fit:cover; display:block;" autoplay muted playsinline>
+        <source src="https://res.cloudinary.com/dqubpavb8/video/upload/v1760114226/Green_Illustrative_Halloween_Presentation_ohucbp.mp4" type="video/mp4">
+        Tu navegador no soporta la reproducción de video.
+      </video>
+      <!-- Video para móvil -->
+      <video id="videoPatrioticoMobile" class="video-mobile" style="width:100vw; height:100vh; object-fit:cover; display:none;" autoplay muted playsinline>
+        <source src="https://res.cloudinary.com/dqubpavb8/video/upload/v1760116203/Dise%C3%B1o_sin_t%C3%ADtulo_1_oqeukq.mp4" type="video/mp4">
+        Tu navegador no soporta la reproducción de video.
+      </video>
     </div>
+  </div>
+</div>
+
 
 @push('scripts')
 <!-- Fuente Poppins -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
 <style>
+.video-desktop { display: block; }
+.video-mobile { display: none; }
 
+@media (max-width: 768px) {
+  .video-desktop { display: none !important; }
+  .video-mobile { display: block !important; }
+}
 body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
@@ -587,7 +588,11 @@ header, .header {
     text-align: center;
 
 }
-
+.swiper-wrapper {
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+}
 .swiper-container {
     max-width: 100%;
     overflow: hidden;
@@ -596,7 +601,8 @@ header, .header {
 .swiper-slide {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start; /* Cambia de center a flex-start */
+    min-height: auto;
 }
 
 /* Tamaño reducido */
@@ -710,7 +716,7 @@ header, .header {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 80px auto 30px auto; /* más espacio arriba, menos abajo */
+    margin: 20px auto 30px auto; /* más espacio arriba, menos abajo */
     position: relative;
     width: 700px;      /*  ancho total de la línea decorativa */
     max-width: 80%;    /* opcional: responsivo */
@@ -744,7 +750,7 @@ header, .header {
     width: max-content;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 100px;
+     margin-top: 50px;
     margin-bottom: 200px;
 }
 
@@ -798,7 +804,7 @@ header, .header {
 }
 
 
-
+/*SECCION DE otras*/
   .custom-card {
         position: relative;
         display: inline-block;
@@ -979,90 +985,45 @@ header, .header {
 <script>
 
   document.addEventListener("DOMContentLoaded", function() {
-    let modal = new bootstrap.Modal(document.getElementById('independenciaModal'));
+    let modal = new bootstrap.Modal(document.getElementById('videoPatrioticoModal'));
     modal.show();
 
-    // Cerrar modal y detener fuegos artificiales a los 6 segundos
+    // Detecta si es móvil
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    const videoDesktop = document.getElementById('videoPatrioticoDesktop');
+    const videoMobile = document.getElementById('videoPatrioticoMobile');
+    let video = isMobile ? videoMobile : videoDesktop;
+
+    video.currentTime = 0;
+    video.play();
+
     setTimeout(() => {
         modal.hide();
-        clearInterval(fireworkInterval);
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        canvas.style.display = "none";
-    }, 3000); // 6 segundos
 
-    // ---- Fuegos artificiales ----
-    const canvas = document.getElementById("fireworks-canvas");
-    const ctx = canvas.getContext("2d");
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    class Firework {
-        constructor(x, y, colors) {
-            this.x = x;
-            this.y = y;
-            this.particles = [];
-            this.colors = colors;
-            for (let i = 0; i < 50; i++) {
-                this.particles.push({
-                    x: this.x,
-                    y: this.y,
-                    radius: Math.random() * 2,
-                    color: this.colors[0],
-                    velocity: {
-                        x: (Math.random() - 0.5) * 6,
-                        y: (Math.random() - 0.5) * 6
-                    },
-                    alpha: 1
-                });
-            }
-        }
-        update() {
-            this.particles.forEach(p => {
-                p.x += p.velocity.x;
-                p.y += p.velocity.y;
-                p.alpha -= 0.01;
+        // Inicializa Swiper SOLO después de cerrar el modal
+        setTimeout(() => {
+            const swiper = new Swiper('.categorias-swiper', {
+                slidesPerView: 6,
+                spaceBetween: 20,
+                loop: true,
+                loopedSlides: 12,
+                autoplay: {
+                    delay: 2000,
+                    disableOnInteraction: false
+                },
+                speed: 800,
+                breakpoints: {
+                    1200: { slidesPerView: 6 },
+                    992:  { slidesPerView: 4 },
+                    768:  { slidesPerView: 3 },
+                    576:  { slidesPerView: 2 },
+                    0:    { slidesPerView: 1 },
+                }
             });
-        }
-        draw() {
-            this.particles.forEach(p => {
-                ctx.globalAlpha = p.alpha;
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-                ctx.fillStyle = p.color;
-                ctx.fill();
-            });
-        }
-    }
-
-    let fireworks = [];
-    function animate() {
-        requestAnimationFrame(animate);
-        ctx.fillStyle = "rgba(0, 0, 0, 0.2)";
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-        fireworks.forEach((fw, index) => {
-            fw.update();
-            fw.draw();
-            if (fw.particles[0].alpha <= 0) {
-                fireworks.splice(index, 1);
-            }
-        });
-    }
-
-    function launchFirework() {
-        const colors = ["#0d6efd"]; // azul
-        for (let i = 0; i < 3; i++) {
-            fireworks.push(new Firework(
-                Math.random() * canvas.width, 
-                Math.random() * (canvas.height / 2), 
-                colors
-            ));
-        }
-    }
-
-    let fireworkInterval = setInterval(launchFirework, 1000);
-    animate();
+        }, 500); // Espera un poco para asegurar que el DOM esté visible
+    }, 1500); // 4 segundos
 });
+
 
     //ANIMACION XYZ DE LAS CARD DE CATALOGO
     document.querySelectorAll('.card-3d').forEach(card => {

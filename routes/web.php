@@ -224,4 +224,3 @@ Route::get('auth/google/callback', function () {
 Route::middleware('auth')->get('/solicitar-prestamo', function () {
     return view('en_construccion'); // sin 404/501/503
 })->name('solicitarPrestamo');
-
