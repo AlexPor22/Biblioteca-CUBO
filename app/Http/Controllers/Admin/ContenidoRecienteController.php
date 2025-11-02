@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\LibroDigital;
 use App\Models\Audiolibro;
+use App\Models\LibrosFisicos;
 
 class ContenidoRecienteController extends Controller
 {
@@ -14,27 +15,27 @@ class ContenidoRecienteController extends Controller
      */
     public function index(Request $request)
     {
-        // Trae los últimos N por tipo
-        $limite = 10;
+        // Límite de registros por tipo
+        $limite = 3;
 
-        // Mapea libros a un formato común
-        $libros = LibroDigital::select('id','titulo','autor','estado','created_at')
+        // 🔹 Libros digitales
+        $libros = LibroDigital::select('id', 'titulo', 'autor', 'estado', 'created_at')
             ->latest('created_at')
             ->take($limite)
             ->get()
             ->map(function ($l) {
                 return [
-                    'tipo'       => 'libro',            // para icono y etiqueta
+                    'tipo'       => 'digital',
                     'id'         => $l->id,
                     'titulo'     => $l->titulo,
                     'autor'      => $l->autor,
-                    'estado'     => $l->estado ?? 'borrador', // ajusta si usas otro campo/enum
+                    'estado'     => $l->estado ?? 'borrador',
                     'created_at' => $l->created_at,
                 ];
             });
 
-        // Mapea audiolibros a un formato común
-        $audios = Audiolibro::select('id','titulo','autor','narrador','estado','created_at')
+        // 🔹 Audiolibros
+        $audios = Audiolibro::select('id', 'titulo', 'autor', 'narrador', 'estado', 'created_at')
             ->latest('created_at')
             ->take($limite)
             ->get()
@@ -43,26 +44,42 @@ class ContenidoRecienteController extends Controller
                     'tipo'       => 'audio',
                     'id'         => $a->id,
                     'titulo'     => $a->titulo,
-                    // prioriza autor, si no hay, usa narrador
                     'autor'      => $a->autor ?: ($a->narrador ?? 'Autor/Narrador'),
                     'estado'     => $a->estado ?? 'borrador',
                     'created_at' => $a->created_at,
                 ];
             });
 
-        // Une y ordena por fecha (más reciente primero)
-        $items = $libros->merge($audios)
-                        ->sortByDesc('created_at')
-                        ->values();
+        // 🔹 Libros físicos
+        $fisicos = LibrosFisicos::select('id', 'titulo', 'autor', 'estado', 'created_at')
+            ->latest('created_at')
+            ->take($limite)
+            ->get()
+            ->map(function ($f) {
+                return [
+                    'tipo'       => 'fisico',
+                    'id'         => $f->id,
+                    'titulo'     => $f->titulo,
+                    'autor'      => $f->autor,
+                    'estado'     => $f->estado ?? 'desconocido',
+                    'created_at' => $f->created_at,
+                ];
+            });
 
-        // Contadores para estadísticas
-        $contadorLibros = LibroDigital::count();
-        $contadorAudios = Audiolibro::count();
+        // 🔹 Unir y ordenar por fecha (más reciente primero)
+        $items = collect()
+            ->merge($libros)
+            ->merge($audios)
+            ->merge($fisicos)
+            ->sortByDesc('created_at')
+            ->values();
 
+        // 🔹 Contadores para estadísticas
         return view('admin.contenido_reciente', [
             'items' => $items,
-            'contadorLibros' => $contadorLibros,
-            'contadorAudios' => $contadorAudios,
+            'contadorLibros' => LibroDigital::count(),
+            'contadorAudios' => Audiolibro::count(),
+            'contadorLibrosFisicos' => LibrosFisicos::count(),
         ]);
     }
 

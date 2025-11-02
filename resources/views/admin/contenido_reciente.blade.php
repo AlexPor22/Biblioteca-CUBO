@@ -5,9 +5,11 @@
     <!-- Header panel -->
     <div class="header">
       <h1 class="header-title">Contenido Reciente</h1>
-      <!-- Subtítulo descriptivo -->
-      <p class="header-subtitle">Consulta y gestiona los últimos libros y audiolibros publicados en la plataforma. Aquí podrás ver el estado de cada contenido, así como realizar acciones de edición o eliminación.</p>
+      <p class="header-subtitle">
+        Consulta y gestiona los últimos libros digitales, audiolibros y libros físicos registrados en la plataforma.
+      </p>
     </div>
+
     <!-- Sección de Estadísticas -->
     <div class="stats-section">
       <h3 style="color: #0D0D0D; font-weight: 700; margin-bottom: 1rem;">Estadísticas del Sistema</h3>
@@ -21,51 +23,80 @@
           <div class="stat-label">Audiolibros</div>
         </div>
         <div class="stat-item">
-          <div class="stat-number">0</div>
-          <div class="stat-label">Libros físicos</div>
+          <div class="stat-number">{{ $contadorLibrosFisicos }}</div>
+          <div class="stat-label">Libros Físicos</div>
         </div>
       </div>
     </div>
+
     <!-- Contenido Reciente -->
-    <div class="recent-uploads">
+    <div class="recent-uploads mt-4">
       <h3>Contenido Reciente</h3>
-      <div id="lista-contenido">
+      <div id="lista-contenido" class="mt-3">
         @forelse ($items as $item)
-        <div class="upload-item">
-          {{-- Icono según tipo --}}
-          <div class="upload-icon {{ $item['tipo'] === 'libro' ? 'book-icon' : 'audio-icon' }}">
-            @if($item['tipo'] === 'libro')
-            {{-- SVG Libro --}}
-            <svg fill="currentColor" viewBox="0 0 20 20" style="width: 20px; height: 20px;">
-              <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z"></path>
-            </svg>
-            @else
-            {{-- SVG Audio --}}
-            <svg fill="currentColor" viewBox="0 0 20 20" style="width: 20px; height: 20px;">
-              <path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217z" clip-rule="evenodd"></path>
-            </svg>
-            @endif
-          </div>
-          {{-- Detalles --}}
-          <div class="upload-details">
-            <div class="upload-title">
-              {{ $item['titulo'] }} @if($item['tipo']==='audio') (Audiolibro) @endif
-            </div>
-            <div class="upload-meta">
-              Subido {{ \Carbon\Carbon::parse($item['created_at'])->diffForHumans() }}
-              • {{ $item['autor'] ?? 'Autor/Narrador' }}
-            </div>
-          </div>
-          {{-- Estado visual --}}
+        <div class="upload-item d-flex justify-content-between align-items-center border rounded p-3 mb-2 bg-white shadow-sm">
+          {{-- Tipo de contenido --}}
           @php
-          $estado = strtolower($item['estado']);
-          $claseEstado = in_array($estado, ['habilitado','publicado','activo']) ? 'status-published' : 'status-draft';
-          $textoEstado = in_array($estado, ['habilitado','publicado','activo']) ? 'Publicado' : ucfirst($estado);
+            $tipoTexto = match($item['tipo']) {
+              'digital' => 'Libro Digital',
+              'audio'   => 'Audiolibro',
+              'fisico'  => 'Libro Físico',
+              default   => 'Contenido',
+            };
           @endphp
-          <div class="upload-status {{ $claseEstado }}">{{ $textoEstado }}</div>
+
+          <div class="upload-details">
+            <div class="upload-title fw-semibold text-dark">
+              <strong>{{ $tipoTexto }}:</strong> {{ $item['titulo'] }}
+            </div>
+            <div class="upload-meta text-muted small">
+              Registrado {{ \Carbon\Carbon::parse($item['created_at'])->diffForHumans() }}
+              • {{ $item['autor'] ?? 'Autor desconocido' }}
+            </div>
+          </div>
+
+          {{-- Estado con badge Bootstrap --}}
+          @php
+            $estado = strtolower($item['estado']);
+            $textoEstado = ucfirst($estado);
+            $badgeClass = 'bg-secondary';
+
+            if ($item['tipo'] === 'fisico') {
+                switch ($estado) {
+                    case 'disponible':
+                        $badgeClass = 'bg-primary';
+                        $textoEstado = 'Disponible';
+                        break;
+                    case 'prestado':
+                        $badgeClass = 'bg-warning text-dark';
+                        $textoEstado = 'Prestado';
+                        break;
+                    case 'reservado':
+                        $badgeClass = 'bg-info text-dark';
+                        $textoEstado = 'Reservado';
+                        break;
+                    default:
+                        $badgeClass = 'bg-secondary';
+                        $textoEstado = ucfirst($estado);
+                        break;
+                }
+            } else {
+                if (in_array($estado, ['habilitado','publicado','activo'])) {
+                    $badgeClass = 'bg-success';
+                    $textoEstado = 'Publicado';
+                } else {
+                    $badgeClass = 'bg-danger';
+                    $textoEstado = ucfirst($estado);
+                }
+            }
+          @endphp
+
+          <span class="badge rounded-pill px-3 py-2 {{ $badgeClass }}">
+            {{ $textoEstado }}
+          </span>
         </div>
         @empty
-        <p style="margin-top: .5rem; color:#666;">No hay contenido reciente por ahora.</p>
+          <p class="text-muted mt-3">No hay contenido reciente por ahora.</p>
         @endforelse
       </div>
     </div>
